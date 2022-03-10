@@ -17,7 +17,7 @@
   
   <meta property="og:type" content="website">
 <meta property="og:title" content="Vzer&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/categories/index.html">
 <meta property="og:site_name" content="Vzer&#39;s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/null">
@@ -154,77 +154,76 @@
 
         
 
-            <!-- Breadcrumb for tag & category page -->
+            <style>
+  .categories ul {
+    list-style: none;
+  }
 
+  .categories .category-list-item {
+    position: relative;
+    padding-top: 20px;
+  }
 
+  .categories .category-list-item .category-list-link::before {
+    content: " ";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    margin-left: -4px;
+    margin-top: -4px;
+    width: 8px;
+    height: 8px;
+    background: #bbb;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+  }
 
-    
-    
-        <article class="kratos-hentry clearfix">
-            <div class="kratos-entry-border-new clearfix">
-                
-                <div class="kratos-entry-thumb-new">
-                    <a href="/GameDevelopment/">
-                        
-                            <img class="kratos-entry-thumb-new-img">
-                        
-                    </a>
-                </div>
-                <div class="kratos-post-inner-new">
-                    <header class="kratos-entry-header-new">
-                            
-                        <h2 class="kratos-entry-title-new"><a href="/GameDevelopment/">GameDevelopment</a>
-                    </header>
-                    <div class="kratos-entry-content-new">
-                        <p>
-                            
-                                ScriptsManager
-所定义的函数将用于不同对象功能的实现
+  .categories .category-list-item .category-list-link:hover::before {
+    background: #222;
+  }
 
-GameManager
+  a {
+    color:#666;
+  }
 
-控制游戏进程，其中包括控制关卡的开始延迟、每一回合间的延迟、控制是否允许玩家操作等、判断游戏是否结束等；
-初始化游戏信息，其中包括了生成地...
-                            
-                        </p>
-                    </div>
-                </div>
-                <footer class="kratos-post-meta-new">
-                    <span class="pull-left">
-                        <a>
-                            <i class="fa fa-calendar"></i>
-                            2022-03-09
-                        </a>
-                        <a>
-                            
-                        </a>
-                        
-                            <!-- 当前仅支持valine/waline自带的统计功能 -->
-                            
-                        
-                        
-                            <!-- 当前仅支持waline自带的统计功能 -->
-                            
-                        
-                    </span>
-                    <span class="pull-right">
-                        <a class="read-more" href="/GameDevelopment/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
-                    </span>
-                </footer>
-            </div>
-        </article>
-    
+  .categories .category-list-item .category-list-link {
+    position: relative;
+    margin-left: 24px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: inherit;
+  }
 
+  .categories .category-list-item .category-list-link::after {
+    font-family: fontawesome;
+    opacity: 0;
+    content: "\f138";
+    margin-left: 12px;
+    color: #00a7e0;
+    transition: opacity .3s ease-in-out;
+  }
 
-
-
-
-    <div class="hidden">
-        <!-- 加载文章阅读对应的统计功能，评论自带的那种 -->
-        
+  .categories .category-list-item .category-list-link:hover::after {
+    opacity: 100%;
+  }
+</style>
+<article>
+  <div class="kratos-hentry kratos-post-inner clearfix">
+    <div class="kratos-post-content">
+      <h2 class="title-h2 text-center">
+        分类目录
+      </h2>
+      <div style="margin-left: 2em;">
+        <h3 class="archive-page-counter">
+          当前共有 0 种分类 (゜-゜)つロ 干杯~
+        </h3>
+        <div class="categories">
+          
+        </div>
+      </div>
     </div>
-
-
+  </div>
+</article>
 
         
 
