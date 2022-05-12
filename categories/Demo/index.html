@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>好伙伴们 | Vzer's Blog</title>
+  <title>Vzer's Blog</title>
   <meta name="author" content="Vzer" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -15,12 +15,10 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="好伙伴们在哪里~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="好伙伴们">
-<meta property="og:url" content="http://example.com/friends/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Vzer&#39;s Blog">
+<meta property="og:url" content="http://example.com/categories/Demo/index.html">
 <meta property="og:site_name" content="Vzer&#39;s Blog">
-<meta property="og:description" content="好伙伴们在哪里~">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/null">
 <meta property="article:author" content="Vzer">
@@ -131,37 +129,219 @@
 
         
 
-            <article>
-    <div class="kratos-hentry kratos-post-inner clearfix">
-        <div class="kratos-post-content">
-            <h2 class="title-h2 text-center">好伙伴们</h2>
-            <div class="linkpage">
-    <ul id="friendsList"></ul>
-</div>
+            <!-- Breadcrumb for tag & category page -->
 
-<script type="text/javascript">
-{
-    const flist = JSON.parse(`[{"name":"猫猫①号","bio":"喵~","avatar":"../images/avatar.webp","link":"#"},{"name":"猫猫②号","bio":"喵喵~","avatar":"../images/avatar.webp","link":"#"},{"name":"猫猫⑨号","bio":"咪啪~","avatar":"../images/avatar.webp","link":"#"}]`);
-    let friendNodes = '';
-    while (flist.length > 0) {
-        const rndNum = Math.floor(Math.random()*flist.length);
-        friendNodes += `<li><a target="_blank" href="${flist[rndNum].link}"><img src="${flist[rndNum].avatar || '<%- url_cdn("images/avatar.webp") %>'}"><h4>${flist[rndNum].name}</h4><p>${flist[rndNum].bio || ''}</p></a></li>`;
-        flist.splice(rndNum, 1);
-    }
-    document.getElementById("friendsList").innerHTML = friendNodes;
-}
-</script>
+    <article class="kratos-hentry kratos-entry-border-new clearfix">
+        <div class="kratos-breadcrumb">
+            <a href="/">
+                <i class="fa fa-home"></i>
+            </a>
+            <i class="fa fa-angle-right"></i>
+            
+
+                <a href="/categories/">
+                    分类
+                </a>
+
+                
+                
+                    <i class="fa fa-angle-right"></i>
+                    <a href="/categories/Demo/">
+                        Demo
+                    </a>
+                
+            
+            
         </div>
-        <footer class="kratos-entry-footer clearfix">
-            <div class="footer-tag clearfix">
-                <div class="pull-date">
-                <span>最后编辑：2021-01-18</span>
-                </div>
-            </div>
-        </footer>
-    </div>
+    </article>
+
+
+
     
-</article>
+    
+        <article class="kratos-hentry clearfix">
+            <div class="kratos-entry-border-new clearfix">
+                
+                <div class="kratos-entry-thumb-new">
+                    <a href="/MultiplayerFPS/">
+                        
+                            <img class="kratos-entry-thumb-new-img">
+                        
+                    </a>
+                </div>
+                <div class="kratos-post-inner-new">
+                    <header class="kratos-entry-header-new">
+                            <a class="label-link" href="/categories/Demo/">Demo</a>
+                        <h2 class="kratos-entry-title-new"><a href="/MultiplayerFPS/">MultiplayerFPS</a>
+                    </header>
+                    <div class="kratos-entry-content-new">
+                        <p>
+                            
+                                菜单创建与photon服务器连接
+服务器相关设置
+
+PhotonUnityNetworking&gt;Resources&gt;PhotonSeverSettings
+
+
+
+Scripts
+Launcher.cs
+  1public ...
+                            
+                        </p>
+                    </div>
+                </div>
+                <footer class="kratos-post-meta-new">
+                    <span class="pull-left">
+                        <a>
+                            <i class="fa fa-calendar"></i>
+                            2022-05-12
+                        </a>
+                        <a>
+                            
+                        </a>
+                        
+                            <!-- 当前仅支持valine/waline自带的统计功能 -->
+                            
+                        
+                        
+                            <!-- 当前仅支持waline自带的统计功能 -->
+                            
+                        
+                    </span>
+                    <span class="pull-right">
+                        <a class="read-more" href="/MultiplayerFPS/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                    </span>
+                </footer>
+            </div>
+        </article>
+    
+
+    
+    
+        <article class="kratos-hentry clearfix">
+            <div class="kratos-entry-border-new clearfix">
+                
+                <div class="kratos-entry-thumb-new">
+                    <a href="/Ruby's%20Adventure/">
+                        
+                            <img class="kratos-entry-thumb-new-img">
+                        
+                    </a>
+                </div>
+                <div class="kratos-post-inner-new">
+                    <header class="kratos-entry-header-new">
+                            <a class="label-link" href="/categories/Demo/">Demo</a>
+                        <h2 class="kratos-entry-title-new"><a href="/Ruby's%20Adventure/">Ruby's Adventure</a>
+                    </header>
+                    <div class="kratos-entry-content-new">
+                        <p>
+                            
+                                Ruby’s AdventureUnity
+“Pixels per Unit”通过定义 1 个单位内应该设置的像素数量来告知 Unity 如何设置精灵的大小。
+
+游戏对象的排序问题
+
+调整瓦片的 Order in Layer 属性
+
+...
+                            
+                        </p>
+                    </div>
+                </div>
+                <footer class="kratos-post-meta-new">
+                    <span class="pull-left">
+                        <a>
+                            <i class="fa fa-calendar"></i>
+                            2022-05-12
+                        </a>
+                        <a>
+                            
+                        </a>
+                        
+                            <!-- 当前仅支持valine/waline自带的统计功能 -->
+                            
+                        
+                        
+                            <!-- 当前仅支持waline自带的统计功能 -->
+                            
+                        
+                    </span>
+                    <span class="pull-right">
+                        <a class="read-more" href="/Ruby's%20Adventure/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                    </span>
+                </footer>
+            </div>
+        </article>
+    
+
+    
+    
+        <article class="kratos-hentry clearfix">
+            <div class="kratos-entry-border-new clearfix">
+                
+                <div class="kratos-entry-thumb-new">
+                    <a href="/SunnyLand/">
+                        
+                            <img class="kratos-entry-thumb-new-img">
+                        
+                    </a>
+                </div>
+                <div class="kratos-post-inner-new">
+                    <header class="kratos-entry-header-new">
+                            <a class="label-link" href="/categories/Demo/">Demo</a>
+                        <h2 class="kratos-entry-title-new"><a href="/SunnyLand/">SunnyLand</a>
+                    </header>
+                    <div class="kratos-entry-content-new">
+                        <p>
+                            
+                                ScriptsManager
+所定义的函数将用于不同对象功能的实现
+
+GameManager
+
+控制游戏进程，其中包括控制关卡的开始延迟、每一回合间的延迟、控制是否允许玩家操作等、判断游戏是否结束等；
+初始化游戏信息，其中包括了生成地...
+                            
+                        </p>
+                    </div>
+                </div>
+                <footer class="kratos-post-meta-new">
+                    <span class="pull-left">
+                        <a>
+                            <i class="fa fa-calendar"></i>
+                            2022-05-12
+                        </a>
+                        <a>
+                            
+                        </a>
+                        
+                            <!-- 当前仅支持valine/waline自带的统计功能 -->
+                            
+                        
+                        
+                            <!-- 当前仅支持waline自带的统计功能 -->
+                            
+                        
+                    </span>
+                    <span class="pull-right">
+                        <a class="read-more" href="/SunnyLand/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                    </span>
+                </footer>
+            </div>
+        </article>
+    
+
+
+
+
+
+    <div class="hidden">
+        <!-- 加载文章阅读对应的统计功能，评论自带的那种 -->
+        
+    </div>
+
+
 
         
 
