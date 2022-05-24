@@ -46,7 +46,7 @@
 <li><p>RoomManager 用于PlayerManager的实例化</p>
   <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoomManager</span> : <span class="title">MonoBehaviourPunCallbacks</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RoomManager Instance;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (Instance)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    DontDestroyOnLoad(gameObject);</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnEnable();</span><br><span class="line">    SceneManager.sceneLoaded += OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnDisable();</span><br><span class="line">    SceneManager.sceneLoaded -= OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnSceneLoaded</span>(<span class="params">Scene scene, LoadSceneMode loadSceneMode</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(scene.buildIndex == <span class="number">1</span>)<span class="comment">//We&#x27;re in the game scene</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//进入游戏场景则实例化PlayerManager</span></span><br><span class="line">        PhotonNetwork.Instantiate(Path.Combine(<span class="string">&quot;PhotonPrefabs&quot;</span>, <span class="string">&quot;PlayerManager&quot;</span>), Vector3.zero, Quaternion.identity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="./Menu.png" alt="Menu"></p>
+<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="/.com//Menu.png" alt="Menu"></p>
 <ul>
 <li>xxxMenu<blockquote>
 <p>搭载Menu.cs 定义MenuName 只有LoadingMenu初始时open为true</p>
@@ -279,7 +279,7 @@
 <p>抽象方法一个行为的抽象。</p>
 <h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>父类同一种动作或者行为(父类型的引用调用同一方法)，在不同的子类上有不同的实现。</p>
 <p>继承将相关概念的共性进行抽象，并提供了一种复用的方式；多态在共性的基础上，体现类型及行为的个性化，即一个行为有多个不同的实现。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="实现手段"><a href="#实现手段" class="headerlink" title="实现手段"></a><strong>实现手段</strong></h2><ol>
+<h3 id><a href="#" class="headerlink" title></a></h3><h2 id="实现手段"><a href="#实现手段" class="headerlink" title="实现手段"></a><strong>实现手段</strong></h2><ol>
 <li>虚方法： 父类型的引用 指向 子类的对象，调用虚方法，执行子类中的重写方法。</li>
 <li>抽象方法：抽象类的引用 指向 实现类的对象，调用抽象方法，执行实现类中重写方法。</li>
 <li>接口：接口的引用 指向 实现类的对象，调用接口方法，执行实现类中实现方法。</li>
@@ -398,7 +398,7 @@
 <li>委托对象绑定(+=)多个方法时，本质调用Delegate.Combine(原对象,新对象)方法。</li>
 <li>Combine方法内部创建新委托链(Delegate[]),再创建新委托对象，存入<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.MulticastDelegate/_invocationList:Object">_invocationList</a>字段中。</li>
 </ol>
-<p><img src="RackMultipart20220404-4-1f96qjv_html_3561a2285ccd4279.png"></p>
+<p><img src="/.com//RackMultipart20220404-4-1f96qjv_html_3561a2285ccd4279.png"></p>
 <ol>
 <li>委托对象移除(-=)某个方法时，本质调用Delegate.Remove(原对象,删除对象)方法。</li>
 <li>Remove方法内部删除匹配的委托(判断_target与<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_methodPtr:IntPtr">_methodPtr</a>)。</li>
@@ -417,7 +417,7 @@
 <li>如方法有返回值，则需要调用EndInvoke取得返回值。</li>
 </ol>
 <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="定义-6"><a href="#定义-6" class="headerlink" title="定义"></a>定义</h3><p>当某一对象达到某种条件或发生某种改变时，将消息及时的 <strong>通知</strong> 到其它对象。</p>
-<p><img src="RackMultipart20220404-4-1f96qjv_html_bac22147f8539b2b.png"></p>
+<p><img src="/.com//RackMultipart20220404-4-1f96qjv_html_bac22147f8539b2b.png"></p>
 <h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ol>
 <li>定义事件参数类 XXX <strong>EventArgs</strong> ：封装引发事件时需要由事件源传递给响应者的信息。</li>
 <li>定义 <strong>委托 ：</strong> public delegate void XXX <strong>EventHandler</strong> (XXXEventArgs e);</li>
