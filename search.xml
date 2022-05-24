@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MultiplayerFPS</title>
+    <url>/MultiplayerFPS/</url>
+    <content><![CDATA[<h1 id="菜单创建与photon服务器连接"><a href="#菜单创建与photon服务器连接" class="headerlink" title="菜单创建与photon服务器连接"></a>菜单创建与photon服务器连接</h1><ul>
+<li><p>服务器相关设置</p>
+<blockquote>
+<p>PhotonUnityNetworking&gt;Resources&gt;PhotonSeverSettings</p>
+</blockquote>
+</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h2><ul>
+<li><p>Launcher.cs</p>
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Launcher</span> : <span class="title">MonoBehaviourPunCallbacks</span><span class="comment">//give us access to callbacks for room creation etc.</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Launcher Instance;<span class="comment">//单例模式</span></span><br><span class="line"></span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_InputField roomNameInputField;<span class="comment">//用于自定义房间名字的输入</span></span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_Text errorText;</span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_Text roomNameText;</span><br><span class="line"><span class="comment">//搭载房间列表和玩家列表</span></span><br><span class="line">[<span class="meta">SerializeField</span>] Transform roomListContent;</span><br><span class="line">[<span class="meta">SerializeField</span>] Transform playerListContent;</span><br><span class="line"><span class="comment">//房间与玩家的预制体</span></span><br><span class="line">[<span class="meta">SerializeField</span>] GameObject roomListItemPerfab;</span><br><span class="line">[<span class="meta">SerializeField</span>] GameObject PlayerListItemPerfab;</span><br><span class="line"><span class="comment">//开始游戏按键</span></span><br><span class="line">[<span class="meta">SerializeField</span>] GameObject StartGameButton;</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;Connecting to Master&quot;</span>);</span><br><span class="line">    PhotonNetwork.ConnectUsingSettings();<span class="comment">//连接服务器</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnConnectedToMaster</span>()</span></span><br><span class="line"><span class="function"><span class="comment">//与主服务器的连接和身份验证完成时调用。</span></span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;Connected to Master&quot;</span>);</span><br><span class="line">    PhotonNetwork.JoinLobby();</span><br><span class="line">    PhotonNetwork.AutomaticallySyncScene = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//设置是否自动同步玩家的场景 当一个玩家跳场景的时候，其他玩家也跟着跳（这确保我们可以在主客户端上使用PhotonNetwork.LoadLevel()）</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnJoinedLobby</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;title&quot;</span>);</span><br><span class="line">    Debug.Log(<span class="string">&quot;Joined Lobby&quot;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreatRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrEmpty(roomNameInputField.text))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    PhotonNetwork.CreateRoom(roomNameInputField.text);</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;loading&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnJoinedRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;room&quot;</span>);</span><br><span class="line">    roomNameText.text = PhotonNetwork.CurrentRoom.Name;</span><br><span class="line"></span><br><span class="line">    Player[] players = PhotonNetwork.PlayerList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span>(Transform child <span class="keyword">in</span> playerListContent)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(child.gameObject);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i&lt; players.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Instantiate(PlayerListItemPerfab, playerListContent).GetComponent&lt;PlayerListItem&gt;().SetUp(players[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    StartGameButton.SetActive(PhotonNetwork.IsMasterClient);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnMasterClientSwitched</span>(<span class="params">Player newMasterClient</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    StartGameButton.SetActive(PhotonNetwork.IsMasterClient);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnCreateRoomFailed</span>(<span class="params"><span class="built_in">short</span> returnCode, <span class="built_in">string</span> message</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    errorText.text = <span class="string">&quot;Room Creation Failed: &quot;</span> + message;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartGame</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.LoadLevel(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LeaveRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.LeaveRoom();</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;loading&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">JoinRoom</span>(<span class="params">RoomInfo info</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.JoinRoom(info.Name);</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;loading&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnLeftRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;title&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnRoomListUpdate</span>(<span class="params">List&lt;RoomInfo&gt; roomList</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">foreach</span>(Transform trans <span class="keyword">in</span> roomListContent)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(trans.gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i= <span class="number">0</span>; i&lt; roomList.Count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (roomList[i].RemovedFromList)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        Instantiate(roomListItemPerfab, roomListContent).GetComponent&lt;RoomListItem&gt;().SetUp(roomList[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnPlayerEnteredRoom</span>(<span class="params">Player newPlayer</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Instantiate(PlayerListItemPerfab, playerListContent).GetComponent&lt;PlayerListItem&gt;().SetUp(newPlayer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>MenuManager 单例化在Launcher中控制菜单的开关</p>
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MenuManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line"></span><br><span class="line"><span class="title">public</span> <span class="title">static</span> <span class="title">MenuManager</span> <span class="title">Instance</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li><p>Menu.cs 定义Menu类,在不同的菜单上搭载</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Menu</span> : <span class="title">MonoBehaviour</span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> menuName;</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">bool</span> open;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Open</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">open = <span class="literal">true</span>;</span><br><span class="line">gameObject.SetActive(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Close</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">open = <span class="literal">false</span>;</span><br><span class="line">gameObject.SetActive(<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="meta">SerializeField</span>] Menu[] menus;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OpenMenu</span>(<span class="params"><span class="built_in">string</span> menuName</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; menus.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (menus[i].menuName == menuName)</span><br><span class="line">            menus[i].Open();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (menus[i].open)</span><br><span class="line">            CloseMenu(menus[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OpenMenu</span>(<span class="params">Menu menu</span>)<span class="comment">//重载</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; menus.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (menus[i].open)</span><br><span class="line">           CloseMenu(menus[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    menu.Open();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CloseMenu</span>(<span class="params">Menu menu</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    menu.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>PlayerNameManager 玩家用户名的生成与自定义</p>
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerNameManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_InputField usernameInput;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (PlayerPrefs.HasKey(<span class="string">&quot;username&quot;</span>))<span class="comment">//看是否已存储自定义</span></span><br><span class="line">    &#123;</span><br><span class="line">        usernameInput.text = PlayerPrefs.GetString(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        PhotonNetwork.NickName = PlayerPrefs.GetString(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">//随机生成</span></span><br><span class="line">    &#123;</span><br><span class="line">        usernameInput.text = <span class="string">&quot;Player &quot;</span> + Random.Range(<span class="number">0</span>, <span class="number">10000</span>).ToString(<span class="string">&quot;0000&quot;</span>);</span><br><span class="line">        OnUsernameInputValueChanged();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnUsernameInputValueChanged</span>()<span class="comment">//设计该函数的目的是在InputField控件不断触发onValueChanged事件</span></span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.NickName = usernameInput.text;</span><br><span class="line">    PlayerPrefs.SetString(<span class="string">&quot;username&quot;</span>, usernameInput.text);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>PlayerPrefs的使用—数据持久化问题<blockquote>
+<p>数据持久化是以键值的形式存储的，可以看作是一个字典。</p>
+<p>值是通过键名来读取的，当值不存在时，返回默认值。</p>
+<p>只支持int、string、float三种数据类型的读取</p>
+<p>DeleteAll DeleteKey HasKey GetFloat SetFloat…</p>
+<p>清除Prefs Edit&gt;Clear All PlayerPrefs</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>RoomManager 用于PlayerManager的实例化</p>
+  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoomManager</span> : <span class="title">MonoBehaviourPunCallbacks</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RoomManager Instance;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (Instance)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    DontDestroyOnLoad(gameObject);</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnEnable();</span><br><span class="line">    SceneManager.sceneLoaded += OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnDisable();</span><br><span class="line">    SceneManager.sceneLoaded -= OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnSceneLoaded</span>(<span class="params">Scene scene, LoadSceneMode loadSceneMode</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(scene.buildIndex == <span class="number">1</span>)<span class="comment">//We&#x27;re in the game scene</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//进入游戏场景则实例化PlayerManager</span></span><br><span class="line">        PhotonNetwork.Instantiate(Path.Combine(<span class="string">&quot;PhotonPrefabs&quot;</span>, <span class="string">&quot;PlayerManager&quot;</span>), Vector3.zero, Quaternion.identity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="./Menu.png" alt="Menu"></p>
+<ul>
+<li>xxxMenu<blockquote>
+<p>搭载Menu.cs 定义MenuName 只有LoadingMenu初始时open为true</p>
+</blockquote>
+<ul>
+<li>TMP<blockquote>
+<p>显示文字</p>
+</blockquote>
+</li>
+<li>InputField - TMP<blockquote>
+<p>处理输入的文字</p>
+</blockquote>
+<ul>
+<li>Text Area<blockquote>
+<p>放置位置</p>
+</blockquote>
+<ul>
+<li>Placeholder<blockquote>
+<p>默认出现的文字</p>
+</blockquote>
+</li>
+<li>Text<blockquote>
+<p>输入文字的载体</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Button<blockquote>
+<p>On Click() 中选择按下按键实现的功能</p>
+</blockquote>
+<ul>
+<li>TMP<blockquote>
+<p>按键中文字</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>xxxListContent<blockquote>
+<p>存放实例化的预制体,玩家 房间等</p>
+</blockquote>
+</li>
+<li>ButtonContainer<blockquote>
+<p>按键太多时把它作为父类，搭载vertical layout group组件,垂直排版</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>RoomManager<blockquote>
+<p>搭载RoomManager.cs和Photon View</p>
+</blockquote>
+</li>
+<li>EventSystem</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Demo</category>
+      </categories>
+      <tags>
+        <tag>FPS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面向对象 Object Oriented</title>
     <url>/OOP/</url>
     <content><![CDATA[<h1 id="面向对象-Object-Oriented"><a href="#面向对象-Object-Oriented" class="headerlink" title="面向对象 Object Oriented"></a>面向对象 Object Oriented</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>面向过程的程序 = 算法 + 数据结构； 关心解决问题的步骤。</p>
@@ -8,7 +118,8 @@
 <p>类：一个抽象的概念，即为生活中的&quot;类别&quot;。</p>
 <p>对象：类的具体实例，即归属于某个类别的&quot;个体&quot;。</p>
 <p>同类型的多个对象，行为相同，数据不同。</p>
-<p>&lt; !–more– &gt;</p>
+<span id="more"></span>
+
 <h3 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h3><p><strong>分而治之</strong> — 将一个大的需求分解为许多类，每个类处理一个独立的模块。</p>
 <p>拆分好处：独立模块便于分工，每个模块便于复用，可扩展性强。</p>
 <p><strong>封装变化</strong> — 变化的地方独立封装，避免影响其他模块。</p>
@@ -372,115 +483,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MultiplayerFPS</title>
-    <url>/MultiplayerFPS/</url>
-    <content><![CDATA[<h1 id="菜单创建与photon服务器连接"><a href="#菜单创建与photon服务器连接" class="headerlink" title="菜单创建与photon服务器连接"></a>菜单创建与photon服务器连接</h1><ul>
-<li><p>服务器相关设置</p>
-<blockquote>
-<p>PhotonUnityNetworking&gt;Resources&gt;PhotonSeverSettings</p>
-</blockquote>
-</li>
-</ul>
-<p>&lt; !–more– &gt;</p>
-<h2 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h2><ul>
-<li><p>Launcher.cs</p>
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Launcher</span> : <span class="title">MonoBehaviourPunCallbacks</span><span class="comment">//give us access to callbacks for room creation etc.</span></span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Launcher Instance;<span class="comment">//单例模式</span></span><br><span class="line"></span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_InputField roomNameInputField;<span class="comment">//用于自定义房间名字的输入</span></span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_Text errorText;</span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_Text roomNameText;</span><br><span class="line"><span class="comment">//搭载房间列表和玩家列表</span></span><br><span class="line">[<span class="meta">SerializeField</span>] Transform roomListContent;</span><br><span class="line">[<span class="meta">SerializeField</span>] Transform playerListContent;</span><br><span class="line"><span class="comment">//房间与玩家的预制体</span></span><br><span class="line">[<span class="meta">SerializeField</span>] GameObject roomListItemPerfab;</span><br><span class="line">[<span class="meta">SerializeField</span>] GameObject PlayerListItemPerfab;</span><br><span class="line"><span class="comment">//开始游戏按键</span></span><br><span class="line">[<span class="meta">SerializeField</span>] GameObject StartGameButton;</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;Connecting to Master&quot;</span>);</span><br><span class="line">    PhotonNetwork.ConnectUsingSettings();<span class="comment">//连接服务器</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnConnectedToMaster</span>()</span></span><br><span class="line"><span class="function"><span class="comment">//与主服务器的连接和身份验证完成时调用。</span></span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;Connected to Master&quot;</span>);</span><br><span class="line">    PhotonNetwork.JoinLobby();</span><br><span class="line">    PhotonNetwork.AutomaticallySyncScene = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//设置是否自动同步玩家的场景 当一个玩家跳场景的时候，其他玩家也跟着跳（这确保我们可以在主客户端上使用PhotonNetwork.LoadLevel()）</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnJoinedLobby</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;title&quot;</span>);</span><br><span class="line">    Debug.Log(<span class="string">&quot;Joined Lobby&quot;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreatRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrEmpty(roomNameInputField.text))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    PhotonNetwork.CreateRoom(roomNameInputField.text);</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;loading&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnJoinedRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;room&quot;</span>);</span><br><span class="line">    roomNameText.text = PhotonNetwork.CurrentRoom.Name;</span><br><span class="line"></span><br><span class="line">    Player[] players = PhotonNetwork.PlayerList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span>(Transform child <span class="keyword">in</span> playerListContent)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(child.gameObject);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i&lt; players.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Instantiate(PlayerListItemPerfab, playerListContent).GetComponent&lt;PlayerListItem&gt;().SetUp(players[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    StartGameButton.SetActive(PhotonNetwork.IsMasterClient);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnMasterClientSwitched</span>(<span class="params">Player newMasterClient</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    StartGameButton.SetActive(PhotonNetwork.IsMasterClient);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnCreateRoomFailed</span>(<span class="params"><span class="built_in">short</span> returnCode, <span class="built_in">string</span> message</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    errorText.text = <span class="string">&quot;Room Creation Failed: &quot;</span> + message;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartGame</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.LoadLevel(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LeaveRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.LeaveRoom();</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;loading&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">JoinRoom</span>(<span class="params">RoomInfo info</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.JoinRoom(info.Name);</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;loading&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnLeftRoom</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    MenuManager.Instance.OpenMenu(<span class="string">&quot;title&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnRoomListUpdate</span>(<span class="params">List&lt;RoomInfo&gt; roomList</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">foreach</span>(Transform trans <span class="keyword">in</span> roomListContent)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(trans.gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i= <span class="number">0</span>; i&lt; roomList.Count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (roomList[i].RemovedFromList)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        Instantiate(roomListItemPerfab, roomListContent).GetComponent&lt;RoomListItem&gt;().SetUp(roomList[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnPlayerEnteredRoom</span>(<span class="params">Player newPlayer</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Instantiate(PlayerListItemPerfab, playerListContent).GetComponent&lt;PlayerListItem&gt;().SetUp(newPlayer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>MenuManager 单例化在Launcher中控制菜单的开关</p>
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MenuManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line"></span><br><span class="line"><span class="title">public</span> <span class="title">static</span> <span class="title">MenuManager</span> <span class="title">Instance</span>;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li><p>Menu.cs 定义Menu类,在不同的菜单上搭载</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Menu</span> : <span class="title">MonoBehaviour</span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> menuName;</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">bool</span> open;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Open</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">open = <span class="literal">true</span>;</span><br><span class="line">gameObject.SetActive(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Close</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">open = <span class="literal">false</span>;</span><br><span class="line">gameObject.SetActive(<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="meta">SerializeField</span>] Menu[] menus;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OpenMenu</span>(<span class="params"><span class="built_in">string</span> menuName</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; menus.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (menus[i].menuName == menuName)</span><br><span class="line">            menus[i].Open();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (menus[i].open)</span><br><span class="line">            CloseMenu(menus[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OpenMenu</span>(<span class="params">Menu menu</span>)<span class="comment">//重载</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; menus.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (menus[i].open)</span><br><span class="line">           CloseMenu(menus[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    menu.Open();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CloseMenu</span>(<span class="params">Menu menu</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    menu.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>PlayerNameManager 玩家用户名的生成与自定义</p>
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerNameManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">[<span class="meta">SerializeField</span>] TMP_InputField usernameInput;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (PlayerPrefs.HasKey(<span class="string">&quot;username&quot;</span>))<span class="comment">//看是否已存储自定义</span></span><br><span class="line">    &#123;</span><br><span class="line">        usernameInput.text = PlayerPrefs.GetString(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        PhotonNetwork.NickName = PlayerPrefs.GetString(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">//随机生成</span></span><br><span class="line">    &#123;</span><br><span class="line">        usernameInput.text = <span class="string">&quot;Player &quot;</span> + Random.Range(<span class="number">0</span>, <span class="number">10000</span>).ToString(<span class="string">&quot;0000&quot;</span>);</span><br><span class="line">        OnUsernameInputValueChanged();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnUsernameInputValueChanged</span>()<span class="comment">//设计该函数的目的是在InputField控件不断触发onValueChanged事件</span></span></span><br><span class="line">&#123;</span><br><span class="line">    PhotonNetwork.NickName = usernameInput.text;</span><br><span class="line">    PlayerPrefs.SetString(<span class="string">&quot;username&quot;</span>, usernameInput.text);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>PlayerPrefs的使用—数据持久化问题<blockquote>
-<p>数据持久化是以键值的形式存储的，可以看作是一个字典。</p>
-<p>值是通过键名来读取的，当值不存在时，返回默认值。</p>
-<p>只支持int、string、float三种数据类型的读取</p>
-<p>DeleteAll DeleteKey HasKey GetFloat SetFloat…</p>
-<p>清除Prefs Edit&gt;Clear All PlayerPrefs</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>RoomManager 用于PlayerManager的实例化</p>
-  <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoomManager</span> : <span class="title">MonoBehaviourPunCallbacks</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RoomManager Instance;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (Instance)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    DontDestroyOnLoad(gameObject);</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnEnable();</span><br><span class="line">    SceneManager.sceneLoaded += OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnDisable();</span><br><span class="line">    SceneManager.sceneLoaded -= OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnSceneLoaded</span>(<span class="params">Scene scene, LoadSceneMode loadSceneMode</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(scene.buildIndex == <span class="number">1</span>)<span class="comment">//We&#x27;re in the game scene</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//进入游戏场景则实例化PlayerManager</span></span><br><span class="line">        PhotonNetwork.Instantiate(Path.Combine(<span class="string">&quot;PhotonPrefabs&quot;</span>, <span class="string">&quot;PlayerManager&quot;</span>), Vector3.zero, Quaternion.identity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="./Menu.png" alt="Menu"></p>
-<ul>
-<li>xxxMenu<blockquote>
-<p>搭载Menu.cs 定义MenuName 只有LoadingMenu初始时open为true</p>
-</blockquote>
-<ul>
-<li>TMP<blockquote>
-<p>显示文字</p>
-</blockquote>
-</li>
-<li>InputField - TMP<blockquote>
-<p>处理输入的文字</p>
-</blockquote>
-<ul>
-<li>Text Area<blockquote>
-<p>放置位置</p>
-</blockquote>
-<ul>
-<li>Placeholder<blockquote>
-<p>默认出现的文字</p>
-</blockquote>
-</li>
-<li>Text<blockquote>
-<p>输入文字的载体</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Button<blockquote>
-<p>On Click() 中选择按下按键实现的功能</p>
-</blockquote>
-<ul>
-<li>TMP<blockquote>
-<p>按键中文字</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>xxxListContent<blockquote>
-<p>存放实例化的预制体,玩家 房间等</p>
-</blockquote>
-</li>
-<li>ButtonContainer<blockquote>
-<p>按键太多时把它作为父类，搭载vertical layout group组件,垂直排版</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>RoomManager<blockquote>
-<p>搭载RoomManager.cs和Photon View</p>
-</blockquote>
-</li>
-<li>EventSystem</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Demo</category>
-      </categories>
-      <tags>
-        <tag>FPS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ruby&#39;s Adventure</title>
     <url>/Ruby&#39;s%20Adventure/</url>
     <content><![CDATA[<h1 id="Ruby’s-Adventure"><a href="#Ruby’s-Adventure" class="headerlink" title="Ruby’s Adventure"></a>Ruby’s Adventure</h1><h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><ul>
@@ -505,7 +507,8 @@
 </ul>
 </li>
 </ul>
-<p>&lt; !–more– &gt;</p>
+<span id="more"></span>
+
 <ul>
 <li><p>物体碰撞时的抖动问题</p>
 <blockquote>
@@ -825,7 +828,8 @@
 <li>控制游戏的UI。</li>
 </ul>
 </blockquote>
-<p>&lt; !–more– &gt;</p>
+<span id="more"></span>
+
 <ul>
 <li><p>只是将相关函数定义出来，用于其它文件直接调用</p>
 </li>
