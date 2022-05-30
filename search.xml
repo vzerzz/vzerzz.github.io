@@ -46,7 +46,7 @@
 <li><p>RoomManager 用于PlayerManager的实例化</p>
   <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoomManager</span> : <span class="title">MonoBehaviourPunCallbacks</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RoomManager Instance;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (Instance)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    DontDestroyOnLoad(gameObject);</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnEnable();</span><br><span class="line">    SceneManager.sceneLoaded += OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnDisable();</span><br><span class="line">    SceneManager.sceneLoaded -= OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnSceneLoaded</span>(<span class="params">Scene scene, LoadSceneMode loadSceneMode</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(scene.buildIndex == <span class="number">1</span>)<span class="comment">//We&#x27;re in the game scene</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//进入游戏场景则实例化PlayerManager</span></span><br><span class="line">        PhotonNetwork.Instantiate(Path.Combine(<span class="string">&quot;PhotonPrefabs&quot;</span>, <span class="string">&quot;PlayerManager&quot;</span>), Vector3.zero, Quaternion.identity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="/.com//Menu.png" alt="Menu"></p>
+<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="/MultiplayerFPS/Menu.png" alt="Menu"></p>
 <ul>
 <li>xxxMenu<blockquote>
 <p>搭载Menu.cs 定义MenuName 只有LoadingMenu初始时open为true</p>
@@ -398,7 +398,7 @@
 <li>委托对象绑定(+=)多个方法时，本质调用Delegate.Combine(原对象,新对象)方法。</li>
 <li>Combine方法内部创建新委托链(Delegate[]),再创建新委托对象，存入<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.MulticastDelegate/_invocationList:Object">_invocationList</a>字段中。</li>
 </ol>
-<p><img src="/.com//RackMultipart20220404-4-1f96qjv_html_3561a2285ccd4279.png"></p>
+<p><img src="/OOP/RackMultipart20220404-4-1f96qjv_html_3561a2285ccd4279.png"></p>
 <ol>
 <li>委托对象移除(-=)某个方法时，本质调用Delegate.Remove(原对象,删除对象)方法。</li>
 <li>Remove方法内部删除匹配的委托(判断_target与<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_methodPtr:IntPtr">_methodPtr</a>)。</li>
@@ -417,7 +417,7 @@
 <li>如方法有返回值，则需要调用EndInvoke取得返回值。</li>
 </ol>
 <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="定义-6"><a href="#定义-6" class="headerlink" title="定义"></a>定义</h3><p>当某一对象达到某种条件或发生某种改变时，将消息及时的 <strong>通知</strong> 到其它对象。</p>
-<p><img src="/.com//RackMultipart20220404-4-1f96qjv_html_bac22147f8539b2b.png"></p>
+<p><img src="/OOP/RackMultipart20220404-4-1f96qjv_html_bac22147f8539b2b.png"></p>
 <h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ol>
 <li>定义事件参数类 XXX <strong>EventArgs</strong> ：封装引发事件时需要由事件源传递给响应者的信息。</li>
 <li>定义 <strong>委托 ：</strong> public delegate void XXX <strong>EventHandler</strong> (XXXEventArgs e);</li>
@@ -1011,7 +1011,7 @@
 <h2 id="Level1-amp-Level2"><a href="#Level1-amp-Level2" class="headerlink" title="Level1 &amp; Level2"></a>Level1 &amp; Level2</h2><p>两个canvas 一个控制游戏中的重新开始和暂停按键 一个控制通关后显示的画面</p>
 <p>前一个搭载GameController.cs脚本 实现游戏中重新开始和暂停功能 同时实现倒计时和倒计时结束时通关画面的激活<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/GameController.cs">GameController.cs</a><br>后一个搭载WinButton.cs脚本 实现通关画面中下一关 重新此关 回到主菜单功能的实现<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/WinButton.cs">WinButton.cs</a></p>
 <ul>
-<li>无限滚动背景<br>  <img src="/.com//ScrollBg.png" alt="ScrollBg"><br>复制一份相同的背景并排且共为空对象的子对象<br>在父对象上加载ScrollBg.cs脚本<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/ScrollBg.cs">ScrollBg.cs</a><br>首先获取两个背景的位置分别存储。移动过程中，当后一个背景的X超过前一个背景开始存储的X.则将前一个背景位置设为后一个背景开始的位置。然后交换，前变后，后变前。进入下一轮循环.</li>
+<li>无限滚动背景<br>  <img src="/Up/ScrollBg.png" alt="ScrollBg"><br>复制一份相同的背景并排且共为空对象的子对象<br>在父对象上加载ScrollBg.cs脚本<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/ScrollBg.cs">ScrollBg.cs</a><br>首先获取两个背景的位置分别存储。移动过程中，当后一个背景的X超过前一个背景开始存储的X.则将前一个背景位置设为后一个背景开始的位置。然后交换，前变后，后变前。进入下一轮循环.</li>
 </ul>
 <p>在小屋对象上加载CabinController.cs 脚本控制小屋的空格跳跃以及碰撞后重新开始此关<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/CabinController.cs">CabinController.cs</a></p>
 <h3 id="Level1"><a href="#Level1" class="headerlink" title="Level1"></a>Level1</h3><p>在背景对象上加载LightCreat.cs脚本 控制闪电在一定范围内定时生成<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/LightCreat.cs">LightCreat.cs</a></p>

@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="Vzer&#39;s Blog">
 <meta property="og:description" content="Up——类flappy bird小游戏的实现项目文件 代码文件">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/.com//ScrollBg.png">
+<meta property="og:image" content="http://example.com/Up/ScrollBg.png">
 <meta property="article:published_time" content="2022-05-04T16:00:00.000Z">
 <meta property="article:modified_time" content="2022-05-30T12:30:51.056Z">
 <meta property="article:author" content="Vzer">
 <meta property="article:tag" content="2D">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/.com//ScrollBg.png">
+<meta name="twitter:image" content="http://example.com/Up/ScrollBg.png">
 
 
 <link rel="canonical" href="http://example.com/Up/">
@@ -301,7 +301,7 @@
 <h2 id="Level1-amp-Level2"><a href="#Level1-amp-Level2" class="headerlink" title="Level1 &amp; Level2"></a>Level1 &amp; Level2</h2><p>两个canvas 一个控制游戏中的重新开始和暂停按键 一个控制通关后显示的画面</p>
 <p>前一个搭载GameController.cs脚本 实现游戏中重新开始和暂停功能 同时实现倒计时和倒计时结束时通关画面的激活<br><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/GameController.cs">GameController.cs</a><br>后一个搭载WinButton.cs脚本 实现通关画面中下一关 重新此关 回到主菜单功能的实现<br><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/WinButton.cs">WinButton.cs</a></p>
 <ul>
-<li>无限滚动背景<br>  <img src="/.com//ScrollBg.png" alt="ScrollBg"><br>复制一份相同的背景并排且共为空对象的子对象<br>在父对象上加载ScrollBg.cs脚本<br><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/ScrollBg.cs">ScrollBg.cs</a><br>首先获取两个背景的位置分别存储。移动过程中，当后一个背景的X超过前一个背景开始存储的X.则将前一个背景位置设为后一个背景开始的位置。然后交换，前变后，后变前。进入下一轮循环.</li>
+<li>无限滚动背景<br>  <img src="/Up/ScrollBg.png" alt="ScrollBg"><br>复制一份相同的背景并排且共为空对象的子对象<br>在父对象上加载ScrollBg.cs脚本<br><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/ScrollBg.cs">ScrollBg.cs</a><br>首先获取两个背景的位置分别存储。移动过程中，当后一个背景的X超过前一个背景开始存储的X.则将前一个背景位置设为后一个背景开始的位置。然后交换，前变后，后变前。进入下一轮循环.</li>
 </ul>
 <p>在小屋对象上加载CabinController.cs 脚本控制小屋的空格跳跃以及碰撞后重新开始此关<br><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/CabinController.cs">CabinController.cs</a></p>
 <h3 id="Level1"><a href="#Level1" class="headerlink" title="Level1"></a>Level1</h3><p>在背景对象上加载LightCreat.cs脚本 控制闪电在一定范围内定时生成<br><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/LightCreat.cs">LightCreat.cs</a></p>
