@@ -209,6 +209,120 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/MultiplayerFPS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Demo/MultiplayerFPS/" class="post-title-link" itemprop="url">MultiplayerFPS</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-31 16:01:21" itemprop="dateModified" datetime="2022-05-31T16:01:21+08:00">2022-05-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/Demo/MultiplayerFPS/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/Demo/MultiplayerFPS/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="MultiplayerFPS"><a href="#MultiplayerFPS" class="headerlink" title="MultiplayerFPS"></a>MultiplayerFPS</h1><h2 id="菜单创建与photon服务器连接"><a href="#菜单创建与photon服务器连接" class="headerlink" title="菜单创建与photon服务器连接"></a>菜单创建与photon服务器连接</h2><ul>
+<li><p>服务器相关设置</p>
+<p>  PhotonUnityNetworking&gt;Resources&gt;PhotonSeverSettings</p>
+</li>
+<li><p>PUN2(游戏房间的设置)</p>
+<p>  自动连接:PhotonNetwork.ConnectUsingSettings()</p>
+<p>  手动连接:PhotonNetwork.ConnectToMaster() 当托管付费Photon服务器时这是有用的。<br>  masterServerAddress和port参数。地址可以是你的On-Premises DNS名称或一个IP。它可以包括冒号后的端口（然后传递0作为端口）或您可以单独通过端口。<br>  “appID”和”gameVersion”。两者都只与Photon Cloud有关，并且当你自己托管Photon服务器时，可以设置为任何值。</p>
+<p>  对于Photon Cloud, 使用ConnectUsingSettings()方法。它涉及到我们的Name Server自动找到一个区域的主服务器。</p>
+<p>  PhotonNetwork使用多个回调函数来让你的游戏知道状态的变化，如“已连接”或“已加入一个游戏”。像往常对Unity一样，回调可在任何脚本里实现。override</p></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Demo/MultiplayerFPS/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/Demo/Stealth/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -245,7 +359,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-31 15:50:36" itemprop="dateModified" datetime="2022-05-31T15:50:36+08:00">2022-05-31</time>
+      <time title="修改时间：2022-05-31 16:02:01" itemprop="dateModified" datetime="2022-05-31T16:02:01+08:00">2022-05-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -285,238 +399,9 @@
 <li>�ƹ���˸</li>
 </ul>
 <p>��Ҫ��lerp������ʱ�������ƹ����˸<br>����һ��direction light ����AlarmLight�ű�</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AlarmLight.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmLight</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;�Ƿ���������&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">bool</span> isAlarm;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;��˸�ٶ�&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> highIntencity = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> lowIntencity = <span class="number">0f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> targetIntencity;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light lt;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        lt = GetComponent&lt;Light&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        targetIntencity = highIntencity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(Mathf.Abs(lt.intensity - targetIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(targetIntencity == highIntencity)</span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = lowIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = highIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, targetIntencity, Time.deltaTime*turnSpeed);<span class="comment">//���޽ӽ�</span></span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, lowIntencity, Time.deltaTime * turnSpeed);</span><br><span class="line">            <span class="keyword">if</span> (Mathf.Abs(lt.intensity - lowIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                lt.intensity = <span class="number">0</span>;<span class="comment">//����CPU�ļ���</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>������˸</li>
-</ul>
-<p>��������ϸ���Trigger���<br>�ؼ�����ʱ�����󼤹������ʧ�Ĵ���<br>����ֱ��Destroy����Ȼ�޷�����</p>
-<ol>
-<li>�������Ƶ�������Ϸ��Χ�ĵط���ʱ���������ƻ���</li>
-<li>��mesh aud collid light�����enable = false</li>
-</ol>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LaserTwinkle.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LaserTwinkle</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;��˸���ʱ��&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> interval = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> timer = <span class="number">0</span>;</span><br><span class="line">    Vector3 originPos;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> isShow;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        originPos = transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        timer += Time.deltaTime;</span><br><span class="line">        <span class="keyword">if</span>(timer &gt; interval)</span><br><span class="line">        &#123;</span><br><span class="line">            isShow = !isShow;</span><br><span class="line">            timer = <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isShow)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = originPos;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = Vector3.up * <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>����:������Ϸ������</li>
-</ul>
-<p>��������д������ε��ã��޴�����ʾ�ĳ�������һ���༯������<br>��Tags Axis Button Animation(�ɻ��ɹ�ϣ��)</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//GameConsts.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameConsts</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Tags</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> MAINLIGHT = <span class="string">&quot;MainLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> ALARMLIGHT = <span class="string">&quot;AlarmLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SIREN = <span class="string">&quot;Siren&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> PLAYER = <span class="string">&quot;Player&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Virtual Button &amp; Axis</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> HORIZONTAL = <span class="string">&quot;Horizontal&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> VERTICAL = <span class="string">&quot;Vertical&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SNEAK = <span class="string">&quot;Sneak&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SHOUT = <span class="string">&quot;Shout&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Animation Parameters &amp; States</span></span><br><span class="line">    <span class="comment">//�ٶȲ���</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SPEED_PARAM;</span><br><span class="line">    <span class="comment">//Ǳ�в���</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SNEAK_PARAM;</span><br><span class="line">    <span class="comment">//���в���</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SHOUT_PARAM;</span><br><span class="line">    <span class="comment">//�˶�״̬</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> LOCOMOTION_STATE;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Paramters</span></span><br><span class="line">    <span class="comment">//ͷ���۲����ƫ����</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> WATCH_OFFSET = <span class="number">0f</span>;</span><br><span class="line">    <span class="comment">//����������ƫ����</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> PLAYER_BODY_OFFSET = <span class="number">1f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Static Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">GameConsts</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//������</span></span><br><span class="line">        SPEED_PARAM = Animator.StringToHash(<span class="string">&quot;Speed&quot;</span>);</span><br><span class="line">        SNEAK_PARAM = Animator.StringToHash(<span class="string">&quot;Sneak&quot;</span>);</span><br><span class="line">        SHOUT_PARAM = Animator.StringToHash(<span class="string">&quot;Shout&quot;</span>);</span><br><span class="line">        LOCOMOTION_STATE = Animator.StringToHash(<span class="string">&quot;Locomotion&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>��������</li>
-</ul>
-<p>���ھ����Ƿ񴥷����ж������˶���bool����isAlarm<br>���ɶ���һ�������洢��ȫ����ǰ�ȫ������������ʱ������λ�ø��������������������ڰ�ȫ������ʱ����<br>����������������ţ��ƹ���˸�Ȳ���������һ�����õ�����������������ʱ���õ�������<br>AlarmTrigger(���ڼ���ȶ�����) -&gt; AlarmSystem</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AlarmSystem.cs(���ڿն���gamecontoller�����ڿ��Ʊ���ϵͳ�Ͳ��ű�������)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmSystem</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> AlarmSystem instance;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;�����ٶ�&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 alarmPos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 safePos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AlarmLight alarmLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light mainLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AudioSource normalAud;</span><br><span class="line">    <span class="keyword">private</span> AudioSource panicAud;</span><br><span class="line">    <span class="keyword">private</span> GameObject[] sirensObj;</span><br><span class="line">    <span class="keyword">private</span> AudioSource[] sirensAud;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        instance = <span class="keyword">this</span>;</span><br><span class="line">        alarmLight = GameObject.FindWithTag(GameConsts.ALARMLIGHT).GetComponent&lt;AlarmLight&gt;();  </span><br><span class="line">        mainLight = GameObject.FindWithTag(GameConsts.MAINLIGHT).GetComponent&lt;Light&gt;();</span><br><span class="line">        normalAud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        panicAud = transform.GetChild(<span class="number">0</span>).GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        sirensObj = GameObject.FindGameObjectsWithTag(GameConsts.SIREN);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        sirensAud = <span class="keyword">new</span> AudioSource[sirensObj.Length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i] = sirensObj[i].GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        AlarmSystemOperation(alarmPos != safePos);<span class="comment">//��if else</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> ��������</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;isAlarm&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AlarmSystemOperation</span>(<span class="params"><span class="built_in">bool</span> isAlarm</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">value</span> = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        alarmLight.isAlarm = isAlarm;</span><br><span class="line">        mainLight.intensity = Mathf.Lerp(mainLight.intensity, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        normalAud.volume = Mathf.Lerp(normalAud.volume, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        panicAud.volume = Mathf.Lerp(panicAud.volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i].volume = Mathf.Lerp(sirensAud[i].volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//AlarmTrigger.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmTrigger</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (other.CompareTag(GameConsts.PLAYER))</span><br><span class="line">        &#123;</span><br><span class="line">            AlarmSystem.instance.alarmPos = other.transform.position;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="���˹�"><a href="#���˹�" class="headerlink" title="���˹�"></a>���˹�</h2><ul>
-<li>����ϵͳ EthanAnimatorController</li>
-</ul>
-<p>Bleed Tree ���ڿ����ߺ��� ����Ϊspeed</p>
-<p>������<br>һ����LocomotionLayer����վ����·�ܲ�����<br>��һ����ShoutingLayer���ƺ��ж��� ����Maskֻ�����ֺ�ͷ</p>
-<p>������������</p>
-<ol>
-<li>���� AudioClip</li>
-<li>AudioSource.PlayClipAtPoint��̬����</li>
-</ol>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//PlayerMovement.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerMovement</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;�ߵ��ܵ�ʱ��&quot;</span>)</span>]</span><br><span class="line">    [<span class="meta">Range(0.1f,2f)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> dempTime = <span class="number">1.5f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;ת���ٶ�&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">10f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;��������Ƭ��&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> AudioClip shoutClip;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> hor, ver;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> sneak, shout;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animator ani;</span><br><span class="line">    <span class="keyword">private</span> AudioSource aud;</span><br><span class="line">    <span class="keyword">private</span> Vector3 dir;</span><br><span class="line">    <span class="keyword">private</span> Quaternion targetQua;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ani = GetComponent&lt;Animator&gt;();</span><br><span class="line">        aud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        dir = Vector3.zero;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        hor = Input.GetAxis(GameConsts.HORIZONTAL);</span><br><span class="line">        ver = Input.GetAxis(GameConsts.VERTICAL);</span><br><span class="line"></span><br><span class="line">        sneak = Input.GetButton(GameConsts.SNEAK);</span><br><span class="line">        shout = Input.GetButtonDown(GameConsts.SHOUT);</span><br><span class="line"></span><br><span class="line">        dir.x = hor;</span><br><span class="line">        dir.z = ver;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(hor != <span class="number">0</span>||ver != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">5.66f</span>, dempTime, Time.deltaTime);</span><br><span class="line">            <span class="comment">//ת��������</span></span><br><span class="line">            <span class="comment">//��������ת��Ϊ��Ԫ��</span></span><br><span class="line">            targetQua = Quaternion.LookRotation(dir);</span><br><span class="line">            <span class="comment">//Lerp��ȥ</span></span><br><span class="line">            transform.rotation = Quaternion.Lerp(transform.rotation, targetQua, Time.deltaTime * turnSpeed);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">1.5f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ani.SetBool(GameConsts.SNEAK_PARAM, sneak);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (shout)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetTrigger(GameConsts.SHOUT_PARAM);</span><br><span class="line">        &#125;</span><br><span class="line">        AudioSetUp();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> ��������</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AudioSetUp</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> isLocomotion = ani.GetCurrentAnimatorStateInfo(<span class="number">0</span>).shortNameHash == GameConsts.LOCOMOTION_STATE;</span><br><span class="line">        <span class="keyword">if</span> (isLocomotion)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!aud.isPlaying)</span><br><span class="line">            &#123;</span><br><span class="line">                aud.Play();<span class="comment">//loopѡ��ѡ����ν</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            aud.Stop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlayShoutAudio</span>()<span class="comment">//�����¼���������</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        AudioSource.PlayClipAtPoint(shoutClip, transform.position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="����ͷ"><a href="#����ͷ" class="headerlink" title="����ͷ"></a>����ͷ</h2><h2 id="��������"><a href="#��������" class="headerlink" title="��������"></a>��������</h2><ul>
-<li><p>С��</p>
-</li>
-<li><p>���ݴ���</p>
-</li>
-<li><p>����</p>
-</li>
-<li><p>Կ��</p>
-</li>
-</ul>
-<h2 id="������"><a href="#������" class="headerlink" title="������"></a>������</h2><p>�ĸ���Ҫ�ű�</p>
-<h3 id="�����˾���"><a href="#�����˾���" class="headerlink" title="�����˾���"></a>�����˾���</h3><p>����Capsule Collider<br>rigidbody ѡis Kinematic ���ײ����<br>��tag<br>�Ӿ����� λ����Ϣ�Ľ��սű�EnemySightingAndHearing.cs<br>����λ��<br>ȫ�� �������� ����ͷ �����˿��� ���л����˶�׷��<br>˽�� ���������� ֻ�е���������׷��<br>��������˭����ȥ�ĸ�</p>
-<ul>
-<li>ȫ��(��������λ�ø���):<br>if(��ȫ�־���λ�÷����仯��ʱ��){<br>  ��ȫ�־���λ�÷��͸���ǰ�����˲��洢<br>}</li>
-</ul>
-<p>�жϱ仯: ��ǰ֡����λ�� <strong>�Ա�</strong> ��һ֡����λ��</p>
-<ul>
-<li>�Ӿ����:</li>
-</ul>
-<ol>
-<li><p>�Ƕ��ж�<br>������ָ�������������ǰ���н�</p>
-</li>
-<li><p>�����ж�<br>ÿ֡������� or<br>���δ�����(������)OnTrigger �������Ӿ��ж϶����������������Update��</p>
-</li>
-<li><p>�Ƿ��ڵ�<br>����ҷ����������� ����ƫ����<br>������Ҵ���ȫ�־���</p>
-</li>
-</ol>
-<ul>
-<li>�������:</li>
-</ul>
-<p>��·/����<br>ǽ����ȫ���� ֻͨ����������<br>·��–����ϵͳ<br>������� ���þ�̬ �決����<br>����ͨ��������ʽ����ҿ��Ƿ��ҵĵ�<br>�ڵ���������õ��ܾ���<br>�㹻�������������������˽�˾���</p>
-<p>С��bug: ���⵽������ �ĳ�ֻ�����ײ��<br>if (other.isTrigger)<br>    return;</p>
-<h3 id="�����˶���"><a href="#�����˶���" class="headerlink" title="�����˶���"></a>�����˶���</h3><p>�ں��� ��Ҫ������������Speed AngularSpeed��ȷ��<br>EnemyAnimation.cs<br>���� �����ٶ������ڻ�����ǰ����ͶӰ����ΪSpeed<br>AngularSpeed<br>�����ٶ�����������ǰ�������н�<br>����ǰ�������������ٶ����������� ��–�� ��–��(�нǱ为)<br>�Ƕ�ת���� *=Mathf.Deg2Rad</p>
-<p>����λ�� һ������һ������<br>OnAnimatorMove()<br>�����ٶ� -&gt; ����������speed, angularSpeed�� -&gt; ִ�ж��� -&gt; ����λ�ơ�deltaPosition�� -&gt; velocity<br>����˲ʱ�ٶ���Ϊ����λ��/ÿ֡ʱ��<br>nav.velocity = ani.deltaPosition/Time.deltaTime<br>��תʹ�ö����ĸ���ת<br>transform.rotation = ani.rootRotation</p>
-<p>��ǽ: �����決�Ŀ��Ⱥ͸߶�</p>
-<p>���յ����ת: �����ٶ�Ϊ0ʱ���ٶ�ǿ�б�Ϊ0</p>
-<p>��Ӳ: ����ʱdampTime</p>
-<p>������װ��ѻ����˵�׷����������:<br>�����ٶ�����������ǰ�������н�Сʱֱ��ת���ý��ٶ�ֱ��lookatת�����<br>���Ӿ��������һ��bool�жϿ������ļ����</p>
-<h3 id="������AI"><a href="#������AI" class="headerlink" title="������AI"></a>������AI</h3><p>EnemyAI.cs</p>
-<p>PlayerHealth.cs����</p>
-<p>��� ׷�� Ѳ��</p>
-<ul>
-<li>��� �����������һ���<br>ֹͣ����<br>�¶�����ShootingLayer ���� �Ƿ񿴼����<br>����ǹ<br>�ű������ò����ı�<br>IK����<br>EnemyShoot.cs<br>OnAnimatorIK()<br>�������ʱ��IK<br>�����Ч:<br>ShootingEffect.cs<br>���ü���LineRenderer<br>���ü���˵����������<br>�����ƹ�Light<br>��������AudioClip<br>��ʱ�ر�</li>
-</ul>
-<p>���Ӷ����¼�</p>
-<p>�����˺�</p>
-<p>�����˹������������� any status ����ת��  can transition to self ȡ��</p>
-<p>������ȡ����ҿ���Ȩ ������� ȡ����ұ�ǩ</p>
-<ul>
-<li><p>׷�� ˽�˾������겻���ڰ�ȫ����<br>�ָ�����<br>����˽�˾���λ��<br>�ж��Ƿ񵽴�Ŀ��<br>����ʱ��� �������</p>
-</li>
-<li><p>Ѳ�� else<br>����Ѳ�ߵ�wayPoint<br>Transform�����¼����<br>���õ���Ŀ��</p>
-</li>
-</ul>
-<p>�żӵ�����̬·�����<br>path.status==PathP<br>��·�� �����������Ѳ��</p>
-<h2 id="�Z�"><a href="#�Z�" class="headerlink" title="�Ż�"></a>�Ż�</h2><p>Draw Call : CPU��GPU������Ⱦ����<br>Draw CallԽ��: CPUռ���ʾͻ�Խ��</p>
-<p>�Ż�Draw Call����:</p>
-<ol>
-<li><p>������:</p>
-<ol>
-<li>��̬������:Ҫ����ɣ����������Ƚϴ�</li>
-<li>��̬������:Ҫ����̣����������Ƚ���</li>
-</ol>
-</li>
-<li><p>�������������Ⱦ·��</p>
-<ol>
-<li>������Ⱦ</li>
-<li>��ʱ����</li>
-<li>�������</li>
-</ol>
-</li>
-</ol>
-<p>��Ч</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/Ruby's%20Adventure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Vzer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Demo/Ruby's%20Adventure/" class="post-title-link" itemprop="url">Ruby's Adventure</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-31 15:13:40" itemprop="dateModified" datetime="2022-05-31T15:13:40+08:00">2022-05-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Waline：</span>
-  
-    <a title="waline" href="/Demo/Ruby's%20Adventure/#waline" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" data-path="/Demo/Ruby's%20Adventure/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Ruby’s-Adventure"><a href="#Ruby’s-Adventure" class="headerlink" title="Ruby’s Adventure"></a>Ruby’s Adventure</h1><h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><ul>
-<li><p>“Pixels per Unit”通过定义 1 个单位内应该设置的像素数量来告知 Unity 如何设置精灵的大小。</p>
-</li>
-<li><p>游戏对象的排序问题</p>
-<blockquote>
-<p>调整瓦片的 Order in Layer 属性</p>
-</blockquote>
-<ul>
-<li><p>“伪造”透视图</p>
-<blockquote>
-<p>根据直觉，玩家希望角色在立方体前面时首先绘制角色，而角色在立方体后面时最后绘制角色</p>
-</blockquote>
-<ol>
-<li>选择 Edit &gt; Project Settings&gt;Graphics。</li>
-<li>在 Camera Settings 中，找到 Transparency Sort Mode 字段。此字段决定了精灵的绘制顺序。使用下拉菜单将此设置从 Default 更改为 Custom Axis。</li>
-<li>在 Transparency Sort Axis 中添加以下坐标：x = 0 y = 1 z = 0此设置告诉 Unity 在 y 轴上基于精灵的位置来绘制精灵。</li>
-<li>游戏对象Sprite Sort Point 中选择pivot,再于Sprite Editor中更改pivot的位置</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Demo/Ruby's%20Adventure/#more" rel="contents">
+              <a class="btn" href="/Demo/Stealth/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
