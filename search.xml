@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Route</title>
+    <url>/GameDevelopmentRoute/</url>
+    <content><![CDATA[<h1 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h1><span id="more"></span>
+<h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><h3 id="C-amp-C"><a href="#C-amp-C" class="headerlink" title="C++ &amp; C#"></a>C++ &amp; C#</h3><a href="/CS/C#FUNDAMENTAL/" title="C# 语言基础">C# 语言基础</a>
+
+<a href="/CS/OOP/" title="面向对象 Object Oriented">面向对象 Object Oriented</a>
+
+<h3 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h3><h2 id="Unity引擎"><a href="#Unity引擎" class="headerlink" title="Unity引擎"></a>Unity引擎</h2><h3 id="引擎基础"><a href="#引擎基础" class="headerlink" title="引擎基础"></a>引擎基础</h3><a href="/Unity/UnityFundamental/Basic/" title="引擎基础">引擎基础</a>
+
+<h4 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h4><h4 id="物理系统"><a href="#物理系统" class="headerlink" title="物理系统"></a>物理系统</h4><h4 id="UGUI"><a href="#UGUI" class="headerlink" title="UGUI"></a>UGUI</h4><h4 id="动画系统"><a href="#动画系统" class="headerlink" title="动画系统"></a>动画系统</h4><h4 id="导航系统"><a href="#导航系统" class="headerlink" title="导航系统"></a>导航系统</h4><h4 id="特效系统"><a href="#特效系统" class="headerlink" title="特效系统"></a>特效系统</h4><h2 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h2>]]></content>
+  </entry>
+  <entry>
     <title>MultiplayerFPS</title>
-    <url>/MultiplayerFPS/</url>
+    <url>/Demo/MultiplayerFPS/</url>
     <content><![CDATA[<h1 id="菜单创建与photon服务器连接"><a href="#菜单创建与photon服务器连接" class="headerlink" title="菜单创建与photon服务器连接"></a>菜单创建与photon服务器连接</h1><ul>
 <li><p>服务器相关设置</p>
 <blockquote>
@@ -46,7 +58,7 @@
 <li><p>RoomManager 用于PlayerManager的实例化</p>
   <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoomManager</span> : <span class="title">MonoBehaviourPunCallbacks</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RoomManager Instance;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (Instance)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    DontDestroyOnLoad(gameObject);</span><br><span class="line">    Instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnEnable();</span><br><span class="line">    SceneManager.sceneLoaded += OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">base</span>.OnDisable();</span><br><span class="line">    SceneManager.sceneLoaded -= OnSceneLoaded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnSceneLoaded</span>(<span class="params">Scene scene, LoadSceneMode loadSceneMode</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(scene.buildIndex == <span class="number">1</span>)<span class="comment">//We&#x27;re in the game scene</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//进入游戏场景则实例化PlayerManager</span></span><br><span class="line">        PhotonNetwork.Instantiate(Path.Combine(<span class="string">&quot;PhotonPrefabs&quot;</span>, <span class="string">&quot;PlayerManager&quot;</span>), Vector3.zero, Quaternion.identity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="/MultiplayerFPS/Menu.png" alt="Menu"></p>
+<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p><img src="/Demo/MultiplayerFPS/Menu.png" alt="Menu"></p>
 <ul>
 <li>xxxMenu<blockquote>
 <p>搭载Menu.cs 定义MenuName 只有LoadingMenu初始时open为true</p>
@@ -112,7 +124,7 @@
   </entry>
   <entry>
     <title>面向对象 Object Oriented</title>
-    <url>/OOP/</url>
+    <url>/CS/OOP/</url>
     <content><![CDATA[<h1 id="面向对象-Object-Oriented"><a href="#面向对象-Object-Oriented" class="headerlink" title="面向对象 Object Oriented"></a>面向对象 Object Oriented</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>面向过程的程序 = 算法 + 数据结构； 关心解决问题的步骤。</p>
 <p>面向对象的程序 = 对象 + 交互； 关心谁在解决问题。</p>
 <p>类：一个抽象的概念，即为生活中的&quot;类别&quot;。</p>
@@ -398,7 +410,7 @@
 <li>委托对象绑定(+=)多个方法时，本质调用Delegate.Combine(原对象,新对象)方法。</li>
 <li>Combine方法内部创建新委托链(Delegate[]),再创建新委托对象，存入<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.MulticastDelegate/_invocationList:Object">_invocationList</a>字段中。</li>
 </ol>
-<p><img src="/OOP/RackMultipart20220404-4-1f96qjv_html_3561a2285ccd4279.png"></p>
+<p>  <img src="/CS/OOP/oop1.png"></p>
 <ol>
 <li>委托对象移除(-=)某个方法时，本质调用Delegate.Remove(原对象,删除对象)方法。</li>
 <li>Remove方法内部删除匹配的委托(判断_target与<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_methodPtr:IntPtr">_methodPtr</a>)。</li>
@@ -417,7 +429,7 @@
 <li>如方法有返回值，则需要调用EndInvoke取得返回值。</li>
 </ol>
 <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="定义-6"><a href="#定义-6" class="headerlink" title="定义"></a>定义</h3><p>当某一对象达到某种条件或发生某种改变时，将消息及时的 <strong>通知</strong> 到其它对象。</p>
-<p><img src="/OOP/RackMultipart20220404-4-1f96qjv_html_bac22147f8539b2b.png"></p>
+<p><img src="/CS/OOP/oop2.png"></p>
 <h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ol>
 <li>定义事件参数类 XXX <strong>EventArgs</strong> ：封装引发事件时需要由事件源传递给响应者的信息。</li>
 <li>定义 <strong>委托 ：</strong> public delegate void XXX <strong>EventHandler</strong> (XXXEventArgs e);</li>
@@ -476,15 +488,15 @@
 <p>type.GetConstructor(typeof(string)).Invoke()</p>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>CS</category>
       </categories>
       <tags>
-        <tag>C++</tag>
+        <tag>OOP</tag>
       </tags>
   </entry>
   <entry>
     <title>Ruby&#39;s Adventure</title>
-    <url>/Ruby&#39;s%20Adventure/</url>
+    <url>/Demo/Ruby&#39;s%20Adventure/</url>
     <content><![CDATA[<h1 id="Ruby’s-Adventure"><a href="#Ruby’s-Adventure" class="headerlink" title="Ruby’s Adventure"></a>Ruby’s Adventure</h1><h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><ul>
 <li><p>“Pixels per Unit”通过定义 1 个单位内应该设置的像素数量来告知 Unity 如何设置精灵的大小。</p>
 </li>
@@ -814,7 +826,7 @@
   </entry>
   <entry>
     <title>SunnyLand</title>
-    <url>/SunnyLand/</url>
+    <url>/Demo/SunnyLand/</url>
     <content><![CDATA[<h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
 <li>所定义的函数将用于不同对象功能的实现</li>
 </ul>
@@ -999,7 +1011,7 @@
   </entry>
   <entry>
     <title>Up</title>
-    <url>/Up/</url>
+    <url>/Demo/Up/</url>
     <content><![CDATA[<h1 id="Up——类flappy-bird小游戏的实现"><a href="#Up——类flappy-bird小游戏的实现" class="headerlink" title="Up——类flappy bird小游戏的实现"></a>Up——类flappy bird小游戏的实现</h1><p><a href="https://github.com/vzerzz/Up">项目文件</a></p>
 <p><a href="https://github.com/vzerzz/Up/tree/main/Assets/Scripts">代码文件</a></p>
 <span id="more"></span>
@@ -1011,7 +1023,7 @@
 <h2 id="Level1-amp-Level2"><a href="#Level1-amp-Level2" class="headerlink" title="Level1 &amp; Level2"></a>Level1 &amp; Level2</h2><p>两个canvas 一个控制游戏中的重新开始和暂停按键 一个控制通关后显示的画面</p>
 <p>前一个搭载GameController.cs脚本 实现游戏中重新开始和暂停功能 同时实现倒计时和倒计时结束时通关画面的激活<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/GameController.cs">GameController.cs</a><br>后一个搭载WinButton.cs脚本 实现通关画面中下一关 重新此关 回到主菜单功能的实现<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/WinButton.cs">WinButton.cs</a></p>
 <ul>
-<li>无限滚动背景<br>  <img src="/Up/ScrollBg.png" alt="ScrollBg"><br>复制一份相同的背景并排且共为空对象的子对象<br>在父对象上加载ScrollBg.cs脚本<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/ScrollBg.cs">ScrollBg.cs</a><br>首先获取两个背景的位置分别存储。移动过程中，当后一个背景的X超过前一个背景开始存储的X.则将前一个背景位置设为后一个背景开始的位置。然后交换，前变后，后变前。进入下一轮循环.</li>
+<li>无限滚动背景<br>  <img src="/Demo/Up/ScrollBg.png" alt="ScrollBg"><br>复制一份相同的背景并排且共为空对象的子对象<br>在父对象上加载ScrollBg.cs脚本<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/ScrollBg.cs">ScrollBg.cs</a><br>首先获取两个背景的位置分别存储。移动过程中，当后一个背景的X超过前一个背景开始存储的X.则将前一个背景位置设为后一个背景开始的位置。然后交换，前变后，后变前。进入下一轮循环.</li>
 </ul>
 <p>在小屋对象上加载CabinController.cs 脚本控制小屋的空格跳跃以及碰撞后重新开始此关<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/CabinController.cs">CabinController.cs</a></p>
 <h3 id="Level1"><a href="#Level1" class="headerlink" title="Level1"></a>Level1</h3><p>在背景对象上加载LightCreat.cs脚本 控制闪电在一定范围内定时生成<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/LightCreat.cs">LightCreat.cs</a></p>
@@ -1023,6 +1035,161 @@
       </categories>
       <tags>
         <tag>2D</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C# 语言基础</title>
+    <url>/CS/C#FUNDAMENTAL/</url>
+    <content><![CDATA[<h1 id="C-语言基础"><a href="#C-语言基础" class="headerlink" title="C# 语言基础"></a>C# 语言基础</h1><p>.NET 一个运行库和一个全面的基础类库。</p>
+<p>.NET Framework</p>
+<p>NET 平台主要有几三个构造块组成，如下：</p>
+<span id="more"></span>
+
+<ul>
+<li><p>CLR Common Language Runtime，表示的是公共语言运行库。<br>  CLR 的主要作用是为我们定位、加载和管理.NET 类型，同时也负责一些低层细节的工作，如内存管理、应用托管、处理线程、案例检查等。</p>
+</li>
+<li><p>CTS Common Type System，表示公共类型系统。<br>  CTS 完整描述了运行库所支持的所有可能的数据类型和编程结构，指定了这些实体间如何交互、也规定了它们在 .NET 元数据格式中的表示（关于元数据，可以从网上获取参考资料）。</p>
+</li>
+<li><p>CLS Common  Language  Specification，它表示的是公共语言规范。<br>  CLS 定义了一个让所有 .NET 语言都支持的公共类型和编程结构的子集。这样，如果构造的 .NET 类型仅公开与CLS兼容的类型，那么可以肯定其他所有支持 .NET 的语言都能使用他们。反之，如果使用了不兼容的，就不能交互。</p>
+</li>
+</ul>
+<p>文档注释：符号是3条斜线“///”,定在类、方法或属性的前面。</p>
+<p>数组的静态初始化<br>使用静态初始化时，数组的声明与初始化必须放在同一条语句中，不能分开写；如：<br>　　int[]  ages  = { 20, 21, 25, 28, 30 } ;  </p>
+<p>数组的动态初始化<br>声明与初始化可以分开或一起写 数组名 = new 数组类型[长度] 自动分配默认值<br>int[]   ages   =   new  int[5] { 20 , 22 , 24 , 26 , 30 } ;</p>
+<p>foreach 是一种更简单更明了的读取数组元素的语句。<br>特点：<br>    –用于读取容器类数据（数组、集合等）<br>    – 适合一次性读取全部元素<br>    –不能修改元素<br>    foreach(  数据类型   变量名   in    数组名)<br>    {<br>        //变量名此时表示的就是数组中的每一个元素<br>    }  </p>
+<p>二维数组<br>数据类型[,] 数组名 = new 数据类型[行数,列数]</p>
+<p>参数修饰符</p>
+<ul>
+<li>out修饰符<br>定义为带有输出参数（通过关键字out）的方法有义务在退出这个方法之前，给参数赋一个恰当的值（如果不这样做，会出现编译错误）调用该方法时，也需要使用out修饰符<br>允许传递未分配(未初始化)的数据  </li>
+<li><em>通过它，调用者只使用一次方法调用就能获得多个返回值。</em>*</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y, <span class="keyword">out</span> <span class="built_in">int</span> addValue, <span class="keyword">out</span> <span class="built_in">int</span> subValue</span>)</span>&#123;</span><br><span class="line">    addValue = x + y;</span><br><span class="line">    subValue = x - y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ref修饰符<br>输出参数不需要在它们被传递给方法前初始化，因为方法在退出之前必须为输出参数赋值。<br>引用参数必须在它们被传递给方法之前初始化，因为是在传递一个对已存在变量的引用。如果不赋给它初始值，就相当于木对一直未赋值的本地变量进行操作。  </li>
+</ul>
+<p>方法重载<br>在同一个类的一组方法（至少大于或等于两个方法）<br>这些方法的方法名称相同，参数类型或参数个数不同<br>能否构成方法的重载，跟方法的返回值没有关系  </p>
+<ul>
+<li><p>protected<br>一般用于含有继承关系的子父类当中。可以由定义它们的类型及其任意子类使用，但外部类无法通过 C# 的“.”操作符访问。  </p>
+</li>
+<li><p>internal：内部的<br>用于修饰：类型或者类型成员<br>作用范围：当前项目下的所有类<br>使用internal修饰类中的字段或方法，在当前项目所有类下都可访问，但是其它项目是访问不到的。  </p>
+</li>
+<li><p>protected  internal ：受保护的内部的<br>用于修饰：类型成员或者嵌套类型　<br>如果使用了 protected  internal 关键字，作用范围在定义它们的程序集、类以及派生类中可用。  </p>
+</li>
+</ul>
+<p>封装性  </p>
+<ul>
+<li><p>广义封装<br>更多的是从整个项目的项目架构设计上考虑的，比如说完成一个项目时，该项目有几个模块组件，每个模块应该包含哪些对象，对象与对象之间的关系，模块与模块之间的关系划分等，这些可以使用广义封装解决</p>
+</li>
+<li><p>狭义封装<br>对象的内部数据不应该从对象实例直接访问。对象数据应该被定义为私有的，如果调用者想改变对象的状态，就要间接使用公共成员。<br>狭义封装，表示的是是对一个类中的成员（字段、方法等）的访问权限（作用范围）进行的一种限制操作。<br>通常情况下，使用C#中的访问控制符（又叫访问修饰符）来修饰类中的字段和方法的作用范围，是目前实现狭义封装的一种方式。  </p>
+<ol>
+<li>创建完一个类后，类中的字段使用 private 修饰，类中的方法使用 public 修饰；</li>
+<li>为类中用 private 修饰的字段添加一组方法，以保证既能保护类中的字段不被任何赋值修改，又可在外界必须访问这些字段时，提供一种间接访问方式；</li>
+<li>说明：这组间接的访问方法叫做：Get和Set方法。</li>
+</ol>
+</li>
+<li><p>标准属性<br>基本语法:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[访问修饰符]  　数据类型 　属性名</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span> &#123;  <span class="keyword">return</span>　 字段名；  &#125; </span><br><span class="line"><span class="keyword">set</span> &#123;   字段名  = <span class="keyword">value</span> ;   &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>注意事项：<br>访问修饰符，一般都是使用 public<br>数据类型，就是当前操作的字段的类型<br>属性名，就是当前操作的字段名（使用Pascal命名法）。  </p>
+<p>标准属性基本特点：<br>一个字段通常对应一个属性，属性的类型应与当前字段定义时的类型保持一致；<br>一个属性中包含一组方法 , get用于获取字段值 , set 用于为字段赋值，赋值时系统存在一个隐式变量,为value 在为字段赋值时，业务逻辑处理的代码，也是放在set中的；<br>属性本身不保存任何数据，访问字段为字段赋值等操作，看似操作的是属性，实质对数据的访问设置还是对字段的操作，且是由这两个方法实现；<br>标准属性，可设置只读 | 只写属性 ，只读权限时只保留get 方法即可；只写权限时只保留 set 方法即可；即可读又可写权限时 get 和 set 都要保留。<br>对象.属性 = xxx 时会将xxx自动传给隐式变量value set中可判断value的取值范围，满足要求再传给属性字段  </p>
+</li>
+<li><p>自动属性<br>当属性（又叫属性访问器）中不需要任何其他逻辑时(即不需要在set方法中添加任何业务代码)使用自动属性可以更加简洁。<br>自动属性本质就是一个字段两个方法。<br>语法：[访问修饰符]  数据类型  属性名  {  get ;  set ;  }  </p>
+<p>自动属性特点：<br>自动属性可利用编译器自动生成，以简化代码的编写注：代码中输入prop，按两下Tab键即可自动生成；<br>自动属性只能成对出现,即:不能只有一个get或一个set，也就是，自动属性不支持设置 只读 | 只写 操作；<br>自动属性不支持在 set 中添加业务逻辑代码；<br>编译器在生成自动属性时，会自动添加一个私有的字段，我们在写时，不用再自己声明私有字段，只需要直接添加属性即可。  </p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> name&#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">int</span> name;</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> Name&#123;</span><br><span class="line">    <span class="keyword">get</span>;<span class="keyword">set</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>继承性<br>单继承，即：一个子类只能有一个直接父类（继承的单层性）；<br>编译器是先进入到父类中，调用父类无参数的构造方法，如果父类没有无参数构造方法，编译器会自动为父类添加无参数，执行完父类无参数后，再执行子类自己的构造方法<br>如果父类有其它形式构造方法，但是没有无参数的构造方法，此时程序会报错。  </p>
+<ul>
+<li>base<br>访问父类中的同名方法，适合于子类中存在与父类相同签名的方法时；<br>访问父类的构造方法，在子类构造方法的小括号后面使用  : base( 参数值列表 )  表示访问父类的构造方法；<br>子类构造方法小括号后面默认省略 :base()  </li>
+</ul>
+<p>多态性<br><strong>父类变量，创建子类对象</strong><br>基本语法：<br>　　父类　变量名　　=　　new  　子类（参数列表）<br>向上转型<br>在执行期间判断对象的类型，决定执行子类还是父类的方法的机制称之为动态绑定。<br>  当子类和父类都有相同的方法时，调用子类自己的方法；<br>  当子类没有该方法时，调用父类的方法；<br>  当子类和父类都没有调用的方法时，程序编译报错。<br>应用：  </p>
+<ul>
+<li><p>多态在数组方面的应用<br>  多态数组<br>  创建Car类的数组，可放不同子类的对象，并override不同子类的方法，自动识别</p>
+</li>
+<li><p>多态特性作用于方法的参数上<br>  方法参数多态<br>  定义方法的参数类型时，要求参数既可以接收多种子类型，此时就可以将参数的类型定义为父类型，而运行时会根据传递过来的参数类型具体匹配。</p>
+</li>
+<li><p>多态特性作用于方法的返回值上  </p>
+</li>
+</ul>
+<p>Static  </p>
+<ul>
+<li><p>静态成员变量<br>静态成员变量属于类，类被加载时初始化，且只有一份。<br>特点：存在优先于对象，被所有对象所共享，常驻内存。  </p>
+</li>
+<li><p>静态构造函数<br>初始化类的静态数据成员。<br>仅在类被加载时执行一次。<br>不允许使用访问修饰符。  </p>
+</li>
+<li><p>静态方法<br>通过引用调用实例方法时，会隐式的传递对象引用，以便在方法内部可以正确访问该对象成员变量。<br>通过类名调用静态方法时，因为没有具体对象，所以在static方法中不能访问实例成员。  </p>
+</li>
+<li><p>静态类<br>不能实例化，只能包含静态成员。<br>静态类不能被继承，但是静态方法、属性都可以被继承。  </p>
+</li>
+<li><p>利：单独空间存储，所有对象共享，可直接被类名调用。<br>弊：静态方法中只能访问静态成员，共享数据被多个对象访问会出现并发。  </p>
+</li>
+<li><p>适用场合：  </p>
+<ol>
+<li>所有对象需要共享的数据。</li>
+<li>在没有对象前就要访问成员。</li>
+<li>工具类适合做静态类(常用，不需要过多数据)。</li>
+</ol>
+</li>
+</ul>
+<p>struct<br>与类语法相似，都可以包含数据成员和方法成员。但结构属于值类型，类属于引用类型。<br>适用表示点、颜色等轻量级对象。如创建存储1000个点的数组，如果使用类，将为每个对象分配更多内存，使用结构可以节约资源。<br>除非字段被声明为 const 或 static，否则无法初始化。<br>结构不能继承，但可以实现接口。<br>结构总会包含无参数构造函数。<br>构造函数中必须初始化所有字段。<br>结构不能包含显式的无参数构造函数  </p>
+<p>集合<br>可对集合中的元素进行增删改查操作，作用都是原集合，而不会产生新的集合。  </p>
+<ul>
+<li>ArrayList<br>底层就是一个可动态扩展的数组；<br>提供了用于在集合中添加、删除或查找项的方法;<br>ArrayList 集合不支持泛型（即：可放任意类型的数据）；<br>使用 ArrayList 集合之前，应先导入命名命名空间：using  System.Collections ;  </li>
+<li>List<br>类似于ArrayList集合，同样也提供了很多用于在集合中添加、删除或查找项的方法;提供了比ArrayList更多操作集合的方法<br>List 集合支持泛型；<br>List 集合默认的命名命名空间：using System.Collections.Generic;  </li>
+<li>Dictionary</li>
+</ul>
+<p>内存分配</p>
+<ul>
+<li><p>类型分配<br>值类型：存储数据本身。声明在栈中，数据存储在栈中。<br>引用类型：存储数据的引用(内存地址) 声明在栈中，数据存储在堆中，栈中存储该数据的引用。  </p>
+</li>
+<li><p>内存分配<br>程序运行时，CLR将申请的内存空间从逻辑上进行划分。</p>
+<ul>
+<li>栈区：<br>– 空间小(1MB)，读取速度快。<br>– 用于存储正在执行的方法，分配的空间叫做栈帧。栈帧中存储方法的参数以及变量等数据。方法执行完毕后，对应的栈帧将被清除。  </li>
+<li>堆区：<br>– 空间大，读取速度慢。<br>– 用于存储引用类型的数据。  </li>
+</ul>
+</li>
+<li><p>GC(Garbage Collection)是CLR中一种针对托管堆自动回收释放内存的服务。<br>GC线程从栈中的引用开始跟踪，从而判定哪些内存是正在使用的，若GC无法跟踪到某一块堆内存，那么就认为这块内存不再使用了，即为可回收的。  </p>
+<p>使用比较运算符比较值类型时，对比的是存储的数值。<br>比较引用类型时，对比的是引用的地址而不是数据。  </p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CS</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>temp note</title>
+    <url>/Unity/temp/</url>
+    <content><![CDATA[<h1 id="note"><a href="#note" class="headerlink" title="note"></a>note</h1><span id="more"></span>
+<h2 id="����L��ת��"><a href="#����L��ת��" class="headerlink" title="����Ŀ��ת��"></a>����Ŀ��ת��</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Vector3 vec = (target.position - transform.position);</span><br><span class="line">Quaternion rotate = Quaternion.LookRotation(vec);</span><br><span class="line">transform.localRotation = Quaternion.Slerp(transform.localRotation, rotate, angleSpeed);</span><br></pre></td></tr></table></figure>
+
+<h2 id="y��һ��ʱ�����"><a href="#y��һ��ʱ�����" class="headerlink" title="ÿ��һ��ʱ�����"></a>ÿ��һ��ʱ�����</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1  Э��</span></span><br><span class="line"><span class="function">IEnumerator <span class="title">Func</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span>(<span class="params"><span class="number">2.0f</span></span>)</span>;</span><br><span class="line">            <span class="comment">//Specific functions put here </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2  ����ʱ��</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">float</span> passedTime; </span><br><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> targetTime; </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Repete</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(passedTime&gt;targetTime)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// function</span></span><br><span class="line">            passedTime = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        passedTime += Time.deltaTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3  </span></span><br><span class="line">InvokeRepeating(<span class="string">&quot;functionName&quot;</span>, <span class="number">0</span>, <span class="number">3</span>);<span class="comment">//����start��awake�� ���ܷ�update�� 0Ϊǰҡ 3Ϊʱ����</span></span><br><span class="line">CancelInvoke(<span class="string">&quot;functionName&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lerp-��-SLerp"><a href="#Lerp-��-SLerp" class="headerlink" title="Lerp �� SLerp"></a>Lerp �� SLerp</h2><p>���ڿɿ���ʱ��Ļ�����ת transform.Rotation = Quaterntion.Lerp()<br>���Բ�ֵ ���β�ֵ<br>����Ԫ���ĽǶ����������Բ�ֵÿ֡�ó�����ת����ǲ����ȵģ������Slerp���쵫�������ת��Զ�������ͱȽϲ������β�ֵ��Ϊ�����������ı䳤��  </p>
+<h2 id="ͨ����k������"><a href="#ͨ����k������" class="headerlink" title="ͨ����ǩ������"></a>ͨ����ǩ������</h2><p>  GameObject.FindWithTag( ��ǩ�� )��������д���ָ����ǩ����Ϸ������ô���ظö�������ã����򷵻�null��<br>  ��������Ϸ����ʹ��ͬһ��ǩ����ô���ص�һ����Ϸ��������ã�����ĵ�һ����ָ�������һ�����ӵ���Ϸ���󣩡�<br>  ����������ж����ͬ��ǩ����Ϸ���󣬿���ͨ��FindGameobjectWithTag()������ȡ��Ϸ�������顣</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+      </categories>
+      <tags>
+        <tag>Unity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>引擎基础</title>
+    <url>/Unity/UnityFundamental/Basic/</url>
+    <content><![CDATA[<h1 id="引擎基础"><a href="#引擎基础" class="headerlink" title="引擎基础"></a>引擎基础</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/Basic/Basic_01.png" alt="01"></p>
+<p><img src="/Unity/UnityFundamental/Basic/Basic_02.png" alt="02"></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+      </categories>
+      <tags>
+        <tag>Unity</tag>
       </tags>
   </entry>
 </search>
