@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -209,7 +209,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/RobbiePlatform/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/SunnyLand/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -227,7 +227,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Demo/RobbiePlatform/" class="post-title-link" itemprop="url">RobbiePlatform</a>
+          <a href="/Demo/SunnyLand/" class="post-title-link" itemprop="url">SunnyLand</a>
         </h2>
 
         <div class="post-meta-container">
@@ -263,193 +263,21 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
-<li><p>所定义的函数将用于不同对象功能的实现</p></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Demo/RobbiePlatform/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/Stealth/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Vzer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Demo/Stealth/" class="post-title-link" itemprop="url">Stealth</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
-        </span>
-    </span>
-
-  
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Stealth"><a href="#Stealth" class="headerlink" title="Stealth"></a>Stealth</h1><h2 id="警报系统"><a href="#警报系统" class="headerlink" title="警报系统"></a>警报系统</h2><ul>
-<li>灯光闪烁</li>
+<li>所定义的函数将用于不同对象功能的实现</li>
 </ul>
-<p>主要用lerp函数计时，决定灯光的闪烁<br>创建一个direction light 附上AlarmLight脚本</p>
+<h2 id="GameManager"><a href="#GameManager" class="headerlink" title="GameManager"></a>GameManager</h2><blockquote>
+<ul>
+<li>控制游戏进程，其中包括控制关卡的开始延迟、每一回合间的延迟、控制是否允许玩家操作等、判断游戏是否结束等；</li>
+<li>初始化游戏信息，其中包括了生成地图等；</li>
+<li>记录游戏当中的一些数值，包括玩家的生命值、当前进行到的关卡级别等；</li>
+<li>持有敌人等部分对象的引用；</li>
+<li>控制游戏的显示状态、比如是应该显示地图还是显示正在加载等辅助信息；</li>
+<li>控制游戏的UI。</li>
+</ul>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Demo/Stealth/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/Ruby's%20Adventure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Vzer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Demo/Ruby's%20Adventure/" class="post-title-link" itemprop="url">Ruby's Adventure</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
-        </span>
-    </span>
-
-  
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Ruby’s-Adventure"><a href="#Ruby’s-Adventure" class="headerlink" title="Ruby’s Adventure"></a>Ruby’s Adventure</h1><h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><ul>
-<li><p>“Pixels per Unit”通过定义 1 个单位内应该设置的像素数量来告知 Unity 如何设置精灵的大小。</p>
-</li>
-<li><p>游戏对象的排序问题</p>
-<blockquote>
-<p>调整瓦片的 Order in Layer 属性</p>
-</blockquote></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Demo/Ruby's%20Adventure/#more" rel="contents">
+              <a class="btn" href="/Demo/SunnyLand/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -560,7 +388,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/SunnyLand/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Demo/Up/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -578,7 +406,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Demo/SunnyLand/" class="post-title-link" itemprop="url">SunnyLand</a>
+          <a href="/Demo/Up/" class="post-title-link" itemprop="url">Up</a>
         </h2>
 
         <div class="post-meta-container">
@@ -613,27 +441,449 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
-<li>所定义的函数将用于不同对象功能的实现</li>
-</ul>
-<h2 id="GameManager"><a href="#GameManager" class="headerlink" title="GameManager"></a>GameManager</h2><blockquote>
-<ul>
-<li>控制游戏进程，其中包括控制关卡的开始延迟、每一回合间的延迟、控制是否允许玩家操作等、判断游戏是否结束等；</li>
-<li>初始化游戏信息，其中包括了生成地图等；</li>
-<li>记录游戏当中的一些数值，包括玩家的生命值、当前进行到的关卡级别等；</li>
-<li>持有敌人等部分对象的引用；</li>
-<li>控制游戏的显示状态、比如是应该显示地图还是显示正在加载等辅助信息；</li>
-<li>控制游戏的UI。</li>
-</ul>
-</blockquote>
+          <h1 id="Up——类flappy-bird小游戏的实现"><a href="#Up——类flappy-bird小游戏的实现" class="headerlink" title="Up——类flappy bird小游戏的实现"></a>Up——类flappy bird小游戏的实现</h1><p><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up">项目文件</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vzerzz/Up/tree/main/Assets/Scripts">代码文件</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Demo/SunnyLand/#more" rel="contents">
+              <a class="btn" href="/Demo/Up/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/temp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Unity/temp/" class="post-title-link" itemprop="url">temp note</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="note"><a href="#note" class="headerlink" title="note"></a>note</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/temp/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/CS/Csharp/CsharpDesignPattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/CS/Csharp/CsharpDesignPattern/" class="post-title-link" itemprop="url">C# 设计模式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="C＃设计模式"><a href="#C＃设计模式" class="headerlink" title="C＃设计模式"></a>C＃设计模式</h1><ul>
+<li><p>什么是设计模式？</p>
+<ul>
+<li>在长久的面向对象开发过程以来，遇到种种的场景和问题，提出的解决问题的思路和方案。沉淀下来后，总结出来的解决问题的套路</li>
+</ul>
+</li>
+<li><p>什么是设计原则？</p>
+<ul>
+<li>面向对象过程中，前辈大咖们推荐的一些指导性原则 遵循这些原则可以让你的设计更有竞争力。</li>
+</ul>
+</li>
+</ul>
+<h2 id="六大设计原则"><a href="#六大设计原则" class="headerlink" title="六大设计原则"></a>六大设计原则</h2><h3 id="单一职责原则（SRP：Single-Responsibility-Principle）"><a href="#单一职责原则（SRP：Single-Responsibility-Principle）" class="headerlink" title="单一职责原则（SRP：Single Responsibility Principle）"></a>单一职责原则（SRP：Single Responsibility Principle）</h3><blockquote>
+<p>单一职责原则，SRP又称单一功能原则，面向对象五个基本原则（SOLID）之一。它规定一个类应该只有一个发生变化的原因。该原则由罗伯特C.马丁（Robert C.Martin）于《敏捷软件开发：原则、模式和实践》一书中给出的。</p>
+</blockquote>
+<ul>
+<li><p>定义</p>
+<ul>
+<li><p>一个模块只负责一件事。</p>
+</li>
+<li><p>一个类只负责一件事</p>
+</li>
+<li><p>一个方法只负责一件事。</p>
+</li>
+</ul>
+</li>
+<li><p>常见违背单一职责场景</p>
+<ul>
+<li><p>在方法中出现多个分支，分别去执行各自的逻辑，功能虽然可以实现。</p>
+</li>
+<li><p>但如果需求变更，就会非常的不稳定。</p>
+</li>
+</ul>
+</li>
+<li><p>如何遵守单一职责原则</p>
+<ul>
+<li>定义抽象父类or父类虚方法</li>
+<li>子类继承后重写，不同的实现</li>
+</ul>
+</li>
+<li><p>实例：不同动物的叫声处理，喊叫方法中多个分支，还是不同类不同喊叫方法。</p>
+</li>
+<li><p>单一职责的优缺点</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li><p>每个类相对简单，只负责自己的事情。</p>
+</li>
+<li><p>需求变更时，只修改变更类，其他类不受影响。</p>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>代码量会有所增加</p>
+</li>
+<li><p>解读代码成本增加</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>何时遵循？何时不遵守？</p>
+<ul>
+<li><p>类型逻辑足够简单，方法足够少，可以不遵守</p>
+</li>
+<li><p>类型复杂，方法很多，一定要遵循单一职责原则</p>
+</li>
+</ul>
+</li>
+<li><p>单一职责的不同层面</p>
+<ul>
+<li><p>以方法为单位</p>
+<ul>
+<li><p>一个方法只负责一件事</p>
+</li>
+<li><p>方法中可以封装成一个新方法的，就封装成一个新方法</p>
+</li>
+</ul>
+</li>
+<li><p>以类为单位 </p>
+<ul>
+<li><p>一个类只负责一件事</p>
+</li>
+<li><p>不属于该类的内容，创建新的类去封装</p>
+</li>
+</ul>
+</li>
+<li><p>以模块／项目为单位</p>
+<ul>
+<li><p>一个模块／项目只负责一件事</p>
+</li>
+<li><p>不属于该模块的内容，交由属于的模块去负责<br><code>abstract override</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="里氏替换原则（LSP：Liskov-Substitution-Principle）"><a href="#里氏替换原则（LSP：Liskov-Substitution-Principle）" class="headerlink" title="里氏替换原则（LSP：Liskov Substitution Principle）"></a>里氏替换原则（LSP：Liskov Substitution Principle）</h3><blockquote>
+<p>里氏替换原则，OCP作为OO的高层原则，主张使用“抽象（Abstraction）＂和“多态（Polymorphism）＂将设计中的静态结构改为动态结构，维持设计的封闭性。“抽象”是语言提供的功能。“多态”由继承语义实现。</p>
+</blockquote>
+<ul>
+<li><p>定义</p>
+<ul>
+<li><p>任何使用基类的地方，都可以安全的去使用其子类。</p>
+<ul>
+<li><p>父类有的内容，子类必须有【类的强继承】</p>
+<ul>
+<li><p>如果父类出现了子类不应该有的内容，那么就应该断开两个类的继承关系</p>
+</li>
+<li><p>然后，重新创建新的父类，包含子类该拥有的内容</p>
+</li>
+</ul>
+</li>
+<li><p>父类已经实现的内容，子类不要再写【不要使用new关键词隐藏父类方法］</p>
+<ul>
+<li>如果子类希望可以重写父类方法，父类方法用abstruct或virtual修饰</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>实例：游戏角色中的攻击方法，不能被不能攻击的子类继承。<br>对于子类自己独有的行为特征 不在父类中定义再override 而是直接在子类定义</p>
+</li>
+</ul>
+<h3 id="迪米特法则（LKP：Least-Knowledge-Principle）"><a href="#迪米特法则（LKP：Least-Knowledge-Principle）" class="headerlink" title="迪米特法则（LKP：Least Knowledge Principle）"></a>迪米特法则（LKP：Least Knowledge Principle）</h3><blockquote>
+<p>迪米特法则（Law of Demeter）又叫作最少知识原则（Least Knowledge Principle 简写LKP），一个类对于其他类知道的越少越好，就是说一个对象应当对其他对象有尽可能少的了解，只和朋友通信，不和陌生人说话.</p>
+</blockquote>
+<ul>
+<li><p>定义</p>
+<ul>
+<li>一个对象应该对其他对象保持最少的了解 只与直接朋友进行通信。</li>
+</ul>
+</li>
+<li><p>类与类之间的关系：</p>
+<ul>
+<li><p>纵向：继承关系</p>
+</li>
+<li><p>横向：聚合、组合、关联、依赖「出现在方法内部」</p>
+</li>
+</ul>
+</li>
+<li><p>高内聚、低耦合</p>
+<ul>
+<li><p>降低耦合度的方法</p>
+<ol>
+<li>少使用类的继承，多用接口隐藏实现的细节。</li>
+<li>模块的功能化分尽可能的单一，道理也很简单，功能单一的模块供其它模块调用的机会就少。(其实这是高内聚的一种说法，高内聚低耦合一般同时出现)。</li>
+<li>遵循一个定义只在一个地方出现</li>
+<li>少使用全局变量。</li>
+<li>类属性和方法的声明少用public，多用private关键字。</li>
+<li>多用设计模式，比如采用MVC的设计模式就可以降低界面与业务逻辑的耦合度。</li>
+<li>尽量不用”硬编码”的方式写程序，同时也尽量避免直接用SQL语句操作数据库.</li>
+<li>避免直接操作或调用其它模块或类(内容耦合)；如果模块间必须存在耦合，原则上尽量使用数据耦合，少用控制耦合，限制公共耦合的范围，避免使用内容耦合。</li>
+</ol>
+</li>
+<li><p>增强内聚度方法</p>
+<ol>
+<li>模块只对外暴露最小限度的接口，形成最低的依赖关系。</li>
+<li>只要对外接口不变，模块内部的修改，就不得影响其他模块；</li>
+<li>删除一个模块，应当只影响有依赖关系的其他模块，而不应该影响其他无关部分；</li>
+</ol>
+</li>
+<li><p>通过降低访问修饰符权限，减少联系，减少耦合</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="依赖倒置原则-DIP-Dependence-Inversion-Principle"><a href="#依赖倒置原则-DIP-Dependence-Inversion-Principle" class="headerlink" title="依赖倒置原则(DIP:Dependence Inversion Principle)"></a>依赖倒置原则(DIP:Dependence Inversion Principle)</h3><blockquote>
+<p>依赖倒置原则(Dependence Inversion Principle)是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程，这样就降低了客户与实现模块间的耦合。</p>
+</blockquote>
+<ul>
+<li>定义<ul>
+<li>高层模块不应该依赖于低层模块，两者应该依赖抽象 而不是依赖细节。</li>
+<li>高层：方法调用方</li>
+<li>底层：被调用方</li>
+</ul>
+</li>
+<li>面向抽象编程<ul>
+<li>属性、字段、方法参数、返回值，一切都尽量使用抽象【类接口】</li>
+<li>抽象不变，高层就不变</li>
+<li>抽象一般是稳定的，低层的扩展变化不会影响到高层，低层就可以横向的自由扩展，架构稳定</li>
+<li>80%的设计模式跟抽象有关</li>
+</ul>
+</li>
+<li>抽象的好处<ul>
+<li>一个方法可以满足不同类型的参数传入</li>
+<li>支持动态扩展，只要是实现了这个抽象，不需要修改上层</li>
+</ul>
+</li>
+<li>实例：学生类实现不同手机的使用方法，学生依赖手机，新手机出现时，学生类也要更新新方法。<ul>
+<li>不同的手机应该依赖抽象（手机），学生类也应该依赖于抽象(手机用户)</li>
+</ul>
+</li>
+</ul>
+<h3 id="接口隔离原则-ISP-Interface-Segregation-Principle"><a href="#接口隔离原则-ISP-Interface-Segregation-Principle" class="headerlink" title="接口隔离原则(ISP:Interface Segregation Principle)"></a>接口隔离原则(ISP:Interface Segregation Principle)</h3><blockquote>
+<p>客户端不应该依赖它不需要的接口。一个类对另一个类的依赖应该建立在最小的接口上。</p>
+</blockquote>
+<ul>
+<li>定义：<ul>
+<li>使用多个专门的接口比使用单一的总接口要好，但也不建议一个接口只对应一个方法。</li>
+<li>一个类对另外一个类的依赖性应当是建立在最小的接口上的。</li>
+<li>一个接口代表一个角色，不应当将不同的角色都交给一个接口。没有关系的接口合并在一起，形成一个臃肿的大接口，这是对角色和接口的污染。</li>
+</ul>
+</li>
+<li>接口的正确定义<ul>
+<li>既不能大而全，也不能一个接口一个方法</li>
+<li>应该按照功能的密不可分来定义接口</li>
+<li>应该是动态的，随业务变化而变化，设计的时候要留好提前量，避免抽象的变化</li>
+</ul>
+</li>
+<li>实例：手机的核心功能就是打电话和发短信，拍照、上网等其他功能的接口，不要被手机所依颗。</li>
+<li>参看.Net类中的接口的设计与实现</li>
+</ul>
+<h3 id="开闭原则-OCP-Open-Closed-Principle-【总则】"><a href="#开闭原则-OCP-Open-Closed-Principle-【总则】" class="headerlink" title="开闭原则(OCP:Open Closed Principle)【总则】"></a>开闭原则(OCP:Open Closed Principle)【总则】</h3><blockquote>
+<p>在面向对象编程领域中，开闭原则规定“软件中的对象（类，模块，函数等等）应该对于扩展是开放的，但是对于修改是封闭的”，这意味着一个实体是允许在不改变它的源代码的前提下变更它的行为。该特性在产品化的环境中是特别有价值的，在这种环境中，改变源代码需要代码审查，单元测试以及诸如此类的用以确保产品使用质量的过程。遵循这种原则的代码在扩展时并不发生改变，因此无需上述的过程。</p>
+</blockquote>
+<ul>
+<li>定义<ul>
+<li>对扩展开放 对修改关闭<ul>
+<li>扩展：添加新代码（类）</li>
+<li>修改：修改原代码（类）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>开闭原则是一个目标，没有任何手段，又被称为总则</li>
+<li>为什么要遵循开闭原则<ul>
+<li>面向对象语言是静态语言，最害怕变化，因为会波及很多东西。</li>
+<li>最理想的就是新增类，对原代码没有改动，原有代码才是可信的</li>
+</ul>
+</li>
+<li>遇到需求变更该怎么办呢？<ul>
+<li>直接修改现有方法    (最不可取)</li>
+<li>增加方法    (稍好一些)</li>
+<li>增加类  (那更好啦)</li>
+<li>增加类库/框架   (那最好啦)</li>
+</ul>
+</li>
+</ul>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><p><img src="/CS/Csharp/CsharpDesignPattern/Factory.png" alt="factory"></p>
+<h4 id="Csharp"><a href="#Csharp" class="headerlink" title="Csharp"></a>Csharp</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LegencyFunction</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="meta">#<span class="keyword">region</span> Old</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">float</span>? result = Count(<span class="number">10</span>, <span class="number">21</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Debug.Log(result);</span><br><span class="line"></span><br><span class="line">        <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">        <span class="meta">#<span class="keyword">region</span> New</span></span><br><span class="line"></span><br><span class="line">        BinaryOperation operation = OperationFactory.CreateOperation(<span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;+&quot;</span>);</span><br><span class="line">        operation.SetNumber(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">        <span class="built_in">float</span> newresult = operation.GetResult();</span><br><span class="line">        Debug.Log(newresult);</span><br><span class="line"></span><br><span class="line">        <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Old</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span>? Count(<span class="built_in">float</span> num01, <span class="built_in">float</span> num02, <span class="built_in">string</span> sign)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span> (sign)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;+&quot;</span>:</span><br><span class="line">                <span class="keyword">return</span> num01 + num02;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;-&quot;</span>:</span><br><span class="line">                <span class="keyword">return</span> num01 - num02;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;*&quot;</span>:</span><br><span class="line">                <span class="keyword">return</span> num01 * num02;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;/&quot;</span>:</span><br><span class="line">                <span class="keyword">return</span> num01 / num02;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;%&quot;</span>:</span><br><span class="line">                <span class="keyword">return</span> num01 % num02;</span><br><span class="line">            <span class="literal">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">BinaryOperation</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">protected</span> <span class="built_in">float</span> number01;</span><br><span class="line">        <span class="keyword">protected</span> <span class="built_in">float</span> number02;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">BinaryOperation</span>()</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetNumber</span>(<span class="params"><span class="built_in">float</span> number01,<span class="built_in">float</span> number02</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.number01 = number01;</span><br><span class="line">            <span class="keyword">this</span>.number01 = number02;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">BinaryOperation</span>(<span class="params"><span class="built_in">float</span> number01, <span class="built_in">float</span> number02</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.number01 = number01;</span><br><span class="line">            <span class="keyword">this</span>.number02 = number02;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="built_in">float</span> <span class="title">GetResult</span>()</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlusOperation</span> : <span class="title">BinaryOperation</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">PlusOperation</span>(<span class="params"><span class="built_in">float</span> number01, <span class="built_in">float</span> number02</span>) : <span class="title">base</span>(<span class="params">number01, number02</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">float</span> <span class="title">GetResult</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> number01 + number02;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SubtractionOperation</span> : <span class="title">BinaryOperation</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">SubtractionOperation</span>(<span class="params"><span class="built_in">float</span> number01, <span class="built_in">float</span> number02</span>) : <span class="title">base</span>(<span class="params">number01, number02</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">float</span> <span class="title">GetResult</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> number01 - number02;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MulOperation</span> : <span class="title">BinaryOperation</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MulOperation</span>(<span class="params"><span class="built_in">float</span> number01, <span class="built_in">float</span> number02</span>) : <span class="title">base</span>(<span class="params">number01, number02</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">float</span> <span class="title">GetResult</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> number01 * number02;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OperationFactory</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BinaryOperation <span class="title">CreateOperation</span>(<span class="params"><span class="built_in">float</span> number01, <span class="built_in">float</span> number02,<span class="built_in">string</span> sign</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">switch</span> (sign)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;+&quot;</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> PlusOperation(number01, number02);</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;-&quot;</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> SubtractionOperation(number01, number02);</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;*&quot;</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> MulOperation(number01, number02);</span><br><span class="line">                <span class="literal">default</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UnityAssetsFactory.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UnitAssetsFactory</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UnityAsset <span class="title">CreateUnityAsset</span>(<span class="params"><span class="built_in">string</span> assetType</span>)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">switch</span> (assetType)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">&quot;GameObject&quot;</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> PrefabAsset(<span class="string">&quot;&quot;</span>);</span><br><span class="line">			<span class="keyword">case</span> <span class="string">&quot;Sprite&quot;</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> SpriteAsset(<span class="string">&quot;&quot;</span>);</span><br><span class="line">			<span class="literal">default</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">UnityAsset</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> path;</span><br><span class="line">	<span class="keyword">protected</span> <span class="built_in">object</span> asset;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">UnityAsset</span>(<span class="params"><span class="built_in">string</span> path</span>)</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.path = path;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Load</span>()</span> &#123;</span><br><span class="line">		asset = Resources.Load(path);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Instantiate</span>()</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Show</span>()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PrefabAsset</span> : <span class="title">UnityAsset</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PrefabAsset</span>(<span class="params"><span class="built_in">string</span> path</span>) : <span class="title">base</span>(<span class="params">path</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Instantiate</span>()</span></span><br><span class="line">	&#123;</span><br><span class="line">		GameObject go = GameObject.Instantiate(asset <span class="keyword">as</span> GameObject);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Show</span>()</span></span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SpriteAsset</span> : <span class="title">UnityAsset</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SpriteAsset</span>(<span class="params"><span class="built_in">string</span> path</span>) : <span class="title">base</span>(<span class="params">path</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Instantiate</span>()</span></span><br><span class="line">	&#123;</span><br><span class="line">		GameObject go = <span class="keyword">new</span> GameObject(<span class="string">&quot;Sprite&quot;</span>);</span><br><span class="line">		SpriteRenderer spriteRenderer = go.AddComponent&lt;SpriteRenderer&gt;();</span><br><span class="line"></span><br><span class="line">		Sprite sprite = Sprite.Create(asset <span class="keyword">as</span> Texture2D, <span class="keyword">new</span> Rect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>), Vector2.zero);</span><br><span class="line">		sprite.name = <span class="string">&quot;sprite&quot;</span>;</span><br><span class="line">		spriteRenderer.sprite = sprite;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Show</span>()</span></span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//UnitySingtonFactory.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UnitySingtonFactory</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> UnitySingtonFactory instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        instance = <span class="keyword">this</span>;</span><br><span class="line">        DontDestroyOnLoad(gameObject);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">GetAsset</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> assetPath</span>) <span class="keyword">where</span> T : Object</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Resources.Load&lt;T&gt;(assetPath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T[] <span class="title">GetAssets</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> assetsPath</span>) <span class="keyword">where</span> T : Object</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Resources.LoadAll&lt;T&gt;(assetsPath);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//UnityFactoryConsole.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UnityFactoryConsole</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//第一步，工厂生产对象</span></span><br><span class="line">        <span class="comment">//UnityAsset unityAsset = UnitAssetsFactory.CreateUnityAsset(&quot;GameObject&quot;, &quot;Cube&quot;);</span></span><br><span class="line">        <span class="comment">//UnityAsset unityAsset = UnitAssetsFactory.CreateUnityAsset(&quot;Sprite&quot;);</span></span><br><span class="line">        <span class="comment">//unityAsset.path = &quot;sword&quot;;</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span>/第二步，对象加载资源</span></span><br><span class="line">        <span class="comment">//unityAsset.Load();</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span>/第三步，生产该资源</span></span><br><span class="line">        <span class="comment">//unityAsset.Instantiate();</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//单例工厂 --&gt; 直接获取资源</span></span><br><span class="line">        GameObject cubePrefab = UnitySingtonFactory.instance.GetAsset&lt;GameObject&gt;(<span class="string">&quot;Cube&quot;</span>);</span><br><span class="line">        Instantiate(cubePrefab);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><p><img src="/CS/Csharp/CsharpDesignPattern/Strategy.png" alt="strategy"></p>
+<p>工厂模式输入参数返回对象obj<br>策略模式输入参数返回方法</p>
+<h4 id="Csharp-1"><a href="#Csharp-1" class="headerlink" title="Csharp"></a>Csharp</h4><p><img src="/CS/Csharp/CsharpDesignPattern/Strategy1.png" alt="strategy1"><br><img src="/CS/Csharp/CsharpDesignPattern/Strategy2.png" alt="strategy2"><br><img src="/CS/Csharp/CsharpDesignPattern/Strategy3.png" alt="strategy3"></p>
+<h4 id="Unity-游戏角色攻击方式不同"><a href="#Unity-游戏角色攻击方式不同" class="headerlink" title="Unity 游戏角色攻击方式不同"></a>Unity 游戏角色攻击方式不同</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Skill.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Skill</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GameHero[] AttackTargets &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GameHero SkillFireHero &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span>[] SkillParameters &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> Damage &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">TakeDamage</span>()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 圆形攻击技能</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CircleSkill</span> : <span class="title">Skill</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">TakeDamage</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//拿到玩家坐标</span></span><br><span class="line">        Vector3 playerPos = SkillFireHero.HeroTra.position;</span><br><span class="line">        <span class="comment">//计算技能中心--&gt; playerPos + forword * length</span></span><br><span class="line">        Vector3 skillCenter = playerPos + SkillFireHero.HeroTra.forward * SkillParameters[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; AttackTargets.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算该目标与技能中心的距离</span></span><br><span class="line">            <span class="built_in">float</span> dis = Vector3.Distance(skillCenter, AttackTargets[i].HeroTra.position);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//如果距离小于技能半径</span></span><br><span class="line">            <span class="keyword">if</span> (dis &lt;= SkillParameters[<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                AttackTargets[i].TakeDamage(Damage);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 矩形攻击技能</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CubeSkill</span> : <span class="title">Skill</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">TakeDamage</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//拿到玩家坐标</span></span><br><span class="line">        Vector3 playerPos = SkillFireHero.HeroTra.position;</span><br><span class="line">        <span class="comment">//计算技能中心--&gt; playerPos + forword * length</span></span><br><span class="line">        Vector3 skillCenter = playerPos + SkillFireHero.HeroTra.forward * SkillParameters[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; AttackTargets.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//计算该目标与技能中心的距离</span></span><br><span class="line">            Vector3 dir = AttackTargets[i].HeroTra.position - skillCenter;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//计算技能方向向量在横向Right和纵向Forword的投影向量</span></span><br><span class="line">            Vector3 rightDir = Vector3.Project(dir, SkillFireHero.HeroTra.right);</span><br><span class="line">            Vector3 forwardDir = Vector3.Project(dir, SkillFireHero.HeroTra.forward);</span><br><span class="line">            <span class="comment">//如果在矩形范围内</span></span><br><span class="line">            <span class="keyword">if</span> (rightDir.magnitude &lt; SkillParameters[<span class="number">1</span>]/<span class="number">2</span> &amp;&amp; forwardDir.magnitude &lt; SkillParameters[<span class="number">2</span>]/<span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//收到伤害</span></span><br><span class="line">                AttackTargets[i].TakeDamage(Damage);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 扇形攻击技能</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SectorSkill</span> : <span class="title">Skill</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">TakeDamage</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameHero</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> name;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> HeroHP &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> Transform HeroTra &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> Skill Skill &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GameHero</span>(<span class="params"><span class="built_in">string</span> name</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">FireSkill</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Skill.SkillFireHero = <span class="keyword">this</span>;</span><br><span class="line">        Skill.TakeDamage();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TakeDamage</span>(<span class="params"><span class="built_in">float</span> damage</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        HeroHP -= damage;</span><br><span class="line"></span><br><span class="line">        Debug.Log(name + <span class="string">&quot;收到伤害&quot;</span> + damage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//StrategyConsole.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StrategyConsole</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Transform angelTra;</span><br><span class="line">    <span class="keyword">public</span> Transform libaiTra;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> IEnumerator <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        GameHero angel = <span class="keyword">new</span> GameHero(<span class="string">&quot;安琪拉&quot;</span>);</span><br><span class="line">        angel.HeroHP = <span class="number">1000</span>;</span><br><span class="line">        angel.HeroTra = angelTra;</span><br><span class="line">        GameHero libai = <span class="keyword">new</span> GameHero(<span class="string">&quot;李白&quot;</span>);</span><br><span class="line">        libai.HeroHP = <span class="number">1200</span>;</span><br><span class="line">        libai.HeroTra = libaiTra;</span><br><span class="line"></span><br><span class="line">        GameHero[] allHeros = <span class="keyword">new</span> GameHero[] &#123; angel, libai &#125;;</span><br><span class="line"></span><br><span class="line">        Skill skill01 = <span class="keyword">new</span> CubeSkill();</span><br><span class="line">        skill01.Damage = <span class="number">100</span>;</span><br><span class="line">        skill01.SkillParameters = <span class="keyword">new</span> <span class="built_in">float</span>[] &#123; <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span> &#125;;</span><br><span class="line">        skill01.AttackTargets = allHeros;</span><br><span class="line"></span><br><span class="line">        Skill skill02 = <span class="keyword">new</span> CircleSkill();</span><br><span class="line">        skill02.Damage = <span class="number">100</span>;</span><br><span class="line">        skill02.SkillParameters = <span class="keyword">new</span> <span class="built_in">float</span>[] &#123; <span class="number">5</span>, <span class="number">3</span> &#125;;</span><br><span class="line">        skill02.AttackTargets = allHeros;</span><br><span class="line"></span><br><span class="line">        angel.Skill = skill01;</span><br><span class="line">        libai.Skill = skill02;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)<span class="comment">//协程一直释放技能</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            angel.FireSkill();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h3><p><img src="/CS/Csharp/CsharpDesignPattern/Facade.png" alt="facade"></p>
+<h4 id="Csharp-2"><a href="#Csharp-2" class="headerlink" title="Csharp"></a>Csharp</h4><p><img src="/CS/Csharp/CsharpDesignPattern/Facade1.png" alt="facade1"><br><img src="/CS/Csharp/CsharpDesignPattern/Facade2.png" alt="facade2"><br><img src="/CS/Csharp/CsharpDesignPattern/Facade3.png" alt="facade3"><br><img src="/CS/Csharp/CsharpDesignPattern/Facade4.png" alt="facade4"><br><img src="/CS/Csharp/CsharpDesignPattern/Facade5.png" alt="facade5"></p>
+<h4 id="Unity-框架启动模式"><a href="#Unity-框架启动模式" class="headerlink" title="Unity 框架启动模式"></a>Unity 框架启动模式</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UIFrameFacade.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UIFrameFacade</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">FrameStart</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        UIAssets.instance.LoadPanel(<span class="string">&quot;MainPanel&quot;</span>);</span><br><span class="line">        UIManager.instance.PushPanel(<span class="string">&quot;MainPanel&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UIAssets</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> UIAssets instance = <span class="keyword">new</span> UIAssets();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">UIAssets</span>()</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadPanel</span>(<span class="params"><span class="built_in">string</span> panelName</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(panelName + <span class="string">&quot;的资源已经加载完成！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UIManager</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> UIManager instance = <span class="keyword">new</span> UIManager();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">UIManager</span>()</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PushPanel</span>(<span class="params"><span class="built_in">string</span> panelName</span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        Debug.Log(<span class="string">&quot;已经打开窗口...&quot;</span> + panelName);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//FacadeConsole.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FacadeConsole</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//框架启动</span></span><br><span class="line">        UIFrameFacade facade = <span class="keyword">new</span> UIFrameFacade();</span><br><span class="line">        facade.FrameStart();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//DemoWindowFacade.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DemoWInodwFacade</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button[] buttons;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        buttons = GetComponentsInChildren&lt;Button&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BindEvent</span>(<span class="params">UnityAction unityAction</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; buttons.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            buttons[i].onClick.AddListener(unityAction);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><p><img src="/CS/Csharp/CsharpDesignPattern/Observer.png" alt="observer"></p>
+<h4 id="Unity-1"><a href="#Unity-1" class="headerlink" title="Unity"></a>Unity</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//NormalObserver.cs 简单观察者模式</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NormalObserver</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> interval = <span class="number">3f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> timer = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        timer += Time.deltaTime;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (timer &gt; interval)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line"></span><br><span class="line">            timer = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//复杂</span></span><br><span class="line"><span class="comment">//Observer.cs</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 抽象观察者</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">AbObserver</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">ReveiveBeatifulGirlMsg</span>(<span class="params"><span class="built_in">string</span> canDateTime</span>)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 具体的观察者</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Observer</span> : <span class="title">AbObserver</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Observer</span>(<span class="params"><span class="built_in">string</span> name</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">ReveiveBeatifulGirlMsg</span>(<span class="params"><span class="built_in">string</span> canDateTime</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(name + canDateTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Subject.cs</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 抽象的通知者</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">AbSubject</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 添加观察者</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;observer&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddObserver</span>(<span class="params">AbObserver observer</span>)</span>;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 移除观察者</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;observer&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">RemoveObserver</span>(<span class="params">AbObserver observer</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 通知消息</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Notify</span>()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 具体的通知者</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Subject</span> : <span class="title">MonoBehaviour</span>, <span class="title">AbSubject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> IList&lt;AbObserver&gt; observers;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> canDateTime = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        observers = <span class="keyword">new</span> List&lt;AbObserver&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (BeautifulGirl.instance.CanData())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//此时的时间</span></span><br><span class="line">            canDateTime = Time.time.ToString();</span><br><span class="line">            Notify();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddObserver</span>(<span class="params">AbObserver observer</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!observers.Contains(observer))</span><br><span class="line">            observers.Add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RemoveObserver</span>(<span class="params">AbObserver observer</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (observers.Contains(observer))</span><br><span class="line">            observers.Remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Notify</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; observers.Count; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            observers[i].ReveiveBeatifulGirlMsg(canDateTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//BeautifulGirl.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BeautifulGirl</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> canDateProbability = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> BeautifulGirl instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        instance = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">CanData</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Random.Range(<span class="number">1</span>, <span class="number">101</span>) &lt;= canDateProbability;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//ObserverConsole.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ObserverConsole</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//ObserverConsole</span></span><br><span class="line"></span><br><span class="line">        AbObserver ceo = <span class="keyword">new</span> Observer(<span class="string">&quot;老王&quot;</span>);</span><br><span class="line">        AbObserver cto = <span class="keyword">new</span> Observer(<span class="string">&quot;老李&quot;</span>);</span><br><span class="line">        AbObserver cfo = <span class="keyword">new</span> Observer(<span class="string">&quot;老刘&quot;</span>);</span><br><span class="line"></span><br><span class="line">        AbSubject subjectZhao = GetComponent&lt;Subject&gt;();</span><br><span class="line"></span><br><span class="line">        subjectZhao.AddObserver(ceo);</span><br><span class="line">        subjectZhao.AddObserver(cto);</span><br><span class="line">        subjectZhao.AddObserver(cfo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p><img src="/CS/Csharp/CsharpDesignPattern/Proxy.png" alt="proxy"></p>
+<h4 id="Csharp-3"><a href="#Csharp-3" class="headerlink" title="Csharp"></a>Csharp</h4><p><img src="/CS/Csharp/CsharpDesignPattern/Proxy1.png" alt="proxy1"><br><img src="/CS/Csharp/CsharpDesignPattern/Proxy2.png" alt="proxy2"></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CsharpProxy</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        PayFine self = <span class="keyword">new</span> NormalDriver(<span class="string">&quot;老王&quot;</span>,<span class="string">&quot;11011111111111111&quot;</span>,<span class="string">&quot;1010101001&quot;</span>);</span><br><span class="line">        FriendDrive friendProxy = <span class="keyword">new</span> FriendDrive(<span class="string">&quot;小王&quot;</span>, <span class="string">&quot;11016666661111&quot;</span>, <span class="string">&quot;666666&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//建立代理关系</span></span><br><span class="line">        friendProxy.realDriver = self;</span><br><span class="line">        <span class="comment">//自己交罚款</span></span><br><span class="line">        friendProxy.Pay(<span class="number">200</span>,<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">PayFine</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> name;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 违章者的身份证</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> violatorID;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 违章者驾驶证</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> violatorDriveID;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">PayFine</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">string</span> violatorID, <span class="built_in">string</span> violatorDriveID</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.violatorID = violatorID;</span><br><span class="line">        <span class="keyword">this</span>.violatorDriveID = violatorDriveID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 支付罚款、扣除分数</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;money&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;score&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Pay</span>(<span class="params"><span class="built_in">float</span> money,<span class="built_in">float</span> score</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NormalDriver</span> : <span class="title">PayFine</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NormalDriver</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">string</span> violatorID, <span class="built_in">string</span> violatorDriveID</span>) : <span class="title">base</span>(<span class="params">name, violatorID, violatorDriveID</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Pay</span>(<span class="params"><span class="built_in">float</span> money, <span class="built_in">float</span> score</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="built_in">string</span> .Format(</span><br><span class="line">            <span class="string">&quot;我是&#123;0&#125;,身份证号&#123;1&#125;,驾驶证号&#123;2&#125;,今交罚款&#123;3&#125;,扣除分数&#123;4&#125;&quot;</span>,</span><br><span class="line">            name,violatorID,violatorDriveID,money,score));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FriendDrive</span> : <span class="title">PayFine</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 真正的驾驶员，如果没有，设置为null</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> PayFine realDriver;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FriendDrive</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">string</span> violatorID, <span class="built_in">string</span> violatorDriveID</span>) : <span class="title">base</span>(<span class="params">name, violatorID, violatorDriveID</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Pay</span>(<span class="params"><span class="built_in">float</span> money, <span class="built_in">float</span> score</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (realDriver != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;代理人:&quot;</span> + name);</span><br><span class="line">            realDriver.Pay(money,score);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Unity-2"><a href="#Unity-2" class="headerlink" title="Unity"></a>Unity</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UnityProxy</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        gameObject.AddComponent&lt;DelayProxy&gt;();</span><br><span class="line">        <span class="comment">//延时执行方法</span></span><br><span class="line">        <span class="comment">//DelayProxy.instance.DelayCall(ShowTime,3);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//获取方法</span></span><br><span class="line">            MethodInfo methodInfo = GetType().GetMethod(<span class="string">&quot;ShowCurrentTime&quot;</span>);</span><br><span class="line">            <span class="comment">//通过反射，延时执行方法</span></span><br><span class="line">            DelayProxy.instance.DelayCallByReflection(methodInfo, <span class="keyword">this</span>, <span class="keyword">new</span> <span class="built_in">object</span>[] &#123; Time.time &#125;, <span class="number">5</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ShowTime</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;Time:&quot;</span> + Time.time);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ShowCurrentTime</span>(<span class="params"><span class="built_in">float</span> crtTime</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;移动延时时间：&quot;</span> + crtTime);</span><br><span class="line">        Debug.Log(<span class="string">&quot;执行时间：&quot;</span> + Time.time);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DelayProxy</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> DelayProxy instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        instance = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DelayCallByReflection</span>(<span class="params">MethodInfo methodInfo,<span class="built_in">object</span> obj,<span class="built_in">object</span>[] parameters,<span class="built_in">float</span> delayTime = <span class="number">3f</span></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        StartCoroutine(IEDelayCallByReflection(methodInfo, obj, parameters, delayTime));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">IEnumerator <span class="title">IEDelayCallByReflection</span>(<span class="params">MethodInfo methodInfo, <span class="built_in">object</span> obj, <span class="built_in">object</span>[] parameters, <span class="built_in">float</span> delayTime</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//等待几秒</span></span><br><span class="line">        <span class="function"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span>(<span class="params">delayTime</span>)</span>;</span><br><span class="line">        methodInfo.Invoke(obj, parameters);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DelayCall</span>(<span class="params">System.Action action,<span class="built_in">float</span> delayTime = <span class="number">3f</span></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">        StartCoroutine(IEDelayCall(action, delayTime));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">IEnumerator <span class="title">IEDelayCall</span>(<span class="params">System.Action action, <span class="built_in">float</span> delayTime</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//等待几秒</span></span><br><span class="line">        <span class="function"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span>(<span class="params">delayTime</span>)</span>;</span><br><span class="line">        action();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
