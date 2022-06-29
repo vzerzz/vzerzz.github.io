@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -209,7 +209,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Frame/AStarPathFinding/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/CS/C++/OOP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -227,7 +227,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Unity/Frame/AStarPathFinding/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/CS/C++/OOP/" class="post-title-link" itemprop="url">OOP</a>
         </h2>
 
         <div class="post-meta-container">
@@ -238,7 +238,20 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-06-29 17:01:33" itemprop="dateCreated datePublished" datetime="2022-06-29T17:01:33+08:00">2022-06-29</time>
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CS/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
     </span>
 
   
@@ -253,7 +266,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h1><h2 id="头文件防卫式声明guard"><a href="#头文件防卫式声明guard" class="headerlink" title="头文件防卫式声明guard"></a>头文件防卫式声明guard</h2><p>防止重复引用头文件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __MYCOMPLEX__</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __MYCOMPLEX__</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>   <span class="comment">//__MYCOMPLEX__</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h2><p>在类内定义自动成为inline候选人</p>
+<h2 id="ctor"><a href="#ctor" class="headerlink" title="ctor"></a>ctor</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">complex</span> (<span class="type">double</span> r = <span class="number">0</span>, <span class="type">double</span> i = <span class="number">0</span>)</span><br><span class="line">: <span class="built_in">re</span> (r), <span class="built_in">im</span> (i)<span class="comment">//初值列 只有ctor有</span></span><br><span class="line">&#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>不带指针的多半不用析构函数</p>
+<p>单例Singleton里把ctor放在private里</p>
+<h2 id="overloading"><a href="#overloading" class="headerlink" title="overloading"></a>overloading</h2><h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>const member functions (常量成員函數)</p>
+<p>不改变数据则一定要加const<br><code>double real () const &#123; return re; &#125;</code></p>
+<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><ul>
+<li><p>pass by value<br>尽量不要</p>
+</li>
+<li><p>pass by reference</p>
+</li>
+</ul>
+
       
     </div>
 
@@ -279,7 +307,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Frame/UIFrame/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Csharp/CsharpFUNDAMENTAL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -297,7 +325,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Unity/Frame/UIFrame/" class="post-title-link" itemprop="url">UIFrame</a>
+          <a href="/Unity/Csharp/CsharpFUNDAMENTAL/" class="post-title-link" itemprop="url">C# 语言基础</a>
         </h2>
 
         <div class="post-meta-container">
@@ -308,7 +336,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-06-17 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-17T00:00:00+08:00">2022-06-17</time>
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -320,7 +348,7 @@
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Unity/Frame/" itemprop="url" rel="index"><span itemprop="name">Frame</span></a>
+          <a href="/categories/Unity/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
         </span>
     </span>
 
@@ -336,11 +364,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="UIFrame"><a href="#UIFrame" class="headerlink" title="UIFrame"></a>UIFrame</h1><p><a target="_blank" rel="noopener" href="https://github.com/vzerzz/UIFrame">项目文件</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/vzerzz/UIFrame/tree/master/Assets/Scripts">代码文件</a></p>
+          <h1 id="C-语言基础"><a href="#C-语言基础" class="headerlink" title="C# 语言基础"></a>C# 语言基础</h1><p>.NET 一个运行库和一个全面的基础类库。</p>
+<p>.NET Framework</p>
+<p>NET 平台主要有几三个构造块组成，如下：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Unity/Frame/UIFrame/#more" rel="contents">
+              <a class="btn" href="/Unity/Csharp/CsharpFUNDAMENTAL/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -371,7 +400,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/BookNote/GameProgrammingPatterns/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Csharp/CsharpDesignPattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -389,89 +418,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/BookNote/GameProgrammingPatterns/" class="post-title-link" itemprop="url">Game Programming Patterns</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-        </span>
-    </span>
-
-  
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Game-Programming-Patterns"><a href="#Game-Programming-Patterns" class="headerlink" title="Game Programming Patterns"></a>Game Programming Patterns</h1><blockquote>
-<p><strong>if you want to make something fun, have fun making it.</strong></p>
-</blockquote>
-<h2 id="常用GoF"><a href="#常用GoF" class="headerlink" title="常用GoF"></a>常用GoF</h2><h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/temp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Vzer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Vzer's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Unity/temp/" class="post-title-link" itemprop="url">temp note</a>
+          <a href="/Unity/Csharp/CsharpDesignPattern/" class="post-title-link" itemprop="url">C# 设计模式</a>
         </h2>
 
         <div class="post-meta-container">
@@ -492,6 +439,10 @@
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
         </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+        </span>
     </span>
 
   
@@ -506,10 +457,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="note"><a href="#note" class="headerlink" title="note"></a>note</h1>
+          <h1 id="C＃设计模式"><a href="#C＃设计模式" class="headerlink" title="C＃设计模式"></a>C＃设计模式</h1><ul>
+<li><p>什么是设计模式？</p>
+<ul>
+<li>在长久的面向对象开发过程以来，遇到种种的场景和问题，提出的解决问题的思路和方案。沉淀下来后，总结出来的解决问题的套路</li>
+</ul>
+</li>
+<li><p>什么是设计原则？</p>
+<ul>
+<li>面向对象过程中，前辈大咖们推荐的一些指导性原则 遵循这些原则可以让你的设计更有竞争力。</li></ul></li></ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Unity/temp/#more" rel="contents">
+              <a class="btn" href="/Unity/Csharp/CsharpDesignPattern/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -540,7 +499,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Route/CS/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Csharp/CsharpHL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -558,7 +517,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Route/CS/" class="post-title-link" itemprop="url">CS</a>
+          <a href="/Unity/Csharp/CsharpHL/" class="post-title-link" itemprop="url">C# 高级</a>
         </h2>
 
         <div class="post-meta-container">
@@ -570,6 +529,19 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+        </span>
     </span>
 
   
@@ -584,9 +556,595 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="CS"><a href="#CS" class="headerlink" title="CS"></a>CS</h1><h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><a href="/CS/C++/OOP/" title="OOP">OOP</a><br>
+          <h1 id="C-高级"><a href="#C-高级" class="headerlink" title="C# 高级"></a>C# 高级</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/Csharp/CsharpHL/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2>
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Csharp/CsharpOOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Unity/Csharp/CsharpOOP/" class="post-title-link" itemprop="url">C#面向对象</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C#面向对象"></a>C#面向对象</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>面向过程的程序 = 算法 + 数据结构； 关心解决问题的步骤。</p>
+<p>面向对象的程序 = 对象 + 交互； 关心谁在解决问题。</p>
+<p>类：一个抽象的概念，即为生活中的&quot;类别&quot;。</p>
+<p>对象：类的具体实例，即归属于某个类别的&quot;个体&quot;。</p>
+<p>同类型的多个对象，行为相同，数据不同。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/Csharp/CsharpOOP/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Demo/MultiplayerFPS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Unity/Demo/MultiplayerFPS/" class="post-title-link" itemprop="url">MultiplayerFPS</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="MultiplayerFPS"><a href="#MultiplayerFPS" class="headerlink" title="MultiplayerFPS"></a>MultiplayerFPS</h1><h2 id="菜单创建与photon服务器连接"><a href="#菜单创建与photon服务器连接" class="headerlink" title="菜单创建与photon服务器连接"></a>菜单创建与photon服务器连接</h2><ul>
+<li><p>服务器相关设置</p>
+<p>  PhotonUnityNetworking&gt;Resources&gt;PhotonSeverSettings</p>
+</li>
+<li><p>PUN2(游戏房间的设置)</p>
+<p>  自动连接:PhotonNetwork.ConnectUsingSettings()</p>
+<p>  手动连接:PhotonNetwork.ConnectToMaster() 当托管付费Photon服务器时这是有用的。<br>  masterServerAddress和port参数。地址可以是你的On-Premises DNS名称或一个IP。它可以包括冒号后的端口（然后传递0作为端口）或您可以单独通过端口。<br>  “appID”和”gameVersion”。两者都只与Photon Cloud有关，并且当你自己托管Photon服务器时，可以设置为任何值。</p>
+<p>  对于Photon Cloud, 使用ConnectUsingSettings()方法。它涉及到我们的Name Server自动找到一个区域的主服务器。</p>
+<p>  PhotonNetwork使用多个回调函数来让你的游戏知道状态的变化，如“已连接”或“已加入一个游戏”。像往常对Unity一样，回调可在任何脚本里实现。override</p></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/Demo/MultiplayerFPS/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Demo/RobbiePlatform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Unity/Demo/RobbiePlatform/" class="post-title-link" itemprop="url">RobbiePlatform</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
+<li><p>所定义的函数将用于不同对象功能的实现</p></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/Demo/RobbiePlatform/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Demo/Ruby's%20Adventure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Unity/Demo/Ruby's%20Adventure/" class="post-title-link" itemprop="url">Ruby's Adventure</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Ruby’s-Adventure"><a href="#Ruby’s-Adventure" class="headerlink" title="Ruby’s Adventure"></a>Ruby’s Adventure</h1><h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><ul>
+<li><p>“Pixels per Unit”通过定义 1 个单位内应该设置的像素数量来告知 Unity 如何设置精灵的大小。</p>
+</li>
+<li><p>游戏对象的排序问题</p>
+<blockquote>
+<p>调整瓦片的 Order in Layer 属性</p>
+</blockquote></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/Demo/Ruby's%20Adventure/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Demo/Stealth/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Unity/Demo/Stealth/" class="post-title-link" itemprop="url">Stealth</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Stealth"><a href="#Stealth" class="headerlink" title="Stealth"></a>Stealth</h1><h2 id="警报系统"><a href="#警报系统" class="headerlink" title="警报系统"></a>警报系统</h2><ul>
+<li>灯光闪烁</li>
+</ul>
+<p>主要用lerp函数计时，决定灯光的闪烁<br>创建一个direction light 附上AlarmLight脚本</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/Demo/Stealth/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Demo/SunnyLand/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Unity/Demo/SunnyLand/" class="post-title-link" itemprop="url">SunnyLand</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/Demo/" itemprop="url" rel="index"><span itemprop="name">Demo</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
+<li>所定义的函数将用于不同对象功能的实现</li>
+</ul>
+<h2 id="GameManager"><a href="#GameManager" class="headerlink" title="GameManager"></a>GameManager</h2><blockquote>
+<ul>
+<li>控制游戏进程，其中包括控制关卡的开始延迟、每一回合间的延迟、控制是否允许玩家操作等、判断游戏是否结束等；</li>
+<li>初始化游戏信息，其中包括了生成地图等；</li>
+<li>记录游戏当中的一些数值，包括玩家的生命值、当前进行到的关卡级别等；</li>
+<li>持有敌人等部分对象的引用；</li>
+<li>控制游戏的显示状态、比如是应该显示地图还是显示正在加载等辅助信息；</li>
+<li>控制游戏的UI。</li>
+</ul>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Unity/Demo/SunnyLand/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -605,7 +1163,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

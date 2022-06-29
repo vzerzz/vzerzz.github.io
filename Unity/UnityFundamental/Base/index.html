@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/Unity/UnityFundamental/Base/Base_01.png">
 <meta property="og:image" content="http://example.com/Unity/UnityFundamental/Base/Base_02.png">
 <meta property="article:published_time" content="2021-12-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-31T10:57:48.706Z">
+<meta property="article:modified_time" content="2022-06-29T12:45:29.548Z">
 <meta property="article:author" content="Vzer">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/Unity/UnityFundamental/Base/Base_01.png">
@@ -148,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86"><span class="nav-text">初识</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86"><span class="nav-text">初识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9F%E9%9A%8F%E7%9B%AE%E6%A0%87%E8%BD%AC%E5%8A%A8"><span class="nav-text">跟随目标转动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%8F%E9%9A%94%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E8%B0%83%E7%94%A8"><span class="nav-text">每隔一段时间调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lerp-%E5%92%8C-SLerp"><span class="nav-text">Lerp 和 SLerp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%A0%87%E7%AD%BE%E6%9D%A5%E6%9F%A5%E6%89%BE"><span class="nav-text">通过标签来查找</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -163,7 +163,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -290,6 +290,12 @@
         <h1 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h1><span id="more"></span>
 <p><img src="/Unity/UnityFundamental/Base/Base_01.png" alt="01"></p>
 <p><img src="/Unity/UnityFundamental/Base/Base_02.png" alt="02"></p>
+<h2 id="跟随目标转动"><a href="#跟随目标转动" class="headerlink" title="跟随目标转动"></a>跟随目标转动</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector3 vec = (target.position - transform.position);</span><br><span class="line">Quaternion rotate = Quaternion.LookRotation(vec);</span><br><span class="line">transform.localRotation = Quaternion.Slerp(transform.localRotation, rotate, angleSpeed);</span><br></pre></td></tr></table></figure>
+
+<h2 id="每隔一段时间调用"><a href="#每隔一段时间调用" class="headerlink" title="每隔一段时间调用"></a>每隔一段时间调用</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1  协程</span></span><br><span class="line"><span class="function">IEnumerator <span class="title">Func</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span>(<span class="params"><span class="number">2.0f</span></span>)</span>;</span><br><span class="line">            <span class="comment">//Specific functions put here </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2  计算时间</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">float</span> passedTime; </span><br><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> targetTime; </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Repete</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(passedTime&gt;targetTime)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// function</span></span><br><span class="line">            passedTime = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        passedTime += Time.deltaTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3  </span></span><br><span class="line">InvokeRepeating(<span class="string">&quot;functionName&quot;</span>, <span class="number">0</span>, <span class="number">3</span>);<span class="comment">//放在start或awake中 不能放update中 0为前摇 3为时间间隔</span></span><br><span class="line">CancelInvoke(<span class="string">&quot;functionName&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lerp-和-SLerp"><a href="#Lerp-和-SLerp" class="headerlink" title="Lerp 和 SLerp"></a>Lerp 和 SLerp</h2><p>用于可控制时间的缓慢旋转 transform.Rotation = Quaterntion.Lerp()<br>线性插值 球形插值<br>从四元数的角度来看，线性插值每帧得出的旋转结果是不均匀的，这个比Slerp更快但是如果旋转较远看起来就比较差。因此球形插值更为合理，它不改变长度  </p>
+<h2 id="通过标签来查找"><a href="#通过标签来查找" class="headerlink" title="通过标签来查找"></a>通过标签来查找</h2><p>  GameObject.FindWithTag( 标签名 )如果场景中存在指定标签的游戏对象，那么返回该对象的引用，否则返回null；<br>  如果多个游戏对象使用同一标签，那么返回第一个游戏对象的引用（这里的第一个，指的是最后一个添加的游戏对象）。<br>  如果场景中有多个相同标签的游戏对象，可以通过FindGameobjectWithTag()方法获取游戏对象数组。</p>
 
     </div>
 
