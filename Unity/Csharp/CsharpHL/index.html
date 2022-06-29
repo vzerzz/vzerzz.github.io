@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="C# 高级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# 高级">
+<meta property="og:url" content="http://example.com/Unity/Csharp/CsharpHL/index.html">
+<meta property="og:site_name" content="Vzer&#39;s Blog">
+<meta property="og:description" content="C# 高级">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/namespace.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/trycatch.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/type01.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/type02.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/type03.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/activator.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/fieldinfo.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/memberinfo.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/methodinfo.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/property.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/attrubute01.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/attrubutedescribe.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/attributeusage.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/conditional.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/obsolete.png">
+<meta property="og:image" content="http://example.com/Unity/Csharp/CsharpHL/customize.png">
+<meta property="article:published_time" content="2021-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-29T12:26:17.651Z">
+<meta property="article:author" content="Vzer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Unity/Csharp/CsharpHL/namespace.png">
+
+
+<link rel="canonical" href="http://example.com/Unity/Csharp/CsharpHL/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/Unity/Csharp/CsharpHL/","path":"Unity/Csharp/CsharpHL/","title":"C# 高级"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C# 高级 | Vzer's Blog</title>
+  
+
+
+
+
+<link rel="dns-prefetch" href="waline-vzerzz.vercel.app">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Vzer's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life is boring</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E9%AB%98%E7%BA%A7"><span class="nav-text">C# 高级</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NameSpace"><span class="nav-text">NameSpace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TryCatch"><span class="nav-text">TryCatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReflectionType"><span class="nav-text">ReflectionType</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%8D%E5%B0%84%E7%B1%BB%E5%9E%8B"><span class="nav-text">获取反射类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-text">Type类中的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">Type类中的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%AF%B9%E8%B1%A1"><span class="nav-text">用类型实例化对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E8%AE%BF%E9%97%AE%E5%AD%97%E6%AE%B5"><span class="nav-text">通过反射访问字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95"><span class="nav-text">通过反射访问方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attrubutes"><span class="nav-text">Attrubutes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort"><span class="nav-text">sort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Net"><span class="nav-text">.Net</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#customize"><span class="nav-text">customize</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">正则表达式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Vzer"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Vzer</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vzerzz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vzerzz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Unity/Csharp/CsharpHL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Vzer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C# 高级 | Vzer's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C# 高级
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T00:00:00+08:00">2022-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/Unity/Csharp/CsharpHL/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/Unity/Csharp/CsharpHL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="C-高级"><a href="#C-高级" class="headerlink" title="C# 高级"></a>C# 高级</h1><span id="more"></span>
+<h2 id="NameSpace"><a href="#NameSpace" class="headerlink" title="NameSpace"></a>NameSpace</h2><p>把框架写入命名空间中<br>System和System.Collections.Generic不是父子或包含关系 除非存在嵌套<br>同一个namespace的类名不能重复 不同间的可以</p>
+<p><img src="/Unity/Csharp/CsharpHL/namespace.png" alt="namespace"></p>
+<p>DLL文件为动态链接库文件，又称“应用程序拓展”，DLL文件中存放的是各类程序的函数(子过程)实现过程，当程序需要调用函数时需要先载入DLL，然后取得函数的地址，最后进行调用。</p>
+<h2 id="TryCatch"><a href="#TryCatch" class="headerlink" title="TryCatch"></a>TryCatch</h2><p><img src="/Unity/Csharp/CsharpHL/trycatch.png" alt="trycatch"></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(xxxException ex)&#123;</span><br><span class="line">    Debug.Log();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>多个catch异常类型子类在前父类在后</p>
+<p>自定义异常<br>由于用户操作(如不符合规定的输入)引发的异常</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">xxxException</span> : <span class="title">Exception</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">xxxException</span>(<span class="params"><span class="built_in">string</span> message</span>):<span class="title">base</span>(<span class="params">message</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//抛出异常</span></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> xxxException(<span class="string">&quot;xxx异常&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="ReflectionType"><a href="#ReflectionType" class="headerlink" title="ReflectionType"></a>ReflectionType</h2><h3 id="获取反射类型"><a href="#获取反射类型" class="headerlink" title="获取反射类型"></a>获取反射类型</h3><ol>
+<li><p>typeof 通过类名<br> <code>Type xxxType = typeof(xxx);</code><br> <code>Type xxxType = typeof(namespace.xxx);//有命名空间的类</code></p>
+</li>
+<li><p>GetType() 通过对象<br> <code>Type transformType = transform.GetType();</code></p>
+</li>
+<li><p>static GetType() 通过类名的字符串<br> <code>Type xxxType = Type.GetType(namespace.xxx);</code></p>
+</li>
+</ol>
+<h3 id="Type类中的属性"><a href="#Type类中的属性" class="headerlink" title="Type类中的属性"></a>Type类中的属性</h3><p><img src="/Unity/Csharp/CsharpHL/type01.png" alt="property"></p>
+<h3 id="Type类中的方法"><a href="#Type类中的方法" class="headerlink" title="Type类中的方法"></a>Type类中的方法</h3><p><img src="/Unity/Csharp/CsharpHL/type02.png" alt="function"></p>
+<p><img src="/Unity/Csharp/CsharpHL/type03.png" alt="BindingFlags"></p>
+<h3 id="用类型实例化对象"><a href="#用类型实例化对象" class="headerlink" title="用类型实例化对象"></a>用类型实例化对象</h3><p><img src="/Unity/Csharp/CsharpHL/activator.png" alt="activator"></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//-------------使用public且无参的构造函数去实例化</span></span><br><span class="line"><span class="comment">//获取类型</span></span><br><span class="line">Type goType = <span class="keyword">typeof</span>(GameObject);</span><br><span class="line"><span class="comment">//用这个类型实例化对象————必会调用构造函数</span></span><br><span class="line"><span class="built_in">object</span> goObj = Activator.CreateInstance(goType);</span><br><span class="line"><span class="comment">//使用的时候需要类型转换</span></span><br><span class="line">(goObj <span class="keyword">as</span> GameObject).AddComponent&lt;ParticleSystem&gt;();</span><br><span class="line"><span class="comment">//以上两句话相当于--&gt;GameObject go = new GameObject();</span></span><br><span class="line"><span class="comment">//-------------使用private且无参的构造函数去实例化</span></span><br><span class="line"><span class="comment">//Singleton single = new Singleton();正常情况：私有构造是无法实例化的</span></span><br><span class="line">Type singletonType = <span class="keyword">typeof</span>(Singleton);</span><br><span class="line"><span class="built_in">object</span> sgObj = Activator.CreateInstance(singletonType,<span class="literal">true</span>);</span><br><span class="line"><span class="comment">//访问单例中的字段</span></span><br><span class="line">Debug.Log((sgObj <span class="keyword">as</span> Singleton).name);</span><br><span class="line"><span class="comment">//-------------使用public且有参的构造函数去实例化</span></span><br><span class="line">Type singletonType = <span class="keyword">typeof</span>(Singleton);</span><br><span class="line"><span class="comment">//用public有参的构造函数去实例化对象</span></span><br><span class="line"><span class="built_in">object</span> stObj = Activator.CreateInstance(singletonType, <span class="string">&quot;laowang&quot;</span>);</span><br><span class="line"><span class="comment">//打印name</span></span><br><span class="line">Debug.Log((stObj <span class="keyword">as</span> Singleton).name);</span><br><span class="line"><span class="comment">//-------------使用private且有参的构造函数去实例化</span></span><br><span class="line">Type singletonType = <span class="keyword">typeof</span>(Singleton);</span><br><span class="line"><span class="comment">//使用private且有参的构造函数去实例化</span></span><br><span class="line"><span class="built_in">object</span> obj = Activator.CreateInstance(singletonType, BindingFlags.Instance | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span> <span class="built_in">object</span>[] &#123; <span class="number">12</span> &#125;, <span class="literal">null</span>);</span><br><span class="line">Debug.Log((obj <span class="keyword">as</span> Singleton).name);</span><br><span class="line">Debug.Log((obj <span class="keyword">as</span> Singleton).age);</span><br><span class="line">obj = Activator.CreateInstance(singletonType, BindingFlags.Instance | BindingFlags.NonPublic, <span class="literal">null</span>, <span class="keyword">new</span> <span class="built_in">object</span>[] &#123; <span class="string">&quot;xiaomei&quot;</span>, <span class="number">12</span>, <span class="string">&quot;beijing&quot;</span> &#125;, <span class="literal">null</span>);</span><br><span class="line">Debug.Log((obj <span class="keyword">as</span> Singleton).name);</span><br><span class="line">Debug.Log((obj <span class="keyword">as</span> Singleton).age);</span><br><span class="line">Debug.Log((obj <span class="keyword">as</span> Singleton).address);</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过反射访问字段"><a href="#通过反射访问字段" class="headerlink" title="通过反射访问字段"></a>通过反射访问字段</h3><p><img src="/Unity/Csharp/CsharpHL/fieldinfo.png" alt="fieldinfo"></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取类型</span></span><br><span class="line">Type sgType = <span class="keyword">typeof</span>(Singleton);</span><br><span class="line"><span class="comment">//获取name字段</span></span><br><span class="line">FieldInfo nameField = sgType.GetField(<span class="string">&quot;name&quot;</span>);</span><br><span class="line"><span class="comment">//实例化单例对象</span></span><br><span class="line"><span class="built_in">object</span> sgObj = Activator.CreateInstance(sgType, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">//设置单例对象的name字段值</span></span><br><span class="line">nameField.SetValue(sgObj, <span class="string">&quot;胖枫&quot;</span>);</span><br><span class="line"><span class="comment">//获取单例对象的name字段的值</span></span><br><span class="line"><span class="built_in">object</span> nameValue = nameField.GetValue(sgObj);</span><br><span class="line"><span class="comment">//打印结果</span></span><br><span class="line">Debug.Log(nameValue);</span><br><span class="line"><span class="comment">//获取私有字段</span></span><br><span class="line">FieldInfo moneyField = sgType.GetField(<span class="string">&quot;money&quot;</span>, BindingFlags.Instance | BindingFlags.NonPublic);</span><br><span class="line"><span class="comment">//设置私有字段的值</span></span><br><span class="line">moneyField.SetValue(sgObj, <span class="number">9999</span>);</span><br><span class="line">(sgObj <span class="keyword">as</span> Singleton).GetMoney();</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过反射访问方法"><a href="#通过反射访问方法" class="headerlink" title="通过反射访问方法"></a>通过反射访问方法</h3><p><img src="/Unity/Csharp/CsharpHL/memberinfo.png" alt="memberinfo"></p>
+<p><img src="/Unity/Csharp/CsharpHL/methodinfo.png" alt="methodinfo"></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Type sgType = <span class="keyword">typeof</span>(Singleton);</span><br><span class="line"><span class="comment">//获取私有的成员方法</span></span><br><span class="line">MethodInfo setMoneyMethod = sgType.GetMethod(<span class="string">&quot;SetMoney&quot;</span>, BindingFlags.Instance | BindingFlags.NonPublic);</span><br><span class="line"><span class="comment">//调用方法</span></span><br><span class="line">setMoneyMethod.Invoke(Singleton.GetInstance(), <span class="keyword">new</span> <span class="built_in">object</span>[] &#123; <span class="number">8888</span> &#125;);</span><br><span class="line">Singleton.GetInstance().GetMoney();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果方法有重载，如何获取？</span></span><br><span class="line">MethodInfo setmoneyMethod = sgType.GetMethod(<span class="string">&quot;SetMoney&quot;</span>,</span><br><span class="line">    BindingFlags.Instance | BindingFlags.NonPublic,</span><br><span class="line">    <span class="literal">null</span>, <span class="keyword">new</span> Type[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>) &#125;, <span class="literal">null</span>);</span><br><span class="line"><span class="comment">//执行方法</span></span><br><span class="line">setmoneyMethod.Invoke(Singleton.GetInstance(), <span class="keyword">new</span> <span class="built_in">object</span>[] &#123; <span class="string">&quot;8888&quot;</span> &#125;);</span><br><span class="line">Singleton.GetInstance().GetMoney();</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法有多个参数时</span></span><br><span class="line">MethodInfo setmoneyMethod = sgType.GetMethod(<span class="string">&quot;SetMoney&quot;</span>,</span><br><span class="line">    BindingFlags.Instance | BindingFlags.NonPublic,</span><br><span class="line">    <span class="literal">null</span>, <span class="keyword">new</span> Type[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">float</span>) &#125;, <span class="literal">null</span>);</span><br><span class="line"><span class="comment">//执行方法</span></span><br><span class="line">setmoneyMethod.Invoke(Singleton.GetInstance(), <span class="keyword">new</span> <span class="built_in">object</span>[] &#123; <span class="string">&quot;8888&quot;</span>, <span class="number">2</span> &#125;);</span><br><span class="line">Singleton.GetInstance().GetMoney();</span><br></pre></td></tr></table></figure>
+
+<p>批量调用方法<br>{“methods”:[“A”,”B”,”C”]}</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">string</span>[] methods = <span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;SetName&quot;</span>,<span class="string">&quot;SetMoney&quot;</span>,<span class="string">&quot;SetEquips&quot;</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; methods.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            InvokeMethod(methods[i], <span class="keyword">new</span> Type[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">float</span>) &#125;, <span class="keyword">new</span> <span class="built_in">object</span>[] &#123; <span class="string">&quot;8888&quot;</span>, <span class="number">2</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">InvokeMethod</span>(<span class="params"><span class="built_in">string</span> methodName,Type[] types,<span class="built_in">object</span>[] realParams</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type sgType = <span class="keyword">typeof</span>(Singleton);</span><br><span class="line">    MethodInfo setmoneyMethod = sgType.GetMethod(methodName,</span><br><span class="line">        BindingFlags.Instance | BindingFlags.NonPublic,</span><br><span class="line">        <span class="literal">null</span>, types, <span class="literal">null</span>);</span><br><span class="line">    <span class="comment">//执行方法</span></span><br><span class="line">    setmoneyMethod.Invoke(Singleton.GetInstance(), realParams);</span><br><span class="line">    Singleton.GetInstance().GetMoney();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Unity/Csharp/CsharpHL/property.png" alt="property"></p>
+<h2 id="Attrubutes"><a href="#Attrubutes" class="headerlink" title="Attrubutes"></a>Attrubutes</h2><p><img src="/Unity/Csharp/CsharpHL/attrubute01.png" alt="01"></p>
+<p><img src="/Unity/Csharp/CsharpHL/attrubutedescribe.png" alt="describe"></p>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><h4 id="Net"><a href="#Net" class="headerlink" title=".Net"></a>.Net</h4><p><img src="/Unity/Csharp/CsharpHL/attributeusage.png" alt="attributeusage"></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">AttributeUsage(AttributeTargets.All,AllowMultiple = true)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AuthorAttribute</span> : <span class="title">Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> authorName;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">char</span> authorSex;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> datatime;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AuthorAttribute</span>(<span class="params"><span class="built_in">string</span> authorName,<span class="built_in">char</span> authorSex,<span class="built_in">string</span> datatime</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.authorName = authorName;</span><br><span class="line">        <span class="keyword">this</span>.authorSex = authorSex;</span><br><span class="line">        <span class="keyword">this</span>.datatime = datatime;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Unity/Csharp/CsharpHL/conditional.png" alt="conditional"></p>
+<p><img src="/Unity/Csharp/CsharpHL/obsolete.png" alt="obsolete"><br>第二个参数为true则旧方法会报错</p>
+<h4 id="customize"><a href="#customize" class="headerlink" title="customize"></a>customize</h4><p><img src="/Unity/Csharp/CsharpHL/customize.png" alt="customize"></p>
+<p>用反射展示某个类型的信息</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ShowMemberAuthorMsg(gameObject.GetType());</span><br><span class="line">MemberInfo[] memberInfo = <span class="keyword">this</span>.GetType().GetMembers();</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; memberInfo.Length; i++)</span><br><span class="line">    ShowMemberAuthorMsg(memberInfo[i]);</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ShowMemberAuthorMsg</span>(<span class="params">MemberInfo memberInfo</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//TypeAttributes typeAttributes = type.Attributes;</span></span><br><span class="line">    <span class="comment">//获取类型的所有</span></span><br><span class="line">    <span class="built_in">object</span>[] atts = memberInfo.GetCustomAttributes(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = atts.Length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//判断该特性，是否是作者信息特性</span></span><br><span class="line">        <span class="keyword">if</span> (atts[i] <span class="keyword">is</span> AuthorAttribute)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//将Object对象转换为AuthorAttribute</span></span><br><span class="line">            AuthorAttribute author = atts[i] <span class="keyword">as</span> AuthorAttribute;</span><br><span class="line">            <span class="comment">//打印该特性对象中的信息</span></span><br><span class="line">            <span class="comment">//Debug.Log(&quot;Author Name : &quot; + author.authorName);</span></span><br><span class="line">            <span class="comment">//Debug.Log(&quot;Author Sex : &quot; + author.authorSex);</span></span><br><span class="line">            <span class="comment">//Debug.Log(&quot;Author DataTime : &quot; + author.datatime);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//对于MethodInfo</span></span><br><span class="line">methodInfo.GetCustomAttributes(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Unity/Demo/MultiplayerFPS/" rel="prev" title="MultiplayerFPS">
+                  <i class="fa fa-chevron-left"></i> MultiplayerFPS
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Unity/Csharp/CsharpFUNDAMENTAL/" rel="next" title="C# 语言基础">
+                  C# 语言基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vzer</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"waline-vzerzz.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":false,"pageview":false,"placeholder":"����������ѽ","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/Unity/Csharp/CsharpHL/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
