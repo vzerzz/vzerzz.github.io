@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>计算机基础</title>
-    <url>/Route/CS/</url>
-    <content><![CDATA[<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><span id="more"></span>
+    <title>Index</title>
+    <url>/Route/Index/</url>
+    <content><![CDATA[<h1 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h1><a href="/Route/CS/" title="计算机基础">计算机基础</a><br>
 
-<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><a href="/CS/C++/OOP/" title="OOP">OOP</a><br>
-
-<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2>]]></content>
+<a href="/Route/UnityRoute/" title="Unity">Unity</a><br>]]></content>
   </entry>
   <entry>
     <title>UnityRoute</title>
@@ -44,66 +42,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Index</title>
-    <url>/Route/Index/</url>
-    <content><![CDATA[<h1 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h1><a href="/Route/CS/" title="计算机基础">计算机基础</a><br>
+    <title>计算机基础</title>
+    <url>/Route/CS/</url>
+    <content><![CDATA[<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><span id="more"></span>
 
-<a href="/Route/UnityRoute/" title="Unity">Unity</a><br>]]></content>
-  </entry>
-  <entry>
-    <title>AStarPathFinding</title>
-    <url>/Unity/Frame/AStarPathFinding/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>AssetBundle</title>
-    <url>/Unity/Frame/AssetBundle/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>FSM</title>
-    <url>/Unity/Frame/FSM/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Photon</title>
-    <url>/Unity/Frame/Photon/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>xLua</title>
-    <url>/Unity/Frame/xLua/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><a href="/CS/C++/OOP/" title="OOP">OOP</a><br>
+
+<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2>]]></content>
   </entry>
   <entry>
     <title>UIFrame</title>
@@ -389,127 +334,6 @@
       <categories>
         <category>CS</category>
         <category>C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C# 语言基础</title>
-    <url>/Unity/Csharp/CsharpFUNDAMENTAL/</url>
-    <content><![CDATA[<h1 id="C-语言基础"><a href="#C-语言基础" class="headerlink" title="C# 语言基础"></a>C# 语言基础</h1><p>.NET 一个运行库和一个全面的基础类库。</p>
-<p>.NET Framework</p>
-<p>NET 平台主要有几三个构造块组成，如下：</p>
-<span id="more"></span>
-
-<ul>
-<li><p>CLR Common Language Runtime，表示的是公共语言运行库。<br>  CLR 的主要作用是为我们定位、加载和管理.NET 类型，同时也负责一些低层细节的工作，如内存管理、应用托管、处理线程、案例检查等。</p>
-</li>
-<li><p>CTS Common Type System，表示公共类型系统。<br>  CTS 完整描述了运行库所支持的所有可能的数据类型和编程结构，指定了这些实体间如何交互、也规定了它们在 .NET 元数据格式中的表示（关于元数据，可以从网上获取参考资料）。</p>
-</li>
-<li><p>CLS Common  Language  Specification，它表示的是公共语言规范。<br>  CLS 定义了一个让所有 .NET 语言都支持的公共类型和编程结构的子集。这样，如果构造的 .NET 类型仅公开与CLS兼容的类型，那么可以肯定其他所有支持 .NET 的语言都能使用他们。反之，如果使用了不兼容的，就不能交互。</p>
-</li>
-</ul>
-<p>文档注释：符号是3条斜线“///”,定在类、方法或属性的前面。</p>
-<p>数组的静态初始化<br>使用静态初始化时，数组的声明与初始化必须放在同一条语句中，不能分开写；如：<br>　　int[]  ages  = { 20, 21, 25, 28, 30 } ;  </p>
-<p>数组的动态初始化<br>声明与初始化可以分开或一起写 数组名 = new 数组类型[长度] 自动分配默认值<br>int[]   ages   =   new  int[5] { 20 , 22 , 24 , 26 , 30 } ;</p>
-<p>foreach 是一种更简单更明了的读取数组元素的语句。<br>特点：<br>    –用于读取容器类数据（数组、集合等）<br>    – 适合一次性读取全部元素<br>    –不能修改元素<br>    foreach(  数据类型   变量名   in    数组名)<br>    {<br>        //变量名此时表示的就是数组中的每一个元素<br>    }  </p>
-<p>二维数组<br>数据类型[,] 数组名 = new 数据类型[行数,列数]</p>
-<p>参数修饰符</p>
-<ul>
-<li>out修饰符<br>定义为带有输出参数（通过关键字out）的方法有义务在退出这个方法之前，给参数赋一个恰当的值（如果不这样做，会出现编译错误）调用该方法时，也需要使用out修饰符<br>允许传递未分配(未初始化)的数据  </li>
-<li><em>通过它，调用者只使用一次方法调用就能获得多个返回值。</em>*</li>
-</ul>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y, <span class="keyword">out</span> <span class="built_in">int</span> addValue, <span class="keyword">out</span> <span class="built_in">int</span> subValue</span>)</span>&#123;</span><br><span class="line">    addValue = x + y;</span><br><span class="line">    subValue = x - y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>ref修饰符<br>输出参数不需要在它们被传递给方法前初始化，因为方法在退出之前必须为输出参数赋值。<br>引用参数必须在它们被传递给方法之前初始化，因为是在传递一个对已存在变量的引用。如果不赋给它初始值，就相当于木对一直未赋值的本地变量进行操作。  </li>
-</ul>
-<p>方法重载<br>在同一个类的一组方法（至少大于或等于两个方法）<br>这些方法的方法名称相同，参数类型或参数个数不同<br>能否构成方法的重载，跟方法的返回值没有关系  </p>
-<ul>
-<li><p>protected<br>一般用于含有继承关系的子父类当中。可以由定义它们的类型及其任意子类使用，但外部类无法通过 C# 的“.”操作符访问。  </p>
-</li>
-<li><p>internal：内部的<br>用于修饰：类型或者类型成员<br>作用范围：当前项目下的所有类<br>使用internal修饰类中的字段或方法，在当前项目所有类下都可访问，但是其它项目是访问不到的。  </p>
-</li>
-<li><p>protected  internal ：受保护的内部的<br>用于修饰：类型成员或者嵌套类型　<br>如果使用了 protected  internal 关键字，作用范围在定义它们的程序集、类以及派生类中可用。  </p>
-</li>
-</ul>
-<p>封装性  </p>
-<ul>
-<li><p>广义封装<br>更多的是从整个项目的项目架构设计上考虑的，比如说完成一个项目时，该项目有几个模块组件，每个模块应该包含哪些对象，对象与对象之间的关系，模块与模块之间的关系划分等，这些可以使用广义封装解决</p>
-</li>
-<li><p>狭义封装<br>对象的内部数据不应该从对象实例直接访问。对象数据应该被定义为私有的，如果调用者想改变对象的状态，就要间接使用公共成员。<br>狭义封装，表示的是是对一个类中的成员（字段、方法等）的访问权限（作用范围）进行的一种限制操作。<br>通常情况下，使用C#中的访问控制符（又叫访问修饰符）来修饰类中的字段和方法的作用范围，是目前实现狭义封装的一种方式。  </p>
-<ol>
-<li>创建完一个类后，类中的字段使用 private 修饰，类中的方法使用 public 修饰；</li>
-<li>为类中用 private 修饰的字段添加一组方法，以保证既能保护类中的字段不被任何赋值修改，又可在外界必须访问这些字段时，提供一种间接访问方式；</li>
-<li>说明：这组间接的访问方法叫做：Get和Set方法。</li>
-</ol>
-</li>
-<li><p>标准属性<br>基本语法:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[访问修饰符]  　数据类型 　属性名</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span> &#123;  <span class="keyword">return</span>　 字段名；  &#125; </span><br><span class="line"><span class="keyword">set</span> &#123;   字段名  = <span class="keyword">value</span> ;   &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>注意事项：<br>访问修饰符，一般都是使用 public<br>数据类型，就是当前操作的字段的类型<br>属性名，就是当前操作的字段名（使用Pascal命名法）。  </p>
-<p>标准属性基本特点：<br>一个字段通常对应一个属性，属性的类型应与当前字段定义时的类型保持一致；<br>一个属性中包含一组方法 , get用于获取字段值 , set 用于为字段赋值，赋值时系统存在一个隐式变量,为value 在为字段赋值时，业务逻辑处理的代码，也是放在set中的；<br>属性本身不保存任何数据，访问字段为字段赋值等操作，看似操作的是属性，实质对数据的访问设置还是对字段的操作，且是由这两个方法实现；<br>标准属性，可设置只读 | 只写属性 ，只读权限时只保留get 方法即可；只写权限时只保留 set 方法即可；即可读又可写权限时 get 和 set 都要保留。<br>对象.属性 = xxx 时会将xxx自动传给隐式变量value set中可判断value的取值范围，满足要求再传给属性字段  </p>
-</li>
-<li><p>自动属性<br>当属性（又叫属性访问器）中不需要任何其他逻辑时(即不需要在set方法中添加任何业务代码)使用自动属性可以更加简洁。<br>自动属性本质就是一个字段两个方法。<br>语法：[访问修饰符]  数据类型  属性名  {  get ;  set ;  }  </p>
-<p>自动属性特点：<br>自动属性可利用编译器自动生成，以简化代码的编写注：代码中输入prop，按两下Tab键即可自动生成；<br>自动属性只能成对出现,即:不能只有一个get或一个set，也就是，自动属性不支持设置 只读 | 只写 操作；<br>自动属性不支持在 set 中添加业务逻辑代码；<br>编译器在生成自动属性时，会自动添加一个私有的字段，我们在写时，不用再自己声明私有字段，只需要直接添加属性即可。  </p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> name&#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">int</span> name;</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> Name&#123;</span><br><span class="line">    <span class="keyword">get</span>;<span class="keyword">set</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>继承性<br>单继承，即：一个子类只能有一个直接父类（继承的单层性）；<br>编译器是先进入到父类中，调用父类无参数的构造方法，如果父类没有无参数构造方法，编译器会自动为父类添加无参数，执行完父类无参数后，再执行子类自己的构造方法<br>如果父类有其它形式构造方法，但是没有无参数的构造方法，此时程序会报错。  </p>
-<ul>
-<li>base<br>访问父类中的同名方法，适合于子类中存在与父类相同签名的方法时；<br>访问父类的构造方法，在子类构造方法的小括号后面使用  : base( 参数值列表 )  表示访问父类的构造方法；<br>子类构造方法小括号后面默认省略 :base()  </li>
-</ul>
-<p>多态性<br><strong>父类变量，创建子类对象</strong><br>基本语法：<br>　　父类　变量名　　=　　new  　子类（参数列表）<br>向上转型<br>在执行期间判断对象的类型，决定执行子类还是父类的方法的机制称之为动态绑定。<br>  当子类和父类都有相同的方法时，调用子类自己的方法；<br>  当子类没有该方法时，调用父类的方法；<br>  当子类和父类都没有调用的方法时，程序编译报错。<br>应用：  </p>
-<ul>
-<li><p>多态在数组方面的应用<br>  多态数组<br>  创建Car类的数组，可放不同子类的对象，并override不同子类的方法，自动识别</p>
-</li>
-<li><p>多态特性作用于方法的参数上<br>  方法参数多态<br>  定义方法的参数类型时，要求参数既可以接收多种子类型，此时就可以将参数的类型定义为父类型，而运行时会根据传递过来的参数类型具体匹配。</p>
-</li>
-<li><p>多态特性作用于方法的返回值上  </p>
-</li>
-</ul>
-<p>Static  </p>
-<ul>
-<li><p>静态成员变量<br>静态成员变量属于类，类被加载时初始化，且只有一份。<br>特点：存在优先于对象，被所有对象所共享，常驻内存。  </p>
-</li>
-<li><p>静态构造函数<br>初始化类的静态数据成员。<br>仅在类被加载时执行一次。<br>不允许使用访问修饰符。  </p>
-</li>
-<li><p>静态方法<br>通过引用调用实例方法时，会隐式的传递对象引用，以便在方法内部可以正确访问该对象成员变量。<br>通过类名调用静态方法时，因为没有具体对象，所以在static方法中不能访问实例成员。  </p>
-</li>
-<li><p>静态类<br>不能实例化，只能包含静态成员。<br>静态类不能被继承，但是静态方法、属性都可以被继承。  </p>
-</li>
-<li><p>利：单独空间存储，所有对象共享，可直接被类名调用。<br>弊：静态方法中只能访问静态成员，共享数据被多个对象访问会出现并发。  </p>
-</li>
-<li><p>适用场合：  </p>
-<ol>
-<li>所有对象需要共享的数据。</li>
-<li>在没有对象前就要访问成员。</li>
-<li>工具类适合做静态类(常用，不需要过多数据)。</li>
-</ol>
-</li>
-</ul>
-<p>struct<br>与类语法相似，都可以包含数据成员和方法成员。但结构属于值类型，类属于引用类型。<br>适用表示点、颜色等轻量级对象。如创建存储1000个点的数组，如果使用类，将为每个对象分配更多内存，使用结构可以节约资源。<br>除非字段被声明为 const 或 static，否则无法初始化。<br>结构不能继承，但可以实现接口。<br>结构总会包含无参数构造函数。<br>构造函数中必须初始化所有字段。<br>结构不能包含显式的无参数构造函数  </p>
-<p>集合<br>可对集合中的元素进行增删改查操作，作用都是原集合，而不会产生新的集合。  </p>
-<ul>
-<li>ArrayList<br>底层就是一个可动态扩展的数组；<br>提供了用于在集合中添加、删除或查找项的方法;<br>ArrayList 集合不支持泛型（即：可放任意类型的数据）；<br>使用 ArrayList 集合之前，应先导入命名命名空间：using  System.Collections ;  </li>
-<li>List<br>类似于ArrayList集合，同样也提供了很多用于在集合中添加、删除或查找项的方法;提供了比ArrayList更多操作集合的方法<br>List 集合支持泛型；<br>List 集合默认的命名命名空间：using System.Collections.Generic;  </li>
-<li>Dictionary</li>
-</ul>
-<p>内存分配</p>
-<ul>
-<li><p>类型分配<br>值类型：存储数据本身。声明在栈中，数据存储在栈中。<br>引用类型：存储数据的引用(内存地址) 声明在栈中，数据存储在堆中，栈中存储该数据的引用。  </p>
-</li>
-<li><p>内存分配<br>程序运行时，CLR将申请的内存空间从逻辑上进行划分。</p>
-<ul>
-<li>栈区：<br>– 空间小(1MB)，读取速度快。<br>– 用于存储正在执行的方法，分配的空间叫做栈帧。栈帧中存储方法的参数以及变量等数据。方法执行完毕后，对应的栈帧将被清除。  </li>
-<li>堆区：<br>– 空间大，读取速度慢。<br>– 用于存储引用类型的数据。  </li>
-</ul>
-</li>
-<li><p>GC(Garbage Collection)是CLR中一种针对托管堆自动回收释放内存的服务。<br>GC线程从栈中的引用开始跟踪，从而判定哪些内存是正在使用的，若GC无法跟踪到某一块堆内存，那么就认为这块内存不再使用了，即为可回收的。  </p>
-<p>使用比较运算符比较值类型时，对比的是存储的数值。<br>比较引用类型时，对比的是引用的地址而不是数据。  </p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>C#</category>
       </categories>
   </entry>
   <entry>
@@ -839,6 +663,166 @@
       <categories>
         <category>Unity</category>
         <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C# 语言基础</title>
+    <url>/Unity/Csharp/CsharpFUNDAMENTAL/</url>
+    <content><![CDATA[<h1 id="C-语言基础"><a href="#C-语言基础" class="headerlink" title="C# 语言基础"></a>C# 语言基础</h1><p>.NET 一个运行库和一个全面的基础类库。</p>
+<p>.NET Framework</p>
+<p>NET 平台主要有几三个构造块组成，如下：</p>
+<span id="more"></span>
+
+<ul>
+<li><p>CLR Common Language Runtime，表示的是公共语言运行库。<br>  CLR 的主要作用是为我们定位、加载和管理.NET 类型，同时也负责一些低层细节的工作，如内存管理、应用托管、处理线程、案例检查等。</p>
+</li>
+<li><p>CTS Common Type System，表示公共类型系统。<br>  CTS 完整描述了运行库所支持的所有可能的数据类型和编程结构，指定了这些实体间如何交互、也规定了它们在 .NET 元数据格式中的表示（关于元数据，可以从网上获取参考资料）。</p>
+</li>
+<li><p>CLS Common  Language  Specification，它表示的是公共语言规范。<br>  CLS 定义了一个让所有 .NET 语言都支持的公共类型和编程结构的子集。这样，如果构造的 .NET 类型仅公开与CLS兼容的类型，那么可以肯定其他所有支持 .NET 的语言都能使用他们。反之，如果使用了不兼容的，就不能交互。</p>
+</li>
+</ul>
+<p>文档注释：符号是3条斜线“///”,定在类、方法或属性的前面。</p>
+<p>数组的静态初始化<br>使用静态初始化时，数组的声明与初始化必须放在同一条语句中，不能分开写；如：<br>　　int[]  ages  = { 20, 21, 25, 28, 30 } ;  </p>
+<p>数组的动态初始化<br>声明与初始化可以分开或一起写 数组名 = new 数组类型[长度] 自动分配默认值<br>int[]   ages   =   new  int[5] { 20 , 22 , 24 , 26 , 30 } ;</p>
+<p>foreach 是一种更简单更明了的读取数组元素的语句。<br>特点：<br>    –用于读取容器类数据（数组、集合等）<br>    – 适合一次性读取全部元素<br>    –不能修改元素<br>    foreach(  数据类型   变量名   in    数组名)<br>    {<br>        //变量名此时表示的就是数组中的每一个元素<br>    }  </p>
+<p>二维数组<br>数据类型[,] 数组名 = new 数据类型[行数,列数]</p>
+<p>参数修饰符</p>
+<ul>
+<li>out修饰符<br>定义为带有输出参数（通过关键字out）的方法有义务在退出这个方法之前，给参数赋一个恰当的值（如果不这样做，会出现编译错误）调用该方法时，也需要使用out修饰符<br>允许传递未分配(未初始化)的数据  </li>
+<li><em>通过它，调用者只使用一次方法调用就能获得多个返回值。</em>*</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y, <span class="keyword">out</span> <span class="built_in">int</span> addValue, <span class="keyword">out</span> <span class="built_in">int</span> subValue</span>)</span>&#123;</span><br><span class="line">    addValue = x + y;</span><br><span class="line">    subValue = x - y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ref修饰符<br>输出参数不需要在它们被传递给方法前初始化，因为方法在退出之前必须为输出参数赋值。<br>引用参数必须在它们被传递给方法之前初始化，因为是在传递一个对已存在变量的引用。如果不赋给它初始值，就相当于木对一直未赋值的本地变量进行操作。  </li>
+</ul>
+<p>方法重载<br>在同一个类的一组方法（至少大于或等于两个方法）<br>这些方法的方法名称相同，参数类型或参数个数不同<br>能否构成方法的重载，跟方法的返回值没有关系  </p>
+<ul>
+<li><p>protected<br>一般用于含有继承关系的子父类当中。可以由定义它们的类型及其任意子类使用，但外部类无法通过 C# 的“.”操作符访问。  </p>
+</li>
+<li><p>internal：内部的<br>用于修饰：类型或者类型成员<br>作用范围：当前项目下的所有类<br>使用internal修饰类中的字段或方法，在当前项目所有类下都可访问，但是其它项目是访问不到的。  </p>
+</li>
+<li><p>protected  internal ：受保护的内部的<br>用于修饰：类型成员或者嵌套类型　<br>如果使用了 protected  internal 关键字，作用范围在定义它们的程序集、类以及派生类中可用。  </p>
+</li>
+</ul>
+<p>封装性  </p>
+<ul>
+<li><p>广义封装<br>更多的是从整个项目的项目架构设计上考虑的，比如说完成一个项目时，该项目有几个模块组件，每个模块应该包含哪些对象，对象与对象之间的关系，模块与模块之间的关系划分等，这些可以使用广义封装解决</p>
+</li>
+<li><p>狭义封装<br>对象的内部数据不应该从对象实例直接访问。对象数据应该被定义为私有的，如果调用者想改变对象的状态，就要间接使用公共成员。<br>狭义封装，表示的是是对一个类中的成员（字段、方法等）的访问权限（作用范围）进行的一种限制操作。<br>通常情况下，使用C#中的访问控制符（又叫访问修饰符）来修饰类中的字段和方法的作用范围，是目前实现狭义封装的一种方式。  </p>
+<ol>
+<li>创建完一个类后，类中的字段使用 private 修饰，类中的方法使用 public 修饰；</li>
+<li>为类中用 private 修饰的字段添加一组方法，以保证既能保护类中的字段不被任何赋值修改，又可在外界必须访问这些字段时，提供一种间接访问方式；</li>
+<li>说明：这组间接的访问方法叫做：Get和Set方法。</li>
+</ol>
+</li>
+<li><p>标准属性<br>基本语法:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[访问修饰符]  　数据类型 　属性名</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span> &#123;  <span class="keyword">return</span>　 字段名；  &#125; </span><br><span class="line"><span class="keyword">set</span> &#123;   字段名  = <span class="keyword">value</span> ;   &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>注意事项：<br>访问修饰符，一般都是使用 public<br>数据类型，就是当前操作的字段的类型<br>属性名，就是当前操作的字段名（使用Pascal命名法）。  </p>
+<p>标准属性基本特点：<br>一个字段通常对应一个属性，属性的类型应与当前字段定义时的类型保持一致；<br>一个属性中包含一组方法 , get用于获取字段值 , set 用于为字段赋值，赋值时系统存在一个隐式变量,为value 在为字段赋值时，业务逻辑处理的代码，也是放在set中的；<br>属性本身不保存任何数据，访问字段为字段赋值等操作，看似操作的是属性，实质对数据的访问设置还是对字段的操作，且是由这两个方法实现；<br>标准属性，可设置只读 | 只写属性 ，只读权限时只保留get 方法即可；只写权限时只保留 set 方法即可；即可读又可写权限时 get 和 set 都要保留。<br>对象.属性 = xxx 时会将xxx自动传给隐式变量value set中可判断value的取值范围，满足要求再传给属性字段  </p>
+</li>
+<li><p>自动属性<br>当属性（又叫属性访问器）中不需要任何其他逻辑时(即不需要在set方法中添加任何业务代码)使用自动属性可以更加简洁。<br>自动属性本质就是一个字段两个方法。<br>语法：[访问修饰符]  数据类型  属性名  {  get ;  set ;  }  </p>
+<p>自动属性特点：<br>自动属性可利用编译器自动生成，以简化代码的编写注：代码中输入prop，按两下Tab键即可自动生成；<br>自动属性只能成对出现,即:不能只有一个get或一个set，也就是，自动属性不支持设置 只读 | 只写 操作；<br>自动属性不支持在 set 中添加业务逻辑代码；<br>编译器在生成自动属性时，会自动添加一个私有的字段，我们在写时，不用再自己声明私有字段，只需要直接添加属性即可。  </p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> name&#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">int</span> name;</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> Name&#123;</span><br><span class="line">    <span class="keyword">get</span>;<span class="keyword">set</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>继承性<br>单继承，即：一个子类只能有一个直接父类（继承的单层性）；<br>编译器是先进入到父类中，调用父类无参数的构造方法，如果父类没有无参数构造方法，编译器会自动为父类添加无参数，执行完父类无参数后，再执行子类自己的构造方法<br>如果父类有其它形式构造方法，但是没有无参数的构造方法，此时程序会报错。  </p>
+<ul>
+<li>base<br>访问父类中的同名方法，适合于子类中存在与父类相同签名的方法时；<br>访问父类的构造方法，在子类构造方法的小括号后面使用  : base( 参数值列表 )  表示访问父类的构造方法；<br>子类构造方法小括号后面默认省略 :base()  </li>
+</ul>
+<p>多态性<br><strong>父类变量，创建子类对象</strong><br>基本语法：<br>　　父类　变量名　　=　　new  　子类（参数列表）<br>向上转型<br>在执行期间判断对象的类型，决定执行子类还是父类的方法的机制称之为动态绑定。<br>  当子类和父类都有相同的方法时，调用子类自己的方法；<br>  当子类没有该方法时，调用父类的方法；<br>  当子类和父类都没有调用的方法时，程序编译报错。<br>应用：  </p>
+<ul>
+<li><p>多态在数组方面的应用<br>  多态数组<br>  创建Car类的数组，可放不同子类的对象，并override不同子类的方法，自动识别</p>
+</li>
+<li><p>多态特性作用于方法的参数上<br>  方法参数多态<br>  定义方法的参数类型时，要求参数既可以接收多种子类型，此时就可以将参数的类型定义为父类型，而运行时会根据传递过来的参数类型具体匹配。</p>
+</li>
+<li><p>多态特性作用于方法的返回值上  </p>
+</li>
+</ul>
+<p>Static  </p>
+<ul>
+<li><p>静态成员变量<br>静态成员变量属于类，类被加载时初始化，且只有一份。<br>特点：存在优先于对象，被所有对象所共享，常驻内存。  </p>
+</li>
+<li><p>静态构造函数<br>初始化类的静态数据成员。<br>仅在类被加载时执行一次。<br>不允许使用访问修饰符。  </p>
+</li>
+<li><p>静态方法<br>通过引用调用实例方法时，会隐式的传递对象引用，以便在方法内部可以正确访问该对象成员变量。<br>通过类名调用静态方法时，因为没有具体对象，所以在static方法中不能访问实例成员。  </p>
+</li>
+<li><p>静态类<br>不能实例化，只能包含静态成员。<br>静态类不能被继承，但是静态方法、属性都可以被继承。  </p>
+</li>
+<li><p>利：单独空间存储，所有对象共享，可直接被类名调用。<br>弊：静态方法中只能访问静态成员，共享数据被多个对象访问会出现并发。  </p>
+</li>
+<li><p>适用场合：  </p>
+<ol>
+<li>所有对象需要共享的数据。</li>
+<li>在没有对象前就要访问成员。</li>
+<li>工具类适合做静态类(常用，不需要过多数据)。</li>
+</ol>
+</li>
+</ul>
+<p>struct<br>与类语法相似，都可以包含数据成员和方法成员。但结构属于值类型，类属于引用类型。<br>适用表示点、颜色等轻量级对象。如创建存储1000个点的数组，如果使用类，将为每个对象分配更多内存，使用结构可以节约资源。<br>除非字段被声明为 const 或 static，否则无法初始化。<br>结构不能继承，但可以实现接口。<br>结构总会包含无参数构造函数。<br>构造函数中必须初始化所有字段。<br>结构不能包含显式的无参数构造函数  </p>
+<p>集合<br>可对集合中的元素进行增删改查操作，作用都是原集合，而不会产生新的集合。  </p>
+<ul>
+<li>ArrayList<br>底层就是一个可动态扩展的数组；<br>提供了用于在集合中添加、删除或查找项的方法;<br>ArrayList 集合不支持泛型（即：可放任意类型的数据）；<br>使用 ArrayList 集合之前，应先导入命名命名空间：using  System.Collections ;  </li>
+<li>List<br>类似于ArrayList集合，同样也提供了很多用于在集合中添加、删除或查找项的方法;提供了比ArrayList更多操作集合的方法<br>List 集合支持泛型；<br>List 集合默认的命名命名空间：using System.Collections.Generic;  </li>
+<li>Dictionary</li>
+</ul>
+<p>内存分配</p>
+<ul>
+<li><p>类型分配<br>值类型：存储数据本身。声明在栈中，数据存储在栈中。<br>引用类型：存储数据的引用(内存地址) 声明在栈中，数据存储在堆中，栈中存储该数据的引用。  </p>
+</li>
+<li><p>内存分配<br>程序运行时，CLR将申请的内存空间从逻辑上进行划分。</p>
+<ul>
+<li>栈区：<br>– 空间小(1MB)，读取速度快。<br>– 用于存储正在执行的方法，分配的空间叫做栈帧。栈帧中存储方法的参数以及变量等数据。方法执行完毕后，对应的栈帧将被清除。  </li>
+<li>堆区：<br>– 空间大，读取速度慢。<br>– 用于存储引用类型的数据。  </li>
+</ul>
+</li>
+<li><p>GC(Garbage Collection)是CLR中一种针对托管堆自动回收释放内存的服务。<br>GC线程从栈中的引用开始跟踪，从而判定哪些内存是正在使用的，若GC无法跟踪到某一块堆内存，那么就认为这块内存不再使用了，即为可回收的。  </p>
+<p>使用比较运算符比较值类型时，对比的是存储的数值。<br>比较引用类型时，对比的是引用的地址而不是数据。  </p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>数据存储</title>
+    <url>/Unity/DataPersistence/Storage/</url>
+    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SQLite</title>
+    <url>/Unity/DataPersistence/SQLite/</url>
+    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
+<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
+<p>以下为需要定义的对象</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SQL三种执行方法</li>
+</ul>
+<ol>
+<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
+ <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
       </categories>
   </entry>
   <entry>
@@ -1937,6 +1921,17 @@
       </tags>
   </entry>
   <entry>
+    <title>AStarPathFinding</title>
+    <url>/Unity/Frame/AStarPathFinding/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Frame</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SunnyLand</title>
     <url>/Unity/Demo/SunnyLand/</url>
     <content><![CDATA[<h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
@@ -2152,42 +2147,47 @@
       </tags>
   </entry>
   <entry>
-    <title>SQLite</title>
-    <url>/Unity/DataPersistence/SQLite/</url>
-    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
-<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
-<p>以下为需要定义的对象</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>SQL三种执行方法</li>
-</ul>
-<ol>
-<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
- <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+    <title>AssetBundle</title>
+    <url>/Unity/Frame/AssetBundle/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
 ]]></content>
       <categories>
         <category>Unity</category>
-        <category>DataPersistence</category>
+        <category>Frame</category>
       </categories>
   </entry>
   <entry>
-    <title>数据存储</title>
-    <url>/Unity/DataPersistence/Storage/</url>
-    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
+    <title>FSM</title>
+    <url>/Unity/Frame/FSM/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
 ]]></content>
       <categories>
         <category>Unity</category>
-        <category>DataPersistence</category>
+        <category>Frame</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Photon</title>
+    <url>/Unity/Frame/Photon/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Frame</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>xLua</title>
+    <url>/Unity/Frame/xLua/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Frame</category>
       </categories>
   </entry>
   <entry>
