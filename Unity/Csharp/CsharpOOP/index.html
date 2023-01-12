@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>C#面向对象 | Vzer&#39;s Blog</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="C#面向对象 | Vzer&#39;s Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="这里什么都没有…">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Vzer&#39;s Blog">
+<meta property="og:description" content="这里什么都没有…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-24T10:38:54.000Z">
+<meta property="article:modified_time" content="2022-05-24T11:10:58.509Z">
+<meta property="article:author" content="Vzer">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Vzer</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/vzerzz"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/mo-sa-ran-yun-yu"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="csdn"
+               href="https://blog.csdn.net/gentleclown"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-csdn"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(45)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="C++">
+                        
+                        C++
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Graphics">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Graphics
+                        <small>(15)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Graphics<--->Fundamental">
+                                        
+                                        Fundamental
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Graphics<--->RTR">
+                                        
+                                        RTR
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Unity">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Unity
+                        <small>(26)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Unity<--->C#">
+                                        
+                                        C#
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->DataPersistence">
+                                        
+                                        DataPersistence
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Demo">
+                                        
+                                        Demo
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Frame">
+                                        
+                                        Frame
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Fundamental">
+                                        
+                                        Fundamental
+                                        
+                                            <small>(8
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Others">
+                        
+                        Others
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">关于</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="45">
+<input type="hidden" id="yelog_site_word_count" value="75k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>2D</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3D</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FPS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sneak</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Quaternion">Quaternion</span>
+            <span class="post-date" title="2023-01-13 00:00:00">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/PracticalIndustrialSolutions/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PracticalIndustrialSolutions">PracticalIndustrialSolutions</span>
+            <span class="post-date" title="2022-12-05 00:00:00">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/RTRT/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RTRT">RTRT</span>
+            <span class="post-date" title="2022-11-24 00:00:00">2022/11/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/PBR/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PBR">PBR</span>
+            <span class="post-date" title="2022-11-23 00:00:00">2022/11/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/GlobalIllumination/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Global Illumination">Global Illumination</span>
+            <span class="post-date" title="2022-11-20 00:00:00">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/EnvironmentMapping/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Environment Mapping">Environment Mapping</span>
+            <span class="post-date" title="2022-11-15 00:00:00">2022/11/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/Shadows/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shadows">Shadows</span>
+            <span class="post-date" title="2022-11-03 00:00:00">2022/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/env/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="env">env</span>
+            <span class="post-date" title="2022-10-30 00:00:00">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/vscodevim/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="vscodevim">vscodevim</span>
+            <span class="post-date" title="2022-10-20 00:00:00">2022/10/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Animation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Animation">Animation</span>
+            <span class="post-date" title="2022-10-09 00:00:00">2022/10/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Camera/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Camera">Camera</span>
+            <span class="post-date" title="2022-10-07 00:00:00">2022/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Materials/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Materials">Materials</span>
+            <span class="post-date" title="2022-10-07 00:00:00">2022/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/RayTracing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RayTracing">RayTracing</span>
+            <span class="post-date" title="2022-09-29 00:00:00">2022/09/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Geometry/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Geometry">Geometry</span>
+            <span class="post-date" title="2022-09-28 00:00:00">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Shading/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shading">Shading</span>
+            <span class="post-date" title="2022-09-25 00:00:00">2022/09/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-08-19 00:00:00">2022/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 C++ "
+           href="/C++/Cherno/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cherno">Cherno</span>
+            <span class="post-date" title="2022-08-18 00:00:00">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Rasterization/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rasterization">Rasterization</span>
+            <span class="post-date" title="2022-07-14 00:00:00">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Transformation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Transformation">Transformation</span>
+            <span class="post-date" title="2022-07-14 00:00:00">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/UIFrame/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UIFrame">UIFrame</span>
+            <span class="post-date" title="2022-06-17 00:00:00">2022/06/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpDesignPattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 设计模式">C# 设计模式</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpFUNDAMENTAL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 语言基础">C# 语言基础</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpHL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 高级">C# 高级</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpOOP/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C#面向对象">C#面向对象</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity DataPersistence "
+           href="/Unity/DataPersistence/Storage/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储">数据存储</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/MultiplayerFPS/"
+           data-tag="FPS"
+           data-author="" >
+            <span class="post-title" title="MultiplayerFPS">MultiplayerFPS</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity DataPersistence "
+           href="/Unity/DataPersistence/SQLite/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQLite">SQLite</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Ruby's%20Adventure/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="Ruby&#39;s Adventure">Ruby&#39;s Adventure</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/RobbiePlatform/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="RobbiePlatform">RobbiePlatform</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/SunnyLand/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="SunnyLand">SunnyLand</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Stealth/"
+           data-tag="3D,sneak"
+           data-author="" >
+            <span class="post-title" title="Stealth">Stealth</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Up/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="Up">Up</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Animation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动画系统">动画系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Base/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="初识">初识</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Effects/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="特效系统">特效系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Coroutine/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="协程">协程</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Navigation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="导航系统">导航系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Physics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="物理系统">物理系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/UGUI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UGUI">UGUI</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/WWW/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WWW">WWW</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/AStarPathFinding/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AStarPathFinding">AStarPathFinding</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/AssetBundle/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AssetBundle">AssetBundle</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/FSM/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FSM">FSM</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/Photon/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Photon">Photon</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/xLua/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="xLua">xLua</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Unity/Csharp/CsharpOOP" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">C#面向对象</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Unity">Unity</a> > 
+            
+            <a  data-rel="Unity&lt;---&gt;C#">C#</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-06-29 20:26:39'>2022-01-01 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:5.6k</span>
+        
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">C#面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3"><span class="toc-text">主要思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF"><span class="toc-text">优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-text">面向对象的三大特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%9B%9B%E5%A4%A7%E5%85%B3%E7%B3%BB"><span class="toc-text">类的四大关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%85%AB%E5%A4%A7%E5%8E%9F%E5%88%99"><span class="toc-text">设计的八大原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80-%E9%97%AD%E5%8E%9F%E5%88%99%EF%BC%88%E7%9B%AE%E6%A0%87%E3%80%81%E6%80%BB%E7%9A%84%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3%EF%BC%89"><span class="toc-text">开-闭原则（目标、总的指导思想）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%EF%BC%88%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%89"><span class="toc-text">类的单一职责（一个类的定义）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%EF%BC%88%E4%BE%9D%E8%B5%96%E6%8A%BD%E8%B1%A1%EF%BC%89"><span class="toc-text">依赖倒置（依赖抽象）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99%EF%BC%88%E5%A4%8D%E7%94%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%89"><span class="toc-text">组合复用原则（复用的最佳实践）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%EF%BC%88%E7%BB%A7%E6%89%BF%E5%90%8E%E7%9A%84%E9%87%8D%E5%86%99%EF%BC%8C%E6%8C%87%E5%AF%BC%E7%BB%A7%E6%89%BF%E7%9A%84%E8%AE%BE%E8%AE%A1%EF%BC%89"><span class="toc-text">里氏替换（继承后的重写，指导继承的设计）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%EF%BC%88%E5%8A%9F%E8%83%BD%E6%8B%86%E5%88%86%EF%BC%89"><span class="toc-text">接口隔离（功能拆分）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E7%BC%96%E7%A8%8B%E8%80%8C%E9%9D%9E%E9%9D%A2%E5%90%91%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%88%87%E6%8D%A2%E3%80%81%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91%EF%BC%89"><span class="toc-text">面向接口编程而非面向实现（切换、并行开发）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99%EF%BC%88%E7%B1%BB%E4%B8%8E%E7%B1%BB%E4%BA%A4%E4%BA%92%E7%9A%84%E5%8E%9F%E5%88%99%EF%BC%89"><span class="toc-text">迪米特法则（类与类交互的原则）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-text">封装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">访问修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1"><span class="toc-text">设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF-extends"><span class="toc-text">继承 extends</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E6%80%A7"><span class="toc-text">适用性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-text">继承中的构造方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-text">抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="toc-text">抽象方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-text">定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%AE%B5"><span class="toc-text">实现手段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%9A%90%E8%97%8F"><span class="toc-text">方法隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E5%8E%9F%E7%90%86"><span class="toc-text">隐藏原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%96%B9%E6%B3%95"><span class="toc-text">虚方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="toc-text">方法重写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%86%99%E5%8E%9F%E7%90%86"><span class="toc-text">重写原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A-%E6%99%9A%E6%9C%9F%E7%BB%91%E5%AE%9A-%E4%B8%8E%E9%9D%99%E6%80%81%E7%BB%91%E5%AE%9A-%E6%97%A9%E6%9C%9F%E7%BB%91%E5%AE%9A"><span class="toc-text">动态绑定(晚期绑定)与静态绑定(早期绑定)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E5%B0%81-Sealed"><span class="toc-text">密封 Sealed</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="toc-text">抽象类与接口的选择策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%98%BE%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="toc-text">接口的显式实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Framework%E5%B8%B8%E7%94%A8%E6%8E%A5%E5%8F%A3"><span class="toc-text">Framework常用接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F-Coroutine"><span class="toc-text">Unity 协同程序(Coroutine)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-4"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-2"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8-2"><span class="toc-text">作用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98"><span class="toc-text">委托</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-5"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8-3"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-1"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%92%AD%E5%A7%94%E6%89%98"><span class="toc-text">多播委托</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-2"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%E7%9A%84%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8"><span class="toc-text">委托实现方法的异步调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-6"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8-4"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-3"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-text">反射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-7"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8-5"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="toc-text">常用类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-text">动态创建对象</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C#面向对象"></a>C#面向对象</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>面向过程的程序 = 算法 + 数据结构； 关心解决问题的步骤。</p>
+<p>面向对象的程序 = 对象 + 交互； 关心谁在解决问题。</p>
+<p>类：一个抽象的概念，即为生活中的&quot;类别&quot;。</p>
+<p>对象：类的具体实例，即归属于某个类别的&quot;个体&quot;。</p>
+<p>同类型的多个对象，行为相同，数据不同。</p>
+<span id="more"></span>
+<h3 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h3><p><strong>分而治之</strong> —- 将一个大的需求分解为许多类，每个类处理一个独立的模块。</p>
+<p>拆分好处：独立模块便于分工，每个模块便于复用，可扩展性强。</p>
+<p><strong>封装变化</strong> —- 变化的地方独立封装，避免影响其他模块。</p>
+<p><strong>高 内 聚</strong> —- 类中各个方法都在完成一项任务(单一职责的类)。</p>
+<p>复杂的实现封装在内部，对外提供简单的调用。</p>
+<p><strong>低 耦 合</strong> —- 类与类的关联性依赖度要低(每个类独立)。</p>
+<p>让一个模块的改变，尽少影响其他模块。</p>
+<p>[例如：硬件高度集成化，又要可插拔]</p>
+<p>最高的内聚莫过于类中仅包含1个方法，将会导致高内聚高耦合。</p>
+<p>最低的耦合莫过于类中包含所有方法，将会导致低耦合低内聚。</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>复用，灵活，简单。</p>
+<h3 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h3><p><strong>封装：</strong></p>
+<p>数据角度讲，将一些基本数据类型复合成一个自定义类型。</p>
+<p>方法角度讲，向类外提供功能，隐藏实现的细节。</p>
+<p><strong>设计角度讲</strong> ，分而治之，高内聚低耦合，封装变化。</p>
+<p><strong>继承：</strong></p>
+<p>统一概念。</p>
+<p>重用现有类的功能，在此基础上进行扩展。</p>
+<p><strong>多态：</strong></p>
+<p>父类的同一种动作或者行为，在不同的子类上有不同的实现。</p>
+<p>(父类调用同一方法，在不同的子类上有不同的执行效果)</p>
+<p>实现手段：虚方法、抽象方法、接口方法。</p>
+<h3 id="类的四大关系"><a href="#类的四大关系" class="headerlink" title="类的四大关系"></a>类的四大关系</h3><p><strong>泛化：</strong> 子类与父类的关系，概念的复用，耦合度最高；</p>
+<p>B类泛化A类，意味B类是A类的一种；</p>
+<p>做法：B类继承A类</p>
+<p><strong>实现：</strong> 抽象行为的具体实现，两者体现功能的关系，变化只影响行为；</p>
+<p>A类实现B类，意味A类必须具体实现B类中所有抽象成员。</p>
+<p>做法：实现抽象类、接口中的抽象成员。</p>
+<p><strong>关联**</strong> ( <strong><strong>聚合</strong></strong> / <strong><strong>组合</strong></strong> ) <strong>**：</strong> 部分与整体的关系，功能的复用，变化影响一个类；</p>
+<p>A与B关联，意味着B是A的一部分；</p>
+<p>做法：在A类中包含B类型成员。</p>
+<p><strong>依赖：</strong> 合作关系，一种相对松散的协作，变化影响一个方法；</p>
+<p>A类依赖B类，意味A类的某些功能靠B类实现；</p>
+<p>做法：B类型作为A类中方法的参数，并不是A的成员。</p>
+<h3 id="设计的八大原则"><a href="#设计的八大原则" class="headerlink" title="设计的八大原则"></a>设计的八大原则</h3><h4 id="开-闭原则（目标、总的指导思想）"><a href="#开-闭原则（目标、总的指导思想）" class="headerlink" title="开-闭原则（目标、总的指导思想）"></a>开-闭原则（目标、总的指导思想）</h4><p><strong>O</strong> pen <strong>C</strong> losed <strong>P</strong> rinciple</p>
+<p>对扩展开放，对修改关闭。</p>
+<p>增加新功能，不改变原有代码。</p>
+<h4 id="类的单一职责（一个类的定义）"><a href="#类的单一职责（一个类的定义）" class="headerlink" title="类的单一职责（一个类的定义）"></a>类的单一职责（一个类的定义）</h4><p><strong>S</strong> ingle <strong>R</strong> esponsibility <strong>P</strong> rinciple</p>
+<p>一个类有且只有一个改变它的原因。</p>
+<p>适用于基础类，不适用基于基础类构建复杂的聚合类。</p>
+<h4 id="依赖倒置（依赖抽象）"><a href="#依赖倒置（依赖抽象）" class="headerlink" title="依赖倒置（依赖抽象）"></a>依赖倒置（依赖抽象）</h4><p><strong>D</strong> ependency <strong>I</strong> nversion <strong>P</strong> rinciple</p>
+<p>客户端代码(调用的类)尽量依赖(使用)抽象的组件。</p>
+<p>抽象的是稳定的。实现是多变的。</p>
+<h4 id="组合复用原则（复用的最佳实践）"><a href="#组合复用原则（复用的最佳实践）" class="headerlink" title="组合复用原则（复用的最佳实践）"></a>组合复用原则（复用的最佳实践）</h4><p>Composite Reuse Principle</p>
+<p>如果仅仅为了代码复用优先选择组合复用，而非继承复用。</p>
+<p>组合的耦合性相对继承低。</p>
+<h4 id="里氏替换（继承后的重写，指导继承的设计）"><a href="#里氏替换（继承后的重写，指导继承的设计）" class="headerlink" title="里氏替换（继承后的重写，指导继承的设计）"></a>里氏替换（继承后的重写，指导继承的设计）</h4><p><strong>L</strong> iskov <strong>S</strong> ubstitution <strong>P</strong> rinciple</p>
+<p>父类出现的地方可以被子类替换，在替换后依然保持原功能。</p>
+<p>子类要拥有父类的所有功能。</p>
+<p>子类在重写父类方法时，尽量选择扩展重写，防止改变了功能。</p>
+<h4 id="接口隔离（功能拆分）"><a href="#接口隔离（功能拆分）" class="headerlink" title="接口隔离（功能拆分）"></a>接口隔离（功能拆分）</h4><p><strong>I</strong> nterface <strong>S</strong> egregation <strong>P</strong> rinciple</p>
+<p>尽量定义小而精的接口interface，少定义大而全的接口。本质与单一职责相同。</p>
+<p>小接口之间功能隔离，实现类需要多个功能时可以选择多实现.或接口之间做继承。</p>
+<h4 id="面向接口编程而非面向实现（切换、并行开发）"><a href="#面向接口编程而非面向实现（切换、并行开发）" class="headerlink" title="面向接口编程而非面向实现（切换、并行开发）"></a>面向接口编程而非面向实现（切换、并行开发）</h4><p>客户端通过一系列抽象操作实例，而无需关注具体类型。</p>
+<p>便于灵活切换一系列功能。</p>
+<p>实现软件的并行开发。</p>
+<h4 id="迪米特法则（类与类交互的原则）"><a href="#迪米特法则（类与类交互的原则）" class="headerlink" title="迪米特法则（类与类交互的原则）"></a>迪米特法则（类与类交互的原则）</h4><p>Law of Demeter</p>
+<p>不要和陌生人说话。</p>
+<p>类与类交互时，在满足功能要求的基础上，传递的数据量越少越好。因为这样可能降低耦合度。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>数据角度讲，将一些基本数据类型复合成一个自定义类型。</p>
+<p>方法角度讲，向类外提供功能，隐藏实现的细节。</p>
+<p><strong>设计角度讲</strong> ，分而治之，高内聚低耦合，封装变化。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>松散耦合，降低了程序各部分之间的依赖性。</li>
+<li>简化编程，使用者不必了解具体的实现细节，只需要调用对外提供的功能。</li>
+<li>增强安全性，以特定的访问权限来使用类成员，保护成员不被意外修改。</li>
+</ol>
+<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><ol>
+<li>private：私有的， <strong>类成员默认级别</strong> ，仅在类内部可见。</li>
+<li>internal：内部的， <strong>类默认级别</strong> ，仅在程序集内可见。</li>
+<li>protected：受保护的，类内部与派生类中可见。</li>
+<li>protected internal：意为 internal 或 protected； 程序集内或者派生类中可见。</li>
+<li>public：公有的，类内类外都可见。</li>
+</ol>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><ol>
+<li>玩家可以通过摇杆控制主角运动。</li>
+<li>运动过程中播放相应的动画。</li>
+<li>玩家控制主角打怪，怪受伤，可能死亡。</li>
+</ol>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>角色系统，成长系统，技能系统，动画系统，运动系统，任务系统，背包系统，结算系统。</p>
+<ol>
+<li>识别对象：主角，小怪，输入控制，动画。</li>
+<li>分配职责：</li>
+</ol>
+<p>主角：存储状态(攻击力，攻击速度,生命，魔法)，受伤，死亡。</p>
+<p>小怪：存储状态(攻击力，攻击速度,生命，魔法)，受伤，死亡。</p>
+<p>马达：移动, 旋转。</p>
+<p>输入控制：控制移动,控制攻击。</p>
+<p>动画系统：管理动画片段，提供动画事件。,</p>
+<ol>
+<li>建立交互：</li>
+</ol>
+<p>移动: 检测到玩家开始移动-&gt;调用动画系统播动画-&gt;调用马达的移动方法-&gt;检测到玩家松开按钮结束触摸-&gt;调用动画系统取消动画。</p>
+<p>打怪: 按下技能按钮-&gt;调用技能系统释放技能-&gt;调用动画系统播动画-&gt;处理动画事件</p>
+<p>-&gt;调用小怪的受伤-&gt;可能调用死亡方法。</p>
+<h4 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h4><p><strong>运动系统</strong></p>
+<p>角色马达：CharacterMotor</p>
+<p>数据：移动速度 moveSpeed,转向速度 rotationSpeed,角色控制器(chController)</p>
+<p>行为：移动（Movement），转向(LookAtTarget)</p>
+<p><strong>动画系统</strong></p>
+<p>角色动画参数类：CharacterAnimationParameter</p>
+<p>数据：动画片段</p>
+<p>*动画事件行为：AnimationEventBehaviour</p>
+<p>数据：动画组件(anim)</p>
+<p>行为: 攻击时使用(OnAttack),撤销动画播放(OnCancelAnim)</p>
+<p><strong>角色系统</strong></p>
+<p>主角状态：PlayerStatus</p>
+<p>数据：生命(HP,maxHP),魔法(SP,maxSP),基础攻击力(baseATK),防御(defence),攻击间隔 (attackInterval),攻击距离(attackDistance),动画参数(animParams)</p>
+<p>行为：受击(Damage) 死亡(Dead)</p>
+<p>小怪状态：MonsterStatus</p>
+<p>数据：生命(HP,maxHP),魔法(SP,maxSP),基础攻击力(baseATK),防御(defence),攻击间隔 (attackInterval),攻击距离(attackDistance),动画参数(animParams)</p>
+<p>行为：受击(Damage),死亡(Dead)</p>
+<p>摇杆输入控制：CharacterInputController</p>
+<p>数据：马达(chMotor), (EasyTouch插件)</p>
+<p>行为：摇杆移动执行的方法，摇杆停止时执行的方法</p>
+<h2 id="继承-extends"><a href="#继承-extends" class="headerlink" title="继承 extends"></a>继承 extends</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>重用现有类的功能，在此基础上进行扩展(功能、概念)。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>复用代码的一种方式。</li>
+<li>统一概念，以层次化的方式管理类。</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>耦合度高：父类的改变直接影响到所有的子类，而不需要通知子类。</p>
+<h3 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h3><ol>
+<li>多个类具有相同的数据或行为。</li>
+<li>多个类从概念上是一致的，且需要进行统一处理。</li>
+</ol>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>class A: B</p>
+<p>{</p>
+<p>}</p>
+<p>表示A类继承B类，A类称为子类（派生类）,B类称为父类（基类，超类）</p>
+<p>通过this关键字访问本类成员、通过base关键字访问父类成员。</p>
+<p>一个类最多只能继承另一个类。</p>
+<h3 id="继承中的构造方法"><a href="#继承中的构造方法" class="headerlink" title="继承中的构造方法"></a>继承中的构造方法</h3><p>构造方法不会继承给子类，但是在创建子类对象时，自动调用父类的构造方法，且父类构造方法先执行，子类构造方法后执行.</p>
+<p>当子类采用无参构造方法创建对象时，默认调用父类的无参构造方法，如果父类没有无参构造方法，则报编译错误，解决方法有两个: 1.为父类添加无参构造方法, 2.在子类的构造方法中用base关键字指明要调用父类的哪一个有参构造方法</p>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>语法：</p>
+<p>用abstract修饰类即为抽象类.</p>
+<p>抽象类不能创建对象</p>
+<p>抽象类中可能包含抽象成员(方法，属性)</p>
+<p>语义：</p>
+<p>抽象类表示一个概念的抽象.</p>
+<p>抽象只表示做什么，拥有什么数据，但往往不表达具体做法，不表达数据具体取值</p>
+<p>适用性：</p>
+<ol>
+<li>当不希望类创建对象的时候。</li>
+<li>当有行为，但是不需要实现的时候。</li>
+<li>当有一些行为，在做法上有多种可能时，但又不希望客户了解具体做法。</li>
+</ol>
+<p>抽象类与普通类区别：</p>
+<p>相同：都可以有静态、实例成员(数据、方法、构造函数)</p>
+<p>不同：抽象类使用abstract修饰，可能有抽象方法，不能直接创建对象</p>
+<h4 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h4><p>语法：</p>
+<p>用abstract修饰并且没有实现的方法.只有方法声明，没有实现。</p>
+<p>抽象方法只能出现在抽象类中。</p>
+<p>抽象方法在本类中不实现，实现推迟到子类中，子类必须重写override实现。</p>
+<p>语义：</p>
+<p>抽象方法表达抽象行为,只关注本身，不关注行为实现。</p>
+<p>抽象方法描述做什么，不描述怎么做。</p>
+<p>抽象方法一个行为的抽象。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>父类同一种动作或者行为(父类型的引用调用同一方法)，在不同的子类上有不同的实现。</p>
+<p>继承将相关概念的共性进行抽象，并提供了一种复用的方式；多态在共性的基础上，体现类型及行为的个性化，即一个行为有多个不同的实现。</p>
+<h2 id><a href="#" class="headerlink" title="#"></a>#</h2><h2 id="实现手段"><a href="#实现手段" class="headerlink" title="实现手段"></a><strong>实现手段</strong></h2><ol>
+<li>虚方法： 父类型的引用 指向 子类的对象，调用虚方法，执行子类中的重写方法。</li>
+<li>抽象方法：抽象类的引用 指向 实现类的对象，调用抽象方法，执行实现类中重写方法。</li>
+<li>接口：接口的引用 指向 实现类的对象，调用接口方法，执行实现类中实现方法。</li>
+</ol>
+<h3 id="方法隐藏"><a href="#方法隐藏" class="headerlink" title="方法隐藏"></a>方法隐藏</h3><p>定义：在子类中使用new关键字修饰的与父类同签名的方法。</p>
+<p>作用：父类的方法在子类中不适用，且通过子类型引用调用时，隐藏掉父类继承的旧方法，好像该方法不存在。</p>
+<h4 id="隐藏原理"><a href="#隐藏原理" class="headerlink" title="隐藏原理"></a>隐藏原理</h4><p>子类在方法表中 <strong>增加</strong> 一个新地址。</p>
+<p>所以通过子类引用调用时使用新纪录，执行子类中新方法；</p>
+<p>通过父类引用调用时使用旧纪录，执行父类中方法。</p>
+<h3 id="虚方法"><a href="#虚方法" class="headerlink" title="虚方法"></a>虚方法</h3><p>定义：用vritual关键修饰的已实现方法。</p>
+<p>作用：可以在子类中重写的方法。</p>
+<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><p>语法：在子类中使用override关键字修饰的方法。</p>
+<p>作用：父类的方法在子类中不适用（虚方法），或父类没有实现(抽象方法)。子类重写可以满足对该方法的不同需求。方法重写时必须在方法前加override关键字。</p>
+<p>三种方法可以重写：</p>
+<p>abstract 方法在子类必须重写，除非子类也是抽象类。</p>
+<p>virtual 方法在子类可以重写，父类方法的做法与子类不同。</p>
+<p>override方法，已经重写过的方法，在子类还可以继续重写，除非被标识为sealed。</p>
+<h4 id="重写原理"><a href="#重写原理" class="headerlink" title="重写原理"></a>重写原理</h4><p>子类在方法表中 <strong>修改</strong> 对应的地址。</p>
+<p>所以不管通过父类还是子类型的引用，调用方法时，都执行对象真实类型中定义的方法。</p>
+<h3 id="动态绑定-晚期绑定-与静态绑定-早期绑定"><a href="#动态绑定-晚期绑定-与静态绑定-早期绑定" class="headerlink" title="动态绑定(晚期绑定)与静态绑定(早期绑定)"></a>动态绑定(晚期绑定)与静态绑定(早期绑定)</h3><p>绑定：类型与关联的方法的调用关系，通俗讲就是一个类型能够调用哪些方法。</p>
+<p>静态绑定：是指调用关系是在运行之前确定的，即编译期间。</p>
+<p>动态绑定：是指调用关系是在运行期间确定的。</p>
+<p>静态绑定因为在编译期确定，不占用运行时间，所以调用速度比动态绑定要快。</p>
+<p>动态绑定因为在运行期确定，占用运行时间，但是更灵活。</p>
+<p>方法重写是动态绑定。</p>
+<p>方法隐藏是静态绑定。</p>
+<h3 id="密封-Sealed"><a href="#密封-Sealed" class="headerlink" title="密封 Sealed"></a>密封 Sealed</h3><ol>
+<li>用在类的定义上，指示当前类不能做父类,也就是任何类都不可继承当前类</li>
+<li>用在重写的成员，指示当前类的子类，不能再次重写该成员</li>
+</ol>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><p>接口定义一组对外的行为规范，要求它的实现类必须遵循。</p>
+<p>接口只关注行为，不关注数据，且不关注行为的实现，实现由实现类完成。</p>
+<p>接口自身表达&quot;能够做&quot;,不表达&quot;如何做&quot;。</p>
+<p>接口是一组行为的抽象。</p>
+<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>规范不同类型的行为,达到了不同类型在行为上是一致的。</p>
+<p>扩展一个已有类的行为。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>使用interface关键定义。接口名建议用&quot;I&quot;开头，其后单词首字母大写。</p>
+<p>接口中不能包含字段，可以包含：方法，属性，索引器，事件。</p>
+<p>接口中的成员一定是public abstract的，但是不能写。</p>
+<p>接口中的所有成员不能有实现，全部默认抽象的。</p>
+<p>实现类实现接口用&quot;：&quot;与继承相同。</p>
+<p>实现类实现可以实现多个接口，且每个接口中所有的成员必须都实现。</p>
+<p>接口中的成员在实现类中以public的方式实现（除显式实现）。</p>
+<p>接口的引用可以指向实现类的对象。</p>
+<p>接口与接口之间可继承，且可以多继承。</p>
+<p>类与类是单继承，类与接口是多实现，接口与接口是多继承。</p>
+<p>结构（struct）可以实现接口，但不能被继承。</p>
+<h3 id="抽象类与接口的选择策略"><a href="#抽象类与接口的选择策略" class="headerlink" title="抽象类与接口的选择策略"></a>抽象类与接口的选择策略</h3><p>抽象类与子类之间关系：is a [是一种]</p>
+<p>接口与实现类之间关系：can do [能够做(功能)]</p>
+<h3 id="接口的显式实现"><a href="#接口的显式实现" class="headerlink" title="接口的显式实现"></a>接口的显式实现</h3><p>作用：</p>
+<ol>
+<li>解决多接口实现时的二义性</li>
+<li>解决接口中的成员对实现类不适用的问题</li>
+</ol>
+<p>做法：</p>
+<p>在实现的成员前加接口名，并且不能加任何访问修饰符,默认为private</p>
+<p>显式实现成员只能通过接口类型的引用调用。</p>
+<p>Void InterFace1.Fun()</p>
+<p>{ }</p>
+<h3 id="Framework常用接口"><a href="#Framework常用接口" class="headerlink" title="Framework常用接口"></a>Framework常用接口</h3><p>IComparable 可比较，使类型支持比大小的功能</p>
+<p>IComparer 比较器，提供比较的方法，常用于排序比较</p>
+<p>IEnumerable 可枚举，使类型支持简单迭代(foreach)</p>
+<p>IEnumerator 枚举器,支持MoveNext ,自己可以控制迭代的节奏</p>
+<h3 id="Unity-协同程序-Coroutine"><a href="#Unity-协同程序-Coroutine" class="headerlink" title="Unity 协同程序(Coroutine)"></a>Unity 协同程序(Coroutine)</h3><h4 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h4><p>具有多个返回点，可以在特定时机分部执行的函数。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>Unity每帧处理GameObject中的协同程序，直到函数执行完毕。</p>
+<p>当一个协程函数启动时，本质创建迭代器对象；调用MoveNext方法，执行到 yield 暂时退出；待满足条件后再次调用MoveNext方法，执行后续代码，直至遇到下一个yield为止。如此循环至整个函数结束。</p>
+<h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><p>通过MonoBehaviour中的StartCoroutine启动，StopCoroutine停止。</p>
+<p>协程函数返回值类型为IEnumerator，方法体中通过yield关键字定义返回点，通过return xx对象定义继续执行的条件。</p>
+<p>可以被yield return 的对象：</p>
+<ol>
+<li>null 或者 数字 —-\&gt; 等待一个渲染帧</li>
+<li>new WaitForSeconds(1) —\&gt; 等待指定时间</li>
+<li>new WaitForSecondsRealtime(1) —\&gt; 等待指定时间(不受时间缩放影响)</li>
+<li>new WaitForFixedUpdate() —\&gt; 等待一个物理帧</li>
+<li>new WaitForEndOfFrame() —\&gt; 等待一帧结束</li>
+<li>new WaitWhile( 委托 ) —-\&gt; (下回分解……)</li>
+<li>Coroutine —\&gt; 在另一个协程函数执行完毕后再执行。</li>
+<li>WWW —\&gt;</li>
+</ol>
+<h4 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h4><ol>
+<li>延时调用。</li>
+<li>分解操作。</li>
+</ol>
+<h2 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h2><h3 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h3><p>将方法包装成对象，通过调用委托对象 <strong>间接</strong> 调用方法，实现回调机制。</p>
+<p>委托是引用类型，使用方法创建委托对象，方法必须符合委托的原型。</p>
+<p>委托是一类行为的抽象。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li>定义委托数据类型 delegate返回值 方法签名</li>
+</ol>
+<p>delegate void Handler();</p>
+<ol>
+<li>声明委托变量 Handler handler;</li>
+<li>调用委托handler();</li>
+<li>创建委托类型对象</li>
+</ol>
+<p>handler = new Handler(Fun);</p>
+<h3 id="作用-3"><a href="#作用-3" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>将方法做为参数进行传递，可以将一个方法的执行代码注入到另一个方法中。</li>
+<li>实现回调，且比接口更加灵活。</li>
+<li>实现任意方法的异步调用。</li>
+<li>事件实现的基础。</li>
+</ol>
+<h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><ol>
+<li>自定义的委托类型本质就是个类，包含Invoke、BeginInvoke、EndInvoke方法。</li>
+<li>该类继承<a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.multicastdelegate(v=vs.110">MulticastDelegate</a>.aspx)类，包含委托链<a target="_blank" rel="noopener" href="http://referencesource.microsoft.com/mscorlib/system/object.cs.html#d9262ceecc1719ab">Object</a><a target="_blank" rel="noopener" href="http://referencesource.microsoft.com/mscorlib/R/78b7357b3527057e.html">_invocationList</a>，实质就是<a target="_blank" rel="noopener" href="http://referencesource.microsoft.com/mscorlib/system/delegate.cs.html#0dd8585ba1833ad7">Delegate</a>[]类型。</li>
+<li><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.multicastdelegate(v=vs.110">MulticastDelegate</a>.aspx)类又继承Delegate类，包含实例方法的对象引用Object _target,方法句柄<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.IntPtr">IntPtr</a><a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_methodPtr:IntPtr">_methodPtr</a>。</li>
+<li>创建委托对象(绑定方法),就是设置<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_target:Object">_target</a>与<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_methodPtr:IntPtr">_methodPtr</a>字段。</li>
+<li>调用委托对象，本质就是调用Invoke方法，内部找到<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_methodPtr:IntPtr">_methodPtr</a>字段,从而调用方法。</li>
+</ol>
+<h3 id="多播委托"><a href="#多播委托" class="headerlink" title="多播委托"></a>多播委托</h3><ol>
+<li>本质上是委托的一种特殊形式，以 <strong>委托链</strong> 的形式存在。</li>
+<li>多播委托绑定的方法有返回值，调用委托对象时默认只会接收到最后一个方法的值。</li>
+<li>获取每个方法返回值：调用委托GetInvocationList()方法，获取委托链,然后循环调用DynamicInvoke方法，即动态调用每个方法，可获取返回值。</li>
+</ol>
+<h4 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h4><ol>
+<li>委托对象绑定(+=)多个方法时，本质调用Delegate.Combine(原对象,新对象)方法。</li>
+<li><p>Combine方法内部创建新委托链(Delegate[]),再创建新委托对象，存入<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.MulticastDelegate/_invocationList:Object">_invocationList</a>字段中。</p>
+<p><img src="/Unity/Csharp/CsharpOOP/oop1.png" alt></p>
+</li>
+<li><p>委托对象移除(-=)某个方法时，本质调用Delegate.Remove(原对象,删除对象)方法。</p>
+</li>
+<li>Remove方法内部删除匹配的委托(判断_target与<a href="http://127.0.0.1/roeder/dotnet/Default.aspx?Target=code://mscorlib:4.0.0.0:b77a5c561934e089/System.Delegate/_methodPtr:IntPtr">_methodPtr</a>)。</li>
+<li>如果删除后委托链中只剩下一个委托，则返回该委托；否则再新创建一个委托对象，初始化新委托链。</li>
+</ol>
+<h3 id="委托实现方法的异步调用"><a href="#委托实现方法的异步调用" class="headerlink" title="委托实现方法的异步调用"></a>委托实现方法的异步调用</h3><p>同步调用方法：排队调用，前一个方法执行时，后一个方法等待它的结束后才能启动。</p>
+<p>异步调用方法：不排队调用，后一个方法不必等待它的结束就可启动，异步调用的方法是创建了一个新线程来工作的，与后一个方法所在不同的线程，各自独立，互不影响。</p>
+<p>Framework中的任何方法都可以通过委托异步调用。(BeginInvoke)</p>
+<p>步骤：</p>
+<ol>
+<li>为需要异步调用的方法定义一个相应的委托。</li>
+<li>创建该委托的引用指向需要异步调用的方法。</li>
+<li>使用委托类型的BeginInvoke方法开始异步调用。<ol>
+<li>BeginInvoke中的参数IAsyncCallback 表示异步调用的方法结束时执行的回调方法，往往用回调方法来处理异步的结果。</li>
+<li>BeginInvoke中的参数object 表示在回调方法中需要用到的数据，该数据被封装在IAsyncResult的AsyncState属性中。</li>
+</ol>
+</li>
+<li>如方法有返回值，则需要调用EndInvoke取得返回值。</li>
+</ol>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="定义-6"><a href="#定义-6" class="headerlink" title="定义"></a>定义</h3><p>当某一对象达到某种条件或发生某种改变时，将消息及时的 <strong>通知</strong> 到其它对象。</p>
+<p><img src="/Unity/Csharp/CsharpOOP/oop2.png" alt></p>
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ol>
+<li>定义事件参数类 XXX <strong>EventArgs</strong> ：封装引发事件时需要由事件源传递给响应者的信息。</li>
+<li>定义 <strong>委托 ：</strong> public delegate void XXX <strong>EventHandler</strong> (XXXEventArgs e);</li>
+<li>定义事件源类</li>
+</ol>
+<p>— 基于委托声明事件 public event XXXEventHandler XXX;</p>
+<p>— 在 <strong>某个</strong> 方法内部引发事件。</p>
+<ol>
+<li>响应者</li>
+</ol>
+<p>— 实例化事件源对象。</p>
+<p>— 注册方法：对象名.事件名+=方法名；</p>
+<p>温馨提示：即时第一次注册事件，也使用+=操作符。</p>
+<h3 id="作用-4"><a href="#作用-4" class="headerlink" title="作用"></a>作用</h3><p>仅仅允许类的外部注册、注销事件，防止了例如清空委托链、直接引发事件等不正当操作，体现了封装思想。</p>
+<h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>在事件源中声明事件，会编译为一个私有委托字段，一个公开add_XXX方法用于注册事件，一个移除remove_XXX方法用于注销事件。</p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="定义-7"><a href="#定义-7" class="headerlink" title="定义"></a>定义</h3><p>动态获取类型信息,动态创建对象,动态访问成员的过程。</p>
+<h3 id="作用-5"><a href="#作用-5" class="headerlink" title="作用"></a>作用</h3><p>在编译时无法了解类型，在运行时获取类型信息，创建对象，访问成员。</p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ol>
+<li>得到数据类型</li>
+<li>动态创建对象</li>
+<li>查看类型信息（了解本身信息,成员信息）</li>
+</ol>
+<h3 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h3><ol>
+<li>取得数据类型Type</li>
+</ol>
+<p>方式一：Type.GetType(&quot;类型全名&quot;);</p>
+<p>适合于类型的名称已知</p>
+<p>方式二：obj.GetType();</p>
+<p>适合于类型名未知，类型未知，存在已有对象</p>
+<p>方式三：typeof(类型)</p>
+<p>适合于已知类型</p>
+<p>方式四：Assembly.Load(&quot;XXX&quot;).GetType(&quot;名字&quot;);</p>
+<p>适合于类型在另一个程序集中</p>
+<p>Type类常用Get系列方法 Is系列属性。</p>
+<ol>
+<li>MethodInfo(方法)</li>
+</ol>
+<p>重要方法: Invoke</p>
+<ol>
+<li>PropertyInfo(属性)</li>
+</ol>
+<p>重要方法：SetValue GetValue</p>
+<ol>
+<li>FieldInfo(字段)</li>
+</ol>
+<p>重要方法：SetValue GetValue</p>
+<ol>
+<li>ConstructInfo(构造方法)</li>
+</ol>
+<p>重要方法：Invoke</p>
+<h3 id="动态创建对象"><a href="#动态创建对象" class="headerlink" title="动态创建对象"></a>动态创建对象</h3><p>Activator.CreateInstance(string 程序集名称,string 类型全名)</p>
+<p>Activator.CreateInstance(Type type);</p>
+<p>Assembly assembly = Assembly.Load(程序集);</p>
+<p>assembly.CreateInstance(Type);</p>
+<p>//找到有参构造方法，动态调用构造方法</p>
+<p>type.GetConstructor(typeof(string)).Invoke()</p>
+
+      
+       
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '3fa7e95b351aa27f85ca',
+            clientSecret: '8b72dabd6ae2e97f256942498eb4d306fe96c4e7',
+            repo: 'vzerzz.github.io',
+            owner: 'vzerzz',
+            admin: ['vzerzz'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023 Vzer
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/list-background.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

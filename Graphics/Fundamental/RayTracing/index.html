@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RayTracing | Vzer&#39;s Blog</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="RayTracing | Vzer&#39;s Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="这里什么都没有…">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Vzer&#39;s Blog">
+<meta property="og:description" content="这里什么都没有…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-24T10:38:54.000Z">
+<meta property="article:modified_time" content="2022-05-24T11:10:58.509Z">
+<meta property="article:author" content="Vzer">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Vzer</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/vzerzz"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/mo-sa-ran-yun-yu"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="csdn"
+               href="https://blog.csdn.net/gentleclown"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-csdn"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(45)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="C++">
+                        
+                        C++
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Graphics">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Graphics
+                        <small>(15)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Graphics<--->Fundamental">
+                                        
+                                        Fundamental
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Graphics<--->RTR">
+                                        
+                                        RTR
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Unity">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Unity
+                        <small>(26)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Unity<--->C#">
+                                        
+                                        C#
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->DataPersistence">
+                                        
+                                        DataPersistence
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Demo">
+                                        
+                                        Demo
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Frame">
+                                        
+                                        Frame
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Fundamental">
+                                        
+                                        Fundamental
+                                        
+                                            <small>(8
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Others">
+                        
+                        Others
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">关于</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="45">
+<input type="hidden" id="yelog_site_word_count" value="75k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>2D</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3D</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FPS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sneak</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Quaternion">Quaternion</span>
+            <span class="post-date" title="2023-01-13 00:00:00">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/PracticalIndustrialSolutions/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PracticalIndustrialSolutions">PracticalIndustrialSolutions</span>
+            <span class="post-date" title="2022-12-05 00:00:00">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/RTRT/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RTRT">RTRT</span>
+            <span class="post-date" title="2022-11-24 00:00:00">2022/11/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/PBR/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PBR">PBR</span>
+            <span class="post-date" title="2022-11-23 00:00:00">2022/11/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/GlobalIllumination/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Global Illumination">Global Illumination</span>
+            <span class="post-date" title="2022-11-20 00:00:00">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/EnvironmentMapping/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Environment Mapping">Environment Mapping</span>
+            <span class="post-date" title="2022-11-15 00:00:00">2022/11/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/Shadows/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shadows">Shadows</span>
+            <span class="post-date" title="2022-11-03 00:00:00">2022/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/env/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="env">env</span>
+            <span class="post-date" title="2022-10-30 00:00:00">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/vscodevim/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="vscodevim">vscodevim</span>
+            <span class="post-date" title="2022-10-20 00:00:00">2022/10/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Animation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Animation">Animation</span>
+            <span class="post-date" title="2022-10-09 00:00:00">2022/10/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Camera/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Camera">Camera</span>
+            <span class="post-date" title="2022-10-07 00:00:00">2022/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Materials/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Materials">Materials</span>
+            <span class="post-date" title="2022-10-07 00:00:00">2022/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/RayTracing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RayTracing">RayTracing</span>
+            <span class="post-date" title="2022-09-29 00:00:00">2022/09/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Geometry/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Geometry">Geometry</span>
+            <span class="post-date" title="2022-09-28 00:00:00">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Shading/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shading">Shading</span>
+            <span class="post-date" title="2022-09-25 00:00:00">2022/09/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-08-19 00:00:00">2022/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 C++ "
+           href="/C++/Cherno/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cherno">Cherno</span>
+            <span class="post-date" title="2022-08-18 00:00:00">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Rasterization/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rasterization">Rasterization</span>
+            <span class="post-date" title="2022-07-14 00:00:00">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Transformation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Transformation">Transformation</span>
+            <span class="post-date" title="2022-07-14 00:00:00">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/UIFrame/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UIFrame">UIFrame</span>
+            <span class="post-date" title="2022-06-17 00:00:00">2022/06/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpDesignPattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 设计模式">C# 设计模式</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpFUNDAMENTAL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 语言基础">C# 语言基础</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpHL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 高级">C# 高级</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpOOP/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C#面向对象">C#面向对象</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity DataPersistence "
+           href="/Unity/DataPersistence/Storage/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储">数据存储</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/MultiplayerFPS/"
+           data-tag="FPS"
+           data-author="" >
+            <span class="post-title" title="MultiplayerFPS">MultiplayerFPS</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity DataPersistence "
+           href="/Unity/DataPersistence/SQLite/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQLite">SQLite</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Ruby's%20Adventure/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="Ruby&#39;s Adventure">Ruby&#39;s Adventure</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/RobbiePlatform/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="RobbiePlatform">RobbiePlatform</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/SunnyLand/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="SunnyLand">SunnyLand</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Stealth/"
+           data-tag="3D,sneak"
+           data-author="" >
+            <span class="post-title" title="Stealth">Stealth</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Up/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="Up">Up</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Animation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动画系统">动画系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Base/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="初识">初识</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Effects/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="特效系统">特效系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Coroutine/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="协程">协程</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Navigation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="导航系统">导航系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Physics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="物理系统">物理系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/UGUI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UGUI">UGUI</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/WWW/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WWW">WWW</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/AStarPathFinding/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AStarPathFinding">AStarPathFinding</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/AssetBundle/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AssetBundle">AssetBundle</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/FSM/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FSM">FSM</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/Photon/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Photon">Photon</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/xLua/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="xLua">xLua</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Graphics/Fundamental/RayTracing" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">RayTracing</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Graphics">Graphics</a> > 
+            
+            <a  data-rel="Graphics&lt;---&gt;Fundamental">Fundamental</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-01-11 06:48:25'>2022-09-29 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:4.6k</span>
+        
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RayTracing"><span class="toc-text">RayTracing</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Whitted-style%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA"><span class="toc-text">Whitted-style光线追踪</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ray-Casting"><span class="toc-text">Ray Casting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Recursive-Whitted-Style-Ray-Tracing"><span class="toc-text">Recursive (Whitted-Style) Ray Tracing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ray-Surface-Intersection-IsHitObject%E5%AE%9E%E7%8E%B0"><span class="toc-text">Ray-Surface Intersection (IsHitObject实现)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Accelerating-Ray-Surface-Intersection-%E5%8A%A0%E9%80%9F%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA"><span class="toc-text">Accelerating Ray-Surface Intersection 加速光线追踪</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Axis-Aligned-Bounding-Box-AABB-%E8%BD%B4%E5%AF%B9%E2%BB%AC%E5%8C%85%E5%9B%B4%E7%9B%92"><span class="toc-text">Axis-Aligned Bounding Box (AABB) 轴对⻬包围盒</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Uniform-Spatial-Partitions-Grids-%E5%9D%87%E5%8C%80%E7%A9%BA%E9%97%B4%E5%88%92%E5%88%86"><span class="toc-text">Uniform Spatial Partitions (Grids) 均匀空间划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spatial-Partitions-%E7%A9%BA%E9%97%B4%E5%88%92%E5%88%86"><span class="toc-text">Spatial Partitions 空间划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bounding-Volume-Hierarchy-BVH"><span class="toc-text">Bounding Volume Hierarchy (BVH)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PBR%E5%9F%BA%E7%A1%80"><span class="toc-text">PBR基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Basic-radiometry-%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6"><span class="toc-text">Basic radiometry 辐射度量学</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Radiant-Energy-and-Flux-Power"><span class="toc-text">Radiant Energy and Flux (Power)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Radiant-Intensity"><span class="toc-text">Radiant Intensity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#irradiance"><span class="toc-text">irradiance</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#radiance"><span class="toc-text">radiance</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bidirectional-Reflectance-Distribution-Function-BRDF-%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0"><span class="toc-text">Bidirectional Reflectance Distribution Function(BRDF) 双向反射分布函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Rendering-Equation-%E6%B8%B2%E6%9F%93%E6%96%B9%E7%A8%8B"><span class="toc-text">The Rendering Equation 渲染方程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Path-Tracing"><span class="toc-text">Path Tracing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Light-Transport"><span class="toc-text">Advanced Light Transport</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%81%8F%E5%85%89%E7%BA%BF%E4%BC%A0%E6%92%AD%E6%96%B9%E6%B3%95"><span class="toc-text">无偏光线传播方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%81%8F%E5%85%89%E7%BA%BF%E4%BC%A0%E6%92%AD%E6%96%B9%E6%B3%95"><span class="toc-text">有偏光线传播方法</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="RayTracing"><a href="#RayTracing" class="headerlink" title="RayTracing"></a>RayTracing</h1><p>Rasterization 不能处理全局效果 软阴影 多个光源等情况<br>RayTracing 更精确但更慢<br>光线的假设:  </p>
+<ol>
+<li>光线一定沿着直线传播</li>
+<li>光线之间无法碰撞</li>
+<li>光线路径可逆，即从A发出的到B的光线，一定也可以从B发出到A（中途可发生反射和折射）<br>由光路可逆可以模拟从人眼发射光线的方法还原出所有的光路<br>从光源出发难以模拟那就反着从摄像机发射光线  </li>
+</ol>
+<h2 id="Whitted-style光线追踪"><a href="#Whitted-style光线追踪" class="headerlink" title="Whitted-style光线追踪"></a>Whitted-style光线追踪</h2><h3 id="Ray-Casting"><a href="#Ray-Casting" class="headerlink" title="Ray Casting"></a>Ray Casting</h3><p><img src="/Graphics/Fundamental/RayTracing/raycasting1.png" alt="raycasting1"><br>从人眼或摄像机向近投影平面上的每一个像素点发射一条光线，判断与场景物体的交点<br>找最近的交点 连接交点和光源，判断这条连线之间是否有物体存在就可以知道该交点是否在阴影之中<br><img src="/Graphics/Fundamental/RayTracing/raycasting2.png" alt="raycasting2"><br>利用Blinn-Phong模型进行局部光照模型计算那么它的效果与局部光照模型是一样的 需要真正的考虑全局效果  </p>
+<h3 id="Recursive-Whitted-Style-Ray-Tracing"><a href="#Recursive-Whitted-Style-Ray-Tracing" class="headerlink" title="Recursive (Whitted-Style) Ray Tracing"></a>Recursive (Whitted-Style) Ray Tracing</h3><p><img src="/Graphics/Fundamental/RayTracing/recursive.png" alt="recursive"><br>不仅仅第一个相交的点贡献光给眼睛, 折射与反射之后再与物体相交的点也能贡献光 有光照射到其他物体，再沿着eye rays的反射或折射的光线方向传回人眼<br>直接光照，反射方向间接光，折射方向间接光 计算所有点的局部光照模型的结果，将其按照光线能量权重累加(递归) 得到全局效果的光照模型  </p>
+<blockquote>
+<p>注:  </p>
+<ol>
+<li>递归终止条件，比如说允许的最大反射或折射次数为10  </li>
+<li>每次反射和折射之后都有能量损耗，由系数决定，越往后的折射和反射光贡献的能量越小，这也是为什么在上文中提到根据光线能量权重求和  </li>
+<li>如果反射或折射光线没有碰撞到物体，一般直接返回一个背景色  </li>
+<li>经典的whited-style光线追踪遇到漫反射表面会直接利用blinn-phong模型计算颜色值返回，而不再递归下去  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//伪代码</span></span><br><span class="line"><span class="built_in">RayTracing</span> (original_point, ray_direction, objects, depth)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (depth &gt; maxDepth)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">color</span> (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">IsHitObject</span> (original_point, ray_direction,objects))</span><br><span class="line">    &#123;</span><br><span class="line">        hitPoint =<span class="built_in">GetHitPoint</span>();</span><br><span class="line">        normal =<span class="built_in">GetNormal</span>();</span><br><span class="line">        </span><br><span class="line">        reflectionDirection = <span class="built_in">reflect</span>(ray_direction,normal);</span><br><span class="line">        refractionDirection = <span class="built_in">refract</span>(ray_direction，normal);<span class="comment">//如果没有折射，舍弃折射项</span></span><br><span class="line"></span><br><span class="line">        local_color = <span class="built_in">BlinnPhongShader</span>(original_point,normal，light_position);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> local_color</span><br><span class="line">        + k1 * <span class="built_in">RayTracing</span> (hitPoint, reflectionDirection,objects,depth + <span class="number">1</span>)</span><br><span class="line">        + k2 * <span class="built_in">RayTracing</span> (hitPoint, refractionDirection,objects,depth + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> background_color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<h3 id="Ray-Surface-Intersection-IsHitObject实现"><a href="#Ray-Surface-Intersection-IsHitObject实现" class="headerlink" title="Ray-Surface Intersection (IsHitObject实现)"></a>Ray-Surface Intersection (IsHitObject实现)</h3><p>光线表示 r(t) = o + td (0&lt;=t&lt;$\infin$) 光线为射线 o起点d单位方向  </p>
+<ul>
+<li>光线与隐式曲面求交<br>  <img src="/Graphics/Fundamental/RayTracing/Implicit%20Surface.png" alt="Implicit Surface"><br>  代入求解t  </li>
+<li>光线与显示曲面求交  <ul>
+<li>求光线与三角形所在平面的交点<br><img src="/Graphics/Fundamental/RayTracing/plane.png" alt="plane">  </li>
+<li>判断交点是否在三角形内  </li>
+<li>快捷方法 Möller Trumbore Algorithm<br><img src="/Graphics/Fundamental/RayTracing/mollertrumbore.png" alt="mollertrumbore"><br>将点的形式用重心坐标的形式表示，随后利用克莱姆法则求解线性方程组  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Accelerating-Ray-Surface-Intersection-加速光线追踪"><a href="#Accelerating-Ray-Surface-Intersection-加速光线追踪" class="headerlink" title="Accelerating Ray-Surface Intersection 加速光线追踪"></a>Accelerating Ray-Surface Intersection 加速光线追踪</h3><p>判断光线与场景交点的时候，需要去进行所有三角形面与光线的求交，而且这仅仅是对一个像素而言 #pixels ⨉ # traingles (⨉ #bounces<br><strong>Bounding Volumes</strong>  </p>
+<h4 id="Axis-Aligned-Bounding-Box-AABB-轴对⻬包围盒"><a href="#Axis-Aligned-Bounding-Box-AABB-轴对⻬包围盒" class="headerlink" title="Axis-Aligned Bounding Box (AABB) 轴对⻬包围盒"></a>Axis-Aligned Bounding Box (AABB) 轴对⻬包围盒</h4><p>光线与三对分别与x-axis y-axis z-axis垂直的平面相交<br>将先进入的交点(偏小的那个)记为 tmin, 后出去的交点(偏大的那个)记为 tmax( t 可以&lt; 0 代表的是光线反向传播与对应平面的交点)<br>对三组tmin和tmax $\qquad t_{enter} =max\{tmin\},t_{exit} =min\{tmax\}$<br>当$t_{enter} &lt; t_{exit}$的时候，光线所在直线一定在盒子中待过一段时间，也必然存在交点<br><img src="/Graphics/Fundamental/RayTracing/aabb.png" alt="aabb">  </p>
+<h4 id="Uniform-Spatial-Partitions-Grids-均匀空间划分"><a href="#Uniform-Spatial-Partitions-Grids-均匀空间划分" class="headerlink" title="Uniform Spatial Partitions (Grids) 均匀空间划分"></a>Uniform Spatial Partitions (Grids) 均匀空间划分</h4><p>AABB对只有一个极其复杂的单一人物模型和充斥着大量的细小模型效率提升有限<br>更好的划分场景形成不同的AABB  </p>
+<ul>
+<li>Build Acceleration Grid<br><img src="/Graphics/Fundamental/RayTracing/Build%20Acceleration%20Grid.png" alt="Build Acceleration Grid"><br>找一个包围盒均匀划分后在每个重叠小包围盒上存储物体模型信息  </li>
+<li>Ray-Scene Intersection<br><img src="/Graphics/Fundamental/RayTracing/Ray-Scene%20Intersection.png" alt="Ray-Scene Intersection"><br>利用bresenham算法判断出所有和光线相交的方格 若方格中存储有物体，再进一步与方格中的物体模型或是三角形面求交  </li>
+</ul>
+<p>最适合的场景就是空间中均匀布满了三角形面  </p>
+<h4 id="Spatial-Partitions-空间划分"><a href="#Spatial-Partitions-空间划分" class="headerlink" title="Spatial Partitions 空间划分"></a>Spatial Partitions 空间划分</h4><p><img src="/Graphics/Fundamental/RayTracing/Spatial%20Partitions.png" alt="Spatial Partitions">  </p>
+<ul>
+<li><p>Oct-Tree 八叉树<br>每次将空间分为8个相等的部分，再递归的对子空间进行划分.当划分的子空间足够小或是空间中三角形面的数量很少的时候会停止划分。这种方法的显著缺点是，随着维度的上升划分的空间数量会呈指数级增长。  </p>
+</li>
+<li><p>KD-Tree<br>每次将空间划分为两部分，且划分依次沿着x-axis，y-axis，z-axis，依次递归划分，终止条件与八叉树类似 叶子节点存储对应空间的所有物体或三角面信息，中间节点仅存储指针指向两个子空间。<br><img src="/Graphics/Fundamental/RayTracing/kdtree.png" alt="kdtree"><br>第一步判断光线是否与最外层的包围盒相交 如果相交进一步判断是否与对应的两个子空间相交 (图中做了简化，包围盒的左半边并没继续进行划分 实际上应该要划分的) 递归的执行这个步骤即可  </p>
+<p>优点： 倘若光线与哪一部分空间不相交，那么则可以省略该部分空间所有子空间的判断过程<br>缺点： 判断包围盒与三角面的是否相交较难，因此划分的过程不是那么想象的简单，其次同一个三角面可能被不同的包围盒同时占有，这两个不同包围盒内的叶节点会同时存储这一个三角形面</p>
+</li>
+<li><p>BSP-Tree<br>其与KD-Tree类似，唯一不同的是划分不再沿着固定一轴，可以任意方向划分，缺点自然是划分的空间没有规则性，求交困难。  </p>
+</li>
+</ul>
+<h4 id="Bounding-Volume-Hierarchy-BVH"><a href="#Bounding-Volume-Hierarchy-BVH" class="headerlink" title="Bounding Volume Hierarchy (BVH)"></a>Bounding Volume Hierarchy (BVH)</h4><p>不再以空间作为划分依据，而是从对象的角度考虑Object partition，即三角形面<br><img src="/Graphics/Fundamental/RayTracing/bvh.png" alt="bvh"><br>为了画图方便，只进行了左半部分的划分，右半部分其实同理  </p>
+<ol>
+<li>包围盒会重叠，但一个三角形面只会被存储在唯一的包围盒内</li>
+<li>每次划分一般选择最长的那一轴划分 划分点选择所有三角面的重心坐标在对应轴坐标上的中位数进行划分</li>
+<li>中间节点不存储物体三角面信息，只在叶节点中存储，终止条件可设定为当前包围盒内三角形数量足够少</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Intersect</span>(Ray ray, BVH node) &#123;</span><br><span class="line">  <span class="keyword">if</span> (ray misses node.bbox) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> (node is a leaf node)</span><br><span class="line">     test intersection with all objs;</span><br><span class="line">     <span class="keyword">return</span> closest intersection;</span><br><span class="line">  hit1 = <span class="built_in">Intersect</span>(ray, node.child1);</span><br><span class="line">  hit2 = <span class="built_in">Intersect</span>(ray, node.child2);</span><br><span class="line">  <span class="keyword">return</span> the closer of hit1, hit2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="PBR基础"><a href="#PBR基础" class="headerlink" title="PBR基础"></a>PBR基础</h2><h3 id="Basic-radiometry-辐射度量学"><a href="#Basic-radiometry-辐射度量学" class="headerlink" title="Basic radiometry 辐射度量学"></a>Basic radiometry 辐射度量学</h3><p>光线亮度的定义? 需要合适的物理量来描述光线<br>whitted-style 没有对漫反射的光线进行追踪 使用了Blinn-Phong这个不准确的经验模型<br>辐射度量学其实是对光照的一套测量系统和单位，它能够准确的描述光线的物理性质<br>光线的概念: Radiant energy, flux, intensity, irradiance, radiance  </p>
+<h4 id="Radiant-Energy-and-Flux-Power"><a href="#Radiant-Energy-and-Flux-Power" class="headerlink" title="Radiant Energy and Flux (Power)"></a>Radiant Energy and Flux (Power)</h4><p>Radiant energy : Q[J = Joule] 辐射出来的电磁能量，单位为焦耳 类似功<br>Radiant flux(power) : $\Phi = \frac{dQ}{dt}[W = Watt][lm =lumen]^*$ 单位时间的能量 类似功率 一般偏向用radiant flux来衡量光线的亮度  </p>
+<h4 id="Radiant-Intensity"><a href="#Radiant-Intensity" class="headerlink" title="Radiant Intensity"></a>Radiant Intensity</h4><p><img src="/Graphics/Fundamental/RayTracing/Light%20Measurements.png" alt="Light Measurements"><br>Radiant itensity 从一个光源出发某一方向上的亮度<br>Irradiance 某一微小平面所接受到的光线亮度<br>radiance 一条传播光线所具有的亮度(不受传播方向影响而改变)<br>这里的亮度也可以理解为radiant flux<br>Radiant itensity:<br>$I(\omega) = \frac{d\Phi}{d\omega}$<br>$[\frac{W}{sr}][\frac{lm}{sr}=cd=candela]$<br>从光源发出的每单位立体角上的功率  </p>
+<blockquote>
+<p>立体角 solid angle $\Omega = \frac{A}{r^2}$<br><img src="/Graphics/Fundamental/RayTracing/Solid%20Angles.png" alt="Solid Angles">  </p>
+</blockquote>
+<p>各向同性点光源 Radiant intensity:<br>$\Phi = \int_{S^2} I d\omega = 4\pi I$<br>$I = \frac{\Phi}{4\pi}$  </p>
+<h4 id="irradiance"><a href="#irradiance" class="headerlink" title="irradiance"></a>irradiance</h4><p>$E(x) = \frac{d\Phi(x)}{dA}$<br>$[\frac{W}{m^2}][\frac{lm}{m^2}=lux]$<br>每单位照射面积所接收到的power<br>当光线垂直照射平面时，照射到平面上的面积与光线本身的“宽度一致”。当光线斜着照射到平面时，此时的照射面积就不再是光线本身的“宽度”了，此时的照射面积A2=A/cosθ<br>可以解释Blinn-Phong模型中的垂直入射和距离衰减  </p>
+<h4 id="radiance"><a href="#radiance" class="headerlink" title="radiance"></a>radiance</h4><p><img src="/Graphics/Fundamental/RayTracing/Radiance.png" alt="Radiance"><br>radiance就是指每单位立体角，每单位垂直面积的功率<br>像是Intensity和irradiance的结合。它同时指定了光的方向与照射到的表面所接受到的亮度<br>在irradiance中定义的每单位照射面积 在radiance中关于接收面积的部分是每单位垂直面积($\cos\theta$) $\qquad dA^{\perp} = dA\cos\theta$  </p>
+<p>Incident Radiance：每单位立体角到达表面的Irradiance $L(p,\omega)=\frac{dE(p)}{d\omega \cos\theta}$<br>Exiting Radiance：每单位面积离开表面发射的Intensity $L(p,\omega)=\frac{dI(p,\omega)}{dA \cos\theta}$<br><img src="/Graphics/Fundamental/RayTracing/lrradiancevsradiance.png" alt="lrradiancevsradiance"><br>，一个点(微分面积元)所接收到的亮度(irradiance)，由所有不同方向的入射光线亮度(radiance)共同贡献得到  </p>
+<h3 id="Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function(BRDF) 双向反射分布函数"></a>Bidirectional Reflectance Distribution Function(BRDF) 双向反射分布函数</h3><p><img src="/Graphics/Fundamental/RayTracing/Reflection%20at%20a%20Point.png" alt="Reflection at a Point"><br>光线的反射: 一个点(微分面积元)在接受到一定方向上的亮度$(dE(\omega_i))$之后，再向不同方向把能量辐射出去$(dL_r(\omega_r))$  </p>
+<p>BRDF就是描述一个从不同方向入射之后，反射光线分布情况的函数 理想光滑表面会把入射光线完全反射到镜面反射方向，其它方向则完全没有。理想粗糙表面会把入射光线均匀的反射到所有方向<br><img src="/Graphics/Fundamental/RayTracing/brdf.png" alt="brdf"><br>反射方程<br><img src="/Graphics/Fundamental/RayTracing/The%20Reflection%20Equation.png" alt="The Reflection Equation"><br>摄像机所接受到的$\omega_r$方向上的反射光，是由所有不同方向上入射光线的irradiance贡献得到的($L_i(p,\omega_i)\cos \theta_i d\omega_i$)，而不同方向入射光线的irradiance对反射方向$\omega_r$的贡献程度则由物体表面材质决定，所以乘上了一个BRDF函数<br>得到完全正确的光线传播模型<br>入射光线的radiance不仅仅是光源所引起的，还有可能是其他物体上着色点的反射光线的radiance，恰好反射到当前的着色点p(即间接光照)，同时其他物体上的反射光线的radiance依然也是由直接光照和间接光照构成，因此这与whitted-style当中的光线追踪过程十分类似，也是一个递归的过程  </p>
+<h3 id="The-Rendering-Equation-渲染方程"><a href="#The-Rendering-Equation-渲染方程" class="headerlink" title="The Rendering Equation 渲染方程"></a>The Rendering Equation 渲染方程</h3><p>$L_o(p,\omega_o)=L_e(p,\omega_o)+\int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n \cdot \omega_i)d\omega_i$<br>在反射方程的基础之上添加了一个自发光项(Emission term)<br>$\cos \theta_i$用$n \cdot \omega_i$代替<br><img src="/Graphics/Fundamental/RayTracing/reflectionequation.png" alt="reflectionequation">  </p>
+<ul>
+<li>点光源对一个点来说只有一个方向有入射光 没有积分  </li>
+<li>多个点光源的贡献全部求和即可  </li>
+<li>面光源相当于无穷多个点光源的集合，只需要对面光源所在的立体角范围进行积分  </li>
+<li>加入其它物体同样考虑成面光源 且将$L_i$视作$L_r$<br>而式子可简化为$l(u)=e(u)+\int l(v)K(u,v)dv$<br>离散化为$L=E+KL$<br>$L=(I-K)^{-1}E$<br>$L=E+KE+K^2E+K^3E+…$<br>K 为对光线进行反射的一种算子操作(由BRDF化来)<br>E为光源发出的光，KE则代表对光源反射一次的结果，即直接光照，那么前两项之和就是光栅化当中着色所考虑的结果，对于全局光照Global illumination来说，还考虑了$K^2E$，即一次弹射的间接照明，$K^3E$就是两次弹射的间接照明</li>
+</ul>
+<h2 id="Path-Tracing"><a href="#Path-Tracing" class="headerlink" title="Path Tracing"></a>Path Tracing</h2><blockquote>
+<ul>
+<li>Monte Carlo Integration 蒙特卡洛积分<br>目的: 当一个积分很难通过解析的方式得到答案的时候可以通过蒙特卡洛的方式近似得到积分结果<br>做法: 对函数值进行多次采样求均值作为积分值的近似<br>均匀采样的话，其实就相当于将整个积分面积切成了许许多多个长方形，然后将这些小长方形的面积全部加起来 还可以指定一个采样的分布p(x)来对被积分的值进行采样<br><img src="/Graphics/Fundamental/RayTracing/Monte%20Carlo%20Integration.png" alt="Monte Carlo Integration"><br>求均值的做法其实也是对期望的逼近<br><img src="/Graphics/Fundamental/RayTracing/montecarloprocessing.png" alt="montecarloprocessing"><br>均匀采样:<br><img src="/Graphics/Fundamental/RayTracing/uniformmonte.png" alt="uniformmonte">  </li>
+</ul>
+</blockquote>
+<p>Whitted-Style Ray Tracing 不够正确<br>但上述得出的渲染方程是正确的<br>pathtracing主要解决raytracing中的漫反射(全局光照)问题<br>解出渲染方程的解主要有两个难点：  </p>
+<ol>
+<li>积分的计算</li>
+<li>递归形式</li>
+</ol>
+<ul>
+<li>A Simple Monte Carlo Solution  <ul>
+<li>首先舍弃自发光项且仅考虑直接光照<br><img src="/Graphics/Fundamental/RayTracing/A%20Simple%20Monte%20Carlo%20Solution.png" alt="A Simple Monte Carlo Solution"><br>$L_o(p,\omega_o)=\int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n \cdot \omega_i)d\omega_i$<br>得到的即为着色点p到摄像机或人眼的Radiance值 用Monte Carlo Integration可近似结果 $L_o(p,\omega_o)\approx\frac{1}{N}\sum_{i=1}^N\frac{L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n \cdot \omega_i)}{p(\omega_i)}$<br>$p(\omega_i)=\frac{1}{2\pi}$(均匀采样)<br>只有当采样的方向$\omega_i$击中光源的时候，光源才会对该着色点有贡献  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shade</span>(p, wo)</span><br><span class="line">    Randomly choose N directions wi~pdf</span><br><span class="line">    Lo = <span class="number">0.0</span></span><br><span class="line">    For each wi</span><br><span class="line">        Trace a ray <span class="built_in">r</span>(p, wi)</span><br><span class="line">        If ray r hit the light</span><br><span class="line">        Lo += (<span class="number">1</span> / N) * L_i * f_r * cosine / <span class="built_in">pdf</span>(wi)</span><br><span class="line">    Return Lo</span><br></pre></td></tr></table></figure></li>
+<li>考虑间接光照<br>当采样的ωi方向碰撞到了别的物体<br><img src="/Graphics/Fundamental/RayTracing/globalillumination.png" alt="globalillumination"><br>对着色点P的贡献是在点Q的直接光照再乘上反射到该方向上的百分比 类似光线追踪的递归，不同在于该方法通过对光线方向的采样从而找出一条条可行的路径  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shade</span>(p, wo)</span><br><span class="line">    Randomly choose N directions wi~pdf</span><br><span class="line">    Lo = <span class="number">0.0</span></span><br><span class="line">    For each wi</span><br><span class="line">        Trace a ray <span class="built_in">r</span>(p, wi)</span><br><span class="line">        If ray r hit the light</span><br><span class="line">            Lo += (<span class="number">1</span> / N) * L_i * f_r * cosine / <span class="built_in">pdf</span>(wi)</span><br><span class="line">        Else If ray r hit an object at q</span><br><span class="line">            Lo += (<span class="number">1</span> / N) * <span class="built_in">shade</span>(q, -wi) * f_r * cosine / <span class="built_in">pdf</span>(wi)</span><br><span class="line">    Return Lo</span><br></pre></td></tr></table></figure>
+此时解出了渲染方程的积分值，也通过考虑直接光照与间接光照解决了递归 但还有几个缺陷  </li>
+</ul>
+</li>
+<li>Problem 1: Explosion of #rays as #bounces go up<br>  <img src="/Graphics/Fundamental/RayTracing/problem1.png" alt="problem1"><br>  采样的光线数量会爆炸增长 =&gt; 每次只采样一个方向 N=1    <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shade</span>(p, wo)</span><br><span class="line">    Randomly choose ONE direction wi~<span class="built_in">pdf</span>(w)</span><br><span class="line">    <span class="function">Trace a ray <span class="title">r</span><span class="params">(p, wi)</span></span></span><br><span class="line"><span class="function">    If ray r hit the light</span></span><br><span class="line"><span class="function">        Return L_i * f_r * cosine / <span class="title">pdf</span><span class="params">(wi)</span></span></span><br><span class="line"><span class="function">    Else If ray r hit an object at q</span></span><br><span class="line"><span class="function">        Return <span class="title">shade</span><span class="params">(q, -wi)</span> * f_r * cosine / <span class="title">pdf</span><span class="params">(wi)</span></span></span><br></pre></td></tr></table></figure>
+  但积分计算的结果会非常的noisy，虽然蒙特卡洛积分是无偏估计，但样本越少显然偏差越大 =&gt; 对每个像素重复多次寻找到多条路径，将多条路径的结果求得平均<br>  <img src="/Graphics/Fundamental/RayTracing/raygeneration.png" alt="raygeneration">    <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Very similar to ray casting in ray tracing</span></span><br><span class="line"><span class="built_in">ray_generation</span>(camPos, pixel)</span><br><span class="line">    Uniformly choose N sample positions within the pixel</span><br><span class="line">    pixel_radiance = <span class="number">0.0</span></span><br><span class="line">    For each sample in the pixel</span><br><span class="line">        Shoot a ray <span class="built_in">r</span>(camPos, cam_to_sample)</span><br><span class="line">        If ray r hit the scene at p</span><br><span class="line">            pixel_radiance += <span class="number">1</span> / N * <span class="built_in">shade</span>(p, sample_to_cam)</span><br><span class="line">    Return pixel_radiance</span><br></pre></td></tr></table></figure>
+  通过对经过像素的光线重复采样，每次在反射的时候只按分布随机选取一个方向，解决了只对经过像素的光线采样一次，而对反射光线按分布采样多次所导致的光线爆炸问题  </li>
+<li><p>Problem 2: The recursive algorithm will never stop!<br>  递归没有出口 并不采用类似光线追踪当中设定反射深度显示的给出递归出口的方法<br>  <strong><em>Russian Roulette (RR)(俄罗斯轮盘赌)</em></strong>  </p>
+<blockquote>
+<p>设定一个概率P, 有P的概率光线会继续递归并设置返回值为Lo/P，有1−P的概率光线停止递归，并返回0。光线一定会在某次反射之后停止递归，并且计算的结果依然是无偏的，因为Radiance的期望不变(E=P⋆(Lo/P)+(1−P)⋆0=L0)  </p>
+</blockquote>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shade</span>(p, wo)</span><br><span class="line">    Manually specify a probability P_RR</span><br><span class="line">    Randomly select ksi in a uniform dist. in [<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">    <span class="built_in">If</span> (ksi &gt; P_RR) <span class="keyword">return</span> <span class="number">0.0</span>;</span><br><span class="line">    Randomly choose ONE direction wi~<span class="built_in">pdf</span>(w)</span><br><span class="line">    <span class="function">Trace a ray <span class="title">r</span><span class="params">(p, wi)</span></span></span><br><span class="line"><span class="function">    If ray r hit the light</span></span><br><span class="line"><span class="function">        Return L_i * f_r * cosine / <span class="title">pdf</span><span class="params">(wi)</span> / P_RR</span></span><br><span class="line"><span class="function">    Else If ray r hit an object at q</span></span><br><span class="line"><span class="function">        Return <span class="title">shade</span><span class="params">(q, -wi)</span> * f_r * cosine / <span class="title">pdf</span><span class="params">(wi)</span> / P_RR</span></span><br></pre></td></tr></table></figure></li>
+<li>Problem 3: correct but not really efficient<br>  由于只通过均匀采样选出一个方向,很少的光线可以hit光源,大多都浪费了<br>  <strong><em>Sampling the Light</em></strong><br>  计算直接光照的时候改进为<strong>直接对光源进行采样</strong> 所有采样的光线都一定会击中光源<br>  光源的面积为A，那么对光源进行采样的 pdf=1/A (∫pdf⁡dA=1)<br>  还要找到渲染方程中$d\omega_i$和dA的关系 由立体角定义<br>  <img src="/Graphics/Fundamental/RayTracing/dwdA.png" alt="dwdA"><br>  渲染方程改为<br>  $L_o(x,\omega_o)=\int_{A}L_i(x,\omega_i)f_r(x,\omega_i,\omega_o)\frac{\cos\theta\cos\theta’}{\lVert x’-x \rVert^2}dA$<br>  计算直接光照的积分值直接对光源采样(pdf=1/A)且不用RR，间接光照仍用先前的方法进行光线方向的均匀采样    <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shade</span>(p, wo)</span><br><span class="line">    # Contribution from the light source.</span><br><span class="line">    Uniformly sample the light at x’ (pdf_light = <span class="number">1</span> / A)</span><br><span class="line">    L_dir = L_i * f_r * cos θ * cos θ’ / |x’ - p|^<span class="number">2</span> / pdf_light </span><br><span class="line">    # Contribution from other reflectors.</span><br><span class="line">    L_indir = <span class="number">0.0</span></span><br><span class="line">    Test Russian Roulette with probability P_RR</span><br><span class="line">    Uniformly sample the hemisphere toward <span class="built_in">wi</span> (pdf_hemi = <span class="number">1</span> / <span class="number">2</span>pi)</span><br><span class="line">    Trace a ray <span class="built_in">r</span>(p, wi)</span><br><span class="line">    If ray r hit a non-emitting object at q</span><br><span class="line">        L_indir = <span class="built_in">shade</span>(q, -wi) * f_r * cos θ / pdf_hemi / P_RR</span><br><span class="line">    Return L_dir + L_indir</span><br></pre></td></tr></table></figure></li>
+<li>Problem 4: if the sample on the light is not blocked or not<br>  计算直接光照的时候还需要判断光源与着色点之间是否有物体遮挡<br>  只需从着色点x向光源采样点x’发出一条检测光线判断是否与光源之外的物体相交即可    <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Contribution from the light source.</span><br><span class="line">L_dir = <span class="number">0.0</span></span><br><span class="line">Uniformly sample the light at x’ (pdf_light = <span class="number">1</span> / A)</span><br><span class="line">Shoot a ray from p to x’</span><br><span class="line">If the ray is <span class="keyword">not</span> blocked in the middle</span><br><span class="line">    L_dir = ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>摄像机发出的光线第一次相交   </p>
+<ul>
+<li>交点是光源  </li>
+<li>交点是物体  <ol>
+<li>向光源采样计算L_dir  </li>
+<li>向其他物体采样递归计算L_indir  </li>
+</ol>
+</li>
+</ul>
+<h2 id="Advanced-Light-Transport"><a href="#Advanced-Light-Transport" class="headerlink" title="Advanced Light Transport"></a>Advanced Light Transport</h2><p>有偏和无偏<br>样本得到的期望值与总体的期望值相等，那么这种估计就被称为无偏的，反之则有偏<br>有偏估计存在系统差,但是方差较小;无偏估计不存在系统差,但是在某些情况下方差较大<br>有效性和一致性<br>样本统计量的期望收敛于总体统计量的期望，则称这种估计是一致的  </p>
+<h3 id="无偏光线传播方法"><a href="#无偏光线传播方法" class="headerlink" title="无偏光线传播方法"></a>无偏光线传播方法</h3><p>Bidirectional Path Tracing 双向路径追踪（BDPT）  </p>
+<p>Metropolis Light Transport (MLT)  </p>
+<h3 id="有偏光线传播方法"><a href="#有偏光线传播方法" class="headerlink" title="有偏光线传播方法"></a>有偏光线传播方法</h3><p>光子映射（Photon Mapping)  </p>
+<p>VCM（Vertex connection and merging) 顶点连接/合并  </p>
+<p>实时辐射度（Instant Radiosity) (VPL / many light methods)  </p>
+
+      
+       
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '3fa7e95b351aa27f85ca',
+            clientSecret: '8b72dabd6ae2e97f256942498eb4d306fe96c4e7',
+            repo: 'vzerzz.github.io',
+            owner: 'vzerzz',
+            admin: ['vzerzz'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023 Vzer
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/list-background.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

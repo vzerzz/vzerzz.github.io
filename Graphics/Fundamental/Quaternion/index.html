@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quaternion | Vzer&#39;s Blog</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Quaternion | Vzer&#39;s Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="这里什么都没有…">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Vzer&#39;s Blog">
+<meta property="og:description" content="这里什么都没有…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-24T10:38:54.000Z">
+<meta property="article:modified_time" content="2022-05-24T11:10:58.509Z">
+<meta property="article:author" content="Vzer">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Vzer</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/vzerzz"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/mo-sa-ran-yun-yu"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="csdn"
+               href="https://blog.csdn.net/gentleclown"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-csdn"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(45)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="C++">
+                        
+                        C++
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Graphics">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Graphics
+                        <small>(15)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Graphics<--->Fundamental">
+                                        
+                                        Fundamental
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Graphics<--->RTR">
+                                        
+                                        RTR
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Unity">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        Unity
+                        <small>(26)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="Unity<--->C#">
+                                        
+                                        C#
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->DataPersistence">
+                                        
+                                        DataPersistence
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Demo">
+                                        
+                                        Demo
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Frame">
+                                        
+                                        Frame
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="Unity<--->Fundamental">
+                                        
+                                        Fundamental
+                                        
+                                            <small>(8
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Others">
+                        
+                        Others
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">关于</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="45">
+<input type="hidden" id="yelog_site_word_count" value="75k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>2D</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3D</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FPS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sneak</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Quaternion">Quaternion</span>
+            <span class="post-date" title="2023-01-13 00:00:00">2023/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/PracticalIndustrialSolutions/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PracticalIndustrialSolutions">PracticalIndustrialSolutions</span>
+            <span class="post-date" title="2022-12-05 00:00:00">2022/12/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/RTRT/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RTRT">RTRT</span>
+            <span class="post-date" title="2022-11-24 00:00:00">2022/11/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/PBR/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PBR">PBR</span>
+            <span class="post-date" title="2022-11-23 00:00:00">2022/11/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/GlobalIllumination/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Global Illumination">Global Illumination</span>
+            <span class="post-date" title="2022-11-20 00:00:00">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/EnvironmentMapping/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Environment Mapping">Environment Mapping</span>
+            <span class="post-date" title="2022-11-15 00:00:00">2022/11/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics RTR "
+           href="/Graphics/RTR/Shadows/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shadows">Shadows</span>
+            <span class="post-date" title="2022-11-03 00:00:00">2022/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/env/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="env">env</span>
+            <span class="post-date" title="2022-10-30 00:00:00">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/vscodevim/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="vscodevim">vscodevim</span>
+            <span class="post-date" title="2022-10-20 00:00:00">2022/10/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Animation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Animation">Animation</span>
+            <span class="post-date" title="2022-10-09 00:00:00">2022/10/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Camera/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Camera">Camera</span>
+            <span class="post-date" title="2022-10-07 00:00:00">2022/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Materials/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Materials">Materials</span>
+            <span class="post-date" title="2022-10-07 00:00:00">2022/10/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/RayTracing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RayTracing">RayTracing</span>
+            <span class="post-date" title="2022-09-29 00:00:00">2022/09/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Geometry/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Geometry">Geometry</span>
+            <span class="post-date" title="2022-09-28 00:00:00">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Shading/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shading">Shading</span>
+            <span class="post-date" title="2022-09-25 00:00:00">2022/09/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Others "
+           href="/Others/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-08-19 00:00:00">2022/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 C++ "
+           href="/C++/Cherno/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cherno">Cherno</span>
+            <span class="post-date" title="2022-08-18 00:00:00">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Rasterization/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rasterization">Rasterization</span>
+            <span class="post-date" title="2022-07-14 00:00:00">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Graphics Fundamental "
+           href="/Graphics/Fundamental/Transformation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Transformation">Transformation</span>
+            <span class="post-date" title="2022-07-14 00:00:00">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/UIFrame/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UIFrame">UIFrame</span>
+            <span class="post-date" title="2022-06-17 00:00:00">2022/06/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpDesignPattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 设计模式">C# 设计模式</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpFUNDAMENTAL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 语言基础">C# 语言基础</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpHL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C# 高级">C# 高级</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity C# "
+           href="/Unity/Csharp/CsharpOOP/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C#面向对象">C#面向对象</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity DataPersistence "
+           href="/Unity/DataPersistence/Storage/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储">数据存储</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/MultiplayerFPS/"
+           data-tag="FPS"
+           data-author="" >
+            <span class="post-title" title="MultiplayerFPS">MultiplayerFPS</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity DataPersistence "
+           href="/Unity/DataPersistence/SQLite/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQLite">SQLite</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Ruby's%20Adventure/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="Ruby&#39;s Adventure">Ruby&#39;s Adventure</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/RobbiePlatform/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="RobbiePlatform">RobbiePlatform</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/SunnyLand/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="SunnyLand">SunnyLand</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Stealth/"
+           data-tag="3D,sneak"
+           data-author="" >
+            <span class="post-title" title="Stealth">Stealth</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Demo "
+           href="/Unity/Demo/Up/"
+           data-tag="2D"
+           data-author="" >
+            <span class="post-title" title="Up">Up</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Animation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动画系统">动画系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Base/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="初识">初识</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Effects/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="特效系统">特效系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Coroutine/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="协程">协程</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Navigation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="导航系统">导航系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/Physics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="物理系统">物理系统</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/UGUI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UGUI">UGUI</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Fundamental "
+           href="/Unity/UnityFundamental/WWW/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WWW">WWW</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/AStarPathFinding/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AStarPathFinding">AStarPathFinding</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/AssetBundle/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AssetBundle">AssetBundle</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/FSM/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FSM">FSM</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/Photon/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Photon">Photon</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Frame "
+           href="/Unity/Frame/xLua/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="xLua">xLua</span>
+            <span class="post-date" title="2022-01-01 00:00:00">2022/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Graphics/Fundamental/Quaternion" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Quaternion</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Graphics">Graphics</a> > 
+            
+            <a  data-rel="Graphics&lt;---&gt;Fundamental">Fundamental</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-01-13 05:58:26'>2023-01-13 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:4.9k</span>
+        
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%813D-%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB"><span class="toc-text">一、3D 中的方位与角位移</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%AC%A7%E6%8B%89%E8%A7%92-Euler-angles"><span class="toc-text">1. 欧拉角 (Euler angles)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-text">2. 四元数的相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%A4%8D%E6%95%B0"><span class="toc-text">2.1 复数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%AC%A7%E6%8B%89%E6%97%8B%E8%BD%AC%E5%AE%9A%E7%90%86"><span class="toc-text">2.2 欧拉旋转定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4%E6%97%8B%E8%BD%AC%E7%9A%84%E6%8B%86%E5%88%86"><span class="toc-text">2.3 三维空间旋转的拆分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9B%9B%E5%85%83%E6%95%B0-Quaternion"><span class="toc-text">3. 四元数 (Quaternion)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-text">3.1 四元数的运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%9B%9B%E5%85%83%E6%95%B0%E9%BB%98%E8%AE%A4%E5%9C%A8%E6%9E%81%E5%9D%90%E6%A0%87%E4%B8%8B"><span class="toc-text">3.2 四元数默认在极坐标下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E5%B8%B8%E7%94%A8%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95"><span class="toc-text">3.3 四元数的常用插值方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF%E5%92%8C-Squad-%E6%8F%92%E5%80%BC"><span class="toc-text">3.4 贝塞尔曲线和 Squad 插值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%AC%A7%E6%8B%89%E8%A7%92%E3%80%81%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5%E3%80%81%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2"><span class="toc-text">4 欧拉角、旋转矩阵、四元数的互相转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%AC%A7%E6%8B%89%E8%A7%92%E5%92%8C%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="toc-text">4.1 欧拉角和旋转矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%9B%9B%E5%85%83%E6%95%B0%E5%92%8C%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="toc-text">4.2 四元数和旋转矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%AC%A7%E6%8B%89%E8%A7%92%E5%92%8C%E5%9B%9B%E5%85%83%E6%95%B0"><span class="toc-text">4.3 欧拉角和四元数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-SQT-%E5%8F%98%E6%8D%A2"><span class="toc-text">5. SQT 变换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、3D-中的方位与角位移"><a href="#一、3D-中的方位与角位移" class="headerlink" title="一、3D 中的方位与角位移"></a>一、3D 中的方位与角位移</h1><p><strong>方位</strong>：从上一方位旋转后的 结果值（单一状态，用欧拉角表示）<br><strong>角位移</strong>：相对于上一方位旋转后的 偏移量（用四元数、矩阵表示）</p>
+<h2 id="1-欧拉角-Euler-angles"><a href="#1-欧拉角-Euler-angles" class="headerlink" title="1. 欧拉角 (Euler angles)"></a>1. 欧拉角 (Euler angles)</h2><p>定义：</p>
+<ul>
+<li>欧拉角可以用来描述任意旋转，将一个角位移分解为三个互相垂直轴的<strong>顺序旋转步骤</strong></li>
+<li>旋转后，原来互相垂直的轴可能不再垂直，<strong>当前步骤只能影响下一个旋转步骤，不能影响之前的旋转步骤</strong>，通过这个特性我们可以选择 <strong>适合的旋转方式(如：YXZ)</strong> 来避免万像锁的发生</li>
+<li>这里<strong>默认右手坐标系，逆时针为正</strong>，任意三个轴可以作为旋转轴，下图仅为举例<br>heading：绕<strong>惯性坐标系</strong>的 Y 轴旋转<br>yaw：绕<strong>模型坐标系</strong>的 Y 轴旋转 </li>
+</ul>
+<p><img src="/images/rollPichYaw.png" alt></p>
+<p>优点：</p>
+<ul>
+<li>仅需要三个角度值，节省内存</li>
+<li>表示直观（便于显示和输入方位）</li>
+<li>任意三个数对于欧拉角都是合法的</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>欧拉角之间求差值（角位移）困难</li>
+<li>欧拉角的方位表达方式不唯一（n = n + 360）</li>
+<li>由于三个角度不互相独立，可能产生：pich 135 = heading 180 + pich 45 + bank 180 的情况<br>（通过限制角的范围解决，heading 和 bank 限制在 -180 ～ 180，pitch 限制在 -90 ～90）</li>
+<li>万向锁问题（避免方法：<strong>重新排列角度的旋转顺序</strong>，但万向锁仍可能产生）</li>
+</ul>
+<p>万向锁: </p>
+<p><a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNzkyOTIyMTI=.html">视频</a>  </p>
+<ul>
+<li>当沿着任意角位移 90 度时，导致两个方向的旋转轴同线，导致三次旋转中有两次旋转的效果是一样的<br>即：少了一个维度的旋转变化</li>
+<li>如下图在万向锁的情况下没有单一的旋转轴可以实现箭头向下, 但仍可以旋转到想要的位置，必须同时旋转三个轴向，但此时物体没有按仅在一个平面中的直线轨迹转动, 而是走了个不规则的曲线，箭头如果是相机，则相机会发生抖动</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="/images/gimbalLock.png" alt></th>
+<th style="text-align:center"><img src="/images/gimbalLock.gif" alt></th>
+<th style="text-align:center"><img src="/images/gimbalLockRight.png" alt></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">万向锁</td>
+<td style="text-align:center"><strong>发生万向锁后</strong>的旋转</td>
+<td style="text-align:center">期望的旋转</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-四元数的相关知识"><a href="#2-四元数的相关知识" class="headerlink" title="2. 四元数的相关知识"></a>2. 四元数的相关知识</h2><h3 id="2-1-复数"><a href="#2-1-复数" class="headerlink" title="2.1 复数"></a>2.1 复数</h3><p>复数是一种复合的数字，$C_{复数} = a + b \cdot i$ ，其中 a、b 为实数，$i$ 为虚数，$i^2 = -1$</p>
+<ul>
+<li>复数通过 <strong>实部 a 和 虚部 b</strong> 构成的二维虚平面，将一维的数扩展到二维平面</li>
+<li>$i$ 只是区分 实部  a 和 虚部 b 的标记，这样可以把复数用二维的向量表示<br>加法：$(a + bi) + (c + di) = (a + c) + (b+d)i$<br>乘法：$(a + bi) *(c + di) = (ac - bd) + (bc+ad)i$</li>
+<li>复数乘以 $i$ 的几何意义，在二维平面上逆时针旋转 90 度<br>$(a + b \cdot i) <em> i = a</em>i + b*i^2 = -b + a \cdot i$ </li>
+</ul>
+<p><img src="/images/complex_number.png" alt></p>
+<h3 id="2-2-欧拉旋转定理"><a href="#2-2-欧拉旋转定理" class="headerlink" title="2.2 欧拉旋转定理"></a>2.2 欧拉旋转定理</h3><p><img src="/images/EularRotate.png" alt></p>
+<p>这里 $a = cos \phi, b = sin \phi, \phi$ 是从上一方位到当前方位的角位移，复数值表示当前方位 则 $c_{方位} =  a + b \cdot i$ 在极坐标下表示为 $e_{方位} = cos \phi + sin \phi \cdot i$<br>在极坐标下，复数能够更方便的表示旋转角的变化：</p>
+<ol>
+<li><p><strong>连续的旋转可以用两个复数的乘积表示</strong><br>例： $e_1$ 为先旋转 $\phi$，$e_2$ 再旋转 $\theta$，则根据 $i^2 = -1$ 以及和差公式可得最后的方位</p>
+<script type="math/tex; mode=display">
+\begin{align}
+e_1 &= cos \phi + sin \phi \cdot i \\
+e_2 &= cos \theta + sin \theta \cdot i \\
+e &= cos(\phi + \theta) + sin(\phi + \theta) \cdot i \\
+&= (cos \phi \cdot cos \theta - sin \phi \cdot sin \theta) +(sin \phi \cdot cos \theta + cos \phi \cdot sin \theta) \cdot i \\
+&= (cos \phi + sin \phi \cdot i )(cos \theta + sin \theta \cdot i) \\
+&= e_1 \cdot e_2
+\end{align}</script></li>
+<li><p>在不知道当前角位移的情况下，<strong>可以通过当前方位+角位移计算出之后的方位</strong></p>
+</li>
+</ol>
+<h3 id="2-3-三维空间旋转的拆分"><a href="#2-3-三维空间旋转的拆分" class="headerlink" title="2.3 三维空间旋转的拆分"></a>2.3 三维空间旋转的拆分</h3><p>四元数在表示三维空间旋转的方式时采用 <strong>轴角式（Axis-angle)</strong> 的旋转<br>轴角式旋转方法如下图，v 绕过原点的方向向量 u 逆时针旋转 $\theta$ 得到 v ’ （图中采用右手坐标系，逆时针旋转方向为正方向）</p>
+<p><img src="/images/axisAngle.png" alt></p>
+<p>拆分轴角式旋转：</p>
+<ol>
+<li><p>如下图 A，假设 u 是单位向量</p>
+<script type="math/tex; mode=display">
+\begin{align}
+v &= v_{||} + v_{\bot}\\
+v_{||} &= v_{||}'\\
+v_{||} &= proj_u(v) = {u \cdot v \over ||u||} \cdot {u \over ||u||} = {(u \cdot v)u \over ||u||^2} = (u \cdot v)u\\
+v_{\bot} &= v - v_{||} = v - (u \cdot v)u
+\end{align}</script></li>
+<li><p>如下图 B，C：w 既垂直于 u 又垂直于 $v_{\bot}$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+w &= u \times v_{\bot}\\
+||w|| &= ||u \times v_{\bot}|| \\
+&= ||u|| \cdot ||v_{\bot}|| \cdot sin{\pi \over 2}\\
+&= ||v_{\bot}|| \\\\
+v_{\bot}' &= v_v' + v_w'\\
+&= v_{\bot} \cdot cos\theta + w \cdot sin\theta \\
+&= v_{\bot} \cdot cos\theta + (u \times v_{\bot})sin\theta
+\end{align}</script></li>
+<li><p>结合 1，2 可得</p>
+<script type="math/tex; mode=display">
+v' = v \cdot cos\theta + (u\cdot v)u(1 - cos\theta)+(u \times v)sin\theta</script></li>
+</ol>
+<p><img src="/images/axisAngleSplit.png" alt></p>
+<h2 id="3-四元数-Quaternion"><a href="#3-四元数-Quaternion" class="headerlink" title="3. 四元数 (Quaternion)"></a>3. 四元数 (Quaternion)</h2><blockquote>
+<p>相对于复数的二维空间，为了解决三维空间的旋转变化问题，爱尔兰数学家 William Rowan Hamilton 把复数进行了推广，也就是四元数</p>
+<p><strong>四元数包含旋转方向</strong>： 3D 中的一个旋转对应正向和反向旋转的两个四元数，不是一一对应的</p>
+</blockquote>
+<p>定义：<strong>四元数表示角位移的大小</strong></p>
+<ul>
+<li><p>与复数类似，四元数由 1 个实部 和 3 个虚部构成。其中，a、b、c 、d 为实数，$i$ 为虚数<br>$\vec Q_{四元数} = a + b \cdot i_x + c \cdot i_y + d \cdot i_z$</p>
+</li>
+<li><p>$i$ 代表旋转，$-i$ 代表反向旋转</p>
+<script type="math/tex; mode=display">
+\begin{align}
+i_x * i_y * i_z &= i_x * i_x = i_y * i_y = i_z * i_z = -1\\
+i_x &= i_y * i_z  = - i_z * i_y = - i_x\\
+-i_y &= i_x * i_z \\
+\end{align}</script><ul>
+<li>四元数的 3 个虚数 $i$ 之间的乘法与向量之间的点积结果形式很类似，于是四元数有了另外一种表示形式<script type="math/tex; mode=display">
+\begin{align}
+\vec Q_{四元数} &= w + x \cdot i_x + y \cdot i_y + z \cdot i_z \\
+&= (x, y, z, w) \\
+&= (\vec u, w)
+\end{align}</script></li>
+</ul>
+</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li><strong>平滑差值</strong>：slerp 和 squad 提供了方位间的平滑差值 <strong>（矩阵和欧拉角都没有这个功能）</strong></li>
+<li>快速连接和角位移求逆：<br>多个角位移 ${四元数叉乘 \over \to}$ 单个角位移（比矩阵快）<br>反角位移 = 四元数的共轭（比矩阵快）</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>四元数比欧拉角多存储一个数（当保存大量角位移时尤为明显，如存储动画数据）</li>
+<li>浮点数舍入误差和随意输入，会导致四元数不合法（可以通过四元数标准化解决，确保四元数为单位大小）</li>
+<li>难以直接使用</li>
+</ul>
+<h3 id="3-1-四元数的运算"><a href="#3-1-四元数的运算" class="headerlink" title="3.1 四元数的运算"></a>3.1 四元数的运算</h3><ul>
+<li><p><strong>乘法，合并两个四元数的偏移量，得到总的角位移</strong><br>四元数的乘法有很多种，其中最常用的一种是格拉丝曼积，与数学多项式乘法相同（与复数乘法概念相同）<br>乘法满足结合律：abc = (ab)c = a(bc)<br>但不符合交换律：ab != ba</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\vec Q_1 \vec Q_2 &= w_1w_2 - \vec u_1 \cdot \vec u_2 + w_1 \vec u_2 + w_2 \vec u_1 + \vec u_1 \times \vec u_2\\
+&= ((w_1 \vec u_2 + w_2 \vec u_1 +  \vec u_1 \times \vec u_2), (w_1w_2 - \vec u_1 \cdot \vec u_2))
+\end{align}</script></li>
+<li><p>四元数与标量相乘、点积、加法、叉乘、单位化，均与四维向量的点积相同，以点积为例</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\vec Q_1 \cdot \vec Q_2 &= (w_1, x_1, y_1, z_1)(w_2, x_2, y_2, z_2) \\
+&= w_1w_2 + x_1 x_2 + y_1y_2 + z_1z_2
+\end{align}</script></li>
+<li><p>求模：代表一个四维的长度，与向量的求模方法一致</p>
+<script type="math/tex; mode=display">
+||\vec Q|| = \sqrt{w^2 + \vec u \cdot \vec u} = \sqrt{w^2 + x^2 + y^2 + z^2}</script></li>
+<li><p>共轭：实部相同，虚部相反（与复数共轭概念相同）</p>
+<script type="math/tex; mode=display">
+\vec  Q^* \vec  Q = (-\vec u, w) (\vec u,w) = ||\vec Q||^2 = \vec Q \cdot \vec Q</script></li>
+<li><p>求逆：<strong>为了计算四元数的 “差”</strong>，例<br>给定方位 A 和 B，求 A 旋转到 B 的<strong>角位移 d</strong>，即：Ad = B，$d = A^{-1}B$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\vec Q\vec Q^{-1} &= 1\\
+\vec Q^* \vec Q\vec Q^{-1} &= \vec Q^*\\
+||\vec Q||^2 \cdot \vec Q^{-1} &= \vec Q^*\\
+\vec Q^{-1} &= {\vec Q^* \over ||\vec Q||^2}\\
+\end{align}</script></li>
+<li><p>单位四元数：任意四元数乘以单位四元数后保持不变，$(\vec 0, \pm 1)$，模为 1<br><strong>单位四元数的 逆 = 共轭</strong>，由于共轭比逆好求出，一般用四元数的共轭代替逆使用<br>几何上存在两个单位四元数 -u 和 u，因为他们几何意义相同都表示没有位移，但数学上只有 u</p>
+<script type="math/tex; mode=display">
+Q_{单位} = {Q \over ||Q||}\\
+Q_{单位}Q_1 = Q_1Q_{单位} = Q_1\\
+((w_1 \vec u + w \vec u_1 +  \vec u_1 \times \vec u), (w_1w - \vec u_1 \cdot \vec u)) = (\vec u_1, w_1)</script></li>
+</ul>
+<h3 id="3-2-四元数默认在极坐标下"><a href="#3-2-四元数默认在极坐标下" class="headerlink" title="3.2 四元数默认在极坐标下"></a>3.2 四元数默认在极坐标下</h3><p><strong>极坐标下的优势：使四元数的运算和向量的运算方法一致</strong></p>
+<p>由 4.2.1 复数在笛卡尔坐标和极坐标的转换方式可得，四元数在</p>
+<ul>
+<li>笛卡尔坐标下为<br>$\vec Q = (x, y, z, w) = (\vec u, w)$</li>
+<li>极坐标下为，其中 $\theta$ 为绕 $\vec u$ 旋转后的角位移（旋转方式见 4.2.3，<a target="_blank" rel="noopener" href="https://krasjet.github.io/quaternion/quaternion.pdf">推导到极坐标</a>）<br>$\vec Q  = (x sin{\theta \over 2}, y sin{\theta \over 2},z sin{\theta \over 2}, cos{\theta \over 2}) = (\vec u sin{\theta \over 2}, cos{\theta \over 2})$</li>
+</ul>
+<p><strong>只有旋转轴 u 为单位向量时，下面公式才成立</strong></p>
+<ul>
+<li><p>用指数代替四元数：根据旋转角位移 $\theta$ 和旋转轴 u 求出四元数</p>
+<script type="math/tex; mode=display">
+e^{(\vec u {\theta \over 2}, 0)} = (\vec usin{\theta \over 2}, cos{\theta \over 2})</script></li>
+<li><p>对数：根据四元数和旋转轴 u 求出旋转角位移 $\theta$</p>
+<script type="math/tex; mode=display">
+log_e(（\vec u sin{\theta \over 2}, cos{\theta \over 2}）) = (\vec u {\theta \over 2}, 0)</script></li>
+<li><p>将点 P 绕 $\vec{u}$ 旋转 $\theta$ 度<br>$P_{旋转后} = aPa^{-1} = aPa^*, a = (\vec u sin{\theta \over 2}, cos{\theta \over 2})$</p>
+</li>
+<li><p>将点 P 绕 $\vec{u}$ 旋转 $\theta$ 度后再旋转 $\alpha$ 度（方位的叠加是点乘）<br>$P_{旋转后} = baPa^{-1}b^{-1} = (ba)P(ba)^{-1},a = (\vec u  sin{\theta \over 2},cos{\theta \over 2}),b = (\vec u sin{\alpha \over 2},cos{\alpha \over 2})$</p>
+</li>
+<li><p><strong>四元数求幂</strong>：四元数的 x 次幂等同于将它的旋转角缩放 x 倍</p>
+<script type="math/tex; mode=display">
+(\vec u sin{\theta \over 2}, cos{\theta \over 2})^x
+= (\vec u {sin({\theta \over 2}x)\over sin{\theta \over 2}}, cos({\theta \over 2}x))</script></li>
+</ul>
+<p>四元数 * 向量 = 旋转后的向量，例：<br>设 用四元数 q = (u, w)，u 为单位向量，旋转三维向量 v，则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p &= (v, 0)\\
+p'&= qpq^{-1} = qpq^* = (u,w)(v,0)(-u,w)\\
+&= (2(u\cdot v)u + (w^2 -u\cdot v)v + 2w(u \times v),...)\\
+&= (v',...)
+\end{align}</script><h3 id="3-3-四元数的常用插值方法"><a href="#3-3-四元数的常用插值方法" class="headerlink" title="3.3 四元数的常用插值方法"></a>3.3 四元数的常用插值方法</h3><p>所有插值用的旋转四元数<strong>都是单位四元数</strong><br>插值要采用弧面最短路径</p>
+<ul>
+<li>$Q$ 和 $-Q$ 代表不同的旋转角度得到的相同方位，在插值时会有不同的结果，如下图：可以将 q0 和 q1（蓝色的弧）插值，这会导致 3D 空间的向量旋转接近 360 度，而实际上这两个旋转相差并没有那么多，所以 q0 和 -q1（红色的弧）的插值才是插值的最短路径</li>
+<li>每次插值前要通过 $cos\theta = q_0 \cdot q_1$ 判断 q0 和 q1 的夹角是否为钝角，若为钝角将 q1 改为 -q1 来计算插值</li>
+</ul>
+<p><img src="/images/Interpolation.png" alt></p>
+<p><strong>线形插值</strong>（Lerp：<strong>L</strong>inear Int<strong>erp</strong>olation）</p>
+<ul>
+<li>对四元数插值后，得到的结果不是单位四元数，插值的弧度越大缺点越明显</li>
+<li>公式：$Q_t = (1- t)Q_0 + t Q_1, t$ 为插值比例</li>
+</ul>
+<p><img src="/images/Lerp.png" alt></p>
+<p><strong>正规化线性插值</strong>（Nlerp：<strong>N</strong>ormalized <strong>L</strong>inear Int<strong>erp</strong>olation）</p>
+<ul>
+<li>对四元数插值后，虽然把弦等分了，但是弦上对应的弧却不是等分的，插值的弧度越大缺点越明显<br>{ % raw % }</li>
+<li>公式：$Q_t = { { (1- t)Q_0 + tQ_1}\over{||(1- t)Q_0 + tQ_1||} }, t$ 为插值比例<br>{ % endraw % }</li>
+</ul>
+<p><img src="/images/NLerp.png" alt></p>
+<p><strong>旋转角度球面线性插值</strong>（Slerp：<strong>S</strong>pherical <strong>L</strong>inear Int<strong>erp</strong>olation）</p>
+<ul>
+<li>对单个角度做线形插值，做到固定角速度，无法平滑过渡连接不同方向的角度</li>
+<li><p>公式 1：这里用的四元数都是单位四元数，所以有 $Q^{-1} = Q^*,  t$ 为插值比例</p>
+<script type="math/tex; mode=display">
+Q_t = Q_0(Q_0^{-1}Q_1)^t = Q_0(Q_0^* Q_1)^t​</script></li>
+<li><p>公式 2：效率比公式 1 高，其中 $\theta = cos^{-1}(Q_0\cdot Q_1)$</p>
+<script type="math/tex; mode=display">
+Q_t = {sin((1 - t)\theta) \over sin\theta} Q_0 + {sin(t\theta) \over sin\theta}Q_1</script></li>
+</ul>
+<p><img src="/images/Slerp.png" alt></p>
+<p><strong>Slerp 和 Nlerp 的比较</strong></p>
+<ul>
+<li>效率上 Nlerp 比 Slerp 高<br>效果上 Nlerp 和 Slerp 在单位四元数之间的夹⻆ θ 非常小时差别不大，夹角越大 Nlerp 的效果越差</li>
+<li>单位四元数之间的夹⻆ θ 非常小，那么 sinθ 可能会由于浮点数的误差被近似为 0.0，从而导致除以 0 的错误。我们在实施 Slerp 之前，需要检查两个四元数的夹⻆是否过小一旦发现这种问题，我们就必须改用 Nlerp 对两个四元数进行插值，这时候 Nlerp 的误差非常小所以基本不会与真正的 Slerp 有什么区别 </li>
+</ul>
+<h3 id="3-4-贝塞尔曲线和-Squad-插值"><a href="#3-4-贝塞尔曲线和-Squad-插值" class="headerlink" title="3.4 贝塞尔曲线和 Squad 插值"></a>3.4 贝塞尔曲线和 Squad 插值</h3><p><strong>样条（Spline）</strong>：在一个向量序列 $v_0,v_1,…,v_n$ 中分别对每对向量 $v_i,v_{i+1}$ 进行插值后互相连接得到的曲线</p>
+<p><strong>贝塞尔曲线（Bézier）</strong>：通过不断在现有点的基础上添加控制点，使最终得到的曲线更加平滑</p>
+<p><img src="/images/bezier.png" alt></p>
+<p>三次贝塞尔曲线：</p>
+<p><img src="/images/bezier.gif" alt></p>
+<p><img src="/images/bezier2.png" alt></p>
+<p><img src="/images/bezier3.png" alt></p>
+<p>插值方式可以用 lerp、Slerp 等方式，上图采用 de Casteljau 算法构造贝塞尔曲线<br>上图采用 lerp 方式插值，插值方程为：</p>
+<script type="math/tex; mode=display">
+v_t = (1 − t)^3v_0 + 3(1 − t)^2tv_1 + 3(1 − t)t^2v_2 + t^3v_3</script><p>$de Casteljau$ 算法构造贝塞尔曲线的过程为：</p>
+<ul>
+<li>第一次贝塞尔曲线，由相邻的基础点得到插值点 $v_{01}、v_{12}、v_{23}$</li>
+<li>第二次贝塞尔曲线，由上次贝塞尔的插值点得到本次的插值点 $v_{012}、v_{123}$</li>
+<li>第三次贝塞尔曲线，由上次贝塞尔的插值点得到本次的插值点 $v_{0123}$</li>
+</ul>
+<p><strong>球面四边形插值</strong>（Squad：<strong>S</strong>pherical and <strong>Quad</strong>rangle）</p>
+<ul>
+<li>平滑过渡连接不同方向的旋转角，效率最低，效果最好</li>
+<li>Squad 的插值方法类似贝塞尔曲线的构造过程，<strong>由于取基础点的方式不同，效率比构造贝塞尔曲线要高</strong><br>Squad 的插值过程中可以用 lerp、Slerp 等方式插值<br>如果使用 lerp 插值，<strong>插值参数为 2t(1-t)，而非 t</strong><br>插值方程为：</li>
+</ul>
+<script type="math/tex; mode=display">
+v_t = (2t^2 − 2t + 1)(1 − t)v_0 + 2(1 − t)^2tv_1 + 2(1 − t)t^2v_2 + t(2t^2 − 2t + 1)v_3</script><p>  插值步骤为：</p>
+<ol>
+<li>由基础点得到插值点 $v_{12}，v_{03}$</li>
+<li>根据上次的插值点得出本次的插值点 $v_{0312}$</li>
+</ol>
+<p><img src="/images/Squad.png" alt></p>
+<p>三次贝塞尔曲线和 Squad 插值构造的曲线对比：</p>
+<p><img src="/images/comparedBS.png" alt></p>
+<h2 id="4-欧拉角、旋转矩阵、四元数的互相转换"><a href="#4-欧拉角、旋转矩阵、四元数的互相转换" class="headerlink" title="4 欧拉角、旋转矩阵、四元数的互相转换"></a>4 欧拉角、旋转矩阵、四元数的互相转换</h2><h3 id="4-1-欧拉角和旋转矩阵"><a href="#4-1-欧拉角和旋转矩阵" class="headerlink" title="4.1 欧拉角和旋转矩阵"></a>4.1 欧拉角和旋转矩阵</h3><p>欧拉角 -&gt; 旋转矩阵</p>
+<ul>
+<li><p>这里的旋转矩阵和 [2.4 Rotate] 类似，这里的欧拉角操作的模型的坐标系</p>
+</li>
+<li><p>设在<strong>右手坐标系</strong>，矩阵<strong>列向量</strong>存储，旋转角<strong>逆时针</strong>为正方向（改变的角度方向取反），则<br>最后的转换矩阵为 Heading/Pich/Roll 按需要的顺序相乘的结果（HPR 为相机避免万向死锁的最佳顺序）</p>
+<script type="math/tex; mode=display">
+\begin{align}
+Heading &= 
+\begin{bmatrix}
+cosH & 0 & sinH\\
+0 & 1 & 0\\
+-sinH & 0 & cosH
+\end{bmatrix} \\
+Pich &=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & cosP & -sinP\\
+0 & sinP & cosP
+\end{bmatrix} 
+\\
+Roll &=
+\begin{bmatrix}
+cosR & -sinR & 0\\
+sinR & cosR & 0\\
+0 & 0 & 1
+\end{bmatrix} \\
+M_{HPR} &= 
+\begin{bmatrix}
+cosHcosR+sinHsinPsinR & -cosHsinR+sinHsinPcosR & sinHcosP \\
+sinRcosP & cosRcosP & -sinP\\
+-sinHcosR+cosHsinPsinR & sinRsinH+cosHsinPcosR & cosHcosP
+\end{bmatrix}
+\end{align}\\</script></li>
+</ul>
+<p><img src="/images/rollPichYaw.png" alt></p>
+<p>旋转矩阵 -&gt; 欧拉角</p>
+<blockquote>
+<p>转换后的欧拉角是限制欧拉角，即 Heading 和 Roll 范围为 $\pm$ 180 度，Pich 的范围为 90 度 </p>
+</blockquote>
+<p>当矩阵每列都是单位向量时，矩阵为正交矩阵，则</p>
+<script type="math/tex; mode=display">
+M \cdot M^{-1} = M \cdot M^T = I\\
+M^{-1} = M^T\\</script><ol>
+<li>若 $Pich \neq \pm 90$，由欧拉角转矩阵的公式可得：</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align}
+\begin{bmatrix}
+m11 & m12 & m13\\
+m21 & m22 & m23\\
+m31 & m32 & m33
+\end{bmatrix}
+&= 
+\begin{bmatrix}
+cosHcosR+sinHsinPsinR & -cosHsinR+sinHsinPcosR & sinHcosP \\
+sinRcosP & cosRcosP & -sinP\\
+-sinHcosR+cosHsinPsinR & sinRsinH+cosHsinPcosR & cosHcosP
+\end{bmatrix}\\
+\\
+m23 &= -sinP\\
+arcsin(-m23) &= P\\
+\\
+m13 &= sinHcosP\\
+m33 &= cosHcosP\\
+{m13 \over m33} &= tanH\\
+arctan({m13 \over m33}) &= H\\
+\\
+m21 &= sinRcosP\\
+m22 &= cosRcosP\\
+arctan({m21 \over m22}) &= R\\
+\end{align}</script><ol>
+<li>若 $Pich = \pm 90$，是万向锁情况，此时 Heading 和 Roll 绕同样的轴竖直旋转，默认旋转的最后一步 Roll 不转，即 Roll = 0 ，由欧拉角转矩阵的公式可得：</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align}
+\begin{bmatrix}
+m11 & m12 & m13\\
+m21 & m22 & m23\\
+m31 & m32 & m33
+\end{bmatrix}
+&= 
+\begin{bmatrix}
+cosH & sinHsinP & 0 \\
+0 & 0 & -sinP\\
+-sinH & cosHsinP & 0
+\end{bmatrix}\\
+\\
+m11 &= cosH\\
+m13 &= -sinH\\
+-arctan({m13\over m11}) &= H
+\end{align}</script><h3 id="4-2-四元数和旋转矩阵"><a href="#4-2-四元数和旋转矩阵" class="headerlink" title="4.2 四元数和旋转矩阵"></a>4.2 四元数和旋转矩阵</h3><p>四元数 -&gt; 旋转矩阵 </p>
+<p>设四元数为 $\vec Q = (\vec n, cos{ \theta \over 2 }) = (x,y,z,w)$，绕 n 旋转 $\theta$ ，由 <a href="#2.4 Rotate">2.4 Rotate</a> 沿任意方向旋转的矩阵 得旋转矩阵 M：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+(1-cos\theta)x^2 + cos\theta & (1-cos\theta)yx+sin\theta z & (1-cos\theta)zx - sin\theta y\\
+(1-cos\theta)xy - sin\theta z & (1-cos\theta)y^2 + cos\theta & -(1-cos\theta)zy + sin\theta x\\
+(1-cos\theta)xz + sin\theta y & (1-cos\theta)yz - sin\theta x & (1-cos\theta)z^2 + cos\theta
+\end{bmatrix}
+\to M = 
+\begin{bmatrix}
+1-2y^2-2z^2 & 2xy+2wz & 2xz-2wy\\
+2xy-2wz & 1-2x^2-2z^2 & 2yz+2wx\\
+2xz+2wy & 2yz-2wx & 1-2x^2-2y^2
+\end{bmatrix}</script><p>旋转矩阵 -&gt; 四元数</p>
+<ol>
+<li>由四元数转旋转矩阵可知：</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align}
+\begin{bmatrix}
+m11 & m12 & m13\\
+m21 & m22 & m23\\
+m31 & m32 & m33
+\end{bmatrix}
+&= 
+\begin{bmatrix}
+1-2y^2-2z^2 & 2xy+2wz & 2xz-2wy\\
+2xy-2wz & 1-2x^2-2z^2 & 2yz+2wx\\
+2xz+2wy & 2yz-2wx & 1-2x^2-2y^2
+\end{bmatrix}\\\\
+m11+m22+m33
+&= (1-2y^2-2z^2)+(1-2x^2-2z^2)+(1-2x^2-2y^2)\\
+&= 3-4(x^2+y^2+z^2)\\
+&= 3-4(1-w^2)\\
+&= 4w^2-1\\
+\\
+w&={\sqrt{m11+m22+m33+1} \over 2}
+
+
+\end{align}</script><ol>
+<li>使 m11、m22、m33 其中两个为负，一个为正可得：</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align}
+x &={\sqrt{m11-m22-m33+1} \over 2}\\
+y &={\sqrt{-m11+m22-m33+1} \over 2}\\
+z &={\sqrt{-m11-m22+m33+1} \over 2}
+\end{align}</script><p>以上方法得到的<strong>四元数总是正的</strong>，没有判断四元数符号的依据</p>
+<ol>
+<li>在由：</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align}
+m12 + m21 &= 4xy\\
+m12 - m21 &= 4wz\\
+m31 + m13 &= 4xz\\
+m31 - m13 &= 4wy\\
+m23 + m32 &= 4yz\\
+m23 - m32 &= 4wx\\
+\end{align}</script><ol>
+<li><p>综上可得：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+x &= {m23-m32 \over 4w}\\
+情况一、w ={\sqrt{m11+m22+m33+1} \over 2} \to  y &= {m31-m13 \over 4w}\\
+z &= {m12-m21 \over 4w}\\
+\\
+w &= {m23-m32 \over 4x}\\
+情况二、x ={\sqrt{m11-m22-m33+1} \over 2} \to  y &= {m12+m21 \over 4x}\\
+z &= {m31+m13 \over 4x}\\
+\\
+w &= {m31-m13 \over 4y}\\
+情况三、y ={\sqrt{-m11+m22-m33+1} \over 2} \to  x &= {m12+m21 \over 4y}\\
+z &= {m23+m32 \over 4y}\\
+\\
+w &= {m12-m21 \over 4z}\\
+情况四、z ={\sqrt{-m11-m22+m33+1} \over 2} \to  x &= {m31+m13 \over 4z}\\
+y &= {m23+m32 \over 4z}
+\end{align}</script></li>
+<li><p>取 1、2 中得到的 w、x、y、z 的最大值是哪个来判断，选择哪种情况</p>
+</li>
+</ol>
+<h3 id="4-3-欧拉角和四元数"><a href="#4-3-欧拉角和四元数" class="headerlink" title="4.3 欧拉角和四元数"></a>4.3 欧拉角和四元数</h3><p>四元数 -&gt; 欧拉角</p>
+<p>由 旋转矩阵 转 四元数 和 旋转矩阵 转 欧拉角的条件可得：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+P &= asin(-2(yz+wx)) \\
+H &=
+\begin{cases}
+atan2(xz-wy, 0.5 - x^2 - y^2),& \cos P \neq 0 \\
+atan2(-xz-wy, 0.5 - y^2 - z^2),& \cos P = 0
+\end{cases}\\
+R &=
+\begin{cases}
+atan2(xy-wz,0.5 - x^2 - z^2),& \cos P \neq 0\\
+0,& \cos P = 0
+\end{cases}
+\end{align}</script><p>欧拉角 -&gt; 四元数</p>
+<p>由四元数的公式得，在<strong>右手坐标系</strong>下的欧拉角列向量 H、P、R 为：</p>
+<script type="math/tex; mode=display">
+HPR=
+\begin{bmatrix}
+cos{H \over 2}\\\\ 0 \\-sin{H \over 2}\\ 0
+\end{bmatrix}
+\begin{bmatrix}
+cos{P \over 2}\\\\ -sin{H \over 2} \\0 \\0
+\end{bmatrix}
+\begin{bmatrix}
+cos{R \over 2}\\\\ 0\\ 0\\-sin{H \over 2}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+cos{H \over 2}cos{P \over 2}cos{R \over 2}+sin{H \over 2}sin{P \over 2}sin{R \over 2}\\\\ 
+-cos{H \over 2}sin{P \over 2}cos{R \over 2}-sin{H \over 2}cos{P \over 2}sin{R \over 2} \\
+cos{H \over 2}sin{P \over 2}sin{R \over 2}-sin{H \over 2}cos{P \over 2}cos{R \over 2} \\
+sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \over 2} 
+\end{bmatrix}</script><p><img src="/images/rollPichYaw.png" alt></p>
+<h2 id="5-SQT-变换"><a href="#5-SQT-变换" class="headerlink" title="5. SQT 变换"></a>5. SQT 变换</h2><blockquote>
+<p>四元数只能表示旋转，但是 4 X 4 的矩阵却可以表示旋转、平移、缩放</p>
+</blockquote>
+<p>SQT 变换矩阵：四元数、平移向量、缩放向量/缩放统一系数 构成的一个 4 X 3 的矩阵</p>
+<p>使用 SQT 矩阵的目的：便于对 旋转、平移、缩放 的插值计算</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNzkyOTIyMTI">欧拉角，万向锁 视频解释</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av33385105/#reply1117064951">四元数的可视化解释</a><br>-<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43803133/article/details/107520595">文字版解释</a></li>
+<li><a target="_blank" rel="noopener" href="https://krasjet.github.io/quaternion/">四元数与三维旋转</a></li>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/HMMNRST/items/0a4ab86ed053c770ff6a">四元数在三维计算的几何意义</a></li>
+</ul>
+
+      
+       
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '3fa7e95b351aa27f85ca',
+            clientSecret: '8b72dabd6ae2e97f256942498eb4d306fe96c4e7',
+            repo: 'vzerzz.github.io',
+            owner: 'vzerzz',
+            admin: ['vzerzz'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023 Vzer
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/list-background.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
