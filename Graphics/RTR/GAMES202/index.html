@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MultiplayerFPS | Vzer&#39;s Blog</title>
-  <meta name="keywords" content=" FPS ">
-  <meta name="description" content="MultiplayerFPS | Vzer&#39;s Blog">
+  <title>GAMES202 | Vzer&#39;s Blog</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="GAMES202 | Vzer&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="这里什么都没有…">
 <meta property="og:type" content="website">
@@ -839,9 +839,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Unity/Demo/MultiplayerFPS" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Graphics/RTR/GAMES202" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MultiplayerFPS</h1>
+        <h1 class="article-title">GAMES202</h1>
     
     <div class="article-meta">
         
@@ -851,29 +851,22 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Unity">Unity</a> > 
+            <a  data-rel="Graphics">Graphics</a> > 
             
-            <a  data-rel="Unity&lt;---&gt;Demo">Demo</a>
+            <a  data-rel="Graphics&lt;---&gt;RTR">RTR</a>
             
         </span>
         
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color4">FPS</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-06-29 20:25:14'>2022-01-01 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-01-20 12:23:45'>2022-12-01 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.1k</span>
+        <span>字数:33</span>
         
         
         
@@ -892,7 +885,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MultiplayerFPS"><span class="toc-text">MultiplayerFPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E5%88%9B%E5%BB%BA%E4%B8%8Ephoton%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5"><span class="toc-text">菜单创建与photon服务器连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scripts"><span class="toc-text">Scripts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity"><span class="toc-text">Unity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GamePlay"><span class="toc-text">GamePlay</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GAMES202%E7%AC%94%E8%AE%B0"><span class="toc-text">GAMES202笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#High-Quality"><span class="toc-text">High Quality  </span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -908,79 +901,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MultiplayerFPS"><a href="#MultiplayerFPS" class="headerlink" title="MultiplayerFPS"></a>MultiplayerFPS</h1><h2 id="菜单创建与photon服务器连接"><a href="#菜单创建与photon服务器连接" class="headerlink" title="菜单创建与photon服务器连接"></a>菜单创建与photon服务器连接</h2><ul>
-<li><p>服务器相关设置</p>
-<p>  PhotonUnityNetworking&gt;Resources&gt;PhotonSeverSettings</p>
-</li>
-<li><p>PUN2(游戏房间的设置)</p>
-<p>  自动连接:PhotonNetwork.ConnectUsingSettings()</p>
-<p>  手动连接:PhotonNetwork.ConnectToMaster() 当托管付费Photon服务器时这是有用的。<br>  masterServerAddress和port参数。地址可以是你的On-Premises DNS名称或一个IP。它可以包括冒号后的端口（然后传递0作为端口）或您可以单独通过端口。<br>  “appID”和”gameVersion”。两者都只与Photon Cloud有关，并且当你自己托管Photon服务器时，可以设置为任何值。</p>
-<p>  对于Photon Cloud, 使用ConnectUsingSettings()方法。它涉及到我们的Name Server自动找到一个区域的主服务器。</p>
-<p>  PhotonNetwork使用多个回调函数来让你的游戏知道状态的变化，如“已连接”或“已加入一个游戏”。像往常对Unity一样，回调可在任何脚本里实现。override</p>
-<span id="more"></span>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3></li>
-<li><p>Launcher.cs</p>
-</li>
-<li><p>MenuManager 单例化在Launcher中控制菜单的开关</p>
-<ul>
-<li>Menu.cs 定义Menu类,在不同的菜单上搭载</li>
-</ul>
-</li>
-<li><p>PlayerNameManager 玩家用户名的生成与自定义</p>
-<ul>
-<li><p>PlayerPrefs的使用—-数据持久化问题</p>
-<p>数据持久化是以键值的形式存储的，可以看作是一个字典。</p>
-<p>值是通过键名来读取的，当值不存在时，返回默认值。</p>
-<p>只支持int、string、float三种数据类型的读取</p>
-<p>DeleteAll DeleteKey HasKey GetFloat SetFloat…</p>
-<p>清除Prefs Edit&gt;Clear All PlayerPrefs</p>
-</li>
-</ul>
-</li>
-<li><p>RoomManager 用于PlayerManager的实例化</p>
-</li>
-</ul>
-<h3 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h3><p><img src="/Unity/Demo/MultiplayerFPS/Menu.png" alt="Menu"></p>
-<ul>
-<li>xxxMenu<br>搭载Menu.cs 定义MenuName 只有LoadingMenu初始时open为true<ul>
-<li>TMP<br>显示文字</li>
-<li>InputField - TMP<br>处理输入的文字<ul>
-<li>Text Area<br>放置位置<ul>
-<li>Placeholder<br>默认出现的文字</li>
-<li>Text<br>输入文字的载体</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Button<br>On Click() 中选择按下按键实现的功能<ul>
-<li>TMP<br>按键中文字</li>
-</ul>
-</li>
-<li>xxxListContent<br>存放实例化的预制体,玩家 房间等</li>
-<li>ButtonContainer<br>按键太多时把它作为父类，搭载vertical layout group组件,垂直排版</li>
-</ul>
-</li>
-<li>RoomManager<br>  搭载RoomManager.cs和Photon View</li>
-<li>EventSystem</li>
-</ul>
-<h2 id="GamePlay"><a href="#GamePlay" class="headerlink" title="GamePlay"></a>GamePlay</h2><p><img src="/Unity/Demo/MultiplayerFPS/Manager.png" alt="Manager"></p>
-<p><img src="/Unity/Demo/MultiplayerFPS/Player.png" alt="Player"></p>
-<ul>
-<li><p>PUN2(游戏实现)</p>
-<p>  PhotonView是一个用于发送消息(RPCs和OnSerializePhotonView)的脚本组件。需要将PhotonView依附到游戏对象或预设上。</p>
-<p>  整个过程，你的游戏中需要至少一个PhotonView，才能发送消息和可选的实例化/分配其他的PhotonViews。</p>
-<p>  Any prefab must have a PhotonView component. This contains a ViewID (the identifier for network messages),who owns the object, which scripts will write and read network updates (the “observed” list) and how those updates are sent (the “Observe option”).</p>
-<p>  Remote Procedure Calls(RPC)使你<strong>可以在一个房间里调用所有客户端上的方法</strong>。PUN 将这些方法的列表保存在PhotonServerSettings。</p>
-<p>  RPC使你可以调用”networked GameObjects”上的方法，对由用户输入等触发的不常用动作很有用。</p>
-<p>  一个RPC会被在同房间里的每个玩家在相同的游戏对象上被执行，所以你可以容易地触发整个场景效果就像你可以修改某些GameObject。</p>
-<p>  作为RPC被调用的方法必须在一个带PhotonView组件的游戏对象上。该方法自身必须要被[PunRPC]属性标记。</p>
-<p>  要调用该方法，先访问到目标对象的PhotonView组件。而不是直接调用目标方法，调用PhotonView.RPC()并提供想要调用的方法名称：你可以发送一系列的参数，但它必须匹配该RPC方法的定义。</p>
-<p>  防止RPCs丢失：在你连接之前设置PhotonNetwork.automaticallySyncScene = true并在房间的主客户端上使用 PhotonNetwork.LoadLevel()。如果一个远程客户端还没有加载或创建匹配的PhotonView，这个RPC就会丢失！丢失RPCs一个典型的原因就是当客户端加载新场景的时候。它只需要一个已经加载有新游戏对象的场景的客户端，并且其他客户端不能理解这个RPC（直到这些客户端也加载了相同的场景）。</p>
-<p>  默认情况下，PUN 使用 DefaultPool 默认对象池 实例化，即从 Resources 文件夹(用photon时所有预制体都要放在Resources文件夹之中，且搭载photonview组件)加载预制体并在稍后销毁。</p>
-<p>  一个更复杂的接口 IPunPrefabPool 可以实现在销毁对象时将其返回到对象池并在实例化时复用。在这种情况下，在 Instantiate 时并没有真的创建对象，Start() 并没有被 Unity 调用。因此，网络对象上挂载的对象必须实现 OnEnable() 和 OnDisable()</p>
-</li>
-</ul>
-<p>Object reference not set to an instance of an object<br>可能是对于组件等赋值时不存在导致</p>
+        <h1 id="GAMES202笔记"><a href="#GAMES202笔记" class="headerlink" title="GAMES202笔记"></a>GAMES202笔记</h1><p>Real-Time  </p>
+<h2 id="High-Quality"><a href="#High-Quality" class="headerlink" title="High Quality  "></a>High Quality  </h2><p>参考&amp;引用:<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YK4y1T7yY/">https://www.bilibili.com/video/BV1YK4y1T7yY/</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1355231954820890624">https://www.zhihu.com/column/c_1355231954820890624</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/363333150">https://zhuanlan.zhihu.com/p/363333150</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1473816420539097088">https://www.zhihu.com/column/c_1473816420539097088</a>  </p>
 
       
        

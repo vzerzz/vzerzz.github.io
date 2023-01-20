@@ -489,18 +489,57 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
     <url>/Graphics/RTR/PracticalIndustrialSolutions/</url>
     <content><![CDATA[<h1 id="Practical-Industrial-Solutions"><a href="#Practical-Industrial-Solutions" class="headerlink" title="Practical Industrial Solutions"></a>Practical Industrial Solutions</h1><h2 id="Temporal-Anti-Aliasing-TAA"><a href="#Temporal-Anti-Aliasing-TAA" class="headerlink" title="Temporal Anti-Aliasing (TAA)"></a>Temporal Anti-Aliasing (TAA)</h2><p>在时间上的抗锯齿或反走样<br>走样的本质为一个像素中的样本数量不足<br>MSAA - 用更多的样本  </p>
 <p>Tmeporal AA的思路也是需要用更多的sample，只不过是当前帧会复用上一帧的sample，使得这一帧仍然用1SPP，但是无形中通过temporal的reuse，增加了SPP。思路与RTRT中temporal一样<br>把样本分布到过去的N帧中去，然后每一帧从过去的N帧中取得样本信息然后Filter，达到N倍Super Sampling的效果  </p>
-<p>SSAA MSAA</p>
-<p>SMAA</p>
+<p>SSAA vs MSAA</p>
+<p>image based anti-aliasing solution 基于图像的反走样<br>先渲染出有锯齿的图然后通过图像处理的方法将锯齿给提取出来并替换成没有锯齿的图  </p>
+<p>主流:  SMAA(Enhanced subpixel morphological AA)  </p>
+<p>History:　FXAA　—-&gt;　MLAA (Morphological AA)　—-&gt;　SMAA  </p>
 <p>G-buffers一定不能反走样</p>
 <h2 id="Temporal-Super-Resolution"><a href="#Temporal-Super-Resolution" class="headerlink" title="Temporal Super Resolution"></a>Temporal Super Resolution</h2><p>低分辨率变为高分辨率</p>
-<p>(DLSS 1.0): out of nowhere / completely guessed 纯猜<br>(DLSS 2.0): from temporal information 从上一帧信息</p>
+<p>(DLSS 1.0): out of nowhere / completely guessed 纯猜<br>(DLSS 2.0): from temporal information 从上一帧信息  </p>
 <p>类似TAA</p>
 <p>关键在于找到更好的复用上一帧信息的方案(不能用clamp)</p>
-<h2 id="Deferred-Shading"><a href="#Deferred-Shading" class="headerlink" title="Deferred Shading"></a>Deferred Shading</h2><p>延迟渲染<br>shading最坏情况 每个fragment都要shading(从远到近渲染)</p>
+<h2 id="Deferred-Shading"><a href="#Deferred-Shading" class="headerlink" title="Deferred Shading"></a>Deferred Shading</h2><p>延迟渲染<br>shading最坏情况 传统的光栅化过程每个fragment都要shading(从远到近渲染)</p>
 <p>只去渲染可见的fragment</p>
-<p>光栅化两次<br>第一次不shading 只更新深度缓存<br>第二次正常</p>
-<p>cons: 抗锯齿困难 但能用TAA解决</p>
-<h2 id="Tiled-Shading"><a href="#Tiled-Shading" class="headerlink" title="Tiled Shading"></a>Tiled Shading</h2><h2 id="Level-of-Detail-Solutions"><a href="#Level-of-Detail-Solutions" class="headerlink" title="Level of Detail Solutions"></a>Level of Detail Solutions</h2><h2 id="Global-Illumination-Solutions"><a href="#Global-Illumination-Solutions" class="headerlink" title="Global Illumination Solutions"></a>Global Illumination Solutions</h2>]]></content>
+<p>光栅化两次<br>Pass 1: 光栅化中得到fragment之后不shading 只更新深度缓存<br>Pass 2: 只有深度等于最浅深度的fragment才可以通过depth test并进行shading，从而实现了只对visible fragment着色正常  </p>
+<p>cons: 依赖于depth buffer(属于G-buffer) 抗锯齿困难 但能用TAA或imaged based AA解决  </p>
+<h2 id="Tiled-Shading"><a href="#Tiled-Shading" class="headerlink" title="Tiled Shading"></a>Tiled Shading</h2><p>避免没有意义的shading从而提高效率  </p>
+<p>建立在Deferred Shading的基础之上，将屏幕分成若干个小块，比如一个小块是32 * 32，然后对每个小块单独的做shading<br><img src="/Graphics/RTR/PracticalIndustrialSolutions/tiledshading.jpg" alt="tiledshading"><br>节省每个小块要考虑的light数量，每个切出来的小块代表场景中3D的区域，并不是所有的光源都会跟这片区域相交<br>在做light sampling时知道光照强度会随着距离的平方衰减，因此面光源或点光源的覆盖范围是很小的，根据其随距离平方的减少找出最小值，设定一个范围，光源的覆盖范围看做一个球形。在渲染时只需要找会影响到区域的光源即可，不需要考虑所有的光源<br>如图，将屏幕分成了若干个小块，但由于是从camera看向屏幕的俯视因此是个平面图，看起来是分成了若干个小条，圆圈代表的是光源的范围，每个圆代表一个光源 数字代表区域内会影响到它的光源数量  </p>
+<h3 id="Clustered-Shading"><a href="#Clustered-Shading" class="headerlink" title="Clustered Shading"></a>Clustered Shading</h3><p>进一步优化  </p>
+<p>不仅将其分成若干个小块，还要在深度对其进行切片，也就是我们将整个3D空间拆分成了若干个网格<br><img src="/Graphics/RTR/PracticalIndustrialSolutions/clusteredshading.jpg" alt="clusteredshading"><br>光源可能会对这个小块区域有贡献，但不一定会对根据深度细分后的网格有贡献。所以再划分过后每个网格内的光源数量更少  </p>
+<h2 id="Level-of-Detail-Solutions"><a href="#Level-of-Detail-Solutions" class="headerlink" title="Level of Detail Solutions"></a>Level of Detail Solutions</h2><p>核心思路就是为了在任何计算过程中能够快速准确的找出一个正确的level去进行各种运算texture的mip-map就是一个LOD<br>在工业界中运用LOD方法或者在不同情况下选用不同层级的思路称之为”cascaded方法“如<br>Cascaded shadow maps  </p>
+<p>shadow map都有一个分辨率，当shadow map上的一个texel离camera越近，其在屏幕中所覆盖的内容越多，反之离camera越远，其所覆盖的内容越少，因此可以知道从camera出发看向场景，离camera远的可以用粗糙的shadow map<br><img src="/Graphics/RTR/PracticalIndustrialSolutions/cascaded%20shadow%20map.jpg" alt="cascaded shadow map">  </p>
+<p>shadow map不会变化，实际操作中通常会生成两种或以上不同分辨率的shadow map进行使用的，如图，红色区域是一个高分辨率的shadow map，蓝色区域是覆盖范围更大但分辨率相同也就是更粗糙的shadow map  </p>
+<p>根据物体在场景的位置来选用shadow map,远点的就用粗糙的，近处的就用精细的，但是从图中可以看到会有重叠区域内，因为在突然切换层级时会有一个突变的artifact,为了有一个平滑的过度，在这个区域内通过距离，也就是近处的以蓝色区域的shadow map为主将二者blend起来，从而产生平滑的过度  </p>
+<p>Cascaded LPV<br>先在细小的格子上，之后随着距离的增加到大一点的格子，再远就更大<br>cons: 在不同层级之间的过渡<br>Sol: 使用blending的方法实现手动平滑过度  </p>
+<p>geometric LoD<br>精细的有许多三角形的模型（高模），减化其三角形变成一个低模，生成一系列的低模<br>cons: popping artifacts camera在推进过程中由于是突变的，会出现突然变化几何的现象<br>Sol: TAA<br>Nanite in UE5  </p>
+<h2 id="Global-Illumination-Solutions"><a href="#Global-Illumination-Solutions" class="headerlink" title="Global Illumination Solutions"></a>Global Illumination Solutions</h2><p>解决出屏幕, 反射物在camera背后, 壳后等情况<br>使用hybrid solutions结合多种方法<br>如先做一遍SSR，得到一个近似的GI。基于SSR对于SSR无法得到的结果，用其他的ray tracing  </p>
+<ul>
+<li>Software ray tracing  <ul>
+<li>近处:在任意一个shading point周围一定范围内的物体用一个较高分辨率的SDF，SDF可以在shader中快速的tracing  </li>
+<li>远处：用一个稍低质量的SDF将整个场景覆盖，至此不论近处还是远处都可以通过SDF得到最终光照打到的结果  </li>
+<li>场景中有强烈的方向光源或者点光源，也就是手电筒之类的光源，则通过RSM解决  </li>
+<li>场景是diffuse则通过DDGI来解决。Probes that stores irradiance in a 3D grid (Dynamic Diffuse GI, or DDGI)  </li>
+</ul>
+</li>
+<li>Hardware ray tracing<ul>
+<li>Doesn’t have to use the original geometry,but low-poly proxies  </li>
+</ul>
+</li>
+</ul>
+<p>Probes (RTXGI)，用RTRT的思路结合PROBE的思路，叫做RTXGI  </p>
+<p>UE5的lumen  </p>
+]]></content>
+      <categories>
+        <category>Graphics</category>
+        <category>RTR</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>GAMES202</title>
+    <url>/Graphics/RTR/GAMES202/</url>
+    <content><![CDATA[<h1 id="GAMES202笔记"><a href="#GAMES202笔记" class="headerlink" title="GAMES202笔记"></a>GAMES202笔记</h1><p>Real-Time  </p>
+<h2 id="High-Quality"><a href="#High-Quality" class="headerlink" title="High Quality  "></a>High Quality  </h2><p>参考&amp;引用:<br><a href="https://www.bilibili.com/video/BV1YK4y1T7yY/">https://www.bilibili.com/video/BV1YK4y1T7yY/</a><br><a href="https://www.zhihu.com/column/c_1355231954820890624">https://www.zhihu.com/column/c_1355231954820890624</a><br><a href="https://zhuanlan.zhihu.com/p/363333150">https://zhuanlan.zhihu.com/p/363333150</a><br><a href="https://www.zhihu.com/column/c_1473816420539097088">https://www.zhihu.com/column/c_1473816420539097088</a>  </p>
+]]></content>
       <categories>
         <category>Graphics</category>
         <category>RTR</category>
@@ -509,15 +548,16 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
   <entry>
     <title>RTRT</title>
     <url>/Graphics/RTR/RTRT/</url>
-    <content><![CDATA[<h1 id="Real-Time-Ray-Tracing"><a href="#Real-Time-Ray-Tracing" class="headerlink" title="Real-Time Ray-Tracing"></a>Real-Time Ray-Tracing</h1><blockquote>
+    <content><![CDATA[<h1 id="Real-Time-Ray-Tracing"><a href="#Real-Time-Ray-Tracing" class="headerlink" title="Real-Time Ray-Tracing"></a>Real-Time Ray-Tracing</h1><p><img src="/Graphics/RTR/RTRT/RTRT.jpg" alt="RTRT">  </p>
+<blockquote>
 <p>RTX: 硬件的突破 在显卡加装了一个用来做光追的部件 光线追踪做的是光线与场景的求交 做一个树的遍历从而快速判断光线是否与三角形求交,对于GPU来说不好做,NVIDA设计了专门的硬件来帮助我们每秒可以trace更多的光线  </p>
 </blockquote>
 <p>每秒可以trace 10 Giga的rays 除以分辨率 除以每秒的帧数 1秒中并不是全部时间都在做ray tracing<br>每个像素采样一个样本<br>至少要有四条光线才能构成一个最基本的光路<br>1 SPP path tracing =  </p>
 <ul>
 <li>1 rasterization (primary) 光栅化与primary ray做的工作是一样的,与其每个pixel去trace一条primary ray,不如直接将整个场景光栅化出来 +  </li>
-<li>1 ray (primary visibility) +  </li>
-<li>1 ray (secondary bounce) +  </li>
-<li>1 ray (secondary vis.)<br><img src="/Graphics/RTR/RTRT/1spp.png" alt="1spp">  </li>
+<li>1 ray (primary visibility) 和光源之间连接进行light sampling并判断是否有遮挡+  </li>
+<li>1 ray (secondary bounce)在Hitpoint根据材质采样出一个方向打出一根光线,会打到一个物体上从而得到secondary hitpoint +  </li>
+<li>1 ray (secondary vis.)从secondary hitpoint与光源连接判断是否会被光源看到<br><img src="/Graphics/RTR/RTRT/1spp.png" alt="1spp">  </li>
 </ul>
 <p>path tracing本身是一种蒙特卡洛积分的方法,本身会产生噪声,采样的样本越多,噪声越小,但在games101中用64 spp都得不到很好的结果,何况1spp  </p>
 <p>RTRT的核心技术是Denoising降噪  </p>
@@ -525,7 +565,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <p>1 SPP 渲染<br>质量 (no overblur 过降噪导致模糊, no artifacts 像裂缝这种可见的bug, keep all details…)<br>速度 (&lt;2ms)  </p>
 <h2 id="Industrial-Sulution-Temporal"><a href="#Industrial-Sulution-Temporal" class="headerlink" title="Industrial Sulution: Temporal"></a>Industrial Sulution: Temporal</h2><p>假设整个看的场景的运动是连续的<br>motion vector 用来表示物体在帧与帧之间如何运动<br>认为前一帧是滤波好了的<br>用motion vectors找当前帧某一点在上一帧的对应位置<br>上一帧得到降噪好的结果比如颜色之类的,可以在当前帧复用,相当于增加了spp 递归<br>时间上的复用  </p>
 <blockquote>
-<p>The G-Buffers<br>几何缓冲区 Geometry buffer<br>轻量 屏幕空间在渲染过程中可以免费得到的额外信息 per pixel depth, normal, world coordinate, etc 需要时拿来用  </p>
+<p>The G-Buffers<br>几何缓冲区 Geometry buffer<br>轻量 屏幕空间在渲染过程中可以免费得到的额外信息 per pixel depth, normal, world coordinate, etc 需要时拿来用 只是screen space的信息(记录的是camera能看到的信息)  </p>
 </blockquote>
 <h3 id="Back-Projection"><a href="#Back-Projection" class="headerlink" title="Back Projection"></a>Back Projection</h3><p>找当前帧一个像素里包含的内容在上一帧的哪一个像素里  </p>
 <ol>
@@ -555,7 +595,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 </li>
 </ol>
 <p>shading时也会有问题:<br>想追踪的是shading的变换,但其几何不动因此motion vector为0<br>detached/lagging shadows<br>反射滞后  </p>
-<h2 id="Implementing-of-filtering"><a href="#Implementing-of-filtering" class="headerlink" title="Implementing of filtering"></a>Implementing of filtering</h2><p>低通滤波 降噪<br>cons:<br>高频信息丢失<br>低频噪声  </p>
+<h2 id="Implementing-of-filtering"><a href="#Implementing-of-filtering" class="headerlink" title="Implementing of filtering"></a>Implementing of filtering</h2><p>针对当前帧的滤波 滤波实际上就是对原图应用一次 Low-Pass Filter（滤除高频信息）<br>低通滤波 降噪<br>cons:<br>高频信息丢失<br>低频噪声  </p>
 <p>滤波核 filter kernel K  </p>
 <h3 id="高斯滤波核-Gaussian-filtering"><a href="#高斯滤波核-Gaussian-filtering" class="headerlink" title="高斯滤波核 Gaussian filtering"></a>高斯滤波核 Gaussian filtering</h3><p>类似于正态分布,中心值高,向两边衰减<br><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">For each pixel i</span><br><span class="line">  sum_of_weights = sum_of_weighted_values = <span class="number">0.0</span></span><br><span class="line">  For each pixel j around i</span><br><span class="line">    Calculate the weight w_ij = G(|i - j|, sigma)</span><br><span class="line">    sum_of_weighted_values += w_ij * C^&#123;input&#125;[j]</span><br><span class="line">    sum_of_weights += w_ij</span><br><span class="line">  C^&#123;output&#125;[I] = sum_of_weighted_values / sum_of_weights</span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -566,7 +606,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <p>cons: 分不清噪声和边界  </p>
 <h3 id="Cross-Joint-Bilateral-Filtering-联合双边滤波"><a href="#Cross-Joint-Bilateral-Filtering-联合双边滤波" class="headerlink" title="Cross/Joint Bilateral Filtering 联合双边滤波"></a>Cross/Joint Bilateral Filtering 联合双边滤波</h3><p>Gaussian filtering: 高斯滤波核是通过判断两个像素之间的绝对距离distance来查找其需要贡献多少<br>Bilateral filtering: 两个不同的标准，两个像素之间的距离position，和颜色之间的距离color从而在只保留低频信息时候保留了边界的信息  </p>
 <p>Joint Bilateral filtering 考虑更多标准features  </p>
-<p>利用G-buffers 完全无噪声  </p>
+<p>利用G-buffers 完全无噪声 且是光栅化代替光追第一次bounce顺便得到的  </p>
 <p>联合双边滤波也不需要考虑核是不是normalize的,在代码中实现时最后会进行归一化操作  </p>
 <p>不一定必须要使用高斯,只要这个函数满足随着距离衰减就可以使用  </p>
 <p>联合双边滤波的本质就是在kernel里多算几组不同feature(深度 normal 等)下的贡献,并将其相乘得到最后的结果  </p>
@@ -612,10 +652,10 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
   <entry>
     <title>PBR</title>
     <url>/Graphics/RTR/PBR/</url>
-    <content><![CDATA[<h1 id="Physically-Based-Rendering-PBR-and-PBR-Materials-in-RTR"><a href="#Physically-Based-Rendering-PBR-and-PBR-Materials-in-RTR" class="headerlink" title="Physically-Based Rendering (PBR) and PBR Materials in RTR"></a>Physically-Based Rendering (PBR) and PBR Materials in RTR</h1><p>PBR就是基于物理的渲染，PBR Materials也就是基于物理渲染的材质<br>PBR不止材质 但一般指的主要是材质<br>实时用的材质种类和质量和准确度不如离线  </p>
-<p>待看: <a href="https://zhuanlan.zhihu.com/p/20091064">https://zhuanlan.zhihu.com/p/20091064</a></p>
+    <content><![CDATA[<h1 id="Physically-Based-Rendering-PBR-and-PBR-Materials-in-RTR"><a href="#Physically-Based-Rendering-PBR-and-PBR-Materials-in-RTR" class="headerlink" title="Physically-Based Rendering (PBR) and PBR Materials in RTR"></a>Physically-Based Rendering (PBR) and PBR Materials in RTR</h1><p><img src="/Graphics/RTR/PBR/PBR.jpg" alt="PBR">  </p>
+<p>PBR就是基于物理的渲染，PBR Materials也就是基于物理渲染的材质<br>PBR不止材质 但一般指的主要是材质<br>实时用的材质种类和质量和准确度不如离线  </p>
 <h2 id="For-surfaces-基于表面定义的材质"><a href="#For-surfaces-基于表面定义的材质" class="headerlink" title="For surfaces 基于表面定义的材质"></a>For surfaces 基于表面定义的材质</h2><p>基于物理的渲染遵守微平面理论 Microfacet BRDF<br>Disney Principled BRDF 由于计算量小，能表现的材质总量多，也用于实时渲染，而迪士尼的brdfs也不完全基于物理，更多是为艺术家服务  </p>
-<h3 id="Microfacet-BRDF"><a href="#Microfacet-BRDF" class="headerlink" title="Microfacet BRDF"></a>Microfacet BRDF</h3><p>微表面的法线分布函数 法线分布的不同导致渲染的结果也不同<br><img src="/Graphics/RTR/PBR/microfacetbrdf.png" alt="microfacetbrdf">  </p>
+<h3 id="Microfacet-BRDF"><a href="#Microfacet-BRDF" class="headerlink" title="Microfacet BRDF"></a>Microfacet BRDF</h3><p>微表面的法线分布函数 法线分布的不同导致渲染的结果也不同<br>Cook-Torrance BRDF<br><img src="/Graphics/RTR/PBR/microfacetbrdf.png" alt="microfacetbrdf">  </p>
 <ul>
 <li><p>The Fresnel Term (F项)<br>根据入射角不同有多少能量被反射 入射角度越接近掠射角度反射的量越多<br>将两种极化的光线加起来除于二就是结果<br>估计算法: 用基础反射加上基于入射角度的额外反射<br><img src="/Graphics/RTR/PBR/fresnel.png" alt="fresnel">  </p>
 </li>
@@ -625,20 +665,20 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 </li>
 <li><p>GGX NDF<br>long tail 衰减到一定程度就会缓慢衰减，即使是在垂直角度仍会有能量反射<br>高光周围能看到光晕 边缘更加自然 有过渡 diffuse下，高光覆盖的范围更大更柔和  </p>
 </li>
-<li><p>Extending GGX<br>longer tails $\gamma$ 等于2，等于GGX，$\gamma$ 越小，尾巴越长，$\gamma$越大，越接近Beckmann  </p>
+<li><p>Extending GGX<br>GTR longer tails $\gamma$ 等于2，等于GGX，$\gamma$ 越小，尾巴越长，$\gamma$越大，越接近Beckmann  </p>
 </li>
 </ul>
 </li>
-<li><p>Shadowing-Masking Term (G项)<br>解决微表面之间的自遮挡问题 计算变暗程度<br><img src="/Graphics/RTR/PBR/shadowingmasking.png" alt="shadowingmasking"><br>左边从light出发发生的微表面遮挡现象叫做Shadiowing<br>右边从eye出发发生的微表面遮挡现象被称为Masking  </p>
+<li><p>Shadowing-Masking Term (G项)<br>解决微表面之间的自遮挡问题 计算变暗程度<br><img src="/Graphics/RTR/PBR/shadowingmasking.png" alt="shadowingmasking"><br>左边从light出发发生的微表面遮挡现象叫做Shadowing<br>右边从eye出发发生的微表面遮挡现象被称为Masking  </p>
 <ol>
 <li>darkening现象<br>实际计算出的结果会比理想结果亮,所以加上G项使得结果变暗接近理想结果<br>用于抵消公式中分母的点乘接近0的情况 (没有G项时 边缘会很亮(分母小))<br>The Smith shadowing-masking term 分开shadowing和masking计算  </li>
-<li><p>Multiple Bounces<br>自遮挡时，光线会在微表面出现折射，若只有一次弹射会出现能量的消耗，导致能量不守恒，需要把能量给补回来(材质越粗糙越多沟壑反射光越可能被遮挡能量不断损失 颜色越来越暗)<br>离线渲染计算多次弹射类似光追补回能量太慢<br>核心思想: 反射光不被遮挡的时候，这些光就会被看到；当反射光被微表面遮挡的时候，认为这些被挡住的光将进行后续的弹射,直到能被看到  </p>
+<li><p>Multiple Bounces<br>自遮挡时，光线会在微表面出现多次弹射，G项只考虑了一次BOUNCE,因此当只考虑一次弹射的时候，越粗糙的表面就损失的能量越多，导致能量不守恒，随着粗糙程度变大,渲染得到的结果却越暗<br>需要把能量给补回来(材质越粗糙越多沟壑反射光越可能被遮挡能量不断损失 颜色越来越暗)<br>离线渲染计算多次弹射类似光追补回能量太慢<br>核心思想: 反射光不被遮挡的时候，这些光就会被看到；当反射光被微表面遮挡的时候，认为这些被挡住的光将进行后续的弹射,直到能被看到  </p>
 <ul>
 <li><p>The Kulla-Conty Approximation<br>经验式的方法近似地补全丢失的能量 创建一个模拟多次反射表面反射的附加BRDF波瓣-&gt;fms，利用这个BRDF算出消失的能量作为能量补偿项<br>把lighting和brdf和cosine积分得出E(μo)即为射出的总能量(在0-1之间)<br>1-E(μo)就是丢失的能量<br><img src="/Graphics/RTR/PBR/kullaconty1.png" alt="kullaconty1">  </p>
 <blockquote>
-<p>Li都认为是1 也就是rendering equation中的Lighting项是1（因为是1所以式子中没有出现)<br>假设BRDF各向同性，与i、o无关<br>只计算一个bounce<br><img src="/Graphics/RTR/PBR/kullaconty10.png" alt="kullaconty10.png">  </p>
+<p>Li都认为是1 也就是rendering equation中的Lighting项是1（因为是1所以式子中没有出现)<br>假设BRDF各向同性，与i、o无关<br>只计算一个bounce<br>意义是在uniform的lighting=1的情况下,在经历了1 bounce之后射出的总能量 E(uo)<br><img src="/Graphics/RTR/PBR/kullaconty10.png" alt="kullaconty10.png">  </p>
 </blockquote>
-<p>由于Brdf可逆 要考虑入射丢失的和出射丢失的，需要1 − E(μi)和1 − E(μo)两个项和一个用来归一化的c项来保证结果为1−E(μo)<br><img src="/Graphics/RTR/PBR/kullaconty2.png" alt="kullaconty2"><br>就是设计一种可以交换输入输出方向的brdf-&gt;fms,使得它的积分结果正是我们所失去的能量,因此用失去的加射出的能量达到能量守恒<br>需要多次积分，打表预计算$E_{avg}$(只依赖于μ0与粗糙度)减少计算量  </p>
+<p>由于Brdf可逆 要考虑入射丢失的和出射丢失的，需要1 − E(μi)和1 − E(μo)两个项和一个用来归一化的c项来保证结果为1−E(μo) (入射能量Li视为1)<br><img src="/Graphics/RTR/PBR/kullaconty2.png" alt="kullaconty2"><br>就是设计一种可以交换输入输出方向的brdf-&gt;fms,使得它的积分结果正是我们所失去的能量,因此用失去的加射出的能量达到能量守恒<br>需要多次积分，打表预计算$E_{avg}$(只依赖于μ0与粗糙度)减少计算量  </p>
 </li>
 <li>BRDF 有颜色<br>有颜色代表有能量被物体吸收 也就是有额外能量损失，也就是单次反射的积分结果不是1<br>首先要先不考虑有颜色的情况下把结果算出来，再考虑被吸收掉的能量<br>先算出frensel的平均结果$F_{avg}$(不管入射角 平均每次反射会有多少能量反射)<br><img src="/Graphics/RTR/PBR/avgfrensel.png" alt="avgfrensel"><br>再算E项的平均值$E_{avg}$，$1-E_{avg}$就是会参与后续多次bounce的能量<br>第一次bounnce的结果$F_{avg} E_{avg}$多次bounece就多次乘$F_{avg} (1-E_{avg})$补充丢失的能量<br><img src="/Graphics/RTR/PBR/kullacontycolor.png" alt="kullacontycolor"><br>多次反射相加 得出一个级数表示颜色项，把这个颜色项再乘到不计算颜色的计算多次bounce的brdf上，就得到了结果<br><img src="/Graphics/RTR/PBR/colorterm.png" alt="colorterm">  </li>
 </ul>
@@ -649,7 +689,8 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <blockquote>
 <p>WRONG: Combining a Microfacet BRDF with a diffuse lobe不考虑能量损失直接加Diffuse项 (会出现自发光) 不正确  </p>
 </blockquote>
-<h4 id="Cook-Torrance-BRDF"><a href="#Cook-Torrance-BRDF" class="headerlink" title="Cook-Torrance BRDF"></a>Cook-Torrance BRDF</h4><p>$f_r = k_d f_{lambert} + k_s f_{cook-torrance}$<br>$k_d, k_s$分别指入射光线中被折射部分的能量所占的比率与被反射部分的比率(菲涅尔项决定)<br>$f_{lambert}, f_{cook-torrance}$分别指漫反射和镜面反射的BRDF<br>漫反射的BRDF是一个常数 $f_{lambert} = \frac{\rho}{\pi}$  </p>
+<p>完整考虑反射与折射(即考虑漫反射):  </p>
+<p>$f_r = k_d f_{lambert} + k_s f_{cook-torrance}$<br>$k_d, k_s$分别指入射光线中被折射部分的能量所占的比率与被反射部分的比率(菲涅尔项决定)<br>$f_{lambert}, f_{cook-torrance}$分别指漫反射和镜面反射的BRDF<br>漫反射的BRDF是一个常数 $f_{lambert} = \frac{\rho}{\pi}$  </p>
 <blockquote>
 <p>$\rho$可以类比光栅化当中的漫反射系数，本质是3维向量，含有物体表面的颜色信息  </p>
 </blockquote>
@@ -695,7 +736,10 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 </li>
 </ul>
 <p>NPR做的效果好与坏,其实根本上取决于photorealistic模型,而不是后期的各种处理  </p>
-<h2 id="For-volumes-基于体积"><a href="#For-volumes-基于体积" class="headerlink" title="For volumes 基于体积"></a>For volumes 基于体积</h2>]]></content>
+<h2 id="For-volumes-基于体积"><a href="#For-volumes-基于体积" class="headerlink" title="For volumes 基于体积"></a>For volumes 基于体积</h2><p>略  </p>
+<hr>
+<p>深入学习:<br><a href="https://www.zhihu.com/collection/751205415">https://www.zhihu.com/collection/751205415</a><br><a href="https://zhuanlan.zhihu.com/p/20091064">https://zhuanlan.zhihu.com/p/20091064</a><br>PBR总体框架:<br><img src="/Graphics/RTR/PBR/PBR-Architecture.png" alt="PBR-Architecture">  </p>
+]]></content>
       <categories>
         <category>Graphics</category>
         <category>RTR</category>
@@ -704,7 +748,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
   <entry>
     <title>Global Illumination</title>
     <url>/Graphics/RTR/GlobalIllumination/</url>
-    <content><![CDATA[<h1 id="Global-Illumination"><a href="#Global-Illumination" class="headerlink" title="Global Illumination"></a>Global Illumination</h1><p>比直接光照多一个bounce的间接光照  </p>
+    <content><![CDATA[<h1 id="Global-Illumination"><a href="#Global-Illumination" class="headerlink" title="Global Illumination"></a>Global Illumination</h1><p><img src="/Graphics/RTR/GlobalIllumination/GI.jpg" alt="GI"><br>比直接光照多一个bounce的间接光照  </p>
 <p>直接光照的物体-次级光源  </p>
 <p>计算间接光照  </p>
 <ul>
@@ -712,52 +756,66 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <li>如何照亮点p  <h2 id="3D"><a href="#3D" class="headerlink" title="3D"></a>3D</h2></li>
 </ul>
 <h3 id="Reflective-Shadow-Maps-RSM"><a href="#Reflective-Shadow-Maps-RSM" class="headerlink" title="Reflective Shadow Maps (RSM)"></a>Reflective Shadow Maps (RSM)</h3><p>shadowmap上每个像素对应的小片都是次级光源  </p>
-<p>观察方向是点p看向次级光源  </p>
-<p>假设次级光源都是diffuse的(不好确定光线方向)  </p>
+<p>shadowmap可以解决哪些物体会被光源照到，把shadowmap的每个像素对应的小片作为次级光源。要用次级光照照亮某个点p,就等于从点p观察这些次级光源</p>
 <blockquote>
 <p>review:辐射度量学.一个单位立体角下对应的能量就是Radiant Intensity,单位面积下的就是Irradiance,在单位立体角又单位面积就是Radiance.</p>
 </blockquote>
 <p><img src="/Graphics/RTR/GlobalIllumination/rsm.png" alt="rsm">  </p>
-<p>直接在light上进行采样.小片q的brdf是一个常数(diffuse)<br>q出射的radiance就等于brdf乘以入射的Irradiance<br>irrandance就等于flux除以点q的面积<br>然后把这个式子带到点p的式子Li中,就把点p的面积消掉了  </p>
-<p>直接不算V项(可见性)  </p>
+<p>Ques1: 哪些表面会被直接照到<br>Sol: 使用shadow map，shadow map上每一个像素可以看成是一个小surface patch</p>
+<p>Ques2: 对于不同点p 出射方向不知道，没法shadering<br>Sol: 假设次级光源都是diffuse的(不好确定光线方向) 不依赖观察的方向  </p>
+<p>Ques3: 计算每个surface patch对着色点p的贡献<br>Sol: 如上图q就是RSM中一个Texel所对应的patch去照亮点P<br>    计算q对p点的贡献,要对整个立体角进行采样,浪费很多的sample,直接在light处采样然后计算p点的shading值 即把立体角的积分变成了对light区域面积的积分<br>    小片q的brdf是一个常数(diffuse) q出射的radiance就等于brdf乘以入射的irradiance irrandance就等于flux除以点q的面积 然后把这个式子带到点p的式子Li中,就把点p的面积消掉了 就不需要计算点p的面积 将积分域中所有的结果加在一起,就是着色点最后被间接光照照亮所得到的shading值   </p>
 <p>4次方是对的 上面的$x-x_p$没有标准化  </p>
-<p>只要找距离比较近的次级光源 假设把shader point投影到shadowmap上,在shadowmap离的比较近,那么就认为在世界距离上比较近  </p>
-<p>RSM 即shadowmap多存了世界坐标计算距离 法线方向计算cos flux  </p>
-<p>对于手电筒很适合  </p>
-<p>Pros:易于实现<br>Cons:  </p>
+<p>加速: 只找距离比较近的次级光源 假设把shader point投影到shadowmap上,在shadowmap离的比较近,那么就认为在世界距离上比较近 大大减少计算量  </p>
+<p>RSM 即shadowmap多存了世界坐标计算距离 多存了法线方向计算cos 多存了flux光源光强  </p>
+<p>Pros:易于实现 对于手电筒很适合<br>Cons:  </p>
 <ul>
 <li>有几个直接光源就得有几个shadowmap  </li>
-<li>V项没有做  </li>
+<li>V项没有做(可见性)  </li>
 <li>太多假设diffuse reflectors, depth as distance  </li>
-<li>sampling  </li>
+<li>sampling 采样率会导致存在一个效率与质量的trade off  </li>
 </ul>
-<p>光栅化版本的离线渲染VPL方法  </p>
-<p>属于图像空间的方法  </p>
-<h3 id="Light-Propagation-Volumes-LPV"><a href="#Light-Propagation-Volumes-LPV" class="headerlink" title="Light Propagation Volumes(LPV)"></a>Light Propagation Volumes(LPV)</h3><p>radiance在光线传播过程中不变 </p>
-<p>体素化 把场景分成格子，把格子中的点受到的直接光照注入到格子中，把格子作为次级光源传播到其它格子，实现全局光照  </p>
+<p>RSM就是光栅化版本的离线渲染VPL方法  </p>
+<p>RSM和shadowmap一样属于 <em>图像空间(不是屏幕)</em> 的方法,在这里当成3D空间的方法是不会像图像空间记录不下丢失信息受到影响,且LPV方法会基于RSM  </p>
+<h3 id="Light-Propagation-Volumes-LPV"><a href="#Light-Propagation-Volumes-LPV" class="headerlink" title="Light Propagation Volumes(LPV)"></a>Light Propagation Volumes(LPV)</h3><p>LPV就是在三维空间传播光线  </p>
+<p>间接光照最核心的问题是shadinng point接受各个方向间接光的radiance有多少 radiance在光线传播过程中不变  </p>
+<p>体素化 把场景分成格子Voxel，把格子中的点受到的直接光照注入到格子中，把格子作为次级光源传播到其它格子，实现全局光照  </p>
+<p>(体素划分一般至少比场景分辨率少一个数量级)  </p>
 <ol>
-<li>Generation 知道哪些点为次级光源 RSM (可以降低数量)  </li>
-<li>Injection 先把场景分成格子 将次级光源的点注入到光格中 使用3D纹理 用SH压缩radiance  </li>
-<li>Propagation 传播 格子有六个面 看穿过各个面的radiance 不断传播最终达到一个稳态  </li>
-<li>Rendering 对shadingpoint的格子利用之前计算的ncident radiance计算间接光照  </li>
+<li>Generation 用RSM找到哪些点会被直接光照照亮，得到一系列次级光源 (可以降低数量)  </li>
+<li>Injection 先把场景分成3D网格 任意一个格子就包含一些次级光源，把这些的光源往四周的radiance加起来 使用3D纹理 用SH压缩radiance  </li>
+<li>Propagation 传播 格子有六个面 radiance通过每个面往周围六个格子传播 看穿过各个面的radiance 不断传播最终达到一个稳态 最后得到次级光源的radiance传播过的格子  </li>
+<li>Rendering 每个shading point 都有一个对应的格子，已经得到了每个格子的incident radiance，就能直接进行渲染  </li>
 </ol>
-<p>Cons: Light leaking 格子里的都会被照亮 几何比格子小 会照亮不该照亮的  </p>
+<p>Cons: Light leaking 格子里的都会被照亮 几何比格子小 会照亮不该照亮的<br>Sol: 用不同大小的格子 也就是Cascade层级加速结构</p>
 <p>假设不考虑V项  </p>
+<p>只要是用SH压缩，渲染glossy表面都会造成强烈模糊，所以一般只要用了SH都会假设diffuse  </p>
+<p>不需要任何的预计算  </p>
 <h3 id="Voxel-Global-Illumination-VXGI"><a href="#Voxel-Global-Illumination-VXGI" class="headerlink" title="Voxel Global Illumination (VXGI)"></a>Voxel Global Illumination (VXGI)</h3><p>2pass 场景完全离散成格子  </p>
-<p>RSM把接受直接光照的点作为次级光源，VXGI把整个场景离散成体素变成网格<br>RSM和LPV计算radiance都是从次级光源出发传播一次，从而得到全局光照的结果，而VXGI是从camera出发，根据打到的像素的材质反射出一个圆锥，相交到之前计算好的纹素的(即cones shading)，这样每个shading point 都要进行 cones shading 的计算  </p>
+<p>RSM次级光源是像素中所包含的接受直接光照的微小表面，VXGI把整个场景离散成体素变成网格 可以在最小的格子基础上建立一层大格子 Hierachical树形结构  </p>
+<p>RSM和LPV计算radiance都是从次级光源出发传播一次，从而得到全局光照的结果，而VXGI是从camera出发，像有一个Camera Ray打到每一个pixel上 根据打到的像素的材质反射出一个圆锥，相交到之前计算好的voxel(即cones shading)，即每个shading point 都要进行 cone tracing 的计算 <strong><em>光线从传播变为了追踪</em></strong>  </p>
 <ul>
-<li>pass 1 从光源看 计算直接光照的结果 格子记录体素表面的法线分布和接受的入射光分布信息 可计算出射 (可以是glossy) 一个个体素格子考虑在一块 建立hierarchy层级<br><img src="/Graphics/RTR/GlobalIllumination/vxgipass1.png" alt="vxgipass1">  </li>
-<li><p>pass 2 从camera看 对于glossy表面 从shading point的拉出反射的锥体和哪些voxel体素相交再计算 (有之前得到的体素的法线分布和入射光分布，就能得到shading point的间接光照) 不用全计算 计算圆锥内一定层级(pass1建立)即可 cone tracing<br><img src="/Graphics/RTR/GlobalIllumination/vxgipass2.png" alt="vxgipass2">  </p>
+<li>pass 1 从光源看 计算直接光照的结果 格子记录体素表面的法线分布和接受的入射光分布信息 不再像LPV一样将所有的radiance加在一起求各方向的初始值 可计算出射 (可以是glossy) 一个个体素格子考虑在一块 建立hierarchy层级<br><img src="/Graphics/RTR/GlobalIllumination/vxgipass1.png" alt="vxgipass1">  <blockquote>
+<p>记录的是直接光源从哪些范围来（绿色部分），记录各个反射表面的法线（橙色部分），通过输入方向和法线范围两个信息然后通过表面的材质，来准确的算出出射的分布 比LPV认为格子表面是diffuse再用SH来压缩的方法要准确  </p>
+</blockquote>
+</li>
+<li><p>pass 2 从camera看 对于glossy表面 从shading point的拉出反射的锥体和哪些voxel体素相交再计算 (有之前得到的体素的法线分布和入射光分布 可以算出其输出的radiance,将cone区域内所有体素的radiance都算出，就能得到shading point的间接光照)<br>不用全计算 计算圆锥内一定层级(pass1建立)即可(根据传播出的距离远近找对应层级的体素，然后找覆盖的范围) cone tracing<br><img src="/Graphics/RTR/GlobalIllumination/vxgipass2.png" alt="vxgipass2">  </p>
 </li>
 <li><p>对于diffuse使用若干圆锥覆盖一个半球<br><img src="/Graphics/RTR/GlobalIllumination/vxgidiffuse.png" alt="vxgidiffuse">  </p>
 </li>
 </ul>
+<p>LPV把所有的次级光源发出的Radiance传播到了场景中的所有位置，只做一次让场景每个Voxel都有自己的radiance，由于LPV使用的3D网格特性，并且采用了SH进行表示和压缩, 只能考虑diffuse, 结果并不准确, 但是速度很快。  </p>
+<p>VXGI把场景的次级光源记录为一个层次结构，对于一个Shading Point，我们要去通过Corn Tracing找到哪些次级光源能够照亮这个点。  </p>
 <p>cons: 体素化比较慢 计算量大 需要预处理 物体移动，就得重新体素化  </p>
-<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><p>只知道camera的视角 信息只来源于当前屏幕  </p>
-<h3 id="Screen-Space-Ambient-Occlusion-SSAO"><a href="#Screen-Space-Ambient-Occlusion-SSAO" class="headerlink" title="Screen Space Ambient Occlusion (SSAO)"></a>Screen Space Ambient Occlusion (SSAO)</h3><p>AO 环境光遮蔽 通过相对位置来制作阴影，让物体相对位置感和立体感更强，是对全局光照的近似  </p>
+<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><p>只知道camera的视角 信息只来源于当前屏幕 相当于图做一个后期处理，从而来弄出全局光照  </p>
+<h3 id="Screen-Space-Ambient-Occlusion-SSAO"><a href="#Screen-Space-Ambient-Occlusion-SSAO" class="headerlink" title="Screen Space Ambient Occlusion (SSAO)"></a>Screen Space Ambient Occlusion (SSAO)</h3><p>AO 环境光遮蔽 通过相对位置来制作阴影，通过一系列的contact shadow(接触阴影)让物体相对位置感和立体感更强，是对全局光照的近似  </p>
 <p>SSAO 就是在屏幕空间对全局光照的近似  </p>
-<p>假设间接光照为常数 (blinnphong的ambient项) 来自四面八方的间接光照都相同 但shadingpoint不一定都能接收到  </p>
-<p>渲染方程将Visbility项拆开 拆出$k_A$(加权平均visibility) 近似成kA和间接光照两个项 间接光照为常数 diffuse的brdf也为常数 只用计算kA<br><img src="/Graphics/RTR/GlobalIllumination/ssao.png" alt="ssao">  </p>
+<p>假设:  </p>
+<ul>
+<li>间接光照为常数 (blinnphong的ambient项)  </li>
+<li>来自四面八方的间接光照都相同 但shadingpoint不一定都能接收到(考虑遮蔽)  </li>
+<li>假设物体是Diffuse的,即使是一个glossy物体也以diffuse去渲染  </li>
+</ul>
+<p>原理:<br>  渲染方程将Visbility项拆开 拆出$k_A$(按cos加权平均visibility) 近似成kA和间接光照两个项 间接光照为常数 diffuse的brdf也为常数 只用计算kA<br>  <img src="/Graphics/RTR/GlobalIllumination/ssao.png" alt="ssao">  </p>
 <blockquote>
 <p>deep understanding: RTR常用不等式把一个product integral拆出一个项进行归一化 可以看作fx在gx覆盖范围内的平均 AO中 gx-&gt;间接光照和brdf 满足近似条件<br>$\cos\theta_i d\omega_i$就是立体角在微元面积上的投影<br><img src="/Graphics/RTR/GlobalIllumination/domega.png" alt="domega">  </p>
 </blockquote>
@@ -766,26 +824,44 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <blockquote>
 <p>在世界空间直接trace光线出去获取visibility再加权平均就能得到  </p>
 </blockquote>
-<p>屏幕空间:<br>在shading point周围一个圆，随机分布一些点，看哪些在物体内部，哪些在物体外部，再投影到camera里，通过深度图来得出哪些点会被挡住<br>camera没法又存法线又存深度时，不能通过法线判断用一个半圆来分布点，就只能靠在撒下去的点在物体内部超过半数时才计算ao，而低于半数，就视为不会被遮蔽<br><img src="/Graphics/RTR/GlobalIllumination/kA.png" alt="kA">  </p>
+<p>屏幕空间:  </p>
+<ul>
+<li>首先从相机出发，得到屏幕空间的深度信息，写入z-buffer  </li>
+<li>对屏幕空间的任意一个像素（着色点），在以它为中心、R为半径的球体范围内随机寻找数个采样点，判断其可见性</li>
+<li>若该采样点的深度大于它在屏幕空间对应的深度，则认为该点不可见，记可见性为0（下图绿点）  </li>
+<li>计算可见性为1的采样点的占比，作为当前像素的visibility值  </li>
+</ul>
+<p>早期camera没法又存法线又存深度时，不能通过法线判断用一个半圆来分布点，就只能靠在撒下去的点在物体内部超过半数时才计算ao，而低于半数，就视为不会被遮蔽<br><img src="/Graphics/RTR/GlobalIllumination/kA.png" alt="kA">  </p>
+<p>有可能发生如上图二所示camera认为看不到而point实际看的到的情况 但影响不大  </p>
 <p>cons:实际离得远的物体在camera视角下认为产生遮挡 false occlusions  </p>
 <p>采样周围一个圆的点数量越多效果越好，速度也越慢。那么就可以先用数量少的点数获取AO再模糊处理  </p>
 </li>
 </ul>
-<p>Horizon based ambient occlusion (HBAO) 知道法线的情况 可以做cos衰减 更准确  </p>
-<h3 id="Screen-Space-Directional-Occlusion-SSDO"><a href="#Screen-Space-Directional-Occlusion-SSDO" class="headerlink" title="Screen Space Directional Occlusion (SSDO)"></a>Screen Space Directional Occlusion (SSDO)</h3><p>不假设接收到的光照都相同  </p>
+<p>Horizon based ambient occlusion (HBAO)  </p>
+<p>知道法线的情况 只考虑了一个半球 可以做cos衰减 更准确 改善冗余阴影，大大减少采样率的需求  </p>
+<p>手机端最主流的环境光遮蔽算法  </p>
+<p>使用多次光线步进找到着色点切平面与遮挡物采样点形成的最大角度，再通过这个角度来计算物体与物体间的遮挡程度，从而完成对环境光遮蔽的近似  </p>
+<h3 id="Screen-Space-Directional-Occlusion-SSDO"><a href="#Screen-Space-Directional-Occlusion-SSDO" class="headerlink" title="Screen Space Directional Occlusion (SSDO)"></a>Screen Space Directional Occlusion (SSDO)</h3><p>不假设接收到的间接光照都相同 把屏幕空间被直接光照照亮的物体视为次级光源  </p>
+<p>AO能够产生变暗的效果使得物体相对感更强烈,但AO并不能做到Color Blending（不同颜色的Diffuse会互相照亮 这个颜色的表面上有旁边其它颜色的反射 而不是如AO直接整体变暗）  </p>
 <p>类似于path tracing 从shadingpoint发出随机光线看交点<br>DO是从遮挡(光线打到)的物体产生间接光照(来自近的地方)<br>AO则是从没有遮挡的方向产生间接光照 相反 (来自远的地方)<br><img src="/Graphics/RTR/GlobalIllumination/aodo.png" alt="aodo">  </p>
-<p>从shadingpoint打出光线，不会被挡住那么就受到直接光照，会被挡住则接受到间接光照，把直接光照和间接光照的贡献加起来就是全局光照  </p>
+<p>从shadingpoint打出光线，不会被挡住那么就受到直接光照，会被挡住则算出Q点接受的直接光照打到P点的贡献,从而求出P点的间接光照 也就是假设间接光照是从比较近的反射物来的 把直接光照和间接光照的贡献加起来就是全局光照  </p>
 <p>判断遮挡: 方法类似于HBAO 在点的上半球撒点，把点连接到camera，用深度图判断会不会被挡住来近似地得到shading point的遮挡情况<br><img src="/Graphics/RTR/GlobalIllumination/ssdo.png" alt="ssdo">  </p>
-<p>cons: screen space 丢失信息 只能解决小范围的间接光照  </p>
+<p>cons: screen space 丢失信息 只能解决小范围的间接光照(计算附近遮挡物的反射)  </p>
 <h3 id="Screen-Space-Reflection-SSR"><a href="#Screen-Space-Reflection-SSR" class="headerlink" title="Screen Space Reflection (SSR)"></a>Screen Space Reflection (SSR)</h3><p>在屏幕空间做光线追踪 不仅仅能做反射，可以做任何光线追踪  </p>
+<p>反射的绝大多数信息是屏幕内已有的信息 并不需要3D场景的什么信息  </p>
 <p>先获得直接光照，获得法线和深度，得到反射的结果，最终结果就是全局光照  </p>
 <p>得到反射的结果:  </p>
 <ul>
-<li>求交 Intersection: between any ray and the scene 反射光会和屏幕内的场景哪些像素相交<br>反射光每次都往前走一定步长，直到打到场景最浅的深度，就说明和物体接触，得到相交的像素<br>Linear Raymarch 获取动态步长 对深度图mipmap 但用最小值而不是平均值(最小池化) 和最小值不相交则不可能相交 可以跳过很多格子<br><img src="/Graphics/RTR/GlobalIllumination/ssrmipmap.png" alt="ssrmipmap">  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">mip = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (level &gt; <span class="number">-1</span>)</span><br><span class="line">  step through current cell;</span><br><span class="line">  <span class="keyword">if</span> (above Z plane) ++level;</span><br><span class="line">  <span class="keyword">if</span> (below Z plane) --level;</span><br></pre></td></tr></table></figure></li>
-<li>着色 Shading: contribution from intersected pixels to the shading point<br>可以直接用path tracing算法 但必须假设反射物都是diffuse 才能假设反射物反射到任何方向的radiance都是一样的  </li>
+<li>求交 Intersection: between any ray and the scene 反射光会和屏幕内的场景哪些像素相交<br>Linear Raymarch 反射光每次都往前走一定步长，直到打到场景最浅的深度，就说明和物体接触，得到相交的像素<br>获取步长:<br> Hierachical ray trace 获取动态步长 对深度图mipmap 但用最小值而不是平均值(最小池化) 和最小值不相交则不可能相交 可以跳过很多格子<br><img src="/Graphics/RTR/GlobalIllumination/ssrmipmap.png" alt="ssrmipmap">  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">mip = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (level &gt; <span class="number">-1</span>)</span><br><span class="line">  step through current cell;</span><br><span class="line">  <span class="keyword">if</span> (above Z plane) ++level;</span><br><span class="line">  <span class="keyword">if</span> (below Z plane) --level;</span><br></pre></td></tr></table></figure></li>
+<li>着色 Shading: contribution from intersected pixels to the shading point<br>SSR是对光追的简化，仅用屏幕内的物体的壳来进行光追<br>可以直接用path tracing算法 是specular材质则cast一次，是glossy材质就用蒙特卡洛重要性采样多次计算 但必须假设次级反射物都是diffuse 才能假设反射物反射到任何方向的radiance都是一样的<br>SSR不用考虑光线的平方衰减，并且可以保证交点的可见性，这是因为SSR的采样对象是brdf本身，而只有在对光源采样的时候才要考虑衰减和遮挡  </li>
 </ul>
-<p>SSR可以做镜面反射和glossy<br>SSR受限于屏幕空间，无法反射屏幕外的物体，会导致出现明显的断点，但可以把距离远的反射结果虚化来缓解  </p>
-<p>SSR有很多好的自带的性质  </p>
+<p>SSR可以做镜面反射和glossy  </p>
+<p>cons:  </p>
+<ul>
+<li>SSR受限于屏幕空间 无法反射屏幕外的物体 会导致出现明显的断点 但可以把距离远的反射结果虚化来缓解  </li>
+<li>不在屏幕中这层“壳”的信息是不会被反射的(是screen space算法的通病)  </li>
+</ul>
+<p>pros: </p>
 <ul>
 <li>Sharp and blurry reflections 光滑或者模糊的结果都能得到  </li>
 <li>Contact hardening 反射的结果距离越近也会越清晰  </li>
@@ -798,6 +874,10 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <li>可以用时间和空间上的复用，时间上的复用就是一系列的预计算，空间的复用就是借鉴shading point旁边的shading结果  </li>
 <li>可以在先把屏幕空间的反射结果先filter  </li>
 </ul>
+<h2 id="Probe-Based-Global-Illumination"><a href="#Probe-Based-Global-Illumination" class="headerlink" title="Probe-Based Global Illumination"></a>Probe-Based Global Illumination</h2><p>探针（Probe） 或者说 光照探针（Light Probe），简单理解就是场景中的一个点然后给予这个点去往四面八方收集光照或者说探测光照的能力，并把往四面八方的入射光 radiance 记录下来（其实就是记录环境光   </p>
+<p>在对某个 shading point 渲染的时候就可以利用它附近 probes 的环境光信息粗略估计出它所受到的环境光信息  </p>
+<p><a href="https://zhuanlan.zhihu.com/p/350753497">https://zhuanlan.zhihu.com/p/350753497</a></p>
+<p><a href="https://www.cnblogs.com/KillerAery/archive/2022/10/26/16828304.html">https://www.cnblogs.com/KillerAery/archive/2022/10/26/16828304.html</a></p>
 ]]></content>
       <categories>
         <category>Graphics</category>
@@ -843,7 +923,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 </ul>
 <p>工业界主流方法 只用一个主要光源生成阴影  </p>
 <blockquote>
-<p>环境光遮蔽（Ambient Occlusion）“AO” (?)<br>生成阴影相关研究:<br>Imperfect shadow maps 全局光照部分产生的shadow<br>Light cuts 离线渲染 把反射物当成小光源,把所有的小光源做归类并近似出照射的结果<br>RTRT 可能是最终解决方案<br>PRT &#10004;  </p>
+<p>生成阴影相关研究:<br>Imperfect shadow maps 全局光照部分产生的shadow<br>Light cuts 离线渲染 把反射物当成小光源,把所有的小光源做归类并近似出照射的结果<br>RTRT 可能是最终解决方案<br>PRT &#10004;  </p>
 </blockquote>
 <p>preKnowledge:<br>两种函数相乘的积分可以认为成一个卷积操作。其中只要有一个函数是低频的，得到的结果也是低频, 相当于做了低通滤波，<strong><em>积分之后的频率取决于积分前最低的频率</em></strong> 低频也就是smooth<br>基函数（Basis Functions）把一个函数可以描绘成其他函数(基函数)的线性组合 傅里叶变化就是基函数  </p>
 <h3 id="Spherical-Harmonics-SH"><a href="#Spherical-Harmonics-SH" class="headerlink" title="Spherical Harmonics (SH)"></a>Spherical Harmonics (SH)</h3><p>定义在球面上的一系列二维函数组成的基函数<br><img src="/Graphics/RTR/EnvironmentMapping/Spherical%20Harmonics.png" alt="Spherical Harmonics"><br>类似一维里的傅里叶级数 存在不同频率的函数，不同频率的函数个数也不同。第l阶的SH有2l+1个二维函数 每个基函数都有一个比较复杂的数学表示，对应一个legendre多项式  </p>
@@ -855,6 +935,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <p>重建：已经知道基函数对应的系数，就能恢复原来的函数。基函数的l可以是无限个的，可以只用前几阶来恢复原来的函数，取的阶数的个数越多，越能还原原来函数的细节  </p>
 <p>rendering equation在计算shading的情况下就只有lighting和brdf<br>brdf如果是diffuse材质，就会像一个低通滤波器，只有低频的信息，非常smooth<br>因为brdf是低频的，那么Lighting和brdf两个函数相乘的积分也是低频的<br>由于环境光是来自于四面八方且都有值,所以环境光照就是一个球面函数,可以把它投影到任何一个SH basis上,可以投影很多阶,但是只需要取前三阶的SH去恢复环境光就可以恢复出最低频的细节 这样SH只要用前三阶就能还原shading的结果<br><img src="/Graphics/RTR/EnvironmentMapping/diffusebrdf.png" alt="diffusebrdf">  </p>
 <p>以上仍然还是shading  </p>
+<p>SH 实现: <a href="https://zhuanlan.zhihu.com/p/362460950">https://zhuanlan.zhihu.com/p/362460950</a></p>
 <h3 id="Precomputed-Radiance-Transfer-PRT"><a href="#Precomputed-Radiance-Transfer-PRT" class="headerlink" title="Precomputed Radiance Transfer (PRT)"></a>Precomputed Radiance Transfer (PRT)</h3><p>解决shadows和global illumination  </p>
 <p>在rendering equation中把lighting,visbility,brdf项可以描述成三个二维的球面函数，在环境光照中，需要大量的采样，开销很大  </p>
 <p>PRT会假设在一个环境中，就光照变化，其他不变  </p>
@@ -1318,7 +1399,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 </ul>
 <h3 id="Microfacet-Material"><a href="#Microfacet-Material" class="headerlink" title="Microfacet Material"></a>Microfacet Material</h3><p>离得足够远的时候，微观表面可以被忽略，而最后看到一个宏观的结果  </p>
 <ul>
-<li>微观解释镜面反射 漫反射:<br>法线方向分布比较集中的镜面反射明显，而法线分布比较分散表面相对粗糙<br><img src="/Graphics/Fundamental/Materials/specular.jpg" alt="specular"><br>从微观看漫反射表面，每个微元表面都是完美镜面反射 当光线照射到物体表面时，一部分光线会与表面的许许多多的微小镜面发生镜面反射，另一部分光线则会折射进入物体内部<br>光线折射进入内部的时候会与物体的微小粒子不断发生碰撞并散射到随机方向，同时在碰撞的过程中一部分光线的能量会被吸收转换为热能，有些光线在多次碰撞之后能量消耗殆尽，则表示该光线完全被物体吸收。还有一部分折射到物体内部的光线会因为散射方向的随机性重新离开表面，而这部分光线就形成了漫反射<br>(不考虑光线散射出来离开表面的点可能并不是进入表面的点这种情形，次表面散射(Subsurface Scattering)技术考虑了 可见AdvancedTopics中半透明材质BSSRDF)<br><img src="/Graphics/Fundamental/Materials/diffuse.jpg" alt="diffuse">  </li>
+<li>微观解释镜面反射 漫反射:<br>法线方向分布比较集中的镜面反射明显，而法线分布比较分散表面相对粗糙<br><img src="/Graphics/Fundamental/Materials/specular.jpg" alt="specular"><br>从微观看漫反射表面，每个微元表面都是完美镜面反射 当光线照射到物体表面时，一部分光线会与表面的许许多多的微小镜面发生镜面反射，另一部分光线则会折射进入物体内部<br>光线折射进入内部的时候会与物体的微小粒子不断发生碰撞并散射到随机方向，同时在碰撞的过程中一部分光线的能量会被吸收转换为热能，有些光线在多次碰撞之后能量消耗殆尽，则表示该光线完全被物体吸收。还有一部分折射到物体内部的光线会因为散射方向的随机性重新离开表面，而这部分光线就形成了漫反射<br>(不考虑光线散射出来离开表面的点可能并不是进入表面的点这种情形，次表面散射(Subsurface Scattering)技术考虑了 可见AdvancedTopics中半透明材质BSSRDF)<br>漫反射和次表面散射其实是相同物理现象，本质都是折射光的次表面散射的结果。唯一的区别是相对于观察尺度的散射距离 光的折射现象，建模为漫反射还是次表面散射，取决于观察的尺度<br><img src="/Graphics/Fundamental/Materials/diffuse.jpg" alt="diffuse">  </li>
 </ul>
 <p>有了微表面模型，我们就可以提出在微表面下的更精确的BRDF方程<br><img src="/Graphics/Fundamental/Materials/Microfacet%20BRDF.png" alt="Microfacet BRDF">  </p>
 <ul>
@@ -1327,7 +1408,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <li>G为几何项，由于在微表面上，对于那些几乎和表面平行的入射光，很容易发生互相遮挡的现象，从而使得部分微表面失去作用，我们把这种光线角度称为掠射角度（Grazing Angle），在这种角度下的着色会非常亮，G项就起到了一定的修正作用  </li>
 </ul>
 <p>微表面模型可以得到非常真实的渲染结果，因为他本身就是基于物理的渲染（PBR/PBS） </p>
-<p>以上为仅考虑微观镜面反射时的情况(宏观漫反射中包含了微观的镜面反射和折射), 折射会造成能量损失, 所以很多模型会增加某一项去补回能量的损失.如 cook-torrance微表面模型(? 存疑), Kulla-Conty 模型(见RTR-PBR)  </p>
+<p>以上为仅考虑微观镜面反射时的情况, 折射会造成能量损失, 所以很多模型会增加某一项去补回能量的损失.如 cook-torrance微表面模型, Kulla-Conty 模型(见RTR-PBR)  </p>
 <h3 id="Isotropic-Anisotropic-Materials-BRDFs"><a href="#Isotropic-Anisotropic-Materials-BRDFs" class="headerlink" title="Isotropic / Anisotropic Materials (BRDFs)"></a>Isotropic / Anisotropic Materials (BRDFs)</h3><p>各向同性（Isotropic Materials）：微表面不存在方向性<br>各向异性（Anisotropic Materials）：微表面存在方向性 不锈钢,尼龙,天鹅绒<br>对BRDF 方向性是指如果入射光和出射光做一定方位角的旋转前后，BRDF方程不变<br><img src="/Graphics/Fundamental/Materials/Isotropic%20Anisotropic%20Materials.png" alt="Isotropic / Anisotropic Materials ">  </p>
 <h3 id="Properties-of-BRDFs"><a href="#Properties-of-BRDFs" class="headerlink" title="Properties of BRDFs"></a>Properties of BRDFs</h3><p>Non-negativity 非负性：描述能量分布<br>Linearity 线性性：可以被拆分成不同项的线性组合（ambient，diffuse，specular)<br>Reciprocity principle 可逆性：调换入射出射方向，BRDF渲染结果严格不变<br>Energy conservation 能量守恒：出射光线的能量永远不能超过入射光线的能量<br>Isotropic vs. anisotropic 各向同/异性：如果是各项同性材质，则BRDF值只和相对方位角有关，四维的BRDF材质可以被降维为三维，并且根据可逆性，结果不需要考虑方位角的正负  </p>
 <h3 id="Measuring-BRDFs"><a href="#Measuring-BRDFs" class="headerlink" title="Measuring BRDFs"></a>Measuring BRDFs</h3><p><img src="/Graphics/Fundamental/Materials/Image-Based%20BRDF%20Measurement.png" alt="Image-Based BRDF Measurement"><br>给定一个着色点，通过改变入射和出射的角度（改变光源与相机位置）进行测量<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">foreach outgoing direction wo</span><br><span class="line">    move light to illuminate surface with a thin beam from wo</span><br><span class="line">    <span class="keyword">for</span> each incoming direction wi</span><br><span class="line">        move sensor to be at direction wi from surface</span><br><span class="line">        measure incident radianc</span><br></pre></td></tr></table></figure><br>这样测出来的BRDF是四维的，这样的测量是非常费时的<br>为了提高效率，我们可以尽量让材质呈各向同性<br>就像之前说的，这不仅可以让BRDF从四维降至三维，还能由光路可逆性再砍去一半的测量  </p>
@@ -3020,33 +3101,6 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>SQLite</title>
-    <url>/Unity/DataPersistence/SQLite/</url>
-    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
-<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
-<p>以下为需要定义的对象</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>SQL三种执行方法</li>
-</ul>
-<ol>
-<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
- <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>DataPersistence</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C#面向对象</title>
     <url>/Unity/Csharp/CsharpOOP/</url>
     <content><![CDATA[<h1 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C#面向对象"></a>C#面向对象</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>面向过程的程序 = 算法 + 数据结构； 关心解决问题的步骤。</p>
@@ -3415,6 +3469,33 @@ M_{viewport}=
       <categories>
         <category>Unity</category>
         <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SQLite</title>
+    <url>/Unity/DataPersistence/SQLite/</url>
+    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
+<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
+<p>以下为需要定义的对象</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>SQL三种执行方法</li>
+</ul>
+<ol>
+<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
+ <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
       </categories>
   </entry>
   <entry>
@@ -4386,6 +4467,17 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
+    <title>AssetBundle</title>
+    <url>/Unity/Frame/AssetBundle/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Frame</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Up</title>
     <url>/Unity/Demo/Up/</url>
     <content><![CDATA[<h1 id="Up——类flappy-bird小游戏的实现"><a href="#Up——类flappy-bird小游戏的实现" class="headerlink" title="Up——类flappy bird小游戏的实现"></a>Up——类flappy bird小游戏的实现</h1><p><a href="https://github.com/vzerzz/Up">项目文件</a></p>
@@ -4410,17 +4502,6 @@ M_{viewport}=
       <tags>
         <tag>2D</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>AssetBundle</title>
-    <url>/Unity/Frame/AssetBundle/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
   </entry>
   <entry>
     <title>FSM</title>
@@ -4483,10 +4564,11 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>特效系统</title>
-    <url>/Unity/UnityFundamental/Effects/</url>
-    <content><![CDATA[<h1 id="特效系统"><a href="#特效系统" class="headerlink" title="特效系统"></a>特效系统</h1><span id="more"></span>
-<p><img src="/Unity/UnityFundamental/Effects/effects.png" alt="effects"></p>
+    <title>协程</title>
+    <url>/Unity/UnityFundamental/Coroutine/</url>
+    <content><![CDATA[<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/Coroutine/coroutine.png" alt="coroutine"></p>
+<p>每隔一段时间实现一个功能时使用</p>
 ]]></content>
       <categories>
         <category>Unity</category>
@@ -4494,11 +4576,10 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>协程</title>
-    <url>/Unity/UnityFundamental/Coroutine/</url>
-    <content><![CDATA[<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><span id="more"></span>
-<p><img src="/Unity/UnityFundamental/Coroutine/coroutine.png" alt="coroutine"></p>
-<p>每隔一段时间实现一个功能时使用</p>
+    <title>特效系统</title>
+    <url>/Unity/UnityFundamental/Effects/</url>
+    <content><![CDATA[<h1 id="特效系统"><a href="#特效系统" class="headerlink" title="特效系统"></a>特效系统</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/Effects/effects.png" alt="effects"></p>
 ]]></content>
       <categories>
         <category>Unity</category>
