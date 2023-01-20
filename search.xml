@@ -486,7 +486,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
   </entry>
   <entry>
     <title>C++2.0</title>
-    <url>/C++/HouJie/C++2.0/</url>
+    <url>/CPlusPlus/HouJie/C++2.0/</url>
     <content><![CDATA[
 
 	<div class="row">
@@ -496,13 +496,13 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>CPlusPlus</category>
         <category>HouJie</category>
       </categories>
   </entry>
   <entry>
     <title>Design Patterns</title>
-    <url>/C++/HouJie/DesignPatterns/</url>
+    <url>/CPlusPlus/HouJie/DesignPatterns/</url>
     <content><![CDATA[
 
 	<div class="row">
@@ -512,13 +512,13 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>CPlusPlus</category>
         <category>HouJie</category>
       </categories>
   </entry>
   <entry>
     <title>MemoryManagement</title>
-    <url>/C++/HouJie/MemoryManagement/</url>
+    <url>/CPlusPlus/HouJie/MemoryManagement/</url>
     <content><![CDATA[
 
 	<div class="row">
@@ -536,16 +536,16 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 
 
   
-<p><img src="/C++/HouJie/MemoryManagement/MM.png" alt="MM"></p>
+<p><img src="/CPlusPlus/HouJie/MemoryManagement/MM.png" alt="MM"></p>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>CPlusPlus</category>
         <category>HouJie</category>
       </categories>
   </entry>
   <entry>
     <title>OOP</title>
-    <url>/C++/HouJie/OOP/</url>
+    <url>/CPlusPlus/HouJie/OOP/</url>
     <content><![CDATA[
 
 	<div class="row">
@@ -557,13 +557,13 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 <p>参考:<br><a href="https://github.com/Light-City/CPlusPlusThings">https://github.com/Light-City/CPlusPlusThings</a>  </p>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>CPlusPlus</category>
         <category>HouJie</category>
       </categories>
   </entry>
   <entry>
     <title>STL</title>
-    <url>/C++/HouJie/STL/</url>
+    <url>/CPlusPlus/HouJie/STL/</url>
     <content><![CDATA[
 
 	<div class="row">
@@ -573,7 +573,7 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>CPlusPlus</category>
         <category>HouJie</category>
       </categories>
   </entry>
@@ -1903,7 +1903,7 @@ I_t = (\alpha \frac{I_A}{Z_A} + \beta \frac{I_B}{Z_B} + \gamma \frac{I_C}{Z_C}) 
   </entry>
   <entry>
     <title>Cherno</title>
-    <url>/C++/Cherno/</url>
+    <url>/CPlusPlus/Cherno/</url>
     <content><![CDATA[<h1 id="Cherno"><a href="#Cherno" class="headerlink" title="Cherno"></a>Cherno</h1><p><a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb">TheCherno原视频</a><br>防御式声明防御在同一个cpp里重复引用.h。<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _CONST_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _CONST_</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//另一种简单常用的</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br></pre></td></tr></table></figure></p>
 <p>多个相同的定义linker报错<br>在头文件里定义了函数体并被多个cpp重复引用:</p>
 <ol>
@@ -2001,7 +2001,7 @@ I_t = (\alpha \frac{I_A}{Z_A} + \beta \frac{I_B}{Z_B} + \gamma \frac{I_C}{Z_C}) 
 </ul>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>CPlusPlus</category>
       </categories>
   </entry>
   <entry>
@@ -3194,6 +3194,33 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
+    <title>SQLite</title>
+    <url>/Unity/DataPersistence/SQLite/</url>
+    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
+<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
+<p>以下为需要定义的对象</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>SQL三种执行方法</li>
+</ul>
+<ol>
+<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
+ <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C#面向对象</title>
     <url>/Unity/Csharp/CsharpOOP/</url>
     <content><![CDATA[<h1 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C#面向对象"></a>C#面向对象</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>面向过程的程序 = 算法 + 数据结构； 关心解决问题的步骤。</p>
@@ -3565,26 +3592,10 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>SQLite</title>
-    <url>/Unity/DataPersistence/SQLite/</url>
-    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
-<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
-<p>以下为需要定义的对象</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>SQL三种执行方法</li>
-</ul>
-<ol>
-<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
- <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+    <title>数据存储</title>
+    <url>/Unity/DataPersistence/Storage/</url>
+    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
 ]]></content>
       <categories>
         <category>Unity</category>
@@ -3675,17 +3686,6 @@ M_{viewport}=
       <tags>
         <tag>FPS</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>数据存储</title>
-    <url>/Unity/DataPersistence/Storage/</url>
-    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>DataPersistence</category>
-      </categories>
   </entry>
   <entry>
     <title>RobbiePlatform</title>
@@ -3885,126 +3885,6 @@ M_{viewport}=
       </categories>
       <tags>
         <tag>2D</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Stealth</title>
-    <url>/Unity/Demo/Stealth/</url>
-    <content><![CDATA[<h1 id="Stealth"><a href="#Stealth" class="headerlink" title="Stealth"></a>Stealth</h1><h2 id="警报系统"><a href="#警报系统" class="headerlink" title="警报系统"></a>警报系统</h2><ul>
-<li>灯光闪烁</li>
-</ul>
-<p>主要用lerp函数计时，决定灯光的闪烁<br>创建一个direction light 附上AlarmLight脚本<br><span id="more"></span><br><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//AlarmLight.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmLight</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;是否开启警报灯&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">bool</span> isAlarm;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;闪烁速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> highIntencity = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> lowIntencity = <span class="number">0f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> targetIntencity;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light lt;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        lt = GetComponent&lt;Light&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        targetIntencity = highIntencity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(Mathf.Abs(lt.intensity - targetIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(targetIntencity == highIntencity)</span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = lowIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = highIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, targetIntencity, Time.deltaTime*turnSpeed);<span class="comment">//无限接近</span></span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, lowIntencity, Time.deltaTime * turnSpeed);</span><br><span class="line">            <span class="keyword">if</span> (Mathf.Abs(lt.intensity - lowIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                lt.intensity = <span class="number">0</span>;<span class="comment">//减少CPU的计算</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>激光闪烁</li>
-</ul>
-<p>激光对象上附有Trigger组件<br>关键在于时间间隔后激光如何消失的处理<br>不能直接Destroy，不然无法重现</p>
-<ol>
-<li>将对象移到超出游戏范围的地方，时间间隔后再移回来</li>
-<li>让mesh aud collid light等组件enable = false</li>
-</ol>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//LaserTwinkle.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LaserTwinkle</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;闪烁间隔时间&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> interval = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> timer = <span class="number">0</span>;</span><br><span class="line">    Vector3 originPos;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> isShow;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        originPos = transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        timer += Time.deltaTime;</span><br><span class="line">        <span class="keyword">if</span>(timer &gt; interval)</span><br><span class="line">        &#123;</span><br><span class="line">            isShow = !isShow;</span><br><span class="line">            timer = <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isShow)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = originPos;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = Vector3.up * <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>技巧:设置游戏常数类</li>
-</ul>
-<p>对于容易写错，多次调用，无代码提示的常数可用一个类集合起来<br>如Tags Axis Button Animation(可化成哈希数)</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//GameConsts.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameConsts</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Tags</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> MAINLIGHT = <span class="string">&quot;MainLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> ALARMLIGHT = <span class="string">&quot;AlarmLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SIREN = <span class="string">&quot;Siren&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> PLAYER = <span class="string">&quot;Player&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Virtual Button &amp; Axis</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> HORIZONTAL = <span class="string">&quot;Horizontal&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> VERTICAL = <span class="string">&quot;Vertical&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SNEAK = <span class="string">&quot;Sneak&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SHOUT = <span class="string">&quot;Shout&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Animation Parameters &amp; States</span></span><br><span class="line">    <span class="comment">//速度参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SPEED_PARAM;</span><br><span class="line">    <span class="comment">//潜行参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SNEAK_PARAM;</span><br><span class="line">    <span class="comment">//喊叫参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SHOUT_PARAM;</span><br><span class="line">    <span class="comment">//运动状态</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> LOCOMOTION_STATE;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Paramters</span></span><br><span class="line">    <span class="comment">//头顶观察距离偏移量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> WATCH_OFFSET = <span class="number">0f</span>;</span><br><span class="line">    <span class="comment">//玩家身体调节偏移量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> PLAYER_BODY_OFFSET = <span class="number">1f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Static Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">GameConsts</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//用整型</span></span><br><span class="line">        SPEED_PARAM = Animator.StringToHash(<span class="string">&quot;Speed&quot;</span>);</span><br><span class="line">        SNEAK_PARAM = Animator.StringToHash(<span class="string">&quot;Sneak&quot;</span>);</span><br><span class="line">        SHOUT_PARAM = Animator.StringToHash(<span class="string">&quot;Shout&quot;</span>);</span><br><span class="line">        LOCOMOTION_STATE = Animator.StringToHash(<span class="string">&quot;Locomotion&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>警报触发</li>
-</ul>
-<p>对于警报是否触发的判定，除了定义bool变量isAlarm<br>还可定义一个向量存储安全区与非安全区，触发警报时将触发位置赋给向量，当向量不等于安全区向量时报警<br>将报警后的声音播放，灯光闪烁等操作集合在一起，运用单例，当触发器触发时调用单例即可<br>AlarmTrigger(附在激光等对象上) -&gt; AlarmSystem</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//AlarmSystem.cs(放在空对象gamecontoller上用于控制报警系统和播放背景音乐)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmSystem</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> AlarmSystem instance;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;过渡速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 alarmPos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 safePos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AlarmLight alarmLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light mainLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AudioSource normalAud;</span><br><span class="line">    <span class="keyword">private</span> AudioSource panicAud;</span><br><span class="line">    <span class="keyword">private</span> GameObject[] sirensObj;</span><br><span class="line">    <span class="keyword">private</span> AudioSource[] sirensAud;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        instance = <span class="keyword">this</span>;</span><br><span class="line">        alarmLight = GameObject.FindWithTag(GameConsts.ALARMLIGHT).GetComponent&lt;AlarmLight&gt;();  </span><br><span class="line">        mainLight = GameObject.FindWithTag(GameConsts.MAINLIGHT).GetComponent&lt;Light&gt;();</span><br><span class="line">        normalAud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        panicAud = transform.GetChild(<span class="number">0</span>).GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        sirensObj = GameObject.FindGameObjectsWithTag(GameConsts.SIREN);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        sirensAud = <span class="keyword">new</span> AudioSource[sirensObj.Length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i] = sirensObj[i].GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        AlarmSystemOperation(alarmPos != safePos);<span class="comment">//简化if else</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 警报操作</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;isAlarm&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AlarmSystemOperation</span>(<span class="params"><span class="built_in">bool</span> isAlarm</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">value</span> = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        alarmLight.isAlarm = isAlarm;</span><br><span class="line">        mainLight.intensity = Mathf.Lerp(mainLight.intensity, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        normalAud.volume = Mathf.Lerp(normalAud.volume, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        panicAud.volume = Mathf.Lerp(panicAud.volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i].volume = Mathf.Lerp(sirensAud[i].volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//AlarmTrigger.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmTrigger</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (other.CompareTag(GameConsts.PLAYER))</span><br><span class="line">        &#123;</span><br><span class="line">            AlarmSystem.instance.alarmPos = other.transform.position;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="主人公"><a href="#主人公" class="headerlink" title="主人公"></a>主人公</h2><ul>
-<li>动画系统 EthanAnimatorController</li>
-</ul>
-<p>Bleed Tree 用于控制走和跑 参数为speed</p>
-<p>两个层<br>一个层LocomotionLayer控制站立走路跑步静步<br>另一个层ShoutingLayer控制喊叫动作 设置Mask只覆盖手和头</p>
-<p>控制声音播放</p>
-<ol>
-<li>设置 AudioClip</li>
-<li>AudioSource.PlayClipAtPoint静态方法</li>
-</ol>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//PlayerMovement.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerMovement</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;走到跑的时间&quot;</span>)</span>]</span><br><span class="line">    [<span class="meta">Range(0.1f,2f)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> dempTime = <span class="number">1.5f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;转身速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">10f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;喊叫声音片段&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> AudioClip shoutClip;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> hor, ver;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> sneak, shout;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animator ani;</span><br><span class="line">    <span class="keyword">private</span> AudioSource aud;</span><br><span class="line">    <span class="keyword">private</span> Vector3 dir;</span><br><span class="line">    <span class="keyword">private</span> Quaternion targetQua;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ani = GetComponent&lt;Animator&gt;();</span><br><span class="line">        aud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        dir = Vector3.zero;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        hor = Input.GetAxis(GameConsts.HORIZONTAL);</span><br><span class="line">        ver = Input.GetAxis(GameConsts.VERTICAL);</span><br><span class="line"></span><br><span class="line">        sneak = Input.GetButton(GameConsts.SNEAK);</span><br><span class="line">        shout = Input.GetButtonDown(GameConsts.SHOUT);</span><br><span class="line"></span><br><span class="line">        dir.x = hor;</span><br><span class="line">        dir.z = ver;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(hor != <span class="number">0</span>||ver != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">5.66f</span>, dempTime, Time.deltaTime);</span><br><span class="line">            <span class="comment">//转身两步：</span></span><br><span class="line">            <span class="comment">//方向向量转换为四元数</span></span><br><span class="line">            targetQua = Quaternion.LookRotation(dir);</span><br><span class="line">            <span class="comment">//Lerp过去</span></span><br><span class="line">            transform.rotation = Quaternion.Lerp(transform.rotation, targetQua, Time.deltaTime * turnSpeed);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">1.5f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ani.SetBool(GameConsts.SNEAK_PARAM, sneak);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (shout)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetTrigger(GameConsts.SHOUT_PARAM);</span><br><span class="line">        &#125;</span><br><span class="line">        AudioSetUp();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 声音配置</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AudioSetUp</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> isLocomotion = ani.GetCurrentAnimatorStateInfo(<span class="number">0</span>).shortNameHash == GameConsts.LOCOMOTION_STATE;</span><br><span class="line">        <span class="keyword">if</span> (isLocomotion)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!aud.isPlaying)</span><br><span class="line">            &#123;</span><br><span class="line">                aud.Play();<span class="comment">//loop选不选无所谓</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            aud.Stop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlayShoutAudio</span>()<span class="comment">//动画事件添加声音</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        AudioSource.PlayClipAtPoint(shoutClip, transform.position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h2><h2 id="其它杂项"><a href="#其它杂项" class="headerlink" title="其它杂项"></a>其它杂项</h2><ul>
-<li><p>小门</p>
-</li>
-<li><p>电梯大门</p>
-</li>
-<li><p>电梯</p>
-</li>
-<li><p>钥匙</p>
-</li>
-</ul>
-<h2 id="机器人"><a href="#机器人" class="headerlink" title="机器人"></a>机器人</h2><p>四个主要脚本</p>
-<h3 id="机器人警报"><a href="#机器人警报" class="headerlink" title="机器人警报"></a>机器人警报</h3><p>添加Capsule Collider<br>rigidbody 选is Kinematic 玩家撞不飞<br>加tag<br>视觉听觉 位置消息的接收脚本EnemySightingAndHearing.cs<br>警报位置<br>全局 触发激光 摄像头 机器人看见 所有机器人都追逐<br>私人 机器人听见 只有单个机器人追逐<br>两个警报谁更新去哪个</p>
-<ul>
-<li>全局(监听警报位置更新):<br>if(当全局警报位置发生变化的时候){<br>  将全局警报位置发送给当前机器人并存储<br>}</li>
-</ul>
-<p>判断变化: 当前帧警报位置 <strong>对比</strong> 上一帧警报位置</p>
-<ul>
-<li>视觉检测:</li>
-</ul>
-<ol>
-<li><p>角度判断<br>机器人指向玩家向量与正前方夹角</p>
-</li>
-<li><p>距离判断<br>每帧计算距离 or<br>球形触发器(消耗少)OnTrigger 听觉与视觉判断都放在里面而不放在Update里</p>
-</li>
-<li><p>是否遮挡<br>向玩家发射物理射线 设置偏移量<br>看到玩家触发全局警报</p>
-</li>
-</ol>
-<ul>
-<li>听觉检测:</li>
-</ul>
-<p>走路/喊叫<br>墙壁完全隔音 只通过空气传播<br>路径—导航系统<br>添加组件 设置静态 烘焙网格<br>假设通过导航方式找玩家看是否找的到<br>节点坐标数组得到总距离<br>足够短则可以听到声音触发私人警报</p>
-<p>小门bug: 会检测到触发器 改成只检测碰撞体<br>if (other.isTrigger)<br>    return;</p>
-<h3 id="机器人动画"><a href="#机器人动画" class="headerlink" title="机器人动画"></a>机器人动画</h3><p>融合树 主要在于两个参数Speed AngularSpeed的确定<br>EnemyAnimation.cs<br>导航 期望速度向量在机器人前方的投影向量为Speed<br>AngularSpeed<br>期望速度向量和自身前方向量夹角<br>自身前方向量和期望速度向量法向量 上—右 下—左(夹角变负)<br>角度转弧度 *=Mathf.Deg2Rad</p>
-<p>两种位移 一个动画一个导航<br>OnAnimatorMove()<br>期望速度 -&gt; 动画参数【speed, angularSpeed】 -&gt; 执行动画 -&gt; 产生位移【deltaPosition】 -&gt; velocity<br>导航瞬时速度设为动画位移/每帧时间<br>nav.velocity = ani.deltaPosition/Time.deltaTime<br>旋转使用动画的根旋转<br>transform.rotation = ani.rootRotation</p>
-<p>擦墙: 调整烘焙的宽度和高度</p>
-<p>到终点后旋转: 期望速度为0时角速度强行变为0</p>
-<p>僵硬: 加延时dampTime</p>
-<p>玩家容易摆脱机器人的追捕，容易绕:<br>期望速度向量和自身前方向量夹角小时直接转不用角速度直接lookat转向玩家<br>在视觉检测添加一个bool判断看不看的见玩家</p>
-<h3 id="机器人AI"><a href="#机器人AI" class="headerlink" title="机器人AI"></a>机器人AI</h3><p>EnemyAI.cs</p>
-<p>PlayerHealth.cs单例</p>
-<p>射击 追捕 巡逻</p>
-<ul>
-<li>射击 看到玩家且玩家活着<br>停止导航<br>新动画层ShootingLayer 参数 是否看见玩家<br>放置枪<br>脚本中设置参数改变<br>IK动画<br>EnemyShoot.cs<br>OnAnimatorIK()<br>射击动画时加IK<br>射击特效:<br>ShootingEffect.cs<br>设置激光LineRenderer<br>设置激光端点个数和坐标<br>开启灯光Light<br>播放声音AudioClip<br>延时关闭</li>
-</ul>
-<p>添加动画事件</p>
-<p>计算伤害</p>
-<p>给主人公添加死亡动画 any status 都能转到  can transition to self 取消</p>
-<p>死亡后取消玩家控制权 解除警报 取消玩家标签</p>
-<ul>
-<li><p>追捕 私人警报坐标不等于安全坐标<br>恢复导航<br>导航私人警报位置<br>判断是否到达目标<br>滞留时间后 解除警报</p>
-</li>
-<li><p>巡逻 else<br>设置巡逻点wayPoint<br>Transform数组记录坐标<br>设置导航目标</p>
-</li>
-</ul>
-<p>门加导航动态路障组件<br>path.status==PathP<br>有路障 解除警报返回巡逻</p>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>Draw Call : CPU向GPU发布渲染命令<br>Draw Call越大: CPU占有率就会越高</p>
-<p>优化Draw Call方法:</p>
-<ol>
-<li><p>批处理:</p>
-<ol>
-<li>静态批处理:要求宽松，批处理量比较大</li>
-<li>动态批处理:要求苛刻，批处理量比较少</li>
-</ol>
-</li>
-<li><p>调节摄像机的渲染路径</p>
-<ol>
-<li>正向渲染</li>
-<li>延时光照</li>
-<li>顶点光照</li>
-</ol>
-</li>
-</ol>
-<p>雾效</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Demo</category>
-      </categories>
-      <tags>
-        <tag>3D</tag>
-        <tag>sneak</tag>
       </tags>
   </entry>
   <entry>
@@ -4348,6 +4228,126 @@ M_{viewport}=
       </tags>
   </entry>
   <entry>
+    <title>Stealth</title>
+    <url>/Unity/Demo/Stealth/</url>
+    <content><![CDATA[<h1 id="Stealth"><a href="#Stealth" class="headerlink" title="Stealth"></a>Stealth</h1><h2 id="警报系统"><a href="#警报系统" class="headerlink" title="警报系统"></a>警报系统</h2><ul>
+<li>灯光闪烁</li>
+</ul>
+<p>主要用lerp函数计时，决定灯光的闪烁<br>创建一个direction light 附上AlarmLight脚本<br><span id="more"></span><br><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//AlarmLight.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmLight</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;是否开启警报灯&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">bool</span> isAlarm;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;闪烁速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> highIntencity = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> lowIntencity = <span class="number">0f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> targetIntencity;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light lt;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        lt = GetComponent&lt;Light&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        targetIntencity = highIntencity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(Mathf.Abs(lt.intensity - targetIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(targetIntencity == highIntencity)</span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = lowIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = highIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, targetIntencity, Time.deltaTime*turnSpeed);<span class="comment">//无限接近</span></span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, lowIntencity, Time.deltaTime * turnSpeed);</span><br><span class="line">            <span class="keyword">if</span> (Mathf.Abs(lt.intensity - lowIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                lt.intensity = <span class="number">0</span>;<span class="comment">//减少CPU的计算</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>激光闪烁</li>
+</ul>
+<p>激光对象上附有Trigger组件<br>关键在于时间间隔后激光如何消失的处理<br>不能直接Destroy，不然无法重现</p>
+<ol>
+<li>将对象移到超出游戏范围的地方，时间间隔后再移回来</li>
+<li>让mesh aud collid light等组件enable = false</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//LaserTwinkle.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LaserTwinkle</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;闪烁间隔时间&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> interval = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> timer = <span class="number">0</span>;</span><br><span class="line">    Vector3 originPos;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> isShow;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        originPos = transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        timer += Time.deltaTime;</span><br><span class="line">        <span class="keyword">if</span>(timer &gt; interval)</span><br><span class="line">        &#123;</span><br><span class="line">            isShow = !isShow;</span><br><span class="line">            timer = <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isShow)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = originPos;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = Vector3.up * <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>技巧:设置游戏常数类</li>
+</ul>
+<p>对于容易写错，多次调用，无代码提示的常数可用一个类集合起来<br>如Tags Axis Button Animation(可化成哈希数)</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//GameConsts.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameConsts</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Tags</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> MAINLIGHT = <span class="string">&quot;MainLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> ALARMLIGHT = <span class="string">&quot;AlarmLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SIREN = <span class="string">&quot;Siren&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> PLAYER = <span class="string">&quot;Player&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Virtual Button &amp; Axis</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> HORIZONTAL = <span class="string">&quot;Horizontal&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> VERTICAL = <span class="string">&quot;Vertical&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SNEAK = <span class="string">&quot;Sneak&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SHOUT = <span class="string">&quot;Shout&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Animation Parameters &amp; States</span></span><br><span class="line">    <span class="comment">//速度参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SPEED_PARAM;</span><br><span class="line">    <span class="comment">//潜行参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SNEAK_PARAM;</span><br><span class="line">    <span class="comment">//喊叫参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SHOUT_PARAM;</span><br><span class="line">    <span class="comment">//运动状态</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> LOCOMOTION_STATE;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Paramters</span></span><br><span class="line">    <span class="comment">//头顶观察距离偏移量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> WATCH_OFFSET = <span class="number">0f</span>;</span><br><span class="line">    <span class="comment">//玩家身体调节偏移量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> PLAYER_BODY_OFFSET = <span class="number">1f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Static Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">GameConsts</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//用整型</span></span><br><span class="line">        SPEED_PARAM = Animator.StringToHash(<span class="string">&quot;Speed&quot;</span>);</span><br><span class="line">        SNEAK_PARAM = Animator.StringToHash(<span class="string">&quot;Sneak&quot;</span>);</span><br><span class="line">        SHOUT_PARAM = Animator.StringToHash(<span class="string">&quot;Shout&quot;</span>);</span><br><span class="line">        LOCOMOTION_STATE = Animator.StringToHash(<span class="string">&quot;Locomotion&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>警报触发</li>
+</ul>
+<p>对于警报是否触发的判定，除了定义bool变量isAlarm<br>还可定义一个向量存储安全区与非安全区，触发警报时将触发位置赋给向量，当向量不等于安全区向量时报警<br>将报警后的声音播放，灯光闪烁等操作集合在一起，运用单例，当触发器触发时调用单例即可<br>AlarmTrigger(附在激光等对象上) -&gt; AlarmSystem</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//AlarmSystem.cs(放在空对象gamecontoller上用于控制报警系统和播放背景音乐)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmSystem</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> AlarmSystem instance;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;过渡速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 alarmPos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 safePos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AlarmLight alarmLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light mainLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AudioSource normalAud;</span><br><span class="line">    <span class="keyword">private</span> AudioSource panicAud;</span><br><span class="line">    <span class="keyword">private</span> GameObject[] sirensObj;</span><br><span class="line">    <span class="keyword">private</span> AudioSource[] sirensAud;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        instance = <span class="keyword">this</span>;</span><br><span class="line">        alarmLight = GameObject.FindWithTag(GameConsts.ALARMLIGHT).GetComponent&lt;AlarmLight&gt;();  </span><br><span class="line">        mainLight = GameObject.FindWithTag(GameConsts.MAINLIGHT).GetComponent&lt;Light&gt;();</span><br><span class="line">        normalAud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        panicAud = transform.GetChild(<span class="number">0</span>).GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        sirensObj = GameObject.FindGameObjectsWithTag(GameConsts.SIREN);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        sirensAud = <span class="keyword">new</span> AudioSource[sirensObj.Length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i] = sirensObj[i].GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        AlarmSystemOperation(alarmPos != safePos);<span class="comment">//简化if else</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 警报操作</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;isAlarm&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AlarmSystemOperation</span>(<span class="params"><span class="built_in">bool</span> isAlarm</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">value</span> = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        alarmLight.isAlarm = isAlarm;</span><br><span class="line">        mainLight.intensity = Mathf.Lerp(mainLight.intensity, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        normalAud.volume = Mathf.Lerp(normalAud.volume, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        panicAud.volume = Mathf.Lerp(panicAud.volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i].volume = Mathf.Lerp(sirensAud[i].volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//AlarmTrigger.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmTrigger</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (other.CompareTag(GameConsts.PLAYER))</span><br><span class="line">        &#123;</span><br><span class="line">            AlarmSystem.instance.alarmPos = other.transform.position;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="主人公"><a href="#主人公" class="headerlink" title="主人公"></a>主人公</h2><ul>
+<li>动画系统 EthanAnimatorController</li>
+</ul>
+<p>Bleed Tree 用于控制走和跑 参数为speed</p>
+<p>两个层<br>一个层LocomotionLayer控制站立走路跑步静步<br>另一个层ShoutingLayer控制喊叫动作 设置Mask只覆盖手和头</p>
+<p>控制声音播放</p>
+<ol>
+<li>设置 AudioClip</li>
+<li>AudioSource.PlayClipAtPoint静态方法</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//PlayerMovement.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerMovement</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;走到跑的时间&quot;</span>)</span>]</span><br><span class="line">    [<span class="meta">Range(0.1f,2f)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> dempTime = <span class="number">1.5f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;转身速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">10f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;喊叫声音片段&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> AudioClip shoutClip;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> hor, ver;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> sneak, shout;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animator ani;</span><br><span class="line">    <span class="keyword">private</span> AudioSource aud;</span><br><span class="line">    <span class="keyword">private</span> Vector3 dir;</span><br><span class="line">    <span class="keyword">private</span> Quaternion targetQua;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ani = GetComponent&lt;Animator&gt;();</span><br><span class="line">        aud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        dir = Vector3.zero;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        hor = Input.GetAxis(GameConsts.HORIZONTAL);</span><br><span class="line">        ver = Input.GetAxis(GameConsts.VERTICAL);</span><br><span class="line"></span><br><span class="line">        sneak = Input.GetButton(GameConsts.SNEAK);</span><br><span class="line">        shout = Input.GetButtonDown(GameConsts.SHOUT);</span><br><span class="line"></span><br><span class="line">        dir.x = hor;</span><br><span class="line">        dir.z = ver;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(hor != <span class="number">0</span>||ver != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">5.66f</span>, dempTime, Time.deltaTime);</span><br><span class="line">            <span class="comment">//转身两步：</span></span><br><span class="line">            <span class="comment">//方向向量转换为四元数</span></span><br><span class="line">            targetQua = Quaternion.LookRotation(dir);</span><br><span class="line">            <span class="comment">//Lerp过去</span></span><br><span class="line">            transform.rotation = Quaternion.Lerp(transform.rotation, targetQua, Time.deltaTime * turnSpeed);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">1.5f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ani.SetBool(GameConsts.SNEAK_PARAM, sneak);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (shout)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetTrigger(GameConsts.SHOUT_PARAM);</span><br><span class="line">        &#125;</span><br><span class="line">        AudioSetUp();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 声音配置</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AudioSetUp</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> isLocomotion = ani.GetCurrentAnimatorStateInfo(<span class="number">0</span>).shortNameHash == GameConsts.LOCOMOTION_STATE;</span><br><span class="line">        <span class="keyword">if</span> (isLocomotion)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!aud.isPlaying)</span><br><span class="line">            &#123;</span><br><span class="line">                aud.Play();<span class="comment">//loop选不选无所谓</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            aud.Stop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlayShoutAudio</span>()<span class="comment">//动画事件添加声音</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        AudioSource.PlayClipAtPoint(shoutClip, transform.position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h2><h2 id="其它杂项"><a href="#其它杂项" class="headerlink" title="其它杂项"></a>其它杂项</h2><ul>
+<li><p>小门</p>
+</li>
+<li><p>电梯大门</p>
+</li>
+<li><p>电梯</p>
+</li>
+<li><p>钥匙</p>
+</li>
+</ul>
+<h2 id="机器人"><a href="#机器人" class="headerlink" title="机器人"></a>机器人</h2><p>四个主要脚本</p>
+<h3 id="机器人警报"><a href="#机器人警报" class="headerlink" title="机器人警报"></a>机器人警报</h3><p>添加Capsule Collider<br>rigidbody 选is Kinematic 玩家撞不飞<br>加tag<br>视觉听觉 位置消息的接收脚本EnemySightingAndHearing.cs<br>警报位置<br>全局 触发激光 摄像头 机器人看见 所有机器人都追逐<br>私人 机器人听见 只有单个机器人追逐<br>两个警报谁更新去哪个</p>
+<ul>
+<li>全局(监听警报位置更新):<br>if(当全局警报位置发生变化的时候){<br>  将全局警报位置发送给当前机器人并存储<br>}</li>
+</ul>
+<p>判断变化: 当前帧警报位置 <strong>对比</strong> 上一帧警报位置</p>
+<ul>
+<li>视觉检测:</li>
+</ul>
+<ol>
+<li><p>角度判断<br>机器人指向玩家向量与正前方夹角</p>
+</li>
+<li><p>距离判断<br>每帧计算距离 or<br>球形触发器(消耗少)OnTrigger 听觉与视觉判断都放在里面而不放在Update里</p>
+</li>
+<li><p>是否遮挡<br>向玩家发射物理射线 设置偏移量<br>看到玩家触发全局警报</p>
+</li>
+</ol>
+<ul>
+<li>听觉检测:</li>
+</ul>
+<p>走路/喊叫<br>墙壁完全隔音 只通过空气传播<br>路径—导航系统<br>添加组件 设置静态 烘焙网格<br>假设通过导航方式找玩家看是否找的到<br>节点坐标数组得到总距离<br>足够短则可以听到声音触发私人警报</p>
+<p>小门bug: 会检测到触发器 改成只检测碰撞体<br>if (other.isTrigger)<br>    return;</p>
+<h3 id="机器人动画"><a href="#机器人动画" class="headerlink" title="机器人动画"></a>机器人动画</h3><p>融合树 主要在于两个参数Speed AngularSpeed的确定<br>EnemyAnimation.cs<br>导航 期望速度向量在机器人前方的投影向量为Speed<br>AngularSpeed<br>期望速度向量和自身前方向量夹角<br>自身前方向量和期望速度向量法向量 上—右 下—左(夹角变负)<br>角度转弧度 *=Mathf.Deg2Rad</p>
+<p>两种位移 一个动画一个导航<br>OnAnimatorMove()<br>期望速度 -&gt; 动画参数【speed, angularSpeed】 -&gt; 执行动画 -&gt; 产生位移【deltaPosition】 -&gt; velocity<br>导航瞬时速度设为动画位移/每帧时间<br>nav.velocity = ani.deltaPosition/Time.deltaTime<br>旋转使用动画的根旋转<br>transform.rotation = ani.rootRotation</p>
+<p>擦墙: 调整烘焙的宽度和高度</p>
+<p>到终点后旋转: 期望速度为0时角速度强行变为0</p>
+<p>僵硬: 加延时dampTime</p>
+<p>玩家容易摆脱机器人的追捕，容易绕:<br>期望速度向量和自身前方向量夹角小时直接转不用角速度直接lookat转向玩家<br>在视觉检测添加一个bool判断看不看的见玩家</p>
+<h3 id="机器人AI"><a href="#机器人AI" class="headerlink" title="机器人AI"></a>机器人AI</h3><p>EnemyAI.cs</p>
+<p>PlayerHealth.cs单例</p>
+<p>射击 追捕 巡逻</p>
+<ul>
+<li>射击 看到玩家且玩家活着<br>停止导航<br>新动画层ShootingLayer 参数 是否看见玩家<br>放置枪<br>脚本中设置参数改变<br>IK动画<br>EnemyShoot.cs<br>OnAnimatorIK()<br>射击动画时加IK<br>射击特效:<br>ShootingEffect.cs<br>设置激光LineRenderer<br>设置激光端点个数和坐标<br>开启灯光Light<br>播放声音AudioClip<br>延时关闭</li>
+</ul>
+<p>添加动画事件</p>
+<p>计算伤害</p>
+<p>给主人公添加死亡动画 any status 都能转到  can transition to self 取消</p>
+<p>死亡后取消玩家控制权 解除警报 取消玩家标签</p>
+<ul>
+<li><p>追捕 私人警报坐标不等于安全坐标<br>恢复导航<br>导航私人警报位置<br>判断是否到达目标<br>滞留时间后 解除警报</p>
+</li>
+<li><p>巡逻 else<br>设置巡逻点wayPoint<br>Transform数组记录坐标<br>设置导航目标</p>
+</li>
+</ul>
+<p>门加导航动态路障组件<br>path.status==PathP<br>有路障 解除警报返回巡逻</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>Draw Call : CPU向GPU发布渲染命令<br>Draw Call越大: CPU占有率就会越高</p>
+<p>优化Draw Call方法:</p>
+<ol>
+<li><p>批处理:</p>
+<ol>
+<li>静态批处理:要求宽松，批处理量比较大</li>
+<li>动态批处理:要求苛刻，批处理量比较少</li>
+</ol>
+</li>
+<li><p>调节摄像机的渲染路径</p>
+<ol>
+<li>正向渲染</li>
+<li>延时光照</li>
+<li>顶点光照</li>
+</ol>
+</li>
+</ol>
+<p>雾效</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Demo</category>
+      </categories>
+      <tags>
+        <tag>3D</tag>
+        <tag>sneak</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SunnyLand</title>
     <url>/Unity/Demo/SunnyLand/</url>
     <content><![CDATA[<h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
@@ -4586,8 +4586,8 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>AssetBundle</title>
-    <url>/Unity/Frame/AssetBundle/</url>
+    <title>FSM</title>
+    <url>/Unity/Frame/FSM/</url>
     <content><![CDATA[<span id="more"></span>
 <p>前面的区域，以后再来探索吧</p>
 ]]></content>
@@ -4597,8 +4597,8 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>FSM</title>
-    <url>/Unity/Frame/FSM/</url>
+    <title>AssetBundle</title>
+    <url>/Unity/Frame/AssetBundle/</url>
     <content><![CDATA[<span id="more"></span>
 <p>前面的区域，以后再来探索吧</p>
 ]]></content>
@@ -4619,17 +4619,6 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>动画系统</title>
-    <url>/Unity/UnityFundamental/Animation/</url>
-    <content><![CDATA[<h1 id="动画系统"><a href="#动画系统" class="headerlink" title="动画系统"></a>动画系统</h1><span id="more"></span>
-<p><img src="/Unity/UnityFundamental/Animation/ani_01.png" alt="ani01"><br><img src="/Unity/UnityFundamental/Animation/ani_02.png" alt="ani02"></p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Fundamental</category>
-      </categories>
-  </entry>
-  <entry>
     <title>xLua</title>
     <url>/Unity/Frame/xLua/</url>
     <content><![CDATA[<span id="more"></span>
@@ -4638,6 +4627,17 @@ M_{viewport}=
       <categories>
         <category>Unity</category>
         <category>Frame</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>动画系统</title>
+    <url>/Unity/UnityFundamental/Animation/</url>
+    <content><![CDATA[<h1 id="动画系统"><a href="#动画系统" class="headerlink" title="动画系统"></a>动画系统</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/Animation/ani_01.png" alt="ani01"><br><img src="/Unity/UnityFundamental/Animation/ani_02.png" alt="ani02"></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Fundamental</category>
       </categories>
   </entry>
   <entry>
@@ -4657,6 +4657,18 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
+    <title>协程</title>
+    <url>/Unity/UnityFundamental/Coroutine/</url>
+    <content><![CDATA[<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/Coroutine/coroutine.png" alt="coroutine"></p>
+<p>每隔一段时间实现一个功能时使用</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Fundamental</category>
+      </categories>
+  </entry>
+  <entry>
     <title>特效系统</title>
     <url>/Unity/UnityFundamental/Effects/</url>
     <content><![CDATA[<h1 id="特效系统"><a href="#特效系统" class="headerlink" title="特效系统"></a>特效系统</h1><span id="more"></span>
@@ -4668,11 +4680,10 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>协程</title>
-    <url>/Unity/UnityFundamental/Coroutine/</url>
-    <content><![CDATA[<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><span id="more"></span>
-<p><img src="/Unity/UnityFundamental/Coroutine/coroutine.png" alt="coroutine"></p>
-<p>每隔一段时间实现一个功能时使用</p>
+    <title>物理系统</title>
+    <url>/Unity/UnityFundamental/Physics/</url>
+    <content><![CDATA[<h1 id="物理系统"><a href="#物理系统" class="headerlink" title="物理系统"></a>物理系统</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/Physics/physics.png" alt="physics"></p>
 ]]></content>
       <categories>
         <category>Unity</category>
@@ -4695,17 +4706,6 @@ M_{viewport}=
     <url>/Unity/UnityFundamental/UGUI/</url>
     <content><![CDATA[<h1 id="UGUI"><a href="#UGUI" class="headerlink" title="UGUI"></a>UGUI</h1><span id="more"></span>
 <p><img src="/Unity/UnityFundamental/UGUI/ugui_01.png" alt="ugui01"><br><img src="/Unity/UnityFundamental/UGUI/ugui_02.png" alt="ugui02"><br><img src="/Unity/UnityFundamental/UGUI/ugui_03.png" alt="ugui03"></p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Fundamental</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>物理系统</title>
-    <url>/Unity/UnityFundamental/Physics/</url>
-    <content><![CDATA[<h1 id="物理系统"><a href="#物理系统" class="headerlink" title="物理系统"></a>物理系统</h1><span id="more"></span>
-<p><img src="/Unity/UnityFundamental/Physics/physics.png" alt="physics"></p>
 ]]></content>
       <categories>
         <category>Unity</category>
