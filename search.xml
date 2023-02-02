@@ -3207,6 +3207,44 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
+    <title>数据存储</title>
+    <url>/Unity/DataPersistence/Storage/</url>
+    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SQLite</title>
+    <url>/Unity/DataPersistence/SQLite/</url>
+    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
+<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
+<p>以下为需要定义的对象</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>SQL三种执行方法</li>
+</ul>
+<ol>
+<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
+ <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C# 语言基础</title>
     <url>/Unity/Csharp/CsharpFUNDAMENTAL/</url>
     <content><![CDATA[<h1 id="C-语言基础"><a href="#C-语言基础" class="headerlink" title="C# 语言基础"></a>C# 语言基础</h1><p>.NET 一个运行库和一个全面的基础类库。</p>
@@ -3364,91 +3402,6 @@ M_{viewport}=
         <category>Unity</category>
         <category>C#</category>
       </categories>
-  </entry>
-  <entry>
-    <title>MultiplayerFPS</title>
-    <url>/Unity/Demo/MultiplayerFPS/</url>
-    <content><![CDATA[<h1 id="MultiplayerFPS"><a href="#MultiplayerFPS" class="headerlink" title="MultiplayerFPS"></a>MultiplayerFPS</h1><h2 id="菜单创建与photon服务器连接"><a href="#菜单创建与photon服务器连接" class="headerlink" title="菜单创建与photon服务器连接"></a>菜单创建与photon服务器连接</h2><ul>
-<li><p>服务器相关设置</p>
-<p>  PhotonUnityNetworking&gt;Resources&gt;PhotonSeverSettings</p>
-</li>
-<li><p>PUN2(游戏房间的设置)</p>
-<p>  自动连接:PhotonNetwork.ConnectUsingSettings()</p>
-<p>  手动连接:PhotonNetwork.ConnectToMaster() 当托管付费Photon服务器时这是有用的。<br>  masterServerAddress和port参数。地址可以是你的On-Premises DNS名称或一个IP。它可以包括冒号后的端口（然后传递0作为端口）或您可以单独通过端口。<br>  “appID”和”gameVersion”。两者都只与Photon Cloud有关，并且当你自己托管Photon服务器时，可以设置为任何值。</p>
-<p>  对于Photon Cloud, 使用ConnectUsingSettings()方法。它涉及到我们的Name Server自动找到一个区域的主服务器。</p>
-<p>  PhotonNetwork使用多个回调函数来让你的游戏知道状态的变化，如“已连接”或“已加入一个游戏”。像往常对Unity一样，回调可在任何脚本里实现。override</p>
-<span id="more"></span>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3></li>
-<li><p>Launcher.cs</p>
-</li>
-<li><p>MenuManager 单例化在Launcher中控制菜单的开关</p>
-<ul>
-<li>Menu.cs 定义Menu类,在不同的菜单上搭载</li>
-</ul>
-</li>
-<li><p>PlayerNameManager 玩家用户名的生成与自定义</p>
-<ul>
-<li><p>PlayerPrefs的使用—-数据持久化问题</p>
-<p>数据持久化是以键值的形式存储的，可以看作是一个字典。</p>
-<p>值是通过键名来读取的，当值不存在时，返回默认值。</p>
-<p>只支持int、string、float三种数据类型的读取</p>
-<p>DeleteAll DeleteKey HasKey GetFloat SetFloat…</p>
-<p>清除Prefs Edit&gt;Clear All PlayerPrefs</p>
-</li>
-</ul>
-</li>
-<li><p>RoomManager 用于PlayerManager的实例化</p>
-</li>
-</ul>
-<h3 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h3><p><img src="/Unity/Demo/MultiplayerFPS/Menu.png" alt="Menu"></p>
-<ul>
-<li>xxxMenu<br>搭载Menu.cs 定义MenuName 只有LoadingMenu初始时open为true<ul>
-<li>TMP<br>显示文字</li>
-<li>InputField - TMP<br>处理输入的文字<ul>
-<li>Text Area<br>放置位置<ul>
-<li>Placeholder<br>默认出现的文字</li>
-<li>Text<br>输入文字的载体</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Button<br>On Click() 中选择按下按键实现的功能<ul>
-<li>TMP<br>按键中文字</li>
-</ul>
-</li>
-<li>xxxListContent<br>存放实例化的预制体,玩家 房间等</li>
-<li>ButtonContainer<br>按键太多时把它作为父类，搭载vertical layout group组件,垂直排版</li>
-</ul>
-</li>
-<li>RoomManager<br>  搭载RoomManager.cs和Photon View</li>
-<li>EventSystem</li>
-</ul>
-<h2 id="GamePlay"><a href="#GamePlay" class="headerlink" title="GamePlay"></a>GamePlay</h2><p><img src="/Unity/Demo/MultiplayerFPS/Manager.png" alt="Manager"></p>
-<p><img src="/Unity/Demo/MultiplayerFPS/Player.png" alt="Player"></p>
-<ul>
-<li><p>PUN2(游戏实现)</p>
-<p>  PhotonView是一个用于发送消息(RPCs和OnSerializePhotonView)的脚本组件。需要将PhotonView依附到游戏对象或预设上。</p>
-<p>  整个过程，你的游戏中需要至少一个PhotonView，才能发送消息和可选的实例化/分配其他的PhotonViews。</p>
-<p>  Any prefab must have a PhotonView component. This contains a ViewID (the identifier for network messages),who owns the object, which scripts will write and read network updates (the “observed” list) and how those updates are sent (the “Observe option”).</p>
-<p>  Remote Procedure Calls(RPC)使你<strong>可以在一个房间里调用所有客户端上的方法</strong>。PUN 将这些方法的列表保存在PhotonServerSettings。</p>
-<p>  RPC使你可以调用”networked GameObjects”上的方法，对由用户输入等触发的不常用动作很有用。</p>
-<p>  一个RPC会被在同房间里的每个玩家在相同的游戏对象上被执行，所以你可以容易地触发整个场景效果就像你可以修改某些GameObject。</p>
-<p>  作为RPC被调用的方法必须在一个带PhotonView组件的游戏对象上。该方法自身必须要被[PunRPC]属性标记。</p>
-<p>  要调用该方法，先访问到目标对象的PhotonView组件。而不是直接调用目标方法，调用PhotonView.RPC()并提供想要调用的方法名称：你可以发送一系列的参数，但它必须匹配该RPC方法的定义。</p>
-<p>  防止RPCs丢失：在你连接之前设置PhotonNetwork.automaticallySyncScene = true并在房间的主客户端上使用 PhotonNetwork.LoadLevel()。如果一个远程客户端还没有加载或创建匹配的PhotonView，这个RPC就会丢失！丢失RPCs一个典型的原因就是当客户端加载新场景的时候。它只需要一个已经加载有新游戏对象的场景的客户端，并且其他客户端不能理解这个RPC（直到这些客户端也加载了相同的场景）。</p>
-<p>  默认情况下，PUN 使用 DefaultPool 默认对象池 实例化，即从 Resources 文件夹(用photon时所有预制体都要放在Resources文件夹之中，且搭载photonview组件)加载预制体并在稍后销毁。</p>
-<p>  一个更复杂的接口 IPunPrefabPool 可以实现在销毁对象时将其返回到对象池并在实例化时复用。在这种情况下，在 Instantiate 时并没有真的创建对象，Start() 并没有被 Unity 调用。因此，网络对象上挂载的对象必须实现 OnEnable() 和 OnDisable()</p>
-</li>
-</ul>
-<p>Object reference not set to an instance of an object<br>可能是对于组件等赋值时不存在导致</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Demo</category>
-      </categories>
-      <tags>
-        <tag>FPS</tag>
-      </tags>
   </entry>
   <entry>
     <title>C#面向对象</title>
@@ -3822,928 +3775,47 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>RobbiePlatform</title>
-    <url>/Unity/Demo/RobbiePlatform/</url>
-    <content><![CDATA[<h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
-<li><p>所定义的函数将用于不同对象功能的实现</p>
-<span id="more"></span>
-<h2 id="GameManager"><a href="#GameManager" class="headerlink" title="GameManager"></a>GameManager</h2><blockquote>
-<ul>
-<li>控制游戏进程，其中包括控制关卡的开始延迟、每一回合间的延迟、控制是否允许玩家操作等、判断游戏是否结束等；</li>
-<li>初始化游戏信息，其中包括了生成地图等；</li>
-<li>记录游戏当中的一些数值，包括玩家的生命值、当前进行到的关卡级别等；</li>
-<li>持有敌人等部分对象的引用；</li>
-<li>控制游戏的显示状态、比如是应该显示地图还是显示正在加载等辅助信息；</li>
-<li>控制游戏的UI。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>只是将相关函数定义出来，用于其它文件直接调用</p>
-</li>
-<li><p>单例对象</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static GameManager instance;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义要管理的对象，以对象的类为定义的类型</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SceneFader fader;</span><br><span class="line">List&lt;Orb&gt; orbs;</span><br><span class="line">Door lockedDoor;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Awake()</p>
-<blockquote>
-<ul>
-<li>由于Awake()方法将在所有其它方法之前被执行，因此一般用这个方法来进行一些必要变量的初始化等等。</li>
-<li>首先判断GameManager的单例是否有值，如果没有则将其指向当前对象；如果有值则将之前值的游戏对象（gameObject）销毁；</li>
-<li>接下来用DontDestoryInLoad()方法将当前的GameManager标记为再下一个场景创建时不会被销毁，通过这个方法可以保留在上一关中记录的数值；</li>
-<li>接下来再为enemies（敌方单位）数组以及boardScript（地图管理器）分配内存；</li>
-<li>最后执行InitGame()方法初始化当前关的内容。</li>
-<li>由于unity在每加载新的一关时，会把上一关创建的对象全部销毁，但是由于我们在GameManager中存放了很多数据需要在下一关使用，所以不能让自己被直接销毁，所以需要用DontDestoryOnLoad()方法来保持自己。</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    if(instance != null)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    instance = this;</span><br><span class="line"></span><br><span class="line">    orbs = new List&lt;Orb&gt;();</span><br><span class="line"></span><br><span class="line">    DontDestroyOnLoad(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Update()</p>
-<blockquote>
-<ul>
-<li>判断游戏结束</li>
-<li>游戏的计时</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if (gameIsOver)</span><br><span class="line">        return;</span><br><span class="line">    //orbNum = instance.orbs.Count;</span><br><span class="line">    gameTime += Time.deltaTime;</span><br><span class="line">    UIManager.UpdateTimeUI(gameTime);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对游戏的对象进行注册(即对之前定义的对象进行赋值)，对相关UI进行更新</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void RegisterDoor(Door door)//注册门</span><br><span class="line"> &#123;</span><br><span class="line"></span><br><span class="line">     instance.lockedDoor = door;</span><br><span class="line"> &#125;</span><br><span class="line"> public static void RegisterSceneFader(SceneFader obj)</span><br><span class="line"> &#123;</span><br><span class="line">     instance.fader = obj;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static void RegisterOrb(Orb orb)</span><br><span class="line"> &#123;</span><br><span class="line">     if (instance == null)</span><br><span class="line">         return;</span><br><span class="line">     if (!instance.orbs.Contains(orb))</span><br><span class="line">         instance.orbs.Add(orb);</span><br><span class="line">     UIManager.UpdateOrbUI(instance.orbs.Count);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>控制游戏进程，玩家的部分行为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void PlayerGrabbedOrb(Orb orb)</span><br><span class="line"> &#123;</span><br><span class="line">     if (!instance.orbs.Contains(orb))</span><br><span class="line">         return;</span><br><span class="line">     instance.orbs.Remove(orb);</span><br><span class="line"></span><br><span class="line">     if (instance.orbs.Count == 0)</span><br><span class="line">         instance.lockedDoor.Open();</span><br><span class="line">     UIManager.UpdateOrbUI(instance.orbs.Count);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static void PlayerWon()</span><br><span class="line"> &#123;</span><br><span class="line">     instance.gameIsOver = true;</span><br><span class="line">     UIManager.DisplayGameOver();</span><br><span class="line">     AudioManager.PlayerWonAudio();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static void PlayerDied()</span><br><span class="line"> &#123;</span><br><span class="line">     instance.fader.FadeOut();</span><br><span class="line">     instance.deathNum++;</span><br><span class="line">     UIManager.UpdateDeathUI(instance.deathNum);</span><br><span class="line">     instance.Invoke(&quot;RestartScene&quot;, 1.5f);//用于场景切换的延迟</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static bool GameOver()</span><br><span class="line"> &#123;</span><br><span class="line">     return instance.gameIsOver;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> void RestartScene()</span><br><span class="line"> &#123;</span><br><span class="line">     instance.orbs.Clear();</span><br><span class="line">     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="UIManager"><a href="#UIManager" class="headerlink" title="UIManager"></a>UIManager</h2><blockquote>
-<ul>
-<li>控制相关UI，以及游戏结束的字幕等</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>单例对象</p>
-</li>
-<li><p>定义相关TextMeshProUGUI(TMP)(定义好了要在unity中挂载)</p>
-</li>
-<li><p>经典Awake()</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    if(instance != null)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    instance = this;</span><br><span class="line"></span><br><span class="line">    DontDestroyOnLoad(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把UI与UI要表示的对象联系起来 类似GameManager的Register</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void UpdateOrbUI(int orbCount)</span><br><span class="line">&#123;</span><br><span class="line">    instance.orbText.text = orbCount.ToString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void UpdateDeathUI(int deathCount)</span><br><span class="line">&#123;</span><br><span class="line">    instance.deathText.text = deathCount.ToString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void UpdateTimeUI(float time)</span><br><span class="line">&#123;</span><br><span class="line">    int minutes = (int)(time / 60);</span><br><span class="line">    float seconds = time % 60;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    instance.timeText.text = minutes.ToString(&quot;00&quot;)+&quot;:&quot;+seconds.ToString(&quot;00&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void DisplayGameOver()</span><br><span class="line">&#123;</span><br><span class="line">    instance.gameOverText.enabled = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="AudioManager"><a href="#AudioManager" class="headerlink" title="AudioManager"></a>AudioManager</h2><blockquote>
-<ul>
-<li>管理相关音效和BGM的播放</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>AudioSource</p>
-<blockquote>
-<ul>
-<li>音频源组件, 发出声音的源头</li>
-</ul>
-</blockquote>
-</li>
-<li><p>AudioClip</p>
-<blockquote>
-<ul>
-<li>要播放的音频(定义后需挂载)</li>
-</ul>
-</blockquote>
-</li>
-<li><p>AudioMixerGroup</p>
-<blockquote>
-<ul>
-<li>相当于AudioSource的输出</li>
-</ul>
-</blockquote>
-</li>
-<li><p>AudioClip -&gt; AudioSource -&gt; AudioMixerGroup</p>
-</li>
-<li><p>单例</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static AudioManager current;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Header(&quot;环境声音&quot;)]</span><br><span class="line">public AudioClip ambientClip;</span><br><span class="line">public AudioClip musicClip;</span><br><span class="line"></span><br><span class="line">[Header(&quot;FX音效&quot;)]</span><br><span class="line">public AudioClip deathFXClip;</span><br><span class="line">public AudioClip orbFXClip;</span><br><span class="line">public AudioClip doorFXClip;</span><br><span class="line">public AudioClip startLevelClip;</span><br><span class="line">public AudioClip winClip;</span><br><span class="line"></span><br><span class="line">[Header(&quot;Robbie音效&quot;)]</span><br><span class="line">public AudioClip[] walkStepClips;</span><br><span class="line">public AudioClip[] crouchStepClips;</span><br><span class="line">public AudioClip jumpClip;</span><br><span class="line">public AudioClip deathClip;</span><br><span class="line"></span><br><span class="line">public AudioClip jumpVoiceClip;//角色声音</span><br><span class="line">public AudioClip deathVoiceClip;</span><br><span class="line">public AudioClip orbVoiceClip;</span><br><span class="line"></span><br><span class="line">AudioSource ambientSource;</span><br><span class="line">AudioSource musicSource;</span><br><span class="line">AudioSource fxSource;</span><br><span class="line">AudioSource playerSource;</span><br><span class="line">AudioSource voiceSource;</span><br><span class="line"></span><br><span class="line">public AudioMixerGroup ambientGroup, musicGroup, FXGroup, playerGroup, voiceGroup;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Awake() 进行初始化</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    if(current != null)//声音不会叠加</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    current = this;</span><br><span class="line"></span><br><span class="line">    DontDestroyOnLoad(gameObject);//场景切换时音乐保留</span><br><span class="line"></span><br><span class="line">    ambientSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    musicSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    fxSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    playerSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    voiceSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line"></span><br><span class="line">    ambientSource.outputAudioMixerGroup = ambientGroup;</span><br><span class="line">    musicSource.outputAudioMixerGroup = musicGroup;</span><br><span class="line">    fxSource.outputAudioMixerGroup = FXGroup;</span><br><span class="line">    playerSource.outputAudioMixerGroup = playerGroup;</span><br><span class="line">    voiceSource.outputAudioMixerGroup = voiceGroup;</span><br><span class="line"></span><br><span class="line">    StartLevelAudio();//起始BGM的播放</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把AudioClip -&gt; AudioSource过程实现并播放</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void StartLevelAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.ambientSource.clip = current.ambientClip;</span><br><span class="line">    current.ambientSource.loop = true;</span><br><span class="line">    current.ambientSource.Play();</span><br><span class="line"></span><br><span class="line">    current.musicSource.clip = current.musicClip;</span><br><span class="line">    current.musicSource.loop = true;</span><br><span class="line">    current.musicSource.Play();</span><br><span class="line"></span><br><span class="line">    current.fxSource.clip = current.startLevelClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayerWonAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.fxSource.clip = current.winClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">    current.playerSource.Stop();</span><br><span class="line">&#125;</span><br><span class="line">public static void PlayFootsteoAudio()</span><br><span class="line">&#123;</span><br><span class="line">    int index = Random.Range(0, current.walkStepClips.Length);</span><br><span class="line"></span><br><span class="line">    current.playerSource.clip = current.walkStepClips[index];</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayDoorOpenAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.fxSource.clip = current.doorFXClip;</span><br><span class="line">    current.fxSource.PlayDelayed(1f);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayCrouchsteoAudio()</span><br><span class="line">&#123;</span><br><span class="line">    int index = Random.Range(0, current.crouchStepClips.Length);</span><br><span class="line"></span><br><span class="line">    current.playerSource.clip = current.crouchStepClips[index];</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayJumpAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.playerSource.clip = current.jumpClip;</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line"></span><br><span class="line">    current.voiceSource.clip = current.jumpVoiceClip;</span><br><span class="line">    current.voiceSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayDeathAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.playerSource.clip = current.deathClip;</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line"></span><br><span class="line">    current.voiceSource.clip = current.deathVoiceClip;</span><br><span class="line">    current.voiceSource.Play();</span><br><span class="line"></span><br><span class="line">    current.fxSource.clip = current.deathFXClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayOrbAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.voiceSource.clip = current.orbVoiceClip;</span><br><span class="line">    current.voiceSource.Play();</span><br><span class="line"></span><br><span class="line">    current.fxSource.clip = current.orbFXClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Player"><a href="#Player" class="headerlink" title="Player"></a>Player</h2><ul>
-<li>动作 动画</li>
-</ul>
-<h2 id="PlayerMovement"><a href="#PlayerMovement" class="headerlink" title="PlayerMovement"></a>PlayerMovement</h2><blockquote>
-<ul>
-<li>定义玩家的刚体和碰撞体，以及相关的尺寸</li>
-<li>定义移动，跳跃等相关的参数，关联相关的按键</li>
-<li>定义状态参数，判断玩家的状态</li>
-<li>定义环境监测的参数，用射线来判断环境</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>Start()</p>
-<blockquote>
-<ul>
-<li>代码挂载刚体，碰撞体，获取相关的尺寸</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    rb = GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">    coll = GetComponent&lt;BoxCollider2D&gt;();</span><br><span class="line"></span><br><span class="line">    playerHeight = coll.size.y;</span><br><span class="line">    colliderStandSize = coll.size;</span><br><span class="line">    colliderStandOffset = coll.offset;</span><br><span class="line">    colliderCrouchSize = new Vector2(coll.size.x, coll.size.y / 2f);</span><br><span class="line">    colliderCrouchOffset = new Vector2(coll.offset.x, coll.offset.y / 2f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Update()</p>
-<blockquote>
-<ul>
-<li>判断游戏结束 跳 蹲 (按需要分短按和长按)</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if (GameManager.GameOver())</span><br><span class="line">    &#123;</span><br><span class="line">        xVelocity = 0f;</span><br><span class="line">        rb.bodyType = RigidbodyType2D.Static;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (Input.GetButtonDown(&quot;Jump&quot;))</span><br><span class="line">        jumpPressed = true;</span><br><span class="line">    jumpHeld = Input.GetButton(&quot;Jump&quot;);//连续判断</span><br><span class="line">    crouchHeld = Input.GetButton(&quot;Crouch&quot;);</span><br><span class="line">    if (Input.GetButtonDown(&quot;Crouch&quot;))</span><br><span class="line">        crouchPressed = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>FixedUpdate()</p>
-<blockquote>
-<ul>
-<li>判断游戏结束</li>
-<li>任何需要连续判断的行为</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void FixedUpdate()</span><br><span class="line"> &#123;</span><br><span class="line">     if (GameManager.GameOver())</span><br><span class="line">     &#123;</span><br><span class="line">         xVelocity = 0f;</span><br><span class="line">         rb.bodyType = RigidbodyType2D.Static;</span><br><span class="line">         return;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     if (isJump)</span><br><span class="line">         jumpPressed = false;</span><br><span class="line">     PhysicsCheck();</span><br><span class="line">     GroundMovement();</span><br><span class="line">     MidAirMovement();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>PhysicsCheck()</p>
-<blockquote>
-<p>用射线判断环境 左右脚射线 头顶射线 悬挂射线</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  void PhysicsCheck()</span><br><span class="line">&#123;</span><br><span class="line">    //左右脚射线</span><br><span class="line">    RaycastHit2D leftCheck = Raycast(new Vector2(-footOffset, 0f), Vector2.down, groundDistane, groundLayer);</span><br><span class="line">    RaycastHit2D rightCheck = Raycast(new Vector2(footOffset, 0f), Vector2.down, groundDistane, groundLayer);</span><br><span class="line"></span><br><span class="line">    if (leftCheck || rightCheck)</span><br><span class="line">        isOnGround = true;</span><br><span class="line">    else isOnGround = false;</span><br><span class="line"></span><br><span class="line">    //头顶射线</span><br><span class="line">    RaycastHit2D headCheck = Raycast(new Vector2(0f, coll.size.y), Vector2.up, headClearance, groundLayer);</span><br><span class="line"></span><br><span class="line">    isHeadBlocked = headCheck;</span><br><span class="line"></span><br><span class="line">    float direction = transform.localScale.x;</span><br><span class="line">    Vector2 grabDir = new Vector2(direction, 0f);</span><br><span class="line"></span><br><span class="line">    RaycastHit2D blockedCheck = Raycast(new Vector2(footOffset * direction, playerHeight), grabDir, grabDistance, groundLayer);</span><br><span class="line">    RaycastHit2D wallCheck = Raycast(new Vector2(footOffset * direction, eyeHeight), grabDir, grabDistance, groundLayer);</span><br><span class="line">    RaycastHit2D ledgeCheck = Raycast(new Vector2(reachOffset * direction, playerHeight), Vector2.down, grabDistance, groundLayer);</span><br><span class="line"></span><br><span class="line">    if(!isOnGround &amp;&amp; rb.velocity.y&lt;0f &amp;&amp; ledgeCheck &amp;&amp; wallCheck &amp;&amp; !blockedCheck)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector3 pos = transform.position;</span><br><span class="line"></span><br><span class="line">        pos.x += (wallCheck.distance - 0.05f)* direction;</span><br><span class="line"></span><br><span class="line">        pos.y -= ledgeCheck.distance;</span><br><span class="line"></span><br><span class="line">        transform.position = pos;</span><br><span class="line"></span><br><span class="line">        rb.bodyType = RigidbodyType2D.Static;</span><br><span class="line">        isHanging = true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>根据需要对Raycast函数进行重载</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    RaycastHit2D Raycast(Vector2 offset,Vector2 rayDiraction,float length,LayerMask layer)</span><br><span class="line">&#123;</span><br><span class="line">    Vector2 pos = transform.position;</span><br><span class="line"></span><br><span class="line">    RaycastHit2D hit = Physics2D.Raycast(pos + offset, rayDiraction, length, layer);</span><br><span class="line"></span><br><span class="line">    Color color = hit ? Color.red : Color.green;</span><br><span class="line"></span><br><span class="line">    Debug.DrawRay(pos + offset, rayDiraction * length,color);</span><br><span class="line"></span><br><span class="line">    return hit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据不同的状态定义相关的移动 转向 跳跃 下蹲函数</p>
-<blockquote>
-<ul>
-<li>同时改变碰撞体大小</li>
-</ul>
-</blockquote>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">void GroundMovement()</span><br><span class="line">&#123;</span><br><span class="line">    if (isHanging)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    if (crouchHeld &amp;&amp; !isCrouch &amp;&amp;isOnGround)</span><br><span class="line">        Crouch();</span><br><span class="line">    else if (!crouchHeld &amp;&amp; isCrouch &amp;&amp; !isHeadBlocked)</span><br><span class="line">        StandUp();</span><br><span class="line">    else if (!isOnGround &amp;&amp; isCrouch)</span><br><span class="line">    &#123;</span><br><span class="line">        StandUp();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    xVelocity = Input.GetAxis(&quot;Horizontal&quot;);//-1f 1f 0 不按键盘归零，所以不会滑动</span><br><span class="line"></span><br><span class="line">    if (isCrouch)</span><br><span class="line">        xVelocity /= crouchSpeedDivisor;</span><br><span class="line"></span><br><span class="line">    rb.velocity = new Vector2(xVelocity * speed, rb.velocity.y);</span><br><span class="line"></span><br><span class="line">    FilpDirection();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MidAirMovement()</span><br><span class="line">&#123;</span><br><span class="line">    if (isHanging)</span><br><span class="line">    &#123;</span><br><span class="line">        if(jumpPressed)</span><br><span class="line">        &#123;</span><br><span class="line">            rb.bodyType = RigidbodyType2D.Dynamic;</span><br><span class="line">            rb.velocity = new Vector2(rb.velocity.x, hangingJumpForce);</span><br><span class="line">            isHanging = false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (crouchPressed)</span><br><span class="line">        &#123;</span><br><span class="line">            rb.bodyType = RigidbodyType2D.Dynamic;</span><br><span class="line"></span><br><span class="line">            isHanging = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (jumpPressed &amp;&amp; isOnGround &amp;&amp; !isJump &amp;&amp; !isHeadBlocked)</span><br><span class="line">    &#123;</span><br><span class="line">        if(isCrouch &amp;&amp; isOnGround )</span><br><span class="line">        &#123;</span><br><span class="line">            crouchPressed = false;</span><br><span class="line">            StandUp();</span><br><span class="line">            rb.AddForce(new Vector2(0f, crouchJumpBoost), ForceMode2D.Impulse);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        isOnGround = false;</span><br><span class="line">        isJump = true;</span><br><span class="line"></span><br><span class="line">        jumpTime = Time.time + jumpHoldDuration;</span><br><span class="line"></span><br><span class="line">        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);//也可用velocity impulse表示突然给的一个力</span><br><span class="line"></span><br><span class="line">        AudioManager.PlayJumpAudio();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    else if (isJump)</span><br><span class="line">    &#123;</span><br><span class="line">        if(jumpHeld)</span><br><span class="line">            rb.AddForce(new Vector2(0f, jumpHoldForce), ForceMode2D.Impulse);</span><br><span class="line">        if (jumpTime &lt; Time.time)</span><br><span class="line">            isJump = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void FilpDirection()</span><br><span class="line">&#123;</span><br><span class="line">    if(xVelocity &lt; 0)</span><br><span class="line">        transform.localScale = new Vector3(-1, 1,1);</span><br><span class="line">    if (xVelocity &gt; 0)</span><br><span class="line">        transform.localScale = new Vector3(1, 1,1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Crouch()</span><br><span class="line">&#123;</span><br><span class="line">    isCrouch = true;</span><br><span class="line">    coll.size = colliderCrouchSize;</span><br><span class="line">    coll.offset = colliderCrouchOffset;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void StandUp()</span><br><span class="line">&#123;</span><br><span class="line">    isCrouch = false;</span><br><span class="line">    coll.size = colliderStandSize;</span><br><span class="line">    coll.offset = colliderStandOffset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="PlayerAnimation"><a href="#PlayerAnimation" class="headerlink" title="PlayerAnimation"></a>PlayerAnimation</h2><blockquote>
-<ul>
-<li>把动画与人物的动作联系起来，把Animator中不同的状态编号，其值由人物现在的状态决定</li>
-<li>若Animation中在动画中插入的动作的声音如走路，则在此还要编写播放声音的函数，同时在Animation中挂载改函数</li>
-</ul>
-</blockquote>
-<pre><code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animator anim;</span><br><span class="line">PlayerMovement movement;</span><br><span class="line">Rigidbody2D rb;</span><br><span class="line"></span><br><span class="line">int groundID;</span><br><span class="line">int hangingID;</span><br><span class="line">int crouchID;</span><br><span class="line">int speedID;</span><br><span class="line">int fallID;</span><br><span class="line">//定义编号</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">    movement = GetComponentInParent&lt;PlayerMovement&gt;();</span><br><span class="line">    rb = GetComponentInParent&lt;Rigidbody2D&gt;();</span><br><span class="line"></span><br><span class="line">    groundID = Animator.StringToHash(&quot;isOnGround&quot;);</span><br><span class="line">    hangingID = Animator.StringToHash(&quot;isHanging&quot;);</span><br><span class="line">    crouchID = Animator.StringToHash(&quot;isCrouching&quot;);</span><br><span class="line">    speedID = Animator.StringToHash(&quot;speed&quot;);</span><br><span class="line">    fallID = Animator.StringToHash(&quot;verticalVelocity&quot;);</span><br><span class="line">&#125;</span><br><span class="line">//改变编号</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    anim.SetFloat(speedID, Mathf.Abs(movement.xVelocity));</span><br><span class="line">    //anim.SetBool(&quot;isOnGround&quot;, movement.isOnGround);</span><br><span class="line">    anim.SetBool(groundID, movement.isOnGround);//用编号</span><br><span class="line">    anim.SetBool(hangingID, movement.isHanging);</span><br><span class="line">    anim.SetBool(crouchID, movement.isCrouch);</span><br><span class="line">    anim.SetFloat(fallID, rb.velocity.y);</span><br><span class="line">&#125;</span><br><span class="line">//动作声音</span><br><span class="line">public void StepAudio()</span><br><span class="line">&#123;</span><br><span class="line">    AudioManager.PlayFootsteoAudio();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void CrouchStepAudio()</span><br><span class="line">&#123;</span><br><span class="line">    AudioManager.PlayCrouchsteoAudio();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><blockquote>
-<ul>
-<li>其它的则为和其它游戏对象的相关功能实现的脚本</li>
-<li>与玩家相关的可挂载在玩家上，也可挂载在其它对象上，区别主要在于碰撞的layer的不同，一般一类对象有多种但对玩家的功能相同则挂载在玩家上，如陷阱</li>
-<li>VFXPrefab类的要先用Instantiate实例化</li>
-<li>触发类(trigger)的要先在Start()中规定触碰物体的layer(数字表示),再调用OnTriggerEnter2D编写出发后的动作,一定要定义好不同的Layer层以及设置对象的Layer</li>
-</ul>
-</blockquote>
-<pre><code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int xxxLayer;</span><br><span class="line">void Start()&#123;</span><br><span class="line">    xxxLayer = LayerMask.NameToLayer(&quot;Layer&quot;);//确定触碰物体的层级</span><br><span class="line">&#125;</span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.gameObject.layer == xxxLayer)//触发</span><br><span class="line">        ....</span><br><span class="line"></span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*PlayerrHealth*/</span><br><span class="line">//挂载在玩家上</span><br><span class="line">public GameObject deathVFXPrefab;</span><br><span class="line">int trapsLayer;</span><br><span class="line">int touchTraps = 0;</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    //碰撞类型为陷阱</span><br><span class="line">    trapsLayer = LayerMask.NameToLayer(&quot;Traps&quot;);</span><br><span class="line">&#125;</span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.gameObject.layer == trapsLayer)//获得的是int型</span><br><span class="line">    &#123;</span><br><span class="line">        touchTraps++;</span><br><span class="line">        if (touchTraps == 1)</span><br><span class="line">        &#123;</span><br><span class="line">            Instantiate(deathVFXPrefab, transform.position, transform.rotation);</span><br><span class="line"></span><br><span class="line">            gameObject.SetActive(false);</span><br><span class="line"></span><br><span class="line">            AudioManager.PlayDeathAudio();</span><br><span class="line"></span><br><span class="line">            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//当前激活的场景的编号</span><br><span class="line"></span><br><span class="line">            GameManager.PlayerDied();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*Door*/</span><br><span class="line">Animator anim;</span><br><span class="line">int openID;</span><br><span class="line"></span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">    openID = Animator.StringToHash(&quot;Open&quot;);</span><br><span class="line">    GameManager.RegisterDoor(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void Open()</span><br><span class="line">&#123;</span><br><span class="line">    anim.SetTrigger(openID);</span><br><span class="line"></span><br><span class="line">    AudioManager.PlayDoorOpenAudio();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*Orb*/</span><br><span class="line">int player;</span><br><span class="line">public GameObject explosionVFXPrefab;</span><br><span class="line"></span><br><span class="line">// Start is called before the first frame update</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    player = LayerMask.NameToLayer(&quot;Player&quot;);//记录图层编号</span><br><span class="line"></span><br><span class="line">    GameManager.RegisterOrb(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if(collision.gameObject.layer == player)</span><br><span class="line">    &#123;</span><br><span class="line">        Instantiate(explosionVFXPrefab, transform.position, transform.rotation);</span><br><span class="line"></span><br><span class="line">        gameObject.SetActive(false);</span><br><span class="line"></span><br><span class="line">        AudioManager.PlayOrbAudio();</span><br><span class="line"></span><br><span class="line">        GameManager.PlayerGrabbedOrb(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*WinZone*/</span><br><span class="line">    int playerLayer;</span><br><span class="line">// Start is called before the first frame update</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    playerLayer = LayerMask.NameToLayer(&quot;Player&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.gameObject.layer == playerLayer)</span><br><span class="line">        Debug.Log(&quot;Player Won!&quot;);</span><br><span class="line"></span><br><span class="line">    GameManager.PlayerWon();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*SceneFader*/</span><br><span class="line">Animator anim;</span><br><span class="line">int faderID;</span><br><span class="line"></span><br><span class="line">private void Start()</span><br><span class="line">&#123;</span><br><span class="line">    anim = GetComponent&lt;Animator&gt;();</span><br><span class="line"></span><br><span class="line">    faderID = Animator.StringToHash(&quot;Fade&quot;);</span><br><span class="line"></span><br><span class="line">    GameManager.RegisterSceneFader(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void FadeOut()</span><br><span class="line">&#123;</span><br><span class="line">    anim.SetTrigger(faderID);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*DeathPose*/</span><br><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    DontDestroyOnLoad(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Demo</category>
-      </categories>
-      <tags>
-        <tag>2D</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ruby&#39;s Adventure</title>
-    <url>/Unity/Demo/Ruby&#39;s%20Adventure/</url>
-    <content><![CDATA[<h1 id="Ruby’s-Adventure"><a href="#Ruby’s-Adventure" class="headerlink" title="Ruby’s Adventure"></a>Ruby’s Adventure</h1><h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><ul>
-<li><p>“Pixels per Unit”通过定义 1 个单位内应该设置的像素数量来告知 Unity 如何设置精灵的大小。</p>
-</li>
-<li><p>游戏对象的排序问题</p>
-<blockquote>
-<p>调整瓦片的 Order in Layer 属性</p>
-<span id="more"></span>
-</blockquote>
-<ul>
-<li><p>“伪造”透视图</p>
-<blockquote>
-<p>根据直觉，玩家希望角色在立方体前面时首先绘制角色，而角色在立方体后面时最后绘制角色</p>
-</blockquote>
-<ol>
-<li>选择 Edit &gt; Project Settings&gt;Graphics。</li>
-<li>在 Camera Settings 中，找到 Transparency Sort Mode 字段。此字段决定了精灵的绘制顺序。使用下拉菜单将此设置从 Default 更改为 Custom Axis。</li>
-<li>在 Transparency Sort Axis 中添加以下坐标：x = 0 y = 1 z = 0此设置告诉 Unity 在 y 轴上基于精灵的位置来绘制精灵。</li>
-<li>游戏对象Sprite Sort Point 中选择pivot,再于Sprite Editor中更改pivot的位置</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>物体碰撞时的抖动问题</p>
-<blockquote>
-<p>在帧更新过程中移动角色,物理系统将自己的游戏对象副本移到相应的新位置,物理系统发现角色碰撞体现在位于另一个碰撞体内，然后将角色碰撞体移回,物理系统将 游戏对象与该新位置同步.不断在箱子内移动角色，而物理系统则将她移回。这种冲突就会导致发生抖动</p>
-</blockquote>
-<ul>
-<li><p>对于不加rigidbody 2d的对象可以用transform.position进行移动</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Vector2 position = transform.position;</span><br><span class="line">position.x = position.x + <span class="number">3.0f</span>* horizontal * Time.deltaTime;</span><br><span class="line">position.y = position.y + <span class="number">3.0f</span> * vertical * Time.deltaTime;</span><br><span class="line">transform.position = position;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对于加上rigidbody 2d的对象则不行</p>
-<blockquote>
-<p>When a Collider 2D is attached to the Rigidbody 2D, it moves with it. A Collider 2D should never be moved directly using the Transform or any collider offset; the Rigidbody 2D should be moved instead. This offers the best performance and ensures correct collision detection.</p>
-</blockquote>
-<ul>
-<li>调用rigidbody相关函数以及FixedUpdate</li>
-</ul>
-<blockquote>
-<p>需要定期进行更新,想直接影响物理组件或对象（例如刚体），就需要使用FixedUpdate,不应该读取 Fixedupdate 函数中的输入。FixedUpdate 不会持续运行，因此有可能会错过用户输入。</p>
-</blockquote>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    horizontal = Input.GetAxis(<span class="string">&quot;Horizontal&quot;</span>);</span><br><span class="line">    vertical = Input.GetAxis(<span class="string">&quot;Vertical&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Vector2 position = rigidbody2d.position;</span><br><span class="line">    position.x = position.x + <span class="number">3.0f</span> * horizontal * Time.deltaTime;</span><br><span class="line">    position.y = position.y + <span class="number">3.0f</span> * vertical * Time.deltaTime;</span><br><span class="line"></span><br><span class="line">    rigidbody2d.MovePosition(position);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>瓦片地图碰撞</p>
-<ul>
-<li><p>选择性碰撞</p>
-<blockquote>
-<p>在 Project 窗口中，找到存放tile的文件夹，选择所有不是水的瓦片,在 Inspector 中，找到 Collider Type 属性，然后将该属性从 Sprite（目前值）更改为 None。你选择的瓦片不再被视为碰撞体</p>
-</blockquote>
-</li>
-<li><p>复合碰撞体</p>
-<blockquote>
-<p>在tilemap对象中添加Composite Collider 2D组件,启用 Used By Composite 复选框, 将 Rigidbody Body Type 属性设置为 Static </p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>伤害区域</p>
-<ul>
-<li><p>只有在角色进入区域时才会伤害角色。如果角色停留在区域内，则不会再伤害角色。</p>
-<blockquote>
-<p>OnTriggerEnter2D 更改为 OnTriggerStay2D,刚体在触发器内的每一帧都会调用此函数，而不是在刚体刚进入时仅调用一次。</p>
-</blockquote>
-</li>
-<li><p>站着不动时不会受到伤害</p>
-<blockquote>
-<p>在 Rigidbody 组件中将 Sleeping Mode 设置为 Never Sleep</p>
-</blockquote>
-</li>
-<li><p>在五帧内便失去所有生命值</p>
-<blockquote>
-<p>添加无敌状态</p>
-</blockquote>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> timeInvincible = <span class="number">2.0f</span>;<span class="comment">//无敌状态时间</span></span><br><span class="line"><span class="built_in">bool</span> isInvincible;<span class="comment">//存储当前是否处于无敌状态</span></span><br><span class="line"><span class="built_in">float</span> invincibleTimer;<span class="comment">//剩下的无敌状态时间</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (isInvincible)</span><br><span class="line">    &#123;</span><br><span class="line">        invincibleTimer -= Time.deltaTime;</span><br><span class="line">        <span class="keyword">if</span> (invincibleTimer &lt; <span class="number">0</span>)</span><br><span class="line">            isInvincible = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ChangeHealth</span>(<span class="params"><span class="built_in">int</span> amount</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (amount &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (isInvincible)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">        isInvincible = <span class="literal">true</span>;</span><br><span class="line">        invincibleTimer = timeInvincible;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建更大的伤害区域，则精灵会拉伸而显得很难看,可以让 Sprite Renderer 平铺精灵。将伤害区域的大小调整到足以将精灵容纳两次，则会多次并排绘制精灵：</p>
-<blockquote>
-<ol>
-<li>确保游戏对象的缩放在 Transform 组件中设置为 1,1,1。在 Sprite Renderer 组件中将 Draw Mode 设置为 Tiled，并将 Tile Mode 更改为 Adaptive。</li>
-<li>在 Project 窗口中选择精灵,将 Mesh Type 更改为 Full Rect。</li>
-<li>选中 Box Collider 2D 组件的 Auto Tiling 属性，以便碰撞体随精灵一起平铺。</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>翻转动画</p>
-<blockquote>
-<p>Flip X,在帧 0 和帧 4 上的时候，选中属性名称旁的切换开关，即可将属性设置为 true，这样 Flip 在整个动画中将保持选中状态：</p>
-</blockquote>
-</li>
-<li><p>混合树</p>
-<blockquote>
-<ul>
-<li>允许你根据参数来混合多段动画</li>
-<li>希望 Blend Tree 使用两个参数来控制水平和垂直方向的更改，因此请将 Blend Type 设置为 2D Simple Directional。</li>
-<li>添加参数与motion</li>
-</ul>
-</blockquote>
-</li>
-<li><p>Instantiate</p>
-<blockquote>
-<ul>
-<li>Instantiate 的第一个参数是一个对象，在第二个参数的位置处创建一个副本，第三个参数是旋转(Quaternion.identity 表示“无旋转”)。</li>
-<li>作用是复制一个预制件放在需要的位置,使其实例化,可用于游戏过程中产生游戏对象，如子弹,对于仅发生一次的效果（例如被击中或拾取生命值可收集对象），你可以将对预制件的引用存储在公共变量中，并在应该产生效果时调用 Instantiate。</li>
-<li>使用实例化创建对象时用Awake不用Start，创建对象时 Unity 不会运行 Start，而是在下一帧才开始运行。在创建对象时（调用 Instantiate 时）就会立即调用 Awake，</li>
-</ul>
-</blockquote>
-</li>
-<li><p>输入</p>
-<ul>
-<li><p>Input.GetKeyDown</p>
-<blockquote>
-<p>测试特定的键盘按键,只有用键盘时才有效果。</p>
-</blockquote>
-</li>
-<li><p>Input.GetButtonDown</p>
-<blockquote>
-<p>与轴名称一起使用,并在输入设置 (Edit &gt; Project Settings &gt; Input) 中定义该轴对应的按钮,确保在不同设备上有效</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>图层与碰撞</p>
-<blockquote>
-<p>用不同的图层来实现不同对象之间是否碰撞问题</p>
-<p>打开 Edit &gt; Project Settings &gt; Physics 2D ，查看底部的 Layer Collision Matrix，便可看到与更改哪些图层彼此碰撞</p>
-</blockquote>
-</li>
-<li><p>Cinemachine</p>
-<blockquote>
-<p>Cinemachine 使用虚拟摄像机，你可以在每个虚拟摄像机上选择不同的设置，然后告诉实际摄像机（Main Camera）当前哪个虚拟摄像机处于活动状态，实际摄像机就会复制这些设置。可与多个摄像机配合使用，并根据游戏的需要在多个摄像机之间进行切换.</p>
-</blockquote>
-<ul>
-<li><p>模式:</p>
-<blockquote>
-<p>透视：所有远离摄像机的线都会汇聚到一个点，因此距离摄像机越远，看起来就越小。</p>
-<p>正交：所有平行线将保持平行。</p>
-</blockquote>
-</li>
-<li><p>跟随</p>
-<blockquote>
-<p>将你的主角从 Hierarchy 拖放到 vcam Inspector 的 Follow 属性中</p>
-</blockquote>
-</li>
-<li><p>边界</p>
-<blockquote>
-<ol>
-<li>Add Extension &gt; 添加 Cinemachine Confiner</li>
-<li>Create Empty 来创建一个新的游戏对象CameraConfiner,添加Polygon Collider 2D 组件, Edit Collider 来规划摄像机边界(确保边框最好是直线)</li>
-<li>将该游戏对象分配给 CinemachineConfiner 上的 Bounding Shape 2D</li>
-<li>将该游戏对象设置为新建的图层 Confiner，在 Edit &gt; Project Settings &gt; Physics 2D中，取消勾选 Confiner 图层中的所有条目：不会与其他对象碰撞</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>烟雾效果(粒子效果)</p>
-<ul>
-<li>Create &gt; Effects &gt; Particle System  创建一个默认的粒子系统</li>
-<li><p>启用Texture Sheet Animation 部分</p>
-<blockquote>
-<ol>
-<li>将 Mode 设置为 Sprites。</li>
-<li>单击显示的精灵条目旁边的 + 按钮，这样便可以得到 2 个精灵。</li>
-<li>将精灵图集效果中的烟雾精灵分配给这些属性。</li>
-<li>单击 Start Frame 属性右侧的小下拉箭头，选择 Random Between Two Constants，然后输入 0 和 2。系统将选择一个介于 0 到 2（不包括 2）之间的随机数，即 0 或 1，并对粒子使用相应的精灵。</li>
-<li>单击 Frame over time 旁边的黑框，这个框显示曲线帧中相应的帧随时间的变化情况（从帧 0 到 1）。你根本不想要任何动画，所以请右键单击最右边的点，然后按 Delete 键：</li>
-</ol>
-</blockquote>
-</li>
-<li><p>Shape 显示发射粒子的锥体</p>
-<blockquote>
-<p>Radius 设置为 0，希望所有粒子都从一个点发出</p>
-<p>角度更改为大约 5 度，这样可以减少粒子的分散程度并以更加准直的线条生成</p>
-</blockquote>
-</li>
-<li><p>随机性</p>
-<blockquote>
-<p>Start Lifetime 右侧的小向下箭头，然后选择 Random Between Two Constants,输入 1.5 和 3,生命周期更短且各不相同</p>
-<p>Start Size 选择 Random Between Two Constants 并分别设置为 0.3 和 0.5,粒子现在变小了且大小不同</p>
-<p>Start Speed 选择 Random Between Two Constants 设置为 0.5 和 1</p>
-</blockquote>
-</li>
-<li><p>粒子消失</p>
-<blockquote>
-<p>变透明</p>
-<blockquote>
-<p>启用 Color over Lifetime 单击 Color 旁边的白色方框以打开 Gradient Editor,选择右上角的箭头，然后将 Alpha 从 255 更改为 0。</p>
-</blockquote>
-<p>变小</p>
-<blockquote>
-<p>启用Size Over Lifetime,单击 Size 框，然后查看显示在 Inspector 底部的曲线：通过将第一个点上调至 1 并将最后一个点下调至 0 来进行反转。</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>设为预制件作为对象子对象</p>
-</li>
-<li><p>已经产生的效果不随人物移动</p>
-<blockquote>
-<p>Particle System &gt;  Simulation Space 设置改为 World。</p>
-</blockquote>
-</li>
-<li><p>脚本里用ParticleSystem创建对象 用Stop()停止，可用instantiate实例化</p>
-</li>
-</ul>
-</li>
-<li><p>UI</p>
-<ul>
-<li><p>Create &gt; UI &gt; Canvas</p>
-</li>
-<li><p>模式：</p>
-<blockquote>
-<p>Screen Space - Overlay：默认模式,始终在游戏的上层绘制 UI</p>
-<p>Screen Space - Camera: 与摄像机对齐的平面上绘制 UI</p>
-<p>World Space：任何位置</p>
-</blockquote>
-</li>
-<li><p>Canvas Scaler</p>
-<blockquote>
-<p>Constant Size 无论屏幕大小或形状如何，UI 均保持大小不变。</p>
-<p>Scale With Screen SizeUI 缩放取决于你设置为 Reference Resolution 的屏幕大小。</p>
-</blockquote>
-</li>
-<li><p>添加图像 UI &gt; Image为Canvas子对象Health，双击canvas，加入图像到Source Image ， Set Native Size 按钮将 Rect Transform 值更改为图像的大小，再调整大小、</p>
-</li>
-<li><p>Rect Transform 中更改瞄点</p>
-</li>
-<li><p>添加图像到之前图像子对象，选择瞄点右下角，单击并拖动锚点，让锚点围住肖像。可使图像相对位置不变</p>
-</li>
-<li><p>生命值条(遮罩技术)</p>
-<blockquote>
-<p>Health下添加Image子对象为Mask(遮罩)，更改大小位置，同上拖动瞄点围住，同时移动轴心</p>
-<p>创建遮罩的图像子对象，在瞄点菜单中按alt，选右下角，此操作将同时设置锚点和新图像的大小以填充其父级，再重新进入瞄点菜单不按alt，瞄点设为左上角</p>
-<p> Mask中添加Mask组件，取消选中 Show Mask Graphic 以隐藏白色正方形。</p>
-</blockquote>
-</li>
-<li><p>使用静态成员,生命条为单例对象，可以直接引用场景中的生命值条脚本，不必在 Inspector 中手动分配。脚本添加到生命值条游戏对象，将遮罩拖入 Mask 属性</p>
-</li>
-</ul>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UIHealthBar</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> UIHealthBar instance &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Image mask;</span><br><span class="line"><span class="built_in">float</span> originalSize;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    instance = <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    originalSize = mask.rectTransform.rect.width;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetValue</span>(<span class="params"><span class="built_in">float</span> <span class="keyword">value</span></span>)</span></span><br><span class="line">&#123;          </span><br><span class="line">    mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.    Horizontal, originalSize * <span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Project 文件夹中选择了三个精灵，然后将它们全部一次拖动到 Hierarchy 中，则 Unity 会自动为你创建这三个帧的动画，并将动画分配给新创建的游戏对象。该动画会自动播放，不需要你采取其他操作：</p>
-</li>
-<li><p>对话UI</p>
-<ul>
-<li><p>射线投射(触发对话)</p>
-<blockquote>
-<p>用触发器可能会转过脸背对青蛙，而仍能与青蛙对话。交互式中射线投射很有用</p>
-</blockquote>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (Input.GetKeyDown(KeyCode.X))</span><br><span class="line">&#123;</span><br><span class="line">RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * <span class="number">0.2f</span>, lookDirection, <span class="number">1.5f</span>, LayerMask.GetMask(<span class="string">&quot;NPC&quot;</span>));</span><br><span class="line"><span class="keyword">if</span> (hit.collider != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    character.DisplayDialog();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>UI</p>
-<blockquote>
-<p>UI &gt; Canvas。此时将为发起对话的对象创建一个子级 Canvas 游戏对象。 Rect Transform 中更改大小</p>
-<p>Canvas 下 UI &gt; Image,瞄点菜单里alt填充画布</p>
-<p>在 Hierarchy 中选择 Canvas，然后在 Inspector 中将 Order in Layer 设置为较高的值（例如 10）：防止在游戏对象后面渲染</p>
-<p> Image 下 UI &gt;  Text - TextMeshPro，按住 Alt 的同时单击扩展锚点控制柄以将文本扩展到图像的整个尺寸，白色的小控制柄移动黄色框（文本边界），给文本框留出边距，输入文字</p>
-<p>禁用画布将画布隐藏起来,脚本控制</p>
-</blockquote>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> displayTime = <span class="number">4.0f</span>;</span><br><span class="line"><span class="keyword">public</span> GameObject dialogBox;</span><br><span class="line"><span class="built_in">float</span> timerDisplay;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">dialogBox.SetActive(<span class="literal">false</span>);</span><br><span class="line">timerDisplay = <span class="number">-1.0f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (timerDisplay &gt;= <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    timerDisplay -= Time.deltaTime;</span><br><span class="line">    <span class="keyword">if</span> (timerDisplay &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        dialogBox.SetActive(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DisplayDialog</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">timerDisplay = displayTime;</span><br><span class="line">dialogBox.SetActive(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>音频</p>
-<blockquote>
-<p>AudioClip 音频剪辑也是资源。可以从音频文件导入音频剪辑<br>Audio Listener 音频监听器 默认情况下，监听器位于摄像机<br>Audio Source 音频源 在该组件所在的游戏对象的位置播放音频剪辑</p>
-</blockquote>
-<ul>
-<li><p>BGM</p>
-<blockquote>
-<p>创建空的游戏对象，命名为 BackgroundMusic，添加 Audio Source 组件,放入clip，选择loop， Spatial Blend 滑动条可以从 2D滑动到 3D</p>
-</blockquote>
-</li>
-<li><p>一次性声音</p>
-<blockquote>
-<ol>
-<li>创建一个新的音频源，分配一个音频剪辑，取消选中 Play On Awake，通过脚本设置当事件发生时播放音频剪辑。但这种做法需要为游戏中每个细小的声音都创建一个游戏对象和音频源。</li>
-<li>将音频源添加到 Ruby 游戏对象，并使用该音频源播放与 Ruby 所做的游戏操作,用PlayOneShot函数 将音频剪辑作为第一个参数，并在音频源的位置使用音频源的所有设置播放一次该音频剪辑。</li>
-</ol>
-</blockquote>
-<ul>
-<li><p>PlayOneShot方法</p>
-<blockquote>
-<p>在Ruby下添加一个名为 audioSource 的私有 AudioSource 变量来存储音频源，用 GetComponent 在 Start 函数中获取该变量。</p>
-</blockquote>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//ruby脚本中</span></span><br><span class="line">AudioSource audioSource;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">  rigidbody2d = GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">  animator = GetComponent&lt;Animator&gt;();</span><br><span class="line">  currentHealth = maxHealth;</span><br><span class="line"></span><br><span class="line">  audioSource= GetComponent&lt;AudioSource&gt;();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlaySound</span>(<span class="params">AudioClip clip</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      audioSource.PlayOneShot(clip);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在需要播放音乐的地方</p>
-</blockquote>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> AudioClip collectedClip;<span class="comment">//Clip记得拖入</span></span><br><span class="line"></span><br><span class="line">controller.PlaySound(collectedClip);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>空间化</p>
-<blockquote>
-<p>AudioSource中Spatial Blend 滑动条一直向右移动到 3D</p>
-<p>3D Sound Settings 部分找到 Min Distance 和 Max Distance ：Max Distance 改为 10 个单位.因为声音系统是为 3D 设计的。所以该圆圈实际上是一个球体。由于摄像机在z轴远处，衰减不起作用，并且听不到声音</p>
-<p>选择主摄像机并创建一个新的空游戏对象作为子对象。将这个对象命名为 Listener，向这个对象添加一个 Audio Listener，在 Transform 组件中将坐标设置为 x = 0、y = 0 且 z = 10。.在主摄像机上，右键单击 Audio Listener，然后选择 Remove Component。使listener正好在z=0处</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h2><ul>
-<li><p>RubyControler</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RubyControler</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">int</span> maxHealth = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">float</span> speed = <span class="number">3.0f</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">float</span> timeInvincible = <span class="number">2.0f</span>;<span class="comment">//无敌时间</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> currentHealth;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">int</span> health &#123; <span class="keyword">get</span> &#123; <span class="keyword">return</span> currentHealth; &#125; &#125;<span class="comment">//属性</span></span><br><span class="line">  <span class="comment">//属性的用法很像变量，而不是像函数。</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">bool</span> isInvincible;</span><br><span class="line">  <span class="built_in">float</span> invincibleTimer;</span><br><span class="line"></span><br><span class="line">  Rigidbody2D rigidbody2d;</span><br><span class="line">  Animator animator;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> GameObject projectilePrefab;</span><br><span class="line"></span><br><span class="line">  Vector2 lookDirection = <span class="keyword">new</span> Vector2(<span class="number">1</span>, <span class="number">0</span>);<span class="comment">//存储观察方向</span></span><br><span class="line">  <span class="built_in">float</span> vertical;</span><br><span class="line">  <span class="built_in">float</span> horizontal;</span><br><span class="line"></span><br><span class="line">  AudioSource audioSource;</span><br><span class="line">  <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="comment">//每秒帧率设为10帧</span></span><br><span class="line">      <span class="comment">//QualitySettings.vSyncCount = 0;</span></span><br><span class="line">      <span class="comment">//Application.targetFrameRate = 10;</span></span><br><span class="line">      rigidbody2d = GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">      animator = GetComponent&lt;Animator&gt;();</span><br><span class="line"></span><br><span class="line">      currentHealth = maxHealth;</span><br><span class="line">      currentHealth = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">      audioSource = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlaySound</span>(<span class="params">AudioClip clip</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      audioSource.PlayOneShot(clip);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Update is called once per frame</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      vertical = Input.GetAxis(<span class="string">&quot;Vertical&quot;</span>);</span><br><span class="line">      horizontal = Input.GetAxis(<span class="string">&quot;Horizontal&quot;</span>);</span><br><span class="line"></span><br><span class="line">      Vector2 move = <span class="keyword">new</span> Vector2(horizontal, vertical);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!Mathf.Approximately(move.x, <span class="number">0.0f</span>) || !Mathf.Approximately(move.y, <span class="number">0.0f</span>))</span><br><span class="line">      &#123;</span><br><span class="line">          lookDirection.Set(move.x, move.y);</span><br><span class="line">          lookDirection.Normalize();</span><br><span class="line">      &#125;</span><br><span class="line">      animator.SetFloat(<span class="string">&quot;Look X&quot;</span>, lookDirection.x);</span><br><span class="line">      animator.SetFloat(<span class="string">&quot;Look Y&quot;</span>, lookDirection.y);</span><br><span class="line">      animator.SetFloat(<span class="string">&quot;Speed&quot;</span>, move.magnitude);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (isInvincible)</span><br><span class="line">      &#123;</span><br><span class="line">          invincibleTimer -= Time.deltaTime;</span><br><span class="line">          <span class="keyword">if</span> (invincibleTimer &lt; <span class="number">0</span>)</span><br><span class="line">              isInvincible = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.C))</span><br><span class="line">          Launch();</span><br><span class="line"></span><br><span class="line">      <span class="comment">//射线投射</span></span><br><span class="line">      <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.X))</span><br><span class="line">      &#123;</span><br><span class="line">          RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * <span class="number">0.2f</span>, lookDirection, <span class="number">1.5f</span>, LayerMask.GetMask(<span class="string">&quot;NPC&quot;</span>));</span><br><span class="line">          <span class="keyword">if</span> (hit.collider != <span class="literal">null</span>)</span><br><span class="line">          &#123;</span><br><span class="line">              NonPlayerCharacter character = hit.collider.GetComponent&lt;NonPlayerCharacter&gt;();</span><br><span class="line">              <span class="keyword">if</span> (character != <span class="literal">null</span>)</span><br><span class="line">                  character.DisplayDialog();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">FixedUpdate</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      Vector2 position = transform.position;</span><br><span class="line">      position.x = position.x + speed * horizontal * Time.deltaTime;</span><br><span class="line">      position.y = position.y + speed * vertical * Time.deltaTime;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//position = position + speed * move * Time.deltaTime;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//transform.position = position;</span></span><br><span class="line"></span><br><span class="line">      rigidbody2d.MovePosition(position);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ChangeHealth</span>(<span class="params"><span class="built_in">int</span> amount</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">if</span>(amount &lt; <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span> (isInvincible)</span><br><span class="line">              <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">          isInvincible = <span class="literal">true</span>;</span><br><span class="line">          invincibleTimer = timeInvincible;</span><br><span class="line">      &#125;</span><br><span class="line">      currentHealth = Mathf.Clamp(currentHealth + amount, <span class="number">0</span>, maxHealth);</span><br><span class="line">      <span class="comment">//Debug.Log(currentHealth + &quot;/&quot; + maxHealth);</span></span><br><span class="line">      UIHealthBar.instance.SetValue(currentHealth / (<span class="built_in">float</span>)maxHealth);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Launch</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * <span class="number">0.5f</span>, Quaternion.identity);<span class="comment">//创建副本</span></span><br><span class="line"></span><br><span class="line">      Projectile projectile = projectileObject.GetComponent&lt;Projectile&gt;();</span><br><span class="line">      projectile.Launch(lookDirection, <span class="number">300</span>);</span><br><span class="line"></span><br><span class="line">      animator.SetTrigger(<span class="string">&quot;Launch&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>EnemyController</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EnemyController</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">float</span> speed;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">bool</span> vertical;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">float</span> changeTime = <span class="number">3.0f</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">bool</span> broken = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Rigidbody2D rigidbody2d;</span><br><span class="line">  Animator animator;</span><br><span class="line">  <span class="built_in">float</span> timer;</span><br><span class="line">  <span class="built_in">int</span> direction = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> ParticleSystem smokeEffect;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> AudioClip collectedClip;</span><br><span class="line">  <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      rigidbody2d = GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">      animator = GetComponent&lt;Animator&gt;();</span><br><span class="line">      timer = changeTime;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">if</span> (!broken)</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">      timer -= Time.deltaTime;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(timer &lt; <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          direction = -direction;</span><br><span class="line">          timer = changeTime;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Update is called once per frame</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">if</span> (!broken)</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">      Vector2 position = rigidbody2d.position;</span><br><span class="line">      <span class="keyword">if</span> (vertical)</span><br><span class="line">      &#123;</span><br><span class="line">          position.y += Time.deltaTime * speed*direction;</span><br><span class="line">          animator.SetFloat(<span class="string">&quot;Move X&quot;</span>, <span class="number">0</span>);</span><br><span class="line">          animator.SetFloat(<span class="string">&quot;Move Y&quot;</span>, direction);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">          position.x = position.x + Time.deltaTime * speed*direction;</span><br><span class="line">          animator.SetFloat(<span class="string">&quot;Move X&quot;</span>, direction);</span><br><span class="line">          animator.SetFloat(<span class="string">&quot;Move Y&quot;</span>, <span class="number">0</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      rigidbody2d.MovePosition(position);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">OnCollisionEnter2D</span>(<span class="params">Collision2D collision</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      RubyControler player = collision.gameObject.GetComponent&lt;RubyControler&gt;();</span><br><span class="line">      <span class="comment">//此处的类型是 Collision2D，而不是 Collider2D。Collision2D 没有 GetComponent 函数，但是它包含大量有关碰撞的数据，例如与敌人碰撞的游戏对象。因此，在这个游戏对象上调用 GetComponent。</span></span><br><span class="line">      <span class="keyword">if</span> (player != <span class="literal">null</span>)</span><br><span class="line">          player.ChangeHealth(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">      player.PlaySound(collectedClip);</span><br><span class="line">   </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Fix</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      broken = <span class="literal">false</span>;</span><br><span class="line">      rigidbody2d.simulated = <span class="literal">false</span>;</span><br><span class="line">      animator.SetTrigger(<span class="string">&quot;Fixed&quot;</span>);</span><br><span class="line">      smokeEffect.Stop();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>HealthCollectible</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HealthCollectible</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> AudioClip collectedClip;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter2D</span>(<span class="params">Collider2D other</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      RubyControler controller = other.GetComponent&lt;RubyControler&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(controller != <span class="literal">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span> (controller.health &lt; controller.maxHealth)</span><br><span class="line">          &#123;</span><br><span class="line">              controller.ChangeHealth(<span class="number">1</span>);</span><br><span class="line">              Destroy(gameObject);</span><br><span class="line"></span><br><span class="line">              controller.PlaySound(collectedClip);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>NonPlayerCharacter</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NonPlayerCharacter</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">float</span> displayTime = <span class="number">4.0f</span>;</span><br><span class="line">  <span class="keyword">public</span> GameObject dialogBox;</span><br><span class="line">  <span class="built_in">float</span> timerDisplay;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      dialogBox.SetActive(<span class="literal">false</span>);</span><br><span class="line">      timerDisplay = <span class="number">-0.1f</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Update is called once per frame</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">if</span>(timerDisplay &gt;= <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          timerDisplay -= Time.deltaTime;</span><br><span class="line">          <span class="keyword">if</span>(timerDisplay &lt; <span class="number">0</span>)</span><br><span class="line">          &#123;</span><br><span class="line">              dialogBox.SetActive(<span class="literal">false</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DisplayDialog</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      timerDisplay = displayTime;</span><br><span class="line">      dialogBox.SetActive(<span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>UIHealthBar</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UIHealthBar</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> UIHealthBar instance &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;<span class="comment">//set为私有属性 get均会调用</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> Image mask;</span><br><span class="line">  <span class="built_in">float</span> originalSize;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      instance = <span class="keyword">this</span>;<span class="comment">//单例对象 只有一个生命值条</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      originalSize = mask.rectTransform.rect.width;<span class="comment">//获取屏幕上的大小</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetValue</span>(<span class="params"><span class="built_in">float</span> <span class="keyword">value</span></span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * <span class="keyword">value</span>);<span class="comment">//从代码中设置大小和瞄点</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Projectile</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Projectile</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  Rigidbody2D rigidbody2d;</span><br><span class="line">  <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()<span class="comment">//实例化时不调用start</span></span></span><br><span class="line">  &#123;</span><br><span class="line">      rigidbody2d = GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">if</span> (transform.position.magnitude &gt; <span class="number">1000.0f</span>)</span><br><span class="line">          Destroy(gameObject);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Launch</span>(<span class="params">Vector2 direction, <span class="built_in">float</span> force</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      rigidbody2d.AddForce(direction * force);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnCollisionEnter2D</span>(<span class="params">Collision2D collision</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="comment">//Debug.Log(&quot;Projectile Collision with &quot; + collision.gameObject);</span></span><br><span class="line">      EnemyController e = collision.collider.GetComponent&lt;EnemyController&gt;();</span><br><span class="line">      <span class="keyword">if</span> (e != <span class="literal">null</span>)</span><br><span class="line">          e.Fix();</span><br><span class="line">      Destroy(gameObject);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Damageable</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Damageable</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//public AudioClip collectedClip;</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerStay2D</span>(<span class="params">Collider2D other</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      RubyControler controller = other.GetComponent&lt;RubyControler&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (controller != <span class="literal">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">              controller.ChangeHealth(<span class="number">-1</span>);</span><br><span class="line">              <span class="comment">//controller.PlaySound(collectedClip);</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+    <title>AssetBundle</title>
+    <url>/Unity/Frame/AssetBundle/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
 ]]></content>
       <categories>
         <category>Unity</category>
-        <category>Demo</category>
+        <category>Frame</category>
       </categories>
-      <tags>
-        <tag>2D</tag>
-      </tags>
   </entry>
   <entry>
-    <title>Stealth</title>
-    <url>/Unity/Demo/Stealth/</url>
-    <content><![CDATA[<h1 id="Stealth"><a href="#Stealth" class="headerlink" title="Stealth"></a>Stealth</h1><h2 id="警报系统"><a href="#警报系统" class="headerlink" title="警报系统"></a>警报系统</h2><ul>
-<li>灯光闪烁</li>
-</ul>
-<p>主要用lerp函数计时，决定灯光的闪烁<br>创建一个direction light 附上AlarmLight脚本<br><span id="more"></span><br><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//AlarmLight.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmLight</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;是否开启警报灯&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">bool</span> isAlarm;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;闪烁速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> highIntencity = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> lowIntencity = <span class="number">0f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> targetIntencity;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light lt;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        lt = GetComponent&lt;Light&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        targetIntencity = highIntencity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(Mathf.Abs(lt.intensity - targetIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(targetIntencity == highIntencity)</span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = lowIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    targetIntencity = highIntencity;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, targetIntencity, Time.deltaTime*turnSpeed);<span class="comment">//无限接近</span></span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            lt.intensity = Mathf.Lerp(lt.intensity, lowIntencity, Time.deltaTime * turnSpeed);</span><br><span class="line">            <span class="keyword">if</span> (Mathf.Abs(lt.intensity - lowIntencity) &lt; <span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                lt.intensity = <span class="number">0</span>;<span class="comment">//减少CPU的计算</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>激光闪烁</li>
-</ul>
-<p>激光对象上附有Trigger组件<br>关键在于时间间隔后激光如何消失的处理<br>不能直接Destroy，不然无法重现</p>
-<ol>
-<li>将对象移到超出游戏范围的地方，时间间隔后再移回来</li>
-<li>让mesh aud collid light等组件enable = false</li>
-</ol>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//LaserTwinkle.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LaserTwinkle</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;闪烁间隔时间&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> interval = <span class="number">2f</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> timer = <span class="number">0</span>;</span><br><span class="line">    Vector3 originPos;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> isShow;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        originPos = transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        timer += Time.deltaTime;</span><br><span class="line">        <span class="keyword">if</span>(timer &gt; interval)</span><br><span class="line">        &#123;</span><br><span class="line">            isShow = !isShow;</span><br><span class="line">            timer = <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isShow)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = originPos;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = Vector3.up * <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>技巧:设置游戏常数类</li>
-</ul>
-<p>对于容易写错，多次调用，无代码提示的常数可用一个类集合起来<br>如Tags Axis Button Animation(可化成哈希数)</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//GameConsts.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameConsts</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Tags</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> MAINLIGHT = <span class="string">&quot;MainLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> ALARMLIGHT = <span class="string">&quot;AlarmLight&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SIREN = <span class="string">&quot;Siren&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> PLAYER = <span class="string">&quot;Player&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Virtual Button &amp; Axis</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> HORIZONTAL = <span class="string">&quot;Horizontal&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> VERTICAL = <span class="string">&quot;Vertical&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SNEAK = <span class="string">&quot;Sneak&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">string</span> SHOUT = <span class="string">&quot;Shout&quot;</span>;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Animation Parameters &amp; States</span></span><br><span class="line">    <span class="comment">//速度参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SPEED_PARAM;</span><br><span class="line">    <span class="comment">//潜行参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SNEAK_PARAM;</span><br><span class="line">    <span class="comment">//喊叫参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> SHOUT_PARAM;</span><br><span class="line">    <span class="comment">//运动状态</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> LOCOMOTION_STATE;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Game Paramters</span></span><br><span class="line">    <span class="comment">//头顶观察距离偏移量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> WATCH_OFFSET = <span class="number">0f</span>;</span><br><span class="line">    <span class="comment">//玩家身体调节偏移量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">float</span> PLAYER_BODY_OFFSET = <span class="number">1f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> Static Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">GameConsts</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//用整型</span></span><br><span class="line">        SPEED_PARAM = Animator.StringToHash(<span class="string">&quot;Speed&quot;</span>);</span><br><span class="line">        SNEAK_PARAM = Animator.StringToHash(<span class="string">&quot;Sneak&quot;</span>);</span><br><span class="line">        SHOUT_PARAM = Animator.StringToHash(<span class="string">&quot;Shout&quot;</span>);</span><br><span class="line">        LOCOMOTION_STATE = Animator.StringToHash(<span class="string">&quot;Locomotion&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>警报触发</li>
-</ul>
-<p>对于警报是否触发的判定，除了定义bool变量isAlarm<br>还可定义一个向量存储安全区与非安全区，触发警报时将触发位置赋给向量，当向量不等于安全区向量时报警<br>将报警后的声音播放，灯光闪烁等操作集合在一起，运用单例，当触发器触发时调用单例即可<br>AlarmTrigger(附在激光等对象上) -&gt; AlarmSystem</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//AlarmSystem.cs(放在空对象gamecontoller上用于控制报警系统和播放背景音乐)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmSystem</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> AlarmSystem instance;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;过渡速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">3f</span>;</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 alarmPos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line">    [<span class="meta">HideInInspector</span>]</span><br><span class="line">    <span class="keyword">public</span> Vector3 safePos = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AlarmLight alarmLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Light mainLight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AudioSource normalAud;</span><br><span class="line">    <span class="keyword">private</span> AudioSource panicAud;</span><br><span class="line">    <span class="keyword">private</span> GameObject[] sirensObj;</span><br><span class="line">    <span class="keyword">private</span> AudioSource[] sirensAud;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        instance = <span class="keyword">this</span>;</span><br><span class="line">        alarmLight = GameObject.FindWithTag(GameConsts.ALARMLIGHT).GetComponent&lt;AlarmLight&gt;();  </span><br><span class="line">        mainLight = GameObject.FindWithTag(GameConsts.MAINLIGHT).GetComponent&lt;Light&gt;();</span><br><span class="line">        normalAud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        panicAud = transform.GetChild(<span class="number">0</span>).GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        sirensObj = GameObject.FindGameObjectsWithTag(GameConsts.SIREN);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        sirensAud = <span class="keyword">new</span> AudioSource[sirensObj.Length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i] = sirensObj[i].GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        AlarmSystemOperation(alarmPos != safePos);<span class="comment">//简化if else</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 警报操作</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;isAlarm&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AlarmSystemOperation</span>(<span class="params"><span class="built_in">bool</span> isAlarm</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (isAlarm)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">value</span> = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        alarmLight.isAlarm = isAlarm;</span><br><span class="line">        mainLight.intensity = Mathf.Lerp(mainLight.intensity, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        normalAud.volume = Mathf.Lerp(normalAud.volume, <span class="number">1</span>-<span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        panicAud.volume = Mathf.Lerp(panicAud.volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; sirensAud.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sirensAud[i].volume = Mathf.Lerp(sirensAud[i].volume, <span class="keyword">value</span>, Time.deltaTime * turnSpeed);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//AlarmTrigger.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AlarmTrigger</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (other.CompareTag(GameConsts.PLAYER))</span><br><span class="line">        &#123;</span><br><span class="line">            AlarmSystem.instance.alarmPos = other.transform.position;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="主人公"><a href="#主人公" class="headerlink" title="主人公"></a>主人公</h2><ul>
-<li>动画系统 EthanAnimatorController</li>
-</ul>
-<p>Bleed Tree 用于控制走和跑 参数为speed</p>
-<p>两个层<br>一个层LocomotionLayer控制站立走路跑步静步<br>另一个层ShoutingLayer控制喊叫动作 设置Mask只覆盖手和头</p>
-<p>控制声音播放</p>
-<ol>
-<li>设置 AudioClip</li>
-<li>AudioSource.PlayClipAtPoint静态方法</li>
-</ol>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//PlayerMovement.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerMovement</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;走到跑的时间&quot;</span>)</span>]</span><br><span class="line">    [<span class="meta">Range(0.1f,2f)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> dempTime = <span class="number">1.5f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;转身速度&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> turnSpeed = <span class="number">10f</span>;</span><br><span class="line">    [<span class="meta">Header(<span class="string">&quot;喊叫声音片段&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> AudioClip shoutClip;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> hor, ver;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> sneak, shout;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animator ani;</span><br><span class="line">    <span class="keyword">private</span> AudioSource aud;</span><br><span class="line">    <span class="keyword">private</span> Vector3 dir;</span><br><span class="line">    <span class="keyword">private</span> Quaternion targetQua;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        ani = GetComponent&lt;Animator&gt;();</span><br><span class="line">        aud = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        dir = Vector3.zero;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        hor = Input.GetAxis(GameConsts.HORIZONTAL);</span><br><span class="line">        ver = Input.GetAxis(GameConsts.VERTICAL);</span><br><span class="line"></span><br><span class="line">        sneak = Input.GetButton(GameConsts.SNEAK);</span><br><span class="line">        shout = Input.GetButtonDown(GameConsts.SHOUT);</span><br><span class="line"></span><br><span class="line">        dir.x = hor;</span><br><span class="line">        dir.z = ver;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(hor != <span class="number">0</span>||ver != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">5.66f</span>, dempTime, Time.deltaTime);</span><br><span class="line">            <span class="comment">//转身两步：</span></span><br><span class="line">            <span class="comment">//方向向量转换为四元数</span></span><br><span class="line">            targetQua = Quaternion.LookRotation(dir);</span><br><span class="line">            <span class="comment">//Lerp过去</span></span><br><span class="line">            transform.rotation = Quaternion.Lerp(transform.rotation, targetQua, Time.deltaTime * turnSpeed);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetFloat(GameConsts.SPEED_PARAM, <span class="number">1.5f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ani.SetBool(GameConsts.SNEAK_PARAM, sneak);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (shout)</span><br><span class="line">        &#123;</span><br><span class="line">            ani.SetTrigger(GameConsts.SHOUT_PARAM);</span><br><span class="line">        &#125;</span><br><span class="line">        AudioSetUp();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 声音配置</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AudioSetUp</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> isLocomotion = ani.GetCurrentAnimatorStateInfo(<span class="number">0</span>).shortNameHash == GameConsts.LOCOMOTION_STATE;</span><br><span class="line">        <span class="keyword">if</span> (isLocomotion)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!aud.isPlaying)</span><br><span class="line">            &#123;</span><br><span class="line">                aud.Play();<span class="comment">//loop选不选无所谓</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            aud.Stop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlayShoutAudio</span>()<span class="comment">//动画事件添加声音</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        AudioSource.PlayClipAtPoint(shoutClip, transform.position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h2><h2 id="其它杂项"><a href="#其它杂项" class="headerlink" title="其它杂项"></a>其它杂项</h2><ul>
-<li><p>小门</p>
-</li>
-<li><p>电梯大门</p>
-</li>
-<li><p>电梯</p>
-</li>
-<li><p>钥匙</p>
-</li>
-</ul>
-<h2 id="机器人"><a href="#机器人" class="headerlink" title="机器人"></a>机器人</h2><p>四个主要脚本</p>
-<h3 id="机器人警报"><a href="#机器人警报" class="headerlink" title="机器人警报"></a>机器人警报</h3><p>添加Capsule Collider<br>rigidbody 选is Kinematic 玩家撞不飞<br>加tag<br>视觉听觉 位置消息的接收脚本EnemySightingAndHearing.cs<br>警报位置<br>全局 触发激光 摄像头 机器人看见 所有机器人都追逐<br>私人 机器人听见 只有单个机器人追逐<br>两个警报谁更新去哪个</p>
-<ul>
-<li>全局(监听警报位置更新):<br>if(当全局警报位置发生变化的时候){<br>  将全局警报位置发送给当前机器人并存储<br>}</li>
-</ul>
-<p>判断变化: 当前帧警报位置 <strong>对比</strong> 上一帧警报位置</p>
-<ul>
-<li>视觉检测:</li>
-</ul>
-<ol>
-<li><p>角度判断<br>机器人指向玩家向量与正前方夹角</p>
-</li>
-<li><p>距离判断<br>每帧计算距离 or<br>球形触发器(消耗少)OnTrigger 听觉与视觉判断都放在里面而不放在Update里</p>
-</li>
-<li><p>是否遮挡<br>向玩家发射物理射线 设置偏移量<br>看到玩家触发全局警报</p>
-</li>
-</ol>
-<ul>
-<li>听觉检测:</li>
-</ul>
-<p>走路/喊叫<br>墙壁完全隔音 只通过空气传播<br>路径—导航系统<br>添加组件 设置静态 烘焙网格<br>假设通过导航方式找玩家看是否找的到<br>节点坐标数组得到总距离<br>足够短则可以听到声音触发私人警报</p>
-<p>小门bug: 会检测到触发器 改成只检测碰撞体<br>if (other.isTrigger)<br>    return;</p>
-<h3 id="机器人动画"><a href="#机器人动画" class="headerlink" title="机器人动画"></a>机器人动画</h3><p>融合树 主要在于两个参数Speed AngularSpeed的确定<br>EnemyAnimation.cs<br>导航 期望速度向量在机器人前方的投影向量为Speed<br>AngularSpeed<br>期望速度向量和自身前方向量夹角<br>自身前方向量和期望速度向量法向量 上—右 下—左(夹角变负)<br>角度转弧度 *=Mathf.Deg2Rad</p>
-<p>两种位移 一个动画一个导航<br>OnAnimatorMove()<br>期望速度 -&gt; 动画参数【speed, angularSpeed】 -&gt; 执行动画 -&gt; 产生位移【deltaPosition】 -&gt; velocity<br>导航瞬时速度设为动画位移/每帧时间<br>nav.velocity = ani.deltaPosition/Time.deltaTime<br>旋转使用动画的根旋转<br>transform.rotation = ani.rootRotation</p>
-<p>擦墙: 调整烘焙的宽度和高度</p>
-<p>到终点后旋转: 期望速度为0时角速度强行变为0</p>
-<p>僵硬: 加延时dampTime</p>
-<p>玩家容易摆脱机器人的追捕，容易绕:<br>期望速度向量和自身前方向量夹角小时直接转不用角速度直接lookat转向玩家<br>在视觉检测添加一个bool判断看不看的见玩家</p>
-<h3 id="机器人AI"><a href="#机器人AI" class="headerlink" title="机器人AI"></a>机器人AI</h3><p>EnemyAI.cs</p>
-<p>PlayerHealth.cs单例</p>
-<p>射击 追捕 巡逻</p>
-<ul>
-<li>射击 看到玩家且玩家活着<br>停止导航<br>新动画层ShootingLayer 参数 是否看见玩家<br>放置枪<br>脚本中设置参数改变<br>IK动画<br>EnemyShoot.cs<br>OnAnimatorIK()<br>射击动画时加IK<br>射击特效:<br>ShootingEffect.cs<br>设置激光LineRenderer<br>设置激光端点个数和坐标<br>开启灯光Light<br>播放声音AudioClip<br>延时关闭</li>
-</ul>
-<p>添加动画事件</p>
-<p>计算伤害</p>
-<p>给主人公添加死亡动画 any status 都能转到  can transition to self 取消</p>
-<p>死亡后取消玩家控制权 解除警报 取消玩家标签</p>
-<ul>
-<li><p>追捕 私人警报坐标不等于安全坐标<br>恢复导航<br>导航私人警报位置<br>判断是否到达目标<br>滞留时间后 解除警报</p>
-</li>
-<li><p>巡逻 else<br>设置巡逻点wayPoint<br>Transform数组记录坐标<br>设置导航目标</p>
-</li>
-</ul>
-<p>门加导航动态路障组件<br>path.status==PathP<br>有路障 解除警报返回巡逻</p>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>Draw Call : CPU向GPU发布渲染命令<br>Draw Call越大: CPU占有率就会越高</p>
-<p>优化Draw Call方法:</p>
-<ol>
-<li><p>批处理:</p>
-<ol>
-<li>静态批处理:要求宽松，批处理量比较大</li>
-<li>动态批处理:要求苛刻，批处理量比较少</li>
-</ol>
-</li>
-<li><p>调节摄像机的渲染路径</p>
-<ol>
-<li>正向渲染</li>
-<li>延时光照</li>
-<li>顶点光照</li>
-</ol>
-</li>
-</ol>
-<p>雾效</p>
+    <title>AStarPathFinding</title>
+    <url>/Unity/Frame/AStarPathFinding/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
 ]]></content>
       <categories>
         <category>Unity</category>
-        <category>Demo</category>
+        <category>Frame</category>
       </categories>
-      <tags>
-        <tag>3D</tag>
-        <tag>sneak</tag>
-      </tags>
   </entry>
   <entry>
-    <title>SunnyLand</title>
-    <url>/Unity/Demo/SunnyLand/</url>
-    <content><![CDATA[<h1 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h1><h2 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h2><ul>
-<li>所定义的函数将用于不同对象功能的实现</li>
-</ul>
-<h2 id="GameManager"><a href="#GameManager" class="headerlink" title="GameManager"></a>GameManager</h2><blockquote>
-<ul>
-<li>控制游戏进程，其中包括控制关卡的开始延迟、每一回合间的延迟、控制是否允许玩家操作等、判断游戏是否结束等；</li>
-<li>初始化游戏信息，其中包括了生成地图等；</li>
-<li>记录游戏当中的一些数值，包括玩家的生命值、当前进行到的关卡级别等；</li>
-<li>持有敌人等部分对象的引用；</li>
-<li>控制游戏的显示状态、比如是应该显示地图还是显示正在加载等辅助信息；</li>
-<li>控制游戏的UI。</li>
-</ul>
-</blockquote>
-<span id="more"></span>
-<ul>
-<li><p>只是将相关函数定义出来，用于其它文件直接调用</p>
-</li>
-<li><p>单例对象</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static GameManager instance;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义要管理的对象，以对象的类为定义的类型</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SceneFader fader;</span><br><span class="line">List&lt;Orb&gt; orbs;</span><br><span class="line">Door lockedDoor;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Awake()</p>
-<blockquote>
-<ul>
-<li>由于Awake()方法将在所有其它方法之前被执行，因此一般用这个方法来进行一些必要变量的初始化等等。</li>
-<li>首先判断GameManager的单例是否有值，如果没有则将其指向当前对象；如果有值则将之前值的游戏对象（gameObject）销毁；</li>
-<li>接下来用DontDestoryInLoad()方法将当前的GameManager标记为再下一个场景创建时不会被销毁，通过这个方法可以保留在上一关中记录的数值；</li>
-<li>接下来再为enemies（敌方单位）数组以及boardScript（地图管理器）分配内存；</li>
-<li>最后执行InitGame()方法初始化当前关的内容。</li>
-<li>由于unity在每加载新的一关时，会把上一关创建的对象全部销毁，但是由于我们在GameManager中存放了很多数据需要在下一关使用，所以不能让自己被直接销毁，所以需要用DontDestoryOnLoad()方法来保持自己。</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    if(instance != null)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    instance = this;</span><br><span class="line"></span><br><span class="line">    orbs = new List&lt;Orb&gt;();</span><br><span class="line"></span><br><span class="line">    DontDestroyOnLoad(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Update()</p>
-<blockquote>
-<ul>
-<li>判断游戏结束</li>
-<li>游戏的计时</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if (gameIsOver)</span><br><span class="line">        return;</span><br><span class="line">    //orbNum = instance.orbs.Count;</span><br><span class="line">    gameTime += Time.deltaTime;</span><br><span class="line">    UIManager.UpdateTimeUI(gameTime);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对游戏的对象进行注册(即对之前定义的对象进行赋值)，对相关UI进行更新</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void RegisterDoor(Door door)//注册门</span><br><span class="line"> &#123;</span><br><span class="line"></span><br><span class="line">     instance.lockedDoor = door;</span><br><span class="line"> &#125;</span><br><span class="line"> public static void RegisterSceneFader(SceneFader obj)</span><br><span class="line"> &#123;</span><br><span class="line">     instance.fader = obj;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static void RegisterOrb(Orb orb)</span><br><span class="line"> &#123;</span><br><span class="line">     if (instance == null)</span><br><span class="line">         return;</span><br><span class="line">     if (!instance.orbs.Contains(orb))</span><br><span class="line">         instance.orbs.Add(orb);</span><br><span class="line">     UIManager.UpdateOrbUI(instance.orbs.Count);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>控制游戏进程，玩家的部分行为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void PlayerGrabbedOrb(Orb orb)</span><br><span class="line"> &#123;</span><br><span class="line">     if (!instance.orbs.Contains(orb))</span><br><span class="line">         return;</span><br><span class="line">     instance.orbs.Remove(orb);</span><br><span class="line"></span><br><span class="line">     if (instance.orbs.Count == 0)</span><br><span class="line">         instance.lockedDoor.Open();</span><br><span class="line">     UIManager.UpdateOrbUI(instance.orbs.Count);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static void PlayerWon()</span><br><span class="line"> &#123;</span><br><span class="line">     instance.gameIsOver = true;</span><br><span class="line">     UIManager.DisplayGameOver();</span><br><span class="line">     AudioManager.PlayerWonAudio();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static void PlayerDied()</span><br><span class="line"> &#123;</span><br><span class="line">     instance.fader.FadeOut();</span><br><span class="line">     instance.deathNum++;</span><br><span class="line">     UIManager.UpdateDeathUI(instance.deathNum);</span><br><span class="line">     instance.Invoke(&quot;RestartScene&quot;, 1.5f);//用于场景切换的延迟</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static bool GameOver()</span><br><span class="line"> &#123;</span><br><span class="line">     return instance.gameIsOver;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> void RestartScene()</span><br><span class="line"> &#123;</span><br><span class="line">     instance.orbs.Clear();</span><br><span class="line">     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="UIManager"><a href="#UIManager" class="headerlink" title="UIManager"></a>UIManager</h2><blockquote>
-<ul>
-<li>控制相关UI，以及游戏结束的字幕等</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>单例对象</p>
-</li>
-<li><p>定义相关TextMeshProUGUI(TMP)(定义好了要在unity中挂载)</p>
-</li>
-<li><p>经典Awake()</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    if(instance != null)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    instance = this;</span><br><span class="line"></span><br><span class="line">    DontDestroyOnLoad(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把UI与UI要表示的对象联系起来 类似GameManager的Register</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void UpdateOrbUI(int orbCount)</span><br><span class="line">&#123;</span><br><span class="line">    instance.orbText.text = orbCount.ToString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void UpdateDeathUI(int deathCount)</span><br><span class="line">&#123;</span><br><span class="line">    instance.deathText.text = deathCount.ToString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void UpdateTimeUI(float time)</span><br><span class="line">&#123;</span><br><span class="line">    int minutes = (int)(time / 60);</span><br><span class="line">    float seconds = time % 60;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    instance.timeText.text = minutes.ToString(&quot;00&quot;)+&quot;:&quot;+seconds.ToString(&quot;00&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void DisplayGameOver()</span><br><span class="line">&#123;</span><br><span class="line">    instance.gameOverText.enabled = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="AudioManager"><a href="#AudioManager" class="headerlink" title="AudioManager"></a>AudioManager</h2><blockquote>
-<ul>
-<li>管理相关音效和BGM的播放</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>AudioSource</p>
-<blockquote>
-<ul>
-<li>音频源组件, 发出声音的源头</li>
-</ul>
-</blockquote>
-</li>
-<li><p>AudioClip</p>
-<blockquote>
-<ul>
-<li>要播放的音频(定义后需挂载)</li>
-</ul>
-</blockquote>
-</li>
-<li><p>AudioMixerGroup</p>
-<blockquote>
-<ul>
-<li>相当于AudioSource的输出</li>
-</ul>
-</blockquote>
-</li>
-<li><p>AudioClip -&gt; AudioSource -&gt; AudioMixerGroup</p>
-</li>
-<li><p>单例</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static AudioManager current;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Header(&quot;环境声音&quot;)]</span><br><span class="line">public AudioClip ambientClip;</span><br><span class="line">public AudioClip musicClip;</span><br><span class="line"></span><br><span class="line">[Header(&quot;FX音效&quot;)]</span><br><span class="line">public AudioClip deathFXClip;</span><br><span class="line">public AudioClip orbFXClip;</span><br><span class="line">public AudioClip doorFXClip;</span><br><span class="line">public AudioClip startLevelClip;</span><br><span class="line">public AudioClip winClip;</span><br><span class="line"></span><br><span class="line">[Header(&quot;Robbie音效&quot;)]</span><br><span class="line">public AudioClip[] walkStepClips;</span><br><span class="line">public AudioClip[] crouchStepClips;</span><br><span class="line">public AudioClip jumpClip;</span><br><span class="line">public AudioClip deathClip;</span><br><span class="line"></span><br><span class="line">public AudioClip jumpVoiceClip;//角色声音</span><br><span class="line">public AudioClip deathVoiceClip;</span><br><span class="line">public AudioClip orbVoiceClip;</span><br><span class="line"></span><br><span class="line">AudioSource ambientSource;</span><br><span class="line">AudioSource musicSource;</span><br><span class="line">AudioSource fxSource;</span><br><span class="line">AudioSource playerSource;</span><br><span class="line">AudioSource voiceSource;</span><br><span class="line"></span><br><span class="line">public AudioMixerGroup ambientGroup, musicGroup, FXGroup, playerGroup, voiceGroup;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Awake() 进行初始化</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    if(current != null)//声音不会叠加</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    current = this;</span><br><span class="line"></span><br><span class="line">    DontDestroyOnLoad(gameObject);//场景切换时音乐保留</span><br><span class="line"></span><br><span class="line">    ambientSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    musicSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    fxSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    playerSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    voiceSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line"></span><br><span class="line">    ambientSource.outputAudioMixerGroup = ambientGroup;</span><br><span class="line">    musicSource.outputAudioMixerGroup = musicGroup;</span><br><span class="line">    fxSource.outputAudioMixerGroup = FXGroup;</span><br><span class="line">    playerSource.outputAudioMixerGroup = playerGroup;</span><br><span class="line">    voiceSource.outputAudioMixerGroup = voiceGroup;</span><br><span class="line"></span><br><span class="line">    StartLevelAudio();//起始BGM的播放</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把AudioClip -&gt; AudioSource过程实现并播放</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void StartLevelAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.ambientSource.clip = current.ambientClip;</span><br><span class="line">    current.ambientSource.loop = true;</span><br><span class="line">    current.ambientSource.Play();</span><br><span class="line"></span><br><span class="line">    current.musicSource.clip = current.musicClip;</span><br><span class="line">    current.musicSource.loop = true;</span><br><span class="line">    current.musicSource.Play();</span><br><span class="line"></span><br><span class="line">    current.fxSource.clip = current.startLevelClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayerWonAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.fxSource.clip = current.winClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">    current.playerSource.Stop();</span><br><span class="line">&#125;</span><br><span class="line">public static void PlayFootsteoAudio()</span><br><span class="line">&#123;</span><br><span class="line">    int index = Random.Range(0, current.walkStepClips.Length);</span><br><span class="line"></span><br><span class="line">    current.playerSource.clip = current.walkStepClips[index];</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayDoorOpenAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.fxSource.clip = current.doorFXClip;</span><br><span class="line">    current.fxSource.PlayDelayed(1f);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayCrouchsteoAudio()</span><br><span class="line">&#123;</span><br><span class="line">    int index = Random.Range(0, current.crouchStepClips.Length);</span><br><span class="line"></span><br><span class="line">    current.playerSource.clip = current.crouchStepClips[index];</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayJumpAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.playerSource.clip = current.jumpClip;</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line"></span><br><span class="line">    current.voiceSource.clip = current.jumpVoiceClip;</span><br><span class="line">    current.voiceSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayDeathAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.playerSource.clip = current.deathClip;</span><br><span class="line">    current.playerSource.Play();</span><br><span class="line"></span><br><span class="line">    current.voiceSource.clip = current.deathVoiceClip;</span><br><span class="line">    current.voiceSource.Play();</span><br><span class="line"></span><br><span class="line">    current.fxSource.clip = current.deathFXClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void PlayOrbAudio()</span><br><span class="line">&#123;</span><br><span class="line">    current.voiceSource.clip = current.orbVoiceClip;</span><br><span class="line">    current.voiceSource.Play();</span><br><span class="line"></span><br><span class="line">    current.fxSource.clip = current.orbFXClip;</span><br><span class="line">    current.fxSource.Play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Player"><a href="#Player" class="headerlink" title="Player"></a>Player</h2><ul>
-<li>动作 动画</li>
-</ul>
-<h2 id="PlayerMovement"><a href="#PlayerMovement" class="headerlink" title="PlayerMovement"></a>PlayerMovement</h2><blockquote>
-<ul>
-<li>定义玩家的刚体和碰撞体，以及相关的尺寸</li>
-<li>定义移动，跳跃等相关的参数，关联相关的按键</li>
-<li>定义状态参数，判断玩家的状态</li>
-<li>定义环境监测的参数，用射线来判断环境</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>Start()</p>
-<blockquote>
-<ul>
-<li>代码挂载刚体，碰撞体，获取相关的尺寸</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    rb = GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">    coll = GetComponent&lt;BoxCollider2D&gt;();</span><br><span class="line"></span><br><span class="line">    playerHeight = coll.size.y;</span><br><span class="line">    colliderStandSize = coll.size;</span><br><span class="line">    colliderStandOffset = coll.offset;</span><br><span class="line">    colliderCrouchSize = new Vector2(coll.size.x, coll.size.y / 2f);</span><br><span class="line">    colliderCrouchOffset = new Vector2(coll.offset.x, coll.offset.y / 2f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Update()</p>
-<blockquote>
-<ul>
-<li>判断游戏结束 跳 蹲 (按需要分短按和长按)</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if (GameManager.GameOver())</span><br><span class="line">    &#123;</span><br><span class="line">        xVelocity = 0f;</span><br><span class="line">        rb.bodyType = RigidbodyType2D.Static;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (Input.GetButtonDown(&quot;Jump&quot;))</span><br><span class="line">        jumpPressed = true;</span><br><span class="line">    jumpHeld = Input.GetButton(&quot;Jump&quot;);//连续判断</span><br><span class="line">    crouchHeld = Input.GetButton(&quot;Crouch&quot;);</span><br><span class="line">    if (Input.GetButtonDown(&quot;Crouch&quot;))</span><br><span class="line">        crouchPressed = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>FixedUpdate()</p>
-<blockquote>
-<ul>
-<li>判断游戏结束</li>
-<li>任何需要连续判断的行为</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void FixedUpdate()</span><br><span class="line"> &#123;</span><br><span class="line">     if (GameManager.GameOver())</span><br><span class="line">     &#123;</span><br><span class="line">         xVelocity = 0f;</span><br><span class="line">         rb.bodyType = RigidbodyType2D.Static;</span><br><span class="line">         return;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     if (isJump)</span><br><span class="line">         jumpPressed = false;</span><br><span class="line">     PhysicsCheck();</span><br><span class="line">     GroundMovement();</span><br><span class="line">     MidAirMovement();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>PhysicsCheck()</p>
-<blockquote>
-<p>用射线判断环境 左右脚射线 头顶射线 悬挂射线</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  void PhysicsCheck()</span><br><span class="line">&#123;</span><br><span class="line">    //左右脚射线</span><br><span class="line">    RaycastHit2D leftCheck = Raycast(new Vector2(-footOffset, 0f), Vector2.down, groundDistane, groundLayer);</span><br><span class="line">    RaycastHit2D rightCheck = Raycast(new Vector2(footOffset, 0f), Vector2.down, groundDistane, groundLayer);</span><br><span class="line"></span><br><span class="line">    if (leftCheck || rightCheck)</span><br><span class="line">        isOnGround = true;</span><br><span class="line">    else isOnGround = false;</span><br><span class="line"></span><br><span class="line">    //头顶射线</span><br><span class="line">    RaycastHit2D headCheck = Raycast(new Vector2(0f, coll.size.y), Vector2.up, headClearance, groundLayer);</span><br><span class="line"></span><br><span class="line">    isHeadBlocked = headCheck;</span><br><span class="line"></span><br><span class="line">    float direction = transform.localScale.x;</span><br><span class="line">    Vector2 grabDir = new Vector2(direction, 0f);</span><br><span class="line"></span><br><span class="line">    RaycastHit2D blockedCheck = Raycast(new Vector2(footOffset * direction, playerHeight), grabDir, grabDistance, groundLayer);</span><br><span class="line">    RaycastHit2D wallCheck = Raycast(new Vector2(footOffset * direction, eyeHeight), grabDir, grabDistance, groundLayer);</span><br><span class="line">    RaycastHit2D ledgeCheck = Raycast(new Vector2(reachOffset * direction, playerHeight), Vector2.down, grabDistance, groundLayer);</span><br><span class="line"></span><br><span class="line">    if(!isOnGround &amp;&amp; rb.velocity.y&lt;0f &amp;&amp; ledgeCheck &amp;&amp; wallCheck &amp;&amp; !blockedCheck)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector3 pos = transform.position;</span><br><span class="line"></span><br><span class="line">        pos.x += (wallCheck.distance - 0.05f)* direction;</span><br><span class="line"></span><br><span class="line">        pos.y -= ledgeCheck.distance;</span><br><span class="line"></span><br><span class="line">        transform.position = pos;</span><br><span class="line"></span><br><span class="line">        rb.bodyType = RigidbodyType2D.Static;</span><br><span class="line">        isHanging = true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>根据需要对Raycast函数进行重载</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    RaycastHit2D Raycast(Vector2 offset,Vector2 rayDiraction,float length,LayerMask layer)</span><br><span class="line">&#123;</span><br><span class="line">    Vector2 pos = transform.position;</span><br><span class="line"></span><br><span class="line">    RaycastHit2D hit = Physics2D.Raycast(pos + offset, rayDiraction, length, layer);</span><br><span class="line"></span><br><span class="line">    Color color = hit ? Color.red : Color.green;</span><br><span class="line"></span><br><span class="line">    Debug.DrawRay(pos + offset, rayDiraction * length,color);</span><br><span class="line"></span><br><span class="line">    return hit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据不同的状态定义相关的移动 转向 跳跃 下蹲函数</p>
-<blockquote>
-<ul>
-<li>同时改变碰撞体大小</li>
-</ul>
-</blockquote>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">void GroundMovement()</span><br><span class="line">&#123;</span><br><span class="line">    if (isHanging)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    if (crouchHeld &amp;&amp; !isCrouch &amp;&amp;isOnGround)</span><br><span class="line">        Crouch();</span><br><span class="line">    else if (!crouchHeld &amp;&amp; isCrouch &amp;&amp; !isHeadBlocked)</span><br><span class="line">        StandUp();</span><br><span class="line">    else if (!isOnGround &amp;&amp; isCrouch)</span><br><span class="line">    &#123;</span><br><span class="line">        StandUp();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    xVelocity = Input.GetAxis(&quot;Horizontal&quot;);//-1f 1f 0 不按键盘归零，所以不会滑动</span><br><span class="line"></span><br><span class="line">    if (isCrouch)</span><br><span class="line">        xVelocity /= crouchSpeedDivisor;</span><br><span class="line"></span><br><span class="line">    rb.velocity = new Vector2(xVelocity * speed, rb.velocity.y);</span><br><span class="line"></span><br><span class="line">    FilpDirection();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MidAirMovement()</span><br><span class="line">&#123;</span><br><span class="line">    if (isHanging)</span><br><span class="line">    &#123;</span><br><span class="line">        if(jumpPressed)</span><br><span class="line">        &#123;</span><br><span class="line">            rb.bodyType = RigidbodyType2D.Dynamic;</span><br><span class="line">            rb.velocity = new Vector2(rb.velocity.x, hangingJumpForce);</span><br><span class="line">            isHanging = false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (crouchPressed)</span><br><span class="line">        &#123;</span><br><span class="line">            rb.bodyType = RigidbodyType2D.Dynamic;</span><br><span class="line"></span><br><span class="line">            isHanging = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (jumpPressed &amp;&amp; isOnGround &amp;&amp; !isJump &amp;&amp; !isHeadBlocked)</span><br><span class="line">    &#123;</span><br><span class="line">        if(isCrouch &amp;&amp; isOnGround )</span><br><span class="line">        &#123;</span><br><span class="line">            crouchPressed = false;</span><br><span class="line">            StandUp();</span><br><span class="line">            rb.AddForce(new Vector2(0f, crouchJumpBoost), ForceMode2D.Impulse);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        isOnGround = false;</span><br><span class="line">        isJump = true;</span><br><span class="line"></span><br><span class="line">        jumpTime = Time.time + jumpHoldDuration;</span><br><span class="line"></span><br><span class="line">        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);//也可用velocity impulse表示突然给的一个力</span><br><span class="line"></span><br><span class="line">        AudioManager.PlayJumpAudio();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    else if (isJump)</span><br><span class="line">    &#123;</span><br><span class="line">        if(jumpHeld)</span><br><span class="line">            rb.AddForce(new Vector2(0f, jumpHoldForce), ForceMode2D.Impulse);</span><br><span class="line">        if (jumpTime &lt; Time.time)</span><br><span class="line">            isJump = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void FilpDirection()</span><br><span class="line">&#123;</span><br><span class="line">    if(xVelocity &lt; 0)</span><br><span class="line">        transform.localScale = new Vector3(-1, 1,1);</span><br><span class="line">    if (xVelocity &gt; 0)</span><br><span class="line">        transform.localScale = new Vector3(1, 1,1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Crouch()</span><br><span class="line">&#123;</span><br><span class="line">    isCrouch = true;</span><br><span class="line">    coll.size = colliderCrouchSize;</span><br><span class="line">    coll.offset = colliderCrouchOffset;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void StandUp()</span><br><span class="line">&#123;</span><br><span class="line">    isCrouch = false;</span><br><span class="line">    coll.size = colliderStandSize;</span><br><span class="line">    coll.offset = colliderStandOffset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="PlayerAnimation"><a href="#PlayerAnimation" class="headerlink" title="PlayerAnimation"></a>PlayerAnimation</h2><blockquote>
-<ul>
-<li>把动画与人物的动作联系起来，把Animator中不同的状态编号，其值由人物现在的状态决定</li>
-<li>若Animation中在动画中插入的动作的声音如走路，则在此还要编写播放声音的函数，同时在Animation中挂载改函数</li>
-</ul>
-</blockquote>
-<pre><code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animator anim;</span><br><span class="line">PlayerMovement movement;</span><br><span class="line">Rigidbody2D rb;</span><br><span class="line"></span><br><span class="line">int groundID;</span><br><span class="line">int hangingID;</span><br><span class="line">int crouchID;</span><br><span class="line">int speedID;</span><br><span class="line">int fallID;</span><br><span class="line">//定义编号</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">    movement = GetComponentInParent&lt;PlayerMovement&gt;();</span><br><span class="line">    rb = GetComponentInParent&lt;Rigidbody2D&gt;();</span><br><span class="line"></span><br><span class="line">    groundID = Animator.StringToHash(&quot;isOnGround&quot;);</span><br><span class="line">    hangingID = Animator.StringToHash(&quot;isHanging&quot;);</span><br><span class="line">    crouchID = Animator.StringToHash(&quot;isCrouching&quot;);</span><br><span class="line">    speedID = Animator.StringToHash(&quot;speed&quot;);</span><br><span class="line">    fallID = Animator.StringToHash(&quot;verticalVelocity&quot;);</span><br><span class="line">&#125;</span><br><span class="line">//改变编号</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    anim.SetFloat(speedID, Mathf.Abs(movement.xVelocity));</span><br><span class="line">    //anim.SetBool(&quot;isOnGround&quot;, movement.isOnGround);</span><br><span class="line">    anim.SetBool(groundID, movement.isOnGround);//用编号</span><br><span class="line">    anim.SetBool(hangingID, movement.isHanging);</span><br><span class="line">    anim.SetBool(crouchID, movement.isCrouch);</span><br><span class="line">    anim.SetFloat(fallID, rb.velocity.y);</span><br><span class="line">&#125;</span><br><span class="line">//动作声音</span><br><span class="line">public void StepAudio()</span><br><span class="line">&#123;</span><br><span class="line">    AudioManager.PlayFootsteoAudio();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void CrouchStepAudio()</span><br><span class="line">&#123;</span><br><span class="line">    AudioManager.PlayCrouchsteoAudio();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><blockquote>
-<ul>
-<li>其它的则为和其它游戏对象的相关功能实现的脚本</li>
-<li>与玩家相关的可挂载在玩家上，也可挂载在其它对象上，区别主要在于碰撞的layer的不同，一般一类对象有多种但对玩家的功能相同则挂载在玩家上，如陷阱</li>
-<li>VFXPrefab类的要先用Instantiate实例化</li>
-<li>触发类(trigger)的要先在Start()中规定触碰物体的layer(数字表示),再调用OnTriggerEnter2D编写出发后的动作,一定要定义好不同的Layer层以及设置对象的Layer</li>
-</ul>
-</blockquote>
-<pre><code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int xxxLayer;</span><br><span class="line">void Start()&#123;</span><br><span class="line">    xxxLayer = LayerMask.NameToLayer(&quot;Layer&quot;);//确定触碰物体的层级</span><br><span class="line">&#125;</span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.gameObject.layer == xxxLayer)//触发</span><br><span class="line">        ....</span><br><span class="line"></span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*PlayerrHealth*/</span><br><span class="line">//挂载在玩家上</span><br><span class="line">public GameObject deathVFXPrefab;</span><br><span class="line">int trapsLayer;</span><br><span class="line">int touchTraps = 0;</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    //碰撞类型为陷阱</span><br><span class="line">    trapsLayer = LayerMask.NameToLayer(&quot;Traps&quot;);</span><br><span class="line">&#125;</span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.gameObject.layer == trapsLayer)//获得的是int型</span><br><span class="line">    &#123;</span><br><span class="line">        touchTraps++;</span><br><span class="line">        if (touchTraps == 1)</span><br><span class="line">        &#123;</span><br><span class="line">            Instantiate(deathVFXPrefab, transform.position, transform.rotation);</span><br><span class="line"></span><br><span class="line">            gameObject.SetActive(false);</span><br><span class="line"></span><br><span class="line">            AudioManager.PlayDeathAudio();</span><br><span class="line"></span><br><span class="line">            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//当前激活的场景的编号</span><br><span class="line"></span><br><span class="line">            GameManager.PlayerDied();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*Door*/</span><br><span class="line">Animator anim;</span><br><span class="line">int openID;</span><br><span class="line"></span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">    openID = Animator.StringToHash(&quot;Open&quot;);</span><br><span class="line">    GameManager.RegisterDoor(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void Open()</span><br><span class="line">&#123;</span><br><span class="line">    anim.SetTrigger(openID);</span><br><span class="line"></span><br><span class="line">    AudioManager.PlayDoorOpenAudio();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*Orb*/</span><br><span class="line">int player;</span><br><span class="line">public GameObject explosionVFXPrefab;</span><br><span class="line"></span><br><span class="line">// Start is called before the first frame update</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    player = LayerMask.NameToLayer(&quot;Player&quot;);//记录图层编号</span><br><span class="line"></span><br><span class="line">    GameManager.RegisterOrb(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if(collision.gameObject.layer == player)</span><br><span class="line">    &#123;</span><br><span class="line">        Instantiate(explosionVFXPrefab, transform.position, transform.rotation);</span><br><span class="line"></span><br><span class="line">        gameObject.SetActive(false);</span><br><span class="line"></span><br><span class="line">        AudioManager.PlayOrbAudio();</span><br><span class="line"></span><br><span class="line">        GameManager.PlayerGrabbedOrb(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*WinZone*/</span><br><span class="line">    int playerLayer;</span><br><span class="line">// Start is called before the first frame update</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    playerLayer = LayerMask.NameToLayer(&quot;Player&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">&#123;</span><br><span class="line">    if (collision.gameObject.layer == playerLayer)</span><br><span class="line">        Debug.Log(&quot;Player Won!&quot;);</span><br><span class="line"></span><br><span class="line">    GameManager.PlayerWon();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*SceneFader*/</span><br><span class="line">Animator anim;</span><br><span class="line">int faderID;</span><br><span class="line"></span><br><span class="line">private void Start()</span><br><span class="line">&#123;</span><br><span class="line">    anim = GetComponent&lt;Animator&gt;();</span><br><span class="line"></span><br><span class="line">    faderID = Animator.StringToHash(&quot;Fade&quot;);</span><br><span class="line"></span><br><span class="line">    GameManager.RegisterSceneFader(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void FadeOut()</span><br><span class="line">&#123;</span><br><span class="line">    anim.SetTrigger(faderID);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*DeathPose*/</span><br><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    DontDestroyOnLoad(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Demo</category>
-      </categories>
-      <tags>
-        <tag>2D</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Up</title>
-    <url>/Unity/Demo/Up/</url>
-    <content><![CDATA[<h1 id="Up——类flappy-bird小游戏的实现"><a href="#Up——类flappy-bird小游戏的实现" class="headerlink" title="Up——类flappy bird小游戏的实现"></a>Up——类flappy bird小游戏的实现</h1><p><a href="https://github.com/vzerzz/Up">项目文件</a></p>
-<p><a href="https://github.com/vzerzz/Up/tree/main/Assets/Scripts">代码文件</a><br><span id="more"></span></p>
-<p>四个Scene场景<br>Main: 主菜单 管理开始游戏 帮助 退出<br>Level1 Level2 Level3</p>
-<h2 id="主菜单"><a href="#主菜单" class="headerlink" title="主菜单"></a>主菜单</h2><p>Main场景主要为两个canvas 一个控制开始帮助退出三个按键的UI 一个控制帮助画面和返回按键的UI<br>在canvas上加载Main.cs脚本 控制每个按键不同的功能 再在Button对象的OnClick上加载事件<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/Main.cs">Main.cs</a><br>新建空对象BGM 搭载AudioSource 组件和BGM.cs<br>通过BGM.cs将对象设置为单例 使得其在切换场景时不销毁<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/BGM.cs">BGM.cs</a></p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> BGM instance;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(instance != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">    instance = <span class="keyword">this</span>;</span><br><span class="line">    DontDestroyOnLoad(<span class="keyword">this</span>.gameObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Level1-amp-Level2"><a href="#Level1-amp-Level2" class="headerlink" title="Level1 &amp; Level2"></a>Level1 &amp; Level2</h2><p>两个canvas 一个控制游戏中的重新开始和暂停按键 一个控制通关后显示的画面</p>
-<p>前一个搭载GameController.cs脚本 实现游戏中重新开始和暂停功能 同时实现倒计时和倒计时结束时通关画面的激活<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/GameController.cs">GameController.cs</a><br>后一个搭载WinButton.cs脚本 实现通关画面中下一关 重新此关 回到主菜单功能的实现<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/WinButton.cs">WinButton.cs</a></p>
-<ul>
-<li>无限滚动背景<br>  <img src="/Unity/Demo/Up/ScrollBg.png" alt="ScrollBg"><br>复制一份相同的背景并排且共为空对象的子对象<br>在父对象上加载ScrollBg.cs脚本<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/ScrollBg.cs">ScrollBg.cs</a><br>首先获取两个背景的位置分别存储。移动过程中，当后一个背景的X超过前一个背景开始存储的X.则将前一个背景位置设为后一个背景开始的位置。然后交换，前变后，后变前。进入下一轮循环.</li>
-</ul>
-<p>在小屋对象上加载CabinController.cs 脚本控制小屋的空格跳跃以及碰撞后重新开始此关<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/CabinController.cs">CabinController.cs</a></p>
-<h3 id="Level1"><a href="#Level1" class="headerlink" title="Level1"></a>Level1</h3><p>在背景对象上加载LightCreat.cs脚本 控制闪电在一定范围内定时生成<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/LightCreat.cs">LightCreat.cs</a></p>
-<h3 id="Level2"><a href="#Level2" class="headerlink" title="Level2"></a>Level2</h3><p>新建空对象BirdController上搭载BirdManager.cs脚本 控制两种鸟在随机位置的定时生成<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/BirdManager.cs">BirdManager.cs</a><br>在两种鸟的预制体上搭载BirdController.cs脚本 控制鸟向左飞行<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/BirdController.cs">BirdController.cs</a><br>在摄像机对象上搭载CameraFollow.cs脚本 控制摄像机跟随物体上下运动<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/CameraFollow.cs">CameraFollow.cs</a><br>在小屋对象上加载CabinBird.cs脚本 控制小屋碰到不同鸟时的状态变化<br><a href="https://github.com/vzerzz/Up/blob/main/Assets/Scripts/CabinBird.cs">CabinBird.cs</a></p>
-<h2 id="Level3"><a href="#Level3" class="headerlink" title="Level3"></a>Level3</h2><p>游戏结束画面 返回主菜单按键</p>
+    <title>FSM</title>
+    <url>/Unity/Frame/FSM/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
 ]]></content>
       <categories>
         <category>Unity</category>
-        <category>Demo</category>
-      </categories>
-      <tags>
-        <tag>2D</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQLite</title>
-    <url>/Unity/DataPersistence/SQLite/</url>
-    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
-<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
-<p>以下为需要定义的对象</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>SQL三种执行方法</li>
-</ul>
-<ol>
-<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
- <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>DataPersistence</category>
+        <category>Frame</category>
       </categories>
   </entry>
   <entry>
-    <title>数据存储</title>
-    <url>/Unity/DataPersistence/Storage/</url>
-    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
+    <title>Photon</title>
+    <url>/Unity/Frame/Photon/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
 ]]></content>
       <categories>
         <category>Unity</category>
-        <category>DataPersistence</category>
+        <category>Frame</category>
       </categories>
   </entry>
   <entry>
@@ -4755,6 +3827,17 @@ M_{viewport}=
       <categories>
         <category>Unity</category>
         <category>Fundamental</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>xLua</title>
+    <url>/Unity/Frame/xLua/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Frame</category>
       </categories>
   </entry>
   <entry>
@@ -4819,17 +3902,6 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>UGUI</title>
-    <url>/Unity/UnityFundamental/UGUI/</url>
-    <content><![CDATA[<h1 id="UGUI"><a href="#UGUI" class="headerlink" title="UGUI"></a>UGUI</h1><span id="more"></span>
-<p><img src="/Unity/UnityFundamental/UGUI/ugui_01.png" alt="ugui01"><br><img src="/Unity/UnityFundamental/UGUI/ugui_02.png" alt="ugui02"><br><img src="/Unity/UnityFundamental/UGUI/ugui_03.png" alt="ugui03"></p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Fundamental</category>
-      </categories>
-  </entry>
-  <entry>
     <title>WWW</title>
     <url>/Unity/UnityFundamental/WWW/</url>
     <content><![CDATA[<h1 id="WWW"><a href="#WWW" class="headerlink" title="WWW"></a>WWW</h1><span id="more"></span>
@@ -4845,58 +3917,14 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>AssetBundle</title>
-    <url>/Unity/Frame/AssetBundle/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
+    <title>UGUI</title>
+    <url>/Unity/UnityFundamental/UGUI/</url>
+    <content><![CDATA[<h1 id="UGUI"><a href="#UGUI" class="headerlink" title="UGUI"></a>UGUI</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/UGUI/ugui_01.png" alt="ugui01"><br><img src="/Unity/UnityFundamental/UGUI/ugui_02.png" alt="ugui02"><br><img src="/Unity/UnityFundamental/UGUI/ugui_03.png" alt="ugui03"></p>
 ]]></content>
       <categories>
         <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>AStarPathFinding</title>
-    <url>/Unity/Frame/AStarPathFinding/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>FSM</title>
-    <url>/Unity/Frame/FSM/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Photon</title>
-    <url>/Unity/Frame/Photon/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>xLua</title>
-    <url>/Unity/Frame/xLua/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
+        <category>Fundamental</category>
       </categories>
   </entry>
 </search>
