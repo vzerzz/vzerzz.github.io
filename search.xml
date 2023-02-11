@@ -13,7 +13,7 @@
   <entry>
     <title>VZRenderer</title>
     <url>/Projects/VZRenderer/</url>
-    <content><![CDATA[<h1 id="VZRenderer"><a href="#VZRenderer" class="headerlink" title="VZRenderer"></a>VZRenderer</h1><p>首先参照tinyrenderer <a href="https://github.com/ssloy/tinyrenderer">https://github.com/ssloy/tinyrenderer</a>  </p>
+    <content><![CDATA[<h1 id="VZRenderer"><a href="#VZRenderer" class="headerlink" title="VZRenderer"></a>VZRenderer</h1><p>本项目参照了tinyrenderer <a href="https://github.com/ssloy/tinyrenderer">https://github.com/ssloy/tinyrenderer</a>  以及 <a href="https://www.zhihu.com/people/sun-lei-22-19">@孙小磊</a> <a href="https://github.com/SunXLei/SRender">https://github.com/SunXLei/SRender</a> 等大佬的作品 受益匪浅 十分感谢</p>
 <p>导入TGA库用于绘图  </p>
 <p>Bresenham’s line algorithm</p>
 <p>for循环中采用真实长度的步长比例: 效率低  </p>
@@ -54,12 +54,32 @@
 <p>透视变换矩阵把顶点从视锥体中变换到裁剪空间的CVV中 CVV裁剪完成后进行透视除法  </p>
 <p>光栅化前值得注意的几种情况:</p>
 <ol>
-<li>model transformation中非平移,旋转,缩放时的法线变换矩阵(求逆再转置)</li>
+<li>移动物体时的法向量变换: transformation中非等比缩放时的法线变换矩阵(求逆再转置)(其实都是求逆再转置 只不过旋转平移等变换的逆矩阵等于转置矩阵 而等比缩放对法向量乘上一个缩放系数的倒数即可(归一化)) 只需要求Model和View的逆转置即可</li>
 <li>screen space下插值与view space下插值的误差矫正 任何需要插值的属性经过透视投影后都要矫正 不同类型的插值如线性插值和重心坐标插值利用相似的公式 <a href="https://zhuanlan.zhihu.com/p/144331875">https://zhuanlan.zhihu.com/p/144331875</a></li>
-<li>cvv裁剪</li>
+<li>齐次空间透视裁剪 见代码 <a href="https://zhuanlan.zhihu.com/p/162190576">https://zhuanlan.zhihu.com/p/162190576</a></li>
 </ol>
 <p>齐次空间裁剪是一个流程，其中主要包括视椎体裁剪，视口剔除，面剔除</p>
 <p>背面剔除 (视口变换后 用ndc坐标)<br>对所有多边形进行顺时针编号, 即v1 v2 v3 ….. vz<br>计算法线向量, 即N1 N1 =（v2-v1）*（v3-v2）<br>考虑投影仪P, 它是任何顶点的投影计算点积Dot = N.P<br>测试并绘制表面是否可见。如果Dot≥0, 则表面可见, 否则不可见</p>
+<p>法向量:<br>obj中的vn存储的是顶点法向量</p>
+<p>Flat Shading: 对每个三角面的描述里的三个顶点的顺序是固定的 按照“(顶点2-顶点0)×(顶点1-顶点0)”得到每个面唯一的法向量 再由法向量求每个面的光强</p>
+<p>Gouraud Shading: 根据三个顶点的法向量求出光强 再用三角面三个顶点的光强和重心坐标插值</p>
+<p>求法向量方法:</p>
+<ol>
+<li>三条边叉乘得面的法向量(Flat Shading) 法向量再得光强</li>
+<li>obj中的vn为顶点法向量 得到顶点的光强后再插值(Gouraud Shading 能够表现的细节不够 插值不能做到三角面内部添加凹陷 开销大)</li>
+<li>法线贴图 把模型表面的法向量都存储 (Phong Shading 有更多细节，在同一个三角面也能表现出凹凸感) 插值计算uv坐标再访问法线贴图得法向量 这种法线贴图存的是[0,255]的rgb表示 打开图片为彩色的<br>3.2. 切线空间中法线贴图 可适用于模型的部分变换时 各部分法向量分开计算 贴图里存储相对法向量(相对于单个三角面而不是模型空间) 图片基本为蓝色(大部分情况下垂直于平面) RGB(127,127,255)时相对三角面(0,0,1) 贴图存储的x,y,z分量对应的方向是法线贴图的横轴，法线贴图的竖轴，垂直于平面的方向<blockquote>
+<p>TBN坐标系 切线空间<br>切线空间是针对三角面的每个顶点而言的<br>计算方法:<br>1.计算出TBN坐标系中的t, b<br>先由世界坐标取AB,AC uv坐标取uAB vAB uAC vAC 由定义可得<br><img src="/Projects/VZRenderer/TBN.jpg" alt="TBN"><br>求出后还需要通过正交化(schmidt orthogonalization)<br><img src="/Projects/VZRenderer/schmidt.jpg" alt="schmidt"><br>2.通过插值得到点在法线贴图中的uv坐标读取相应xyz 用TBN和它左乘归一化得出世界坐标中的法向量</p>
+</blockquote>
+</li>
+</ol>
+<p>cubemap采样:<br>CubeMap使用三维纹理坐标采样。首先选择标量正值最大的那个分量作为采样的面。例如(−3.2,5.1,−8.4)就选-Z面进行采样，剩下的那两个分量就除以标量正值最大的那个分量，以便映射到[-1,1]区间。之后再将这些值映射到[0,1]区间，以便计算纹理坐标值</p>
+<p>在实际的渲染中，将这个立方体始终罩在摄像机的周围，让摄像机始终处于这个立方体的中心位置，然后根据视线与立方体的交点的坐标，来确定究竟要在哪一个面上进行纹理采样。具体的映射方法为：设视线与立方体的交点为(x,y,z),在x、y、z中取绝对值最大的那个分量，根据它的符号来判定在哪个面上采样。然后让其他两个分量都除以最大分量的绝对值，这样就让另外两个分量都映射到了[0,1]内，然后就可以直接在对应的纹理上做纹理映射就行了，这个方法就是所谓的Cube Map，是天空盒方法的核心。<br><a href="https://blog.csdn.net/yjr3426619/article/details/81224101">https://blog.csdn.net/yjr3426619/article/details/81224101</a><br><img src="/Projects/VZRenderer/cubemap.jpg" alt="cubemap"></p>
+<p>hdr的环境光照图: 类似世界地图的经纬度展开 只需要存储一张<br><img src="/Projects/VZRenderer/hdr.png" alt="hdr"></p>
+<p>球形贴图(sphere mapping): 计算非常简单，缺点就是只能在一个方向起作用。虽然贴图中包括了整个环境中所有方向的光照，但是如果从其他角度观察，因为在边缘处像素很少，所以会导致严重的失真。因此球形贴图一般只会用于一些观察方向不会改变的场合 实时渲染中，一般很少会直接使用球形贴图来表示环境光照，更多地是用来做Matcap着色</p>
+<p>纹理采样:<br><a href="https://zhuanlan.zhihu.com/p/143377682">https://zhuanlan.zhihu.com/p/143377682</a></p>
+<p>PBR IBL:<br><a href="https://learnopengl-cn.github.io/07%20PBR/01%20Theory/">https://learnopengl-cn.github.io/07%20PBR/01%20Theory/</a><br>对单独的光源:<br>渲染方程不需要对角度积分 每个射过来的光源角度都已知 直接累加即可<br>对IBL(光源为六面图):<br>hdr暂略 只讨论cubemap<br>把对角度的积分(即对图的采样)改为预计算 (在半球内均匀间隔或随机取方向可以获得一个相当精确的辐照度近似值但仍需要大量样本)</p>
+<p>Tone Mapping和Gamma Correction:<br>二者都是为了更好的在LDR设备上显示图片， 将图片的颜色值从一个范围分布变换到另一个范围分布。 而不同的是，Tone Mapping是根据相应的算法将颜色值从一个大的范围映射到了较小的范围， 而Gamma Correction则是从[0,1]映射到[0,1], 映射范围并没有改变，只是改变了不同亮度值颜色的分布情况(人眼对暗色变化敏感 暗色区域应该大)<br><a href="https://moontree.github.io/2020/08/30/tone-mapping/">https://moontree.github.io/2020/08/30/tone-mapping/</a></p>
+<p>重要性采样:<br><img src="/Projects/VZRenderer/Inverse%20Transform%20Sampling.png" alt="Inverse Transform Sampling"></p>
 ]]></content>
       <categories>
         <category>Projects</category>
@@ -550,6 +570,22 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
       </categories>
   </entry>
   <entry>
+    <title>Design Patterns</title>
+    <url>/CPlusPlus/HouJie/DesignPatterns/</url>
+    <content><![CDATA[
+
+	<div class="row">
+    <embed src="DesignPatterns.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
+      <categories>
+        <category>CPlusPlus</category>
+        <category>HouJie</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C++2.0</title>
     <url>/CPlusPlus/HouJie/C++2.0/</url>
     <content><![CDATA[
@@ -561,22 +597,6 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 
 
 <p>more:<br><a href="https://changkun.de/modern-cpp/zh-cn/00-preface/">https://changkun.de/modern-cpp/zh-cn/00-preface/</a><br><a href="https://github.com/AnthonyCalandra/modern-cpp-features#coroutines">https://github.com/AnthonyCalandra/modern-cpp-features#coroutines</a>  </p>
-]]></content>
-      <categories>
-        <category>CPlusPlus</category>
-        <category>HouJie</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Design Patterns</title>
-    <url>/CPlusPlus/HouJie/DesignPatterns/</url>
-    <content><![CDATA[
-
-	<div class="row">
-    <embed src="DesignPatterns.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
 ]]></content>
       <categories>
         <category>CPlusPlus</category>
@@ -611,6 +631,22 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
       </categories>
   </entry>
   <entry>
+    <title>STL</title>
+    <url>/CPlusPlus/HouJie/STL/</url>
+    <content><![CDATA[
+
+	<div class="row">
+    <embed src="STL.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
+      <categories>
+        <category>CPlusPlus</category>
+        <category>HouJie</category>
+      </categories>
+  </entry>
+  <entry>
     <title>OOP</title>
     <url>/CPlusPlus/HouJie/OOP/</url>
     <content><![CDATA[
@@ -622,22 +658,6 @@ sin{H \over 2}sin{P \over 2}cos{R \over 2}-cos{H \over 2}cos{P \over 2}sin{R \ov
 
 
 <p>参考:<br><a href="https://github.com/Light-City/CPlusPlusThings">https://github.com/Light-City/CPlusPlusThings</a>  </p>
-]]></content>
-      <categories>
-        <category>CPlusPlus</category>
-        <category>HouJie</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>STL</title>
-    <url>/CPlusPlus/HouJie/STL/</url>
-    <content><![CDATA[
-
-	<div class="row">
-    <embed src="STL.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
 ]]></content>
       <categories>
         <category>CPlusPlus</category>
@@ -3207,44 +3227,6 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>数据存储</title>
-    <url>/Unity/DataPersistence/Storage/</url>
-    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>DataPersistence</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SQLite</title>
-    <url>/Unity/DataPersistence/SQLite/</url>
-    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
-<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
-<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
-<p>以下为需要定义的对象</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>SQL三种执行方法</li>
-</ul>
-<ol>
-<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
-</li>
-<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
- <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>DataPersistence</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C# 语言基础</title>
     <url>/Unity/Csharp/CsharpFUNDAMENTAL/</url>
     <content><![CDATA[<h1 id="C-语言基础"><a href="#C-语言基础" class="headerlink" title="C# 语言基础"></a>C# 语言基础</h1><p>.NET 一个运行库和一个全面的基础类库。</p>
@@ -3401,6 +3383,44 @@ M_{viewport}=
       <categories>
         <category>Unity</category>
         <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SQLite</title>
+    <url>/Unity/DataPersistence/SQLite/</url>
+    <content><![CDATA[<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/SQLite/SQLite.png" alt="SQLite"></p>
+<p>新建文件夹Plugins导入Mono.Data Mono.Data.Sqlite sqlite3 sqlite3等资源即可调用相关库<br><code>using Mono.Data.Sqlite;</code><br>新建文件夹streamingAssets导入创建的DataBase(文件夹名字不能错)</p>
+<p>以下为需要定义的对象</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库访问路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> dataBasePath;</span><br><span class="line"><span class="comment">//数据库连接对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteConnection con;</span><br><span class="line"><span class="comment">//数据库指令对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteCommand cmd;</span><br><span class="line"><span class="comment">//数据库读取对象</span></span><br><span class="line"><span class="keyword">private</span> SqliteDataReader reader;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//找到数据库的路径</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase(文件名).sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line">    dataBasePath = <span class="string">&quot;Data Source = &quot;</span> + Application.streamingAssetsPath + <span class="string">&quot;/xxxDataBase.sqlite&quot;</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">//实例化数据库连接对象，并绑定数据库路径链接</span></span><br><span class="line">con = <span class="keyword">new</span> SqliteConnection(dataBasePath);</span><br><span class="line"><span class="comment">//开始链接</span></span><br><span class="line">con.Open();</span><br><span class="line"><span class="comment">//创建数据库指令对象</span></span><br><span class="line">cmd = con.CreateCommand();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>SQL三种执行方法</li>
+</ul>
+<ol>
+<li><p><code>cmd.CommandText = &quot;Insert Into StudentsTable Values(&#39;xiaohong&#39;,&#39;18&#39;,&#39;TianJin&#39;)&quot;;</code><br> <code>int row = cmd.ExecuteNonQuery();</code><br> <code>Debug.Log(row);</code><br> 执行SQL，返回受影响的行数<br> 用于执行增删改</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select Name From StudentsTable&quot;;</code><br> <code>object val = cmd.ExecuteScalar();</code><br> <code>Debug.Log(val);</code><br> 执行SQL语句,返回查询到的第一行第一列的数据<br> 用于执行查询单个数据</p>
+</li>
+<li><p><code>cmd.CommandText = &quot;Select * From StudentsTable&quot;;</code><br> 执行SQL语句,返回查询后的结果<br> 用于执行查询多个数据<br> <code>reader = cmd.ExecuteReader();</code><br> 读取下一行，若没有下一行，则返回null<br> <code>reader.Read();</code><br> 打印结果的列数reader.FieldCount</p>
+ <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">string</span> currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn += reader.GetName(i).ToString();</span><br><span class="line">        currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(currentColumn);</span><br><span class="line">    <span class="keyword">while</span> (reader.Read())</span><br><span class="line">    &#123;</span><br><span class="line">        currentColumn = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; reader.FieldCount; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            currentColumn += reader.GetValue(i).ToString();</span><br><span class="line">            currentColumn += <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Debug.Log(currentColumn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!reader.IsClosed)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();<span class="comment">//read使用完一次就要关闭一次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 程序关闭时调用一次</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnApplicationQuit</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(reader != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        reader.Close();</span><br><span class="line">        reader = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cmd != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cmd.Dispose();</span><br><span class="line">        cmd = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(con != <span class="literal">null</span>)</span><br><span class="line">        con.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>数据存储</title>
+    <url>/Unity/DataPersistence/Storage/</url>
+    <content><![CDATA[<h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><span id="more"></span>
+<p><img src="/Unity/DataPersistence/Storage/storage.png" alt="storage"></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>DataPersistence</category>
       </categories>
   </entry>
   <entry>
@@ -3775,6 +3795,17 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
+    <title>FSM</title>
+    <url>/Unity/Frame/FSM/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>前面的区域，以后再来探索吧</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Frame</category>
+      </categories>
+  </entry>
+  <entry>
     <title>AssetBundle</title>
     <url>/Unity/Frame/AssetBundle/</url>
     <content><![CDATA[<span id="more"></span>
@@ -3797,8 +3828,8 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>FSM</title>
-    <url>/Unity/Frame/FSM/</url>
+    <title>Photon</title>
+    <url>/Unity/Frame/Photon/</url>
     <content><![CDATA[<span id="more"></span>
 <p>前面的区域，以后再来探索吧</p>
 ]]></content>
@@ -3808,8 +3839,8 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
-    <title>Photon</title>
-    <url>/Unity/Frame/Photon/</url>
+    <title>xLua</title>
+    <url>/Unity/Frame/xLua/</url>
     <content><![CDATA[<span id="more"></span>
 <p>前面的区域，以后再来探索吧</p>
 ]]></content>
@@ -3827,17 +3858,6 @@ M_{viewport}=
       <categories>
         <category>Unity</category>
         <category>Fundamental</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>xLua</title>
-    <url>/Unity/Frame/xLua/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>前面的区域，以后再来探索吧</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Frame</category>
       </categories>
   </entry>
   <entry>
@@ -3902,6 +3922,17 @@ M_{viewport}=
       </categories>
   </entry>
   <entry>
+    <title>UGUI</title>
+    <url>/Unity/UnityFundamental/UGUI/</url>
+    <content><![CDATA[<h1 id="UGUI"><a href="#UGUI" class="headerlink" title="UGUI"></a>UGUI</h1><span id="more"></span>
+<p><img src="/Unity/UnityFundamental/UGUI/ugui_01.png" alt="ugui01"><br><img src="/Unity/UnityFundamental/UGUI/ugui_02.png" alt="ugui02"><br><img src="/Unity/UnityFundamental/UGUI/ugui_03.png" alt="ugui03"></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Fundamental</category>
+      </categories>
+  </entry>
+  <entry>
     <title>WWW</title>
     <url>/Unity/UnityFundamental/WWW/</url>
     <content><![CDATA[<h1 id="WWW"><a href="#WWW" class="headerlink" title="WWW"></a>WWW</h1><span id="more"></span>
@@ -3910,17 +3941,6 @@ M_{viewport}=
 <p>对于视频等长时间下载:<br><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(!www.isDone)&#123;</span><br><span class="line">    <span class="comment">//打印进度</span></span><br><span class="line">    Debug.Log(<span class="string">&quot;进度: &quot;</span> + www.progress);</span><br><span class="line">    <span class="comment">//等待</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><img src="/Unity/UnityFundamental/WWW/www.png" alt="www"></p>
 <p>新方法:WebRequest</p>
-]]></content>
-      <categories>
-        <category>Unity</category>
-        <category>Fundamental</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UGUI</title>
-    <url>/Unity/UnityFundamental/UGUI/</url>
-    <content><![CDATA[<h1 id="UGUI"><a href="#UGUI" class="headerlink" title="UGUI"></a>UGUI</h1><span id="more"></span>
-<p><img src="/Unity/UnityFundamental/UGUI/ugui_01.png" alt="ugui01"><br><img src="/Unity/UnityFundamental/UGUI/ugui_02.png" alt="ugui02"><br><img src="/Unity/UnityFundamental/UGUI/ugui_03.png" alt="ugui03"></p>
 ]]></content>
       <categories>
         <category>Unity</category>
