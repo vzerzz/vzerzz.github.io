@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>STL | Vzer&#39;s Blog</title>
+  <title>Unity Shader 入门精要 | Vzer&#39;s Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="STL | Vzer&#39;s Blog">
+  <meta name="description" content="Unity Shader 入门精要 | Vzer&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="这里什么都没有…">
 <meta property="og:type" content="website">
@@ -924,9 +924,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CPlusPlus/HouJie/STL" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-BookNote/Unity_Shader_Book" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">STL</h1>
+        <h1 class="article-title">Unity Shader 入门精要</h1>
     
     <div class="article-meta">
         
@@ -936,9 +936,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="CPlusPlus">CPlusPlus</a> > 
-            
-            <a  data-rel="CPlusPlus&lt;---&gt;HouJie">HouJie</a>
+            <a  data-rel="BookNote">BookNote</a>
             
         </span>
         
@@ -946,12 +944,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-01-21 04:56:05'>2023-01-01 00:00</time>
+            发布时间 : <time class="date" title='最后更新: 2023-03-13 20:52:26'>2023-03-01 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:924</span>
         
         
         
@@ -970,7 +968,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Unity-Shader-%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81"><span class="toc-text">Unity Shader 入门精要</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF"><span class="toc-text">2. 渲染管线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-text">4.数学基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BA%B9%E7%90%86"><span class="toc-text">7.纹理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E9%80%8F%E6%98%8E"><span class="toc-text">8.透明</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -986,13 +984,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-	<div class="row">
-    <embed src="STL.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
+        <h1 id="Unity-Shader-入门精要"><a href="#Unity-Shader-入门精要" class="headerlink" title="Unity Shader 入门精要"></a>Unity Shader 入门精要</h1><h2 id="2-渲染管线"><a href="#2-渲染管线" class="headerlink" title="2. 渲染管线"></a>2. 渲染管线</h2><ul>
+<li><p>应用阶段  </p>
+<ol>
+<li>把数据(顶点的位悝信息、 法线方向、 顶点颜色、 纹理坐标)加载到显存中。</li>
+<li>设置渲染状态(使用哪个顶点着色器/片元着色器、 光源属性、材质等)。</li>
+<li>调用 Draw Call(一个渲染命令来告诉GPU开始渲染)</li>
+</ol>
+</li>
+<li><p>几何阶段  </p>
+</li>
+<li>光栅化阶段  </li>
+<li>逐片元操作(片元并不是真正意义上的像素 而是包含了很多状态的集合 包括屏幕坐标 深度信息，以及其他从几何阶段输出的顶点信息 例如法线、纹理坐标等)  </li>
+</ul>
+<hr>
+<ul>
+<li><p>双重缓冲<br>对场景的渲染是在幕后发生的后置缓冲中。 一旦场景已经被渲染到了后置缓冲中， GPU 就会交换后置缓冲区和前置缓冲，前置缓冲区是之前显示在屏幕上的图像。保证看到的图像总是连续的  </p>
+</li>
+<li><p>OpenGL/DirectX<br>图像应用编程接口<br>应用程序运行在 CPU 上通过调用 OpenGL DirectX 的图形接口将渲染所需的数据，如顶点数据、纹理数据、材质参数等数据存储在显存中的特定区域 随后，开发者可以通过图像编程接口发出渲染命令(Draw Call), 它们将会被显卡驱动翻译成 GPU 够理解的代码，进行真正的绘制。<br><img src="/BookNote/Unity_Shader_Book/1.png" alt="1">  </p>
+</li>
+<li><p>命令缓冲区<br>包含命令队列 CPU 向其中添加命令 而由 GPU 从中读取命令，添加和读取的过程是互相独立的 命令缓冲区使得 CPU GPU 可以相互独立工作  </p>
+</li>
+<li><p>批处理<br>  GPU渲染速度往往快于 CPU 提交命令的速度 Draw Call 的数量太多， CPU 就会把大量时间花费在提交 Draw Call 上，造成 CPU 的过载<br>  把很多小的 DrawCall 合并成一个大DrawCall 更加适合于那些静态的物体 只需要合并一次即可 动态物体每一帧都需要重新进行合并然后再发送给 GPU<br>  使用批处理合并的网格将会使用同一种渲染状态  </p>
+<p>  减少DrawCall开销:<br>  避免使用大量很小的网格<br>  避免使用过多的材质  </p>
+</li>
+<li><p>Shader<br>GPU 流水线上一些可高度编程的阶段 可以控制流水线中的渲染细节  </p>
+</li>
+</ul>
+<h2 id="4-数学基础"><a href="#4-数学基础" class="headerlink" title="4.数学基础"></a>4.数学基础</h2><p>矩阵变换顺序 缩放旋转平移  </p>
+<p>模型变换 将顶点坐标从模型空间变换到世界空间中  </p>
+<p>法线变换 逆转置矩阵  </p>
+<h2 id="7-纹理"><a href="#7-纹理" class="headerlink" title="7.纹理"></a>7.纹理</h2><ul>
+<li><p>模型空间的法线纹理<br>更加直观 记录的是绝对法线信息<br>可以提供平滑的边界  </p>
+</li>
+<li><p>切线空间的法线纹理<br>自由度很高 相对法线信息 可以重用法线纹理<br>可进行 UV 动画<br>可压缩 仅存储XY 方向，而推导得到Z方向  </p>
+</li>
+<li><p>计算光照模型</p>
+<ol>
+<li>在切线空间下进行光照计算，把光照方向、视角方向变换到切线空间下；  </li>
+<li>在世界空间下进行光照计算，把采样得到的法线方向变换到世界空间下，  </li>
+</ol>
+</li>
+</ul>
+<h2 id="8-透明"><a href="#8-透明" class="headerlink" title="8.透明"></a>8.透明</h2><ol>
+<li>先渲染所有不透明物体，并开启它们的深度测试和深度写入 可从近到远渲染(优化)</li>
+<li>再渲染全透明物, 使用透明度测试</li>
+<li>把半透明物体按它们距离摄像机的远近进行排序，然后按照从后往前的顺序渲染这些半透明物体，并开启它们的深度测试，但关闭深度写入。</li>
+<li>循环覆盖分割网格解决</li>
+</ol>
+<p>关闭背面剔除<br>两个pass</p>
 
       
        
